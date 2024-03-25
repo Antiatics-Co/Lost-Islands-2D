@@ -60,12 +60,20 @@ end
 
 
 function on_message(self, message_id, message, sender)
-	if (message_id == hash("contact_point_response"))  --pobably where the error is
-	and message.other_group == hash("level") then
-		self.groundContact = true
-		self.velocity.y = 0
+	if message_id == hash("contact_point_response") then
+		if message.other_group == hash("level") then
+			if message.distance > 190 then
+				-- The objects are not colliding
+				self.groundContact = false
+			else
+				-- The objects are colliding
+				self.groundContact = true
+				self.velocity.y = 0
+			end
+		end
 	end
 end
+
 
 function on_input(self, action_id, action)
 
