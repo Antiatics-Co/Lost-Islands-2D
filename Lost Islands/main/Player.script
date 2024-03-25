@@ -13,7 +13,7 @@ function init(self) --constructor
 	msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
 
 	self.velocity = vmath.vector3(0, 0, 0)
-	self.groundContact = false
+	self.groundContact = false  -- doesn't seem to change anything
 end
 
 function walk(self) -- custom func to handle hori movement
@@ -31,7 +31,7 @@ function animate(action)
 	end
 end
 
-local function clamp(v, min, max)
+local function clamp(v, min, max) --works
 	if v < min then return min
 	elseif v > max then return max
 	else return v
@@ -40,11 +40,11 @@ end
 
 function fixed_update(self, dt)
 	-- Apply gravity if not in ground contact
-	if not self.groundContact then
+	if not self.groundContact then --works
 		self.velocity.y = self.velocity.y - GRAVITY * dt
 		self.velocity.y = clamp(self.velocity.y, -5000, 5000)
 	else
-		self.velocity.y = 0
+		self.velocity.y = 0 --works
 	end
 
 	local position = go.get_position()
@@ -60,7 +60,7 @@ end
 
 
 function on_message(self, message_id, message, sender)
-	if (message_id == hash("contact_point_response"))
+	if (message_id == hash("contact_point_response"))  --pobably where the error is
 	and message.other_group == hash("level") then
 		self.groundContact = true
 		self.velocity.y = 0
