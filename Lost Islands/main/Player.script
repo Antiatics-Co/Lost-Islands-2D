@@ -13,7 +13,7 @@ function init(self) --constructor
 	msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
 
 	self.velocity = vmath.vector3(0, 0, 0)
-	self.groundContact = false  -- doesn't seem to change anything
+	self.groundContact = false  -- doesn't seem to change anything, isnt working
 end
 
 function walk(self) -- custom func to handle hori movement
@@ -39,12 +39,19 @@ local function clamp(v, min, max) --works
 end
 
 function fixed_update(self, dt)
-	-- Apply gravity if not in ground contact
-	if not self.groundContact then --works
+	-- Apply gravity if not on the ground
+	if not self.groundContact then
 		self.velocity.y = self.velocity.y - GRAVITY * dt
-		self.velocity.y = clamp(self.velocity.y, -5000, 5000)
-	else
-		self.velocity.y = 0 --works
+	end
+
+	-- Update the player's position
+	local pos = go.get_position()
+	pos.y = pos.y + self.velocity.y * dt
+	go.set_position(pos)
+
+	-- Reset velocity if on the ground
+	if self.groundContact then --to fix misreading it In needed to put the box y pos 130, instead of 0
+		self.velocity.y = 0
 	end
 
 	local position = go.get_position()
@@ -60,17 +67,10 @@ end
 
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("contact_point_response") then
-		if message.other_group == hash("level") then
-			if message.distance > 190 then
-				-- The objects are not colliding
-				self.groundContact = false
-			else
-				-- The objects are colliding
-				self.groundContact = true
-				self.velocity.y = 0
-			end
-		end
+	if message_id == hash("contact_point_response") and
+	message.other_group == hash("level") then
+		self.groundContact = true
+		self.velocity.y = 0
 	end
 end
 
