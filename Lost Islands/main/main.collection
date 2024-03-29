@@ -70,9 +70,9 @@ embedded_instances {
   "    count: 3\\n"
   "    id: \\\"\\\"\\n"
   "  }\\n"
-  "  data: 85.0\\n"
-  "  data: 85.0\\n"
-  "  data: 10.0\\n"
+  "  data: 81.6\\n"
+  "  data: 75.33616\\n"
+  "  data: 9.6\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
   "angular_damping: 0.0\\n"
@@ -93,8 +93,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 0.0
-    y: 200.0
+    x: 170.0
+    y: 282.0
     z: 0.0
   }
   rotation {
@@ -104,8 +104,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 4.323785
+    y: 4.399899
     z: 1.0
   }
 }

@@ -39,10 +39,10 @@ function animate(self)
 		if self.velocity.x == 0 then
 			play_animation(self, "idle")
 		else 
-			play_animation("#sprite", "idle") --idle is stand in for movement animation
+			play_animation(self, "idle") --idle is stand in for movement animation
 		end
 	else
-		play_animation("#sprite", "idle") -- idle is stand in for jumping animation
+		play_animation(self, "idle") -- idle is stand in for jumping animation
 	end
 end
 
