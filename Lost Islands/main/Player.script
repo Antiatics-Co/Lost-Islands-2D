@@ -136,10 +136,16 @@ end
 function on_input(self, action_id, action)
 
 	if action_id ~= hash("up") then
-		
-		self.direction = (action_id == hash("right")) and DIRECTIONRIGHT or DIRECTIONLEFT
-		flip(self.direction)
-		walk(self)
+		if action_id ~= hash("down") then
+			if action_id ~= hash("touch") then
+				self.direction = (action_id == hash("right")) and DIRECTIONRIGHT or DIRECTIONLEFT
+				flip(self.direction)
+				walk(self)
+			else
+			end
+		else
+		end
+			
 	elseif action.pressed and self.groundContact then
 		self.velocity.y = JUMPTAKEOFF
 		self.groundContact = false
