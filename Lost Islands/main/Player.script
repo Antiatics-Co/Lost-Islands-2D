@@ -4,7 +4,7 @@
 --Desciption(24/3/2024): this program handlesplayer inputs to allow the player to move horixzontally
 --25/3/2024 - added gravity and collision simplified movement
 --26/3/2024 - jumping, new animate func
---28/3/2024 - 
+--29/3/2024 - more collisions - fixed gravity debug
 
 local DIRECTIONRIGHT = 1
 local DIRECTIONLEFT = -1
@@ -17,6 +17,7 @@ function init(self) --constructor
 
 	self.velocity = vmath.vector3(0, 0, 0)
 	self.groundContact = false  -- doesn't seem to change anything, isnt working
+	self.correction = vmath.vector3(0, 0, 0)
 end
 
 function walk(self) -- custom func to handle hori movement
@@ -68,27 +69,66 @@ function fixed_update(self, dt)
 	if self.groundContact then --to fix misreading it In needed to put the box y pos 130, instead of 0
 		self.velocity.y = 0
 	end
-
+	
 	local position = go.get_position()
 	position = position + self.velocity * dt
 	go.set_position(position)
 
 	animate(self)
+
+	print("Velocity Y:", self.velocity.y, "Ground Contact:", self.groundContact)
 	
 	-- Reset horizontal velocity after applying movement
 	self.velocity.x = 0
 	self.groundContact = false
-
-	-- Debugging output
-	print("Velocity Y:", self.velocity.y, "Ground Contact:", self.groundContact)
+	self.correction.x = 0
+	self.correction.y = 0
 end
+
+function handleLevelCollisions(self, normal, distance)
+
+	print("Collision Normal:", normal)
+	
+	distance = distance * vmath.length(normal) --normal dist compensation
+
+	if distance > 0 then
+		--project accumulated correction onto the penetration vector
+		local projection = vmath.project(self.correction, normal * distance)
+		if projection < 1 then
+			local compensation = (distance - distance * projection) * normal
+			go.set_position(go.get_position() + compensation) -- apply compensation
+			self.correction = self.correction + compensation
+		end
+	end
+	
+	local normalLength = vmath.length(normal)
+
+	if normalLength > 0 then
+		self.velocity.x = 0
+	end
+
+	if math.abs(normal.x) > 0.7 then
+		self.velocity.x = 0
+	end
+
+	--on the ground
+	if normal.y > 0.7 then
+		self.groundContact = true
+		self.velocity.y = 0
+	end
+
+	--hit the ceiling
+	if normal.y < -0.7 then
+		self.velocity.y = 0
+	end
+end
+
 
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("contact_point_response") and
 	message.other_group == hash("level") then
-		self.groundContact = true
-		self.velocity.y = 0
+		handleLevelCollisions(self, message.normal, message.distance)
 	end
 end
 
