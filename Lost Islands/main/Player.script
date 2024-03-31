@@ -16,7 +16,8 @@ function init(self) --constructor
 	msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
 
 	self.velocity = vmath.vector3(0, 0, 0)
-	self.groundContact = false  -- doesn't seem to change anything, isnt working
+	self.groundContact = false
+	self.previousGroundContact = false
 	self.correction = vmath.vector3(0, 0, 0)
 end
 
@@ -66,9 +67,11 @@ function fixed_update(self, dt)
 	go.set_position(pos)
 
 	-- Reset velocity if on the ground
-	if self.groundContact then --to fix misreading it In needed to put the box y pos 130, instead of 0
+	if self.groundContact then 
 		self.velocity.y = 0
 	end
+	
+	self.previousGroundContact = self.groundContact
 	
 	local position = go.get_position()
 	position = position + self.velocity * dt
@@ -113,6 +116,9 @@ function handleLevelCollisions(self, normal, distance)
 
 	--on the ground
 	if normal.y > 0 then
+		if not self.previousGroundContact then
+			particlefx.play("#dust")
+		end
 		self.groundContact = true
 		self.velocity.y = 0
 	end
@@ -149,5 +155,6 @@ function on_input(self, action_id, action)
 	elseif action.pressed and self.groundContact then
 		self.velocity.y = JUMPTAKEOFF
 		self.groundContact = false
+		particlefx.play("#dust")
 	end
 end
