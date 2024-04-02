@@ -3,25 +3,26 @@
 
 #define MyAppName "The Elementalists: Lost Islands"
 #define MyAppVersion "0.0.1"
-#define MyAppPublisher "Antiatics Co."
-#define MyAppExeName "MyProg.exe"
-#define MyAppAssocName MyAppName + " setup"
-#define MyAppAssocExt ".exe"
+#define MyAppPublisher "Antiatics Company"
+#define MyAppExeName "LostIslands.exe"
+#define MyAppAssocName MyAppName + " File"
+#define MyAppAssocExt ".myp"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{1E00B4AA-FF64-4E39-88A9-F7C73714ABA4}
+AppId={{82C58FB2-7F93-49F1-9234-37F8AC18135A}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-DefaultDirName=C:\Program Files\Antiatics Company\{#MyAppName}
+DefaultDirName=C:\Program Files\Antiatics Company\Lost Islands
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
-; Remove the following line to run in administrative install mode (install for all users.)
-PrivilegesRequired=lowest
+LicenseFile=C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Licence.rtf
+; Uncomment the following line to run in non administrative install mode (install for current user only.)
+;PrivilegesRequired=lowest
 OutputDir=C:\Users\aidco\Desktop\New folder
 OutputBaseFilename=mysetup
 Compression=lzma
@@ -35,8 +36,14 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Program Files (x86)\Inno Setup 6\Examples\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.0.1\x86_64-win32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.1\x86_64-win32\x86_64-win32\x86_64-win32\Lost Islands\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.1\x86_64-win32\x86_64-win32\x86_64-win32\Lost Islands\game.arcd"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.1\x86_64-win32\x86_64-win32\x86_64-win32\Lost Islands\game.arci"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.1\x86_64-win32\x86_64-win32\x86_64-win32\Lost Islands\game.dmanifest"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.1\x86_64-win32\x86_64-win32\x86_64-win32\Lost Islands\game.projectc"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.1\x86_64-win32\x86_64-win32\x86_64-win32\Lost Islands\game.public.der"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.1\x86_64-win32\x86_64-win32\x86_64-win32\Lost Islands\OpenAL32.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\aidco\Documents\GitHub\Lost-Islands-2D\Bundles\0.0.1\x86_64-win32\x86_64-win32\x86_64-win32\Lost Islands\wrap_oal.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
