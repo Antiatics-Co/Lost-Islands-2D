@@ -16,7 +16,6 @@ title = Lost Islands
 publisher = The Antiatics Company
 developer = The Antiatics Company
 version = 0.0.1
-dependencies#0 = https://url.to/library
 
 [html5]
 splash_image = /Assets/Images/SplashImage/Isaac Newton.png
