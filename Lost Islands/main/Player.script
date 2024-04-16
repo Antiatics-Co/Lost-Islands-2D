@@ -62,6 +62,7 @@ function fixed_update(self, dt)
 	-- Apply gravity if not on the ground
 	if not self.groundContact then
 		self.velocity.y = self.velocity.y - GRAVITY * dt
+		self.velocity.y = clamp(self.velocity.y, -2000, 5000)
 	end
 
 	-- Update the player's position
