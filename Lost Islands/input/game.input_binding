@@ -18,3 +18,7 @@ key_trigger {
   input: KEY_W
   action: "up"
 }
+key_trigger {
+  input: KEY_Q
+  action: "touch"
+}
