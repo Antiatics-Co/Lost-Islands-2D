@@ -152,9 +152,10 @@ function on_input(self, action_id, action)
 				flip(self.direction)
 				walk(self)
 			else
-				delay.timer(1, true, function()
+				timer.delay(1, true, function()
 					factory.create("#factory")
-			end)
+				end)
+			end
 		else
 		end
 			
