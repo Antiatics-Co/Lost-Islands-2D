@@ -19,6 +19,6 @@ key_trigger {
   action: "up"
 }
 key_trigger {
-  input: KEY_Q
+  input: MOUSE_LEFT_BUTTON
   action: "touch"
 }
