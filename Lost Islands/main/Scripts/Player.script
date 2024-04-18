@@ -11,6 +11,9 @@ local DIRECTIONLEFT = -1
 local BASEVELOCITY = 500
 local GRAVITY = 1200
 local JUMPTAKEOFF = 500
+local FIREDELAY = 1
+
+local lastfired = -1
 
 function init(self) --constructor
 	msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
@@ -145,7 +148,7 @@ end
 
 function on_input(self, action_id, action)
 
-	if action_id ~= hash("up") then
+	--[[if action_id ~= hash("up") then
 		if action_id ~= hash("down") then
 			if action_id ~= hash("touch") then
 				self.direction = (action_id == hash("right")) and DIRECTIONRIGHT or DIRECTIONLEFT
@@ -164,5 +167,20 @@ function on_input(self, action_id, action)
 		self.groundContact = false
 		particlefx.play("#dust")
 		--sound.play("#Jumping")
+	end]]--
+
+	if action_id == hash("up") and self.groundContact then
+		self.velocity.y = JUMPTAKEOFF
+		self.groundContact = false
+		particlefx.play("#dust")
+		--sound.play("#Jumping")
+	elseif action_id == hash("down") then
+	elseif action_id == hash("touch") and (lastfired == -1 or os.time(os.date("!*t")) - lastfired > FIREDELAY) then
+		factory.create("#factory")
+		lastfired = os.time(os.date("!*t"))
+	elseif action_id == hash("right") or action_id == hash("left") then
+		self.direction = (action_id == hash("right")) and DIRECTIONRIGHT or DIRECTIONLEFT
+		flip(self.direction)
+		walk(self)
 	end
 end
