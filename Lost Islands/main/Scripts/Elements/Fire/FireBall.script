@@ -1,11 +1,10 @@
 function init(self)
 	
-	go.animate(".", "position.x", go.PLAYBACK_ONCE_FORWARD, 300, go.EASING_LINEAR, 1)
+	go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 300, go.EASING_LINEAR, 1, 0)
 
 	timer.delay(1, true, function()
 		go.delete()
 	end)
-	
 end
 
 function on_message(self, message_id, message)

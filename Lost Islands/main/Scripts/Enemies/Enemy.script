@@ -13,6 +13,11 @@ end
 
 function on_message(self, message_id, message)
 	if message_id == hash("trigger_response") and message.enter then
+		--[[sound.play(url)
+		sprite.play_flipbook(url, id, function()
+				go.delete()
+				particlefx.play(url)
+		end)]]--use when animation is added
 		go.delete()
 	end
 end
