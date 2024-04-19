@@ -7,7 +7,7 @@ function init(self)
 end
 
 function on_message(self, message_id, message)
-	if message_id == hash("trigger_response") and message.enter then
+	if message_id == hash("trigger_response") or message_id == hash("") and message.enter then
 		go.delete()
 	end
 end
