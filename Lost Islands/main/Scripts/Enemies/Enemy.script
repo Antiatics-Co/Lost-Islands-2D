@@ -1,3 +1,16 @@
+
+local lastfired = -1
+
+function init(self)
+
+	timer.delay(1, true, function()
+		if(lastfired == -1 or os.time(os.date("!*t")) - lastfired > 1) then
+			factory.create("#factory")
+			lastfired = os.time(os.date("!*t"))
+		end
+	end)
+end
+
 function on_message(self, message_id, message)
 	if message_id == hash("trigger_response") and message.enter then
 		go.delete()
