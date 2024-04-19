@@ -18,7 +18,7 @@ key_trigger {
   input: KEY_W
   action: "up"
 }
-key_trigger {
-  input: KEY_Q
+mouse_trigger {
+  input: MOUSE_BUTTON_LEFT
   action: "touch"
 }
