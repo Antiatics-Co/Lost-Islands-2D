@@ -1,5 +1,4 @@
 function init(self)
-	local id = go.get_id("C:\\Users\\aidco\\Documents\\GitHub\\Lost-Islands-2D\\Lost Islands\\main\\main.collection")
 	msg.post(".", "acquire_input_focus")
 	gui.set_enable(gui.get_node("interface"), false)
 end

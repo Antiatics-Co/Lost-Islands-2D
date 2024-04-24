@@ -11,7 +11,7 @@ background_color {
 }
 nodes {
   position {
-    x: 482.0
+    x: 480.0
     y: 319.0
     z: 0.0
     w: 1.0
@@ -35,15 +35,15 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.6
+    y: 0.6
+    z: 0.6
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "box"
+  id: "interface"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
