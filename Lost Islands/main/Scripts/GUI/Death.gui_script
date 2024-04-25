@@ -1,0 +1,7 @@
+function init(self)
+	local id = go.get_id("/main/main.collection")
+end
+
+function on_message(self, message_id, message, sender)
+		gui.set_enabled("box", true)
+end
