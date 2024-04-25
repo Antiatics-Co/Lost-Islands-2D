@@ -1,3 +1,18 @@
+components {
+  id: "LevelComplete"
+  component: "/main/Scripts/Sensors/LevelComplete.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "collisionobject"
   type: "collisionobject"
@@ -12,8 +27,8 @@ embedded_components {
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
-  "      x: 0.0\n"
-  "      y: 0.0\n"
+  "      x: -315.0\n"
+  "      y: -20.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -26,9 +41,9 @@ embedded_components {
   "    count: 3\n"
   "    id: \"\"\n"
   "  }\n"
-  "  data: 10.0\n"
-  "  data: 10.0\n"
-  "  data: 10.0\n"
+  "  data: 73.31179\n"
+  "  data: 2082.0632\n"
+  "  data: 6.2\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"

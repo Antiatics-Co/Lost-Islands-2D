@@ -19,6 +19,66 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "LevelComplete"
+  prototype: "/main/Objects/Sensors/LevelComplete.go"
+  position {
+    x: 4395.0
+    y: 291.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "OutOfBounds"
+  prototype: "/main/Objects/Sensors/OutOfBounds.go"
+  position {
+    x: 2483.0
+    y: -4821.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.50185
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "OutOfBounds1"
+  prototype: "/main/Objects/Sensors/OutOfBounds.go"
+  position {
+    x: -1905.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.50185
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "Player"

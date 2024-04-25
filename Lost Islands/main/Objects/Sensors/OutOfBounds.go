@@ -1,3 +1,18 @@
+components {
+  id: "OutOfBounds"
+  component: "/main/Scripts/Sensors/OutOfBounds.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "collisionobject"
   type: "collisionobject"
@@ -13,7 +28,7 @@ embedded_components {
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: 0.0\n"
+  "      y: 91.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -26,8 +41,8 @@ embedded_components {
   "    count: 3\n"
   "    id: \"\"\n"
   "  }\n"
-  "  data: 10.0\n"
-  "  data: 10.0\n"
+  "  data: 154.04233\n"
+  "  data: 3770.4697\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
