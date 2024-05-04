@@ -182,7 +182,5 @@ function on_input(self, action_id, action)
 		self.direction = (action_id == hash("right")) and DIRECTIONRIGHT or DIRECTIONLEFT
 		flip(self.direction)
 		walk(self)
-	elseif action_id == hash("esc") and action.released then
-		gui.set_enable(gui.get_node("interface"), true)
 	end
 end
