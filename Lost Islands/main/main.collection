@@ -23,8 +23,8 @@ instances {
   id: "LevelComplete"
   prototype: "/main/Objects/Sensors/LevelComplete.go"
   position {
-    x: 4395.0
-    y: 291.0
+    x: 4407.0
+    y: 1177.0
     z: 0.0
   }
   rotation {
@@ -34,16 +34,16 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.983326
+    y: 4.345687
+    z: 1.06
   }
 }
 instances {
   id: "OutOfBounds"
   prototype: "/main/Objects/Sensors/OutOfBounds.go"
   position {
-    x: 2483.0
+    x: 2958.0
     y: -4821.0
     z: 0.0
   }
@@ -54,7 +54,7 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 2.50185
+    x: 1.196698
     y: 1.0
     z: 1.0
   }
