@@ -1,7 +1,9 @@
 function init(self)
-	local id = go.get_id()
+	gui.set_enabled(gui.get_node("levelcomplete"), false)
 end
 
 function on_message(self, message_id, message, sender)
-	
+	if message_id == hash("trigger_response") and message.enter then
+		gui.set_enabled(gui.get_node("levelcomplete"), true)
+	end
 end

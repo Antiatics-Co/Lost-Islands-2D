@@ -1,5 +1,5 @@
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") and message.enter then
-		msg.post(gui.get_node("death"), hash"trigger_response")
+		msg.post(receiver, message_id)
 	end
 end

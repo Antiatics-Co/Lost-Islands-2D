@@ -1,6 +1,21 @@
 components {
-  id: "LevelComplete"
+  id: "LevelCompleteScript"
   component: "/main/Scripts/Sensors/LevelComplete.script"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "LevelComplete"
+  component: "/main/GUI files/LevelComplete.gui"
   position {
     x: 0.0
     y: 0.0
