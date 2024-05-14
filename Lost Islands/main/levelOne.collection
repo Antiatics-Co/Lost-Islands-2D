@@ -63,7 +63,7 @@ instances {
   id: "OutOfBounds1"
   prototype: "/main/Objects/Sensors/OutOfBounds.go"
   position {
-    x: -1905.0
+    x: -2785.0
     y: 0.0
     z: 0.0
   }
@@ -74,7 +74,7 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 2.50185
+    x: 1.0
     y: 1.0
     z: 1.0
   }
@@ -405,7 +405,7 @@ embedded_instances {
   id: "Interface"
   data: "components {\n"
   "  id: \"main\"\n"
-  "  component: \"/main/GUI files/main.gui\"\n"
+  "  component: \"/main/GUI files/PauseMenu.gui\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
