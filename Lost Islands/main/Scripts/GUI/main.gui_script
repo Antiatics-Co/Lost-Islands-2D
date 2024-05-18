@@ -19,6 +19,7 @@ function on_input(self, action_id, action)
 	if action_id == hash("esc") and setTrue == false and action.released then
 		gui.set_enabled(gui.get_node("pausemenu"), true)
 		setTrue = true
+		msg.post("/main/main.collection", "set_time_step", { factor = 0, mode = 0 }) -- doesn't work, is intended to qactually pause game
 	elseif action_id == hash("esc")  then
 		gui.set_enabled(gui.get_node("pausemenu"), false)
 		setTrue = false 
@@ -28,7 +29,7 @@ function on_input(self, action_id, action)
 		local resume = gui.get_node("resume")
 	
 		if gui.pick_node(resume, action.x, action.y) then
-				animation(resume, "button") -- Extend time on animation
+				animation(resume, "button") -- TO DO: Extend time on animation
 				gui.set_enabled(gui.get_node("pausemenu"), false)
 		end
 		
