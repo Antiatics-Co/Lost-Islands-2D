@@ -1,4 +1,4 @@
-script: "/main/Scripts/GUI/main.gui_script"
+script: "/main/Scripts/GUI/pause.gui_script"
 fonts {
   name: "default"
   font: "/builtins/fonts/default.font"

@@ -183,8 +183,7 @@ function on_input(self, action_id, action)
 		flip(self.direction)
 		walk(self)
 	elseif action_id == hash("esc") and action.released then
-		msg.post("#collectionproxy", "load")
-		msg.post("#collectionproxy", "enable")
+		msg.post("main:/menu#PauseMenu", "enable")
 		--gui.set_enabled(gui.get_node("pausemenu"), true)
 	end
 end
