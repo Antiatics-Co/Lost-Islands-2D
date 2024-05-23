@@ -22,11 +22,11 @@ function on_message(self, message_id, message)
 
 	if message_id == hash("reset") then
 		go.delete()
-		go.create()
 		
 		local pos = go.get_position()
 		pos.x = 237
 		pos.y = 365
-		go.set_position(pos)
+		go.create(go.set_position(pos))
+		
 	end
 end
