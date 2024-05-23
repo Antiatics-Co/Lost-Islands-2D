@@ -143,6 +143,13 @@ function on_message(self, message_id, message, sender)
 	message.other_group == hash("level") then
 		handleLevelCollisions(self, message.normal, message.distance)
 	end
+
+	if message_id == hash("reset") then
+		local pos = go.get_position()
+		pos.x = 8
+		pos.y = 300
+		go.set_position(pos)
+	end
 end
 
 
@@ -184,6 +191,5 @@ function on_input(self, action_id, action)
 		walk(self)
 	elseif action_id == hash("esc") and action.released then
 		msg.post("main:/menu#PauseMenu", "enable")
-		--gui.set_enabled(gui.get_node("pausemenu"), true)
 	end
 end

@@ -19,6 +19,8 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id== hash("istrue") then
 		gui.set_enabled(gui.get_node("main"), true)
+		msg.post("#Level", "disable")
+		msg.post("#Level", "unload")
 	end
 end
 
