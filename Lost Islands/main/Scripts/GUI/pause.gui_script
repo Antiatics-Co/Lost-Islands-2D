@@ -34,10 +34,11 @@ function on_input(self, action_id, action)
 				msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
 		end
 		
-		--local leave = gui.get_node("leave") --goes to mainmenu, not implemented
-		--if gui.pick_node(leave, action.x, action.y) then
-	--		gui.set_enabled(gui.get_node("pausemenu"), false)
-	--		msg.post("proxy:/go#loader", "show_menu")
---		end
+		local leave = gui.get_node("leave") --goes to mainmenu, not implemented
+		if gui.pick_node(leave, action.x, action.y) then
+			gui.set_enabled(gui.get_node("pausemenu"), false)
+			local istrue = true
+			msg.post("main#MainMenu", "istrue")
+		end
 	end
 end

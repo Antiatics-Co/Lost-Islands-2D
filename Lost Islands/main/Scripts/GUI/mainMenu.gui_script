@@ -12,13 +12,14 @@ end
 function update(self, dt)
 	-- Add update code here
 	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	-- Remove this function if not neede
+	--msg.post(receiver, message_id)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id== hash("istrue") then
+		gui.set_enabled(gui.get_node("main"), true)
+	end
 end
 
 function animation(node, newAnimation)
