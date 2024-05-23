@@ -2,7 +2,6 @@
 local lastfired = -1
 
 function init(self)
-
 	timer.delay(1, true, function()
 		if(lastfired == -1 or os.time(os.date("!*t")) - lastfired > 1) then
 			factory.create("#factory")
@@ -19,5 +18,15 @@ function on_message(self, message_id, message)
 				particlefx.play(url)
 		end)]]--use when animation is added
 		go.delete()
+	end
+
+	if message_id == hash("reset") then
+		go.delete()
+		go.create()
+		
+		local pos = go.get_position()
+		pos.x = 237
+		pos.y = 365
+		go.set_position(pos)
 	end
 end
