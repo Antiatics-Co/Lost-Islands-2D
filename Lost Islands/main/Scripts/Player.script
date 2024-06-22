@@ -145,19 +145,21 @@ function on_message(self, message_id, message, sender)
 		handleLevelCollisions(self, message.normal, message.distance)
 	end
 
-	if message_id == hash("reset") then
+	if message_id == hash("reset") then --Temporary, need a more robust resset system
 		local pos = go.get_position()
 		pos.x = 8
 		pos.y = 300
 		go.set_position(pos)
 	end
 
-	if message_id == hash("stopRecievingInputs") then
-		self.recievingInputs = false
-	end
-
-	if message_id == hash("startRecievingInputs") then
+	if message_id == hash("startRecievingInput") then
 		self.recievingInputs = true
+		print("restarting inputs")
+	end
+	
+	if message_id == hash("stopRecievingInput") then
+		self.recievingInputs = false --this isn't connecting properlt eith itself in this script
+		print("Stopping all inputs")
 	end
 end
 

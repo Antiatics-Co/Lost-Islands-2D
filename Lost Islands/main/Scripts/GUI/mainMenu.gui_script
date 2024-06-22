@@ -41,7 +41,7 @@ function on_input(self, action_id, action)
 			msg.post("menu#PauseMenu", "start")
 			msg.post("#Level", "load")
 			msg.post("#Level", "enable")
-			msg.post("#music", "exitMain")
+			msg.post("#music", "stopAll")
 			gui.set_enabled(gui.get_node("main"), false)
 		end
 
