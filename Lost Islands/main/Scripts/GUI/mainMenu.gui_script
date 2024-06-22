@@ -17,7 +17,7 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id== hash("istrue") then
+	if message_id == hash("istrue") then
 		gui.set_enabled(gui.get_node("main"), true)
 		msg.post("#Level", "disable")
 		msg.post("#Level", "unload")
@@ -38,6 +38,7 @@ function on_input(self, action_id, action)
 
 		if gui.pick_node(start, action.x, action.y) then
 			animation(start, "button") -- TO DO: Extend time on animation
+			msg.post("menu#PauseMenu", "start")
 			msg.post("#Level", "load")
 			msg.post("#Level", "enable")
 			msg.post("#music", "exitMain")
