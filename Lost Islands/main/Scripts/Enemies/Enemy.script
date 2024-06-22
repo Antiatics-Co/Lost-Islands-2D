@@ -20,7 +20,7 @@ function on_message(self, message_id, message)
 		go.delete()
 	end
 
-	if message_id == hash("reset") then
+	if message_id == hash("reset") then			
 		go.delete()
 		
 		local pos = go.get_position()

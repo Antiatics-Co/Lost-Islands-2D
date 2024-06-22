@@ -418,7 +418,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Settings"
   font: "default"
-  id: "resetText"
+  id: "settingsText"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER

@@ -9,6 +9,7 @@ function init(self)
 	gui.set_enabled(gui.get_node("settings"), false)
 	self.volume = 100 --When Saving is added change this to the previously saved value
 	gui.set_text(gui.get_node("SetVolume"), self.volume)
+	print("Defaults loaded")
 end
 
 
@@ -24,12 +25,14 @@ function on_message(self, message_id, message, sender)
 		gui.set_enabled(gui.get_node("settings"), true)
 	end
 
-	if message_id == hash("frompause") then
+	if message_id == hash("fromPause") then
 		leave = "menu#PauseMenu"
+		print("From Pause Successfuly sent")
 	end
 
 	if message_id == hash("fromMain") then
 		leave = "#MainMenu"
+		print("From Main  Successfully sent")
 	end
 end
 
