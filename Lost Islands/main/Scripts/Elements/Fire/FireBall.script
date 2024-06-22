@@ -1,6 +1,6 @@
 function init(self)
 	
-	go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 300, go.EASING_LINEAR, 1, 0)
+	--go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 300, go.EASING_LINEAR, 1, 0)
 
 	timer.delay(1, true, function()
 		go.delete()
@@ -11,4 +11,11 @@ function on_message(self, message_id, message)
 	if message_id == hash("trigger_response")  and message.enter then
 		go.delete()
 	end
+end
+
+function update(self, dt)
+	pos = go.get_position()
+	pos.x = pos.x + 5
+	go.set_position(pos)
+
 end
