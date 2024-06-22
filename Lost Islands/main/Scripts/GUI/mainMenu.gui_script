@@ -50,6 +50,7 @@ function on_input(self, action_id, action)
 		if gui.pick_node(settings, action.x, action.y) then
 			animation(settings, "button")
 			msg.post("#Settings", "enable")
+			msg.post("#Settings", "fromMain")
 			gui.set_enabled(gui.get_node("main"), false)
 		end
 	end

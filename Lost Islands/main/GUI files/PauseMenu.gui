@@ -358,7 +358,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: "Game/button"
-  id: "reset"
+  id: "settings"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -397,7 +397,7 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
+    x: 0.724138
     y: 1.0
     z: 1.0
     w: 1.0
@@ -416,7 +416,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Reset"
+  text: "Settings"
   font: "default"
   id: "resetText"
   xanchor: XANCHOR_NONE
@@ -436,7 +436,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "reset"
+  parent: "settings"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

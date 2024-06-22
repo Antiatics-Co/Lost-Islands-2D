@@ -1,5 +1,5 @@
 function init(self)
-	--sound.play("#MainMenuTheme")
+	sound.play("#MainMenuTheme")
 end
 
 function final(self)
@@ -27,7 +27,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("stopAll") then
 		print("Stopping all sounds")
-		sound.stop()
+		sound.stop(".")
 	end
 	
 	if message_id == hash("enterMain") then
