@@ -99,6 +99,7 @@ max_count = 64
 subpixels = 1
 
 [liveupdate]
+mount_on_start = 1
 settings = /liveupdate.settings
 
 [mesh]
@@ -157,7 +158,7 @@ compress_archive = 1
 developer = The Antiatics Company
 publisher = The Antiatics Company
 title = Lost Islands
-version = 0.0.1
+version = 0.0.2
 write_log = 0
 
 [render]

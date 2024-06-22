@@ -22,6 +22,10 @@ function on_message(self, message_id, message, sender)
 		msg.post("#Level", "disable")
 		msg.post("#Level", "unload")
 	end
+
+	if message_id == hash("enable") then
+		gui.set_enabled(gui.get_node("main"), true)
+	end
 end
 
 function animation(node, newAnimation)
@@ -36,6 +40,15 @@ function on_input(self, action_id, action)
 			animation(start, "button") -- TO DO: Extend time on animation
 			msg.post("#Level", "load")
 			msg.post("#Level", "enable")
+			msg.post("#music", "exitMain")
+			gui.set_enabled(gui.get_node("main"), false)
+		end
+
+		local settings = gui.get_node("settingsButton")
+
+		if gui.pick_node(settings, action.x, action.y) then
+			animation(settings, "button")
+			msg.post("#Settings", "enable")
 			gui.set_enabled(gui.get_node("main"), false)
 		end
 	end

@@ -46,6 +46,36 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "plus"
+  images {
+    image: "/Assets/Images/Menu/Plus.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/PlusPressed.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "minus"
+  images {
+    image: "/Assets/Images/Menu/Minus.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/MinusPressed.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

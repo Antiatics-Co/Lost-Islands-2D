@@ -1,12 +1,10 @@
 function init(self)
 	gui.set_enabled(gui.get_node("settings"), false)
+	self.volume = 100 --When Saving is added change this to the previously saved value
+	gui.set_text(gui.get_node("SetVolume"), self.volume)
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
+
 
 function update(self, dt)
 	-- Add update code here
@@ -15,21 +13,44 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == hash("enable") then
+		gui.set_enabled(gui.get_node("settings"), true)
+	end
+end
+
+function animation(node, newAnimation)
+	if action_id == hash("touch") then
+		gui.play_flipbook(node, newAnimation) -- Extend time on animation
+	end
 end
 
 function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
+	if action_id == hash("touch") then
+		local plus = gui.get_node("plus")
+
+		if gui.pick_node(plus, action.x, action.y)  and self.volume ~= 100 then
+			animation(plus, "plus") -- TO DO: Extend time on animation
+			self.volume = self.volume + 1
+			gui.set_text(gui.get_node("SetVolume"), self.volume)
+			sound.set_group_gain("master", (self.volume / 100))
+		end
+
+		local minus = gui.get_node("minus")
+		if gui.pick_node(minus, action.x, action.y) and self.volume ~= 0 then
+			animation(minus, "minus") -- TO DO: Extend time on animation
+			self.volume = self.volume  - 1
+			gui.set_text(gui.get_node("SetVolume"), self.volume)
+			sound.set_group_gain("master", (self.volume / 100))
+		end
+
+		local back = gui.get_node("back")
+		if gui.pick_node(back, action.x, action.y) then
+			animation(back, "button") -- TO DO: Extend time on animation
+			gui.set_enabled(gui.get_node("settings"), false)
+			msg.post("#MainMenu", "enable")
+			
+		end
+	end
 end
 
 function on_reload(self)

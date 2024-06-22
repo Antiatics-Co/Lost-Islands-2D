@@ -1,3 +1,3 @@
 function init(self)
-	sound.play("#Theme1")
+	msg.post("main:/main#music", "level1")
 end
