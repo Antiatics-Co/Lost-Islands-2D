@@ -25,11 +25,11 @@ end
 
 function on_message(self, message_id, message, sender)
 
-	if message_id == "exitMain" then
-		sound.stop("#MainMenu1")
+	if message_id == hash("exitMain") then
+		sound.stop("#MainMenuTheme")
 	end
 
-	if message_id == "level1" then
+	if message_id == hash("level1") then
 		sound.play("#Theme1")
 	end
 end
