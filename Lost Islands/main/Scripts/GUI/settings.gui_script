@@ -3,7 +3,7 @@
 --@Description - Adjusts settings *** Currently only volume ***
 
 
-local leave = "#MainMenu"
+local leave = ""
 
 function init(self)
 	gui.set_enabled(gui.get_node("settings"), false)
@@ -32,7 +32,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("fromMain") then
 		leave = "#MainMenu"
-		print("From Main  Successfully sent")
+		print("From Main Successfully sent")
 	end
 end
 
@@ -60,16 +60,23 @@ function on_input(self, action_id, action)
 			gui.set_text(gui.get_node("SetVolume"), self.volume)
 			sound.set_group_gain("master", (self.volume / 100))
 		end
-		if action_id == hash("touch") then
-			local back = gui.get_node("back")
-			if gui.pick_node(back, action.x, action.y) then
-				animation(back, "button") -- TO DO: Extend time on animation
-				gui.set_enabled(gui.get_node("settings"), false)
+		
+		local back = gui.get_node("back")
+		if gui.pick_node(back, action.x, action.y) then
+			animation(back, "button") -- TO DO: Extend time on animation
+			gui.set_enabled(gui.get_node("settings"), false)
+			if leave == "#MainMenu" then
+				print("Leave = ", leave)
+				msg.post("#music", "stopAll")
+				msg.post("#music", "enterMain")
+			else
+					print("Leave = ", leave)
+					
+				end
 				msg.post(leave, "enable")
 			end
 		end
 	end
-end
 
 function on_reload(self)
 	-- Add reload-handling code here
