@@ -25,12 +25,12 @@ function on_message(self, message_id, message, sender)
 		gui.set_enabled(gui.get_node("settings"), true)
 	end
 
-	if message_id == hash("fromPause") then
+	if message_id == hash("fromPause") then -- doesn't work, also leave is called multiple times but is not acted upon when entering from the pause menu
 		leave = "menu#PauseMenu"
 		print("From Pause Successfuly sent")
 	end
 
-	if message_id == hash("fromMain") then
+	if message_id == hash("fromMain") then --does work
 		leave = "#MainMenu"
 		print("From Main Successfully sent")
 	end
