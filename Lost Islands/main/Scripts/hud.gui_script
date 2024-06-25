@@ -1,20 +1,10 @@
 function init(self)
 	--animation(gui.get_node("healthBar"), "healthBar") Implement when health and energy are actually changed
-	--animation(gui.get_node("energyBar"), "energyBar")
+	--animation(gui.get_node("energyBar"), "energyBar")  This is just to test if the animation is working
 end
 
-function final(self)
-	
-end
-
-function animation(node, newAnimation)
-		gui.play_flipbook(node, newAnimation)
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+function animation(node, newAnimation, start_frame, end_frame)
+	gui.play_flipbook(node, newAnimation, { start_frame = start_frame, end_frame = end_frame })
 end
 
 function on_message(self, message_id, message, sender)

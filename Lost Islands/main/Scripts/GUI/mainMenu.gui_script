@@ -53,6 +53,12 @@ function on_input(self, action_id, action)
 			msg.post("#Settings", "fromMain")
 			gui.set_enabled(gui.get_node("main"), false)
 		end
+
+		
+		local quit = gui.get_node("quitGame")
+		if gui.pick_node(quit, action.x, action.y) then
+			os.exit()
+		end
 	end
 end
 
