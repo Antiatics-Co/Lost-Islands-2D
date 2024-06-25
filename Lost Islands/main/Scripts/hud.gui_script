@@ -1,13 +1,14 @@
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	--animation(gui.get_node("healthBar"), "healthBar") Implement when health and energy are actually changed
+	--animation(gui.get_node("energyBar"), "energyBar")
 end
 
 function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	
+end
+
+function animation(node, newAnimation)
+		gui.play_flipbook(node, newAnimation)
 end
 
 function update(self, dt)

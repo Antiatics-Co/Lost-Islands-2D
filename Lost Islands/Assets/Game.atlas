@@ -77,12 +77,79 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "heathBar"
+  id: "healthBar"
+  images {
+    image: "/Assets/Images/Menu/FullBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/sixSeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/fiveSeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/fourSeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/threeSeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/twoSeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/oneSeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
   images {
     image: "/Assets/Images/Menu/Bar.png"
     sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
-  playback: PLAYBACK_LOOP_FORWARD
+  playback: PLAYBACK_NONE
+  fps: 60
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "energyBar"
+  images {
+    image: "/Assets/Images/Menu/FullEnergyBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/sixSeventhEnergyBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/fiveEnergySeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/fourSeventhEnergyBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/threeSeventhEnergyBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/twoSeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/oneSeventhBar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  images {
+    image: "/Assets/Images/Menu/Bar.png"
+    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+  }
+  playback: PLAYBACK_NONE
   fps: 60
   flip_horizontal: 0
   flip_vertical: 0

@@ -1,13 +1,14 @@
 [android]
 debuggable = 0
 display_cutout = 1
+extract_native_libs = 1
 iap_provider = GooglePlay
 immersive_mode = 0
 input_method = HiddenInputField
 manifest = /builtins/manifests/android/AndroidManifest.xml
 minimum_sdk_version = 19
 package = com.example.todo
-target_sdk_version = 33
+target_sdk_version = 34
 version_code = 1
 
 [bootstrap]
