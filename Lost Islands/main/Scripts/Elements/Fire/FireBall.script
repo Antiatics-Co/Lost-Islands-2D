@@ -1,12 +1,12 @@
 
 local object_pos = vmath.vector3(0, 0, 0)
 local dir_to_mouse = vmath.vector3(0, 0, 0)
-local speed = 1000
+local speed = 2500
 local duration = 1
 local elapsed_time = 0
 
 function init(self)
-	object_pos = go.get_position()
+	object_pos = go.get_position("Player")
 	--go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 300, go.EASING_LINEAR, 1, 0)
 
 	timer.delay(duration, true, function()
@@ -31,11 +31,15 @@ function on_message(self, message_id, message)
 	if message_id == hash("position") then
 		print("Message Position: ", message.cursor_position)
 		print("Object Pos: ", message.cursor_position)
+
+		dir_to_mouse = vmath.vector3(0, 0, 0)
+		elapsed_time = 0
+		
 		dir_to_mouse = message.cursor_position - object_pos
 	end
 end
 
-function update(self, dt)
+function fixed_update(self, dt)
 	dir_to_mouse.z = 0 -- Ensure it's in 2D
 	dir_to_mouse = normalize_vector(dir_to_mouse) -- Normalize to get a unit vector
 
