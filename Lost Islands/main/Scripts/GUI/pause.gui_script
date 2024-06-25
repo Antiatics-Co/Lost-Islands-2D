@@ -68,8 +68,8 @@ function on_input(self, action_id, action)
 		local settings = gui.get_node("settings")
 		if gui.pick_node(settings, action.x, action.y) then
 			gui.set_enabled(gui.get_node("pausemenu"), false)
-			msg.post("main#Settings","enable")
 			msg.post("main#Settings", "fromPause")
+			msg.post("main#Settings","enable")
 		end
 	end
 end

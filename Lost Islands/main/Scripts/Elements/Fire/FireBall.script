@@ -1,35 +1,53 @@
 
-
+local object_pos = vmath.vector3(0, 0, 0)
 local dir_to_mouse = vmath.vector3(0, 0, 0)
-local speed = 200
+local speed = 10000
 
 function init(self)
-	self.object_pos = go.get_position()
+	object_pos = go.get_position()
 	--go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 300, go.EASING_LINEAR, 1, 0)
 
 	timer.delay(1, true, function()
-		go.delete()
+		--go.delete()
 	end)
 end
 
+local function normalize_vector(vec)
+	local length = vmath.length(vec)
+	if length > 0 then
+		return vec / length
+	else
+		return vmath.vector3(0, 0, 0) -- Handle zero-length vectors
+	end
+end
+
 function on_message(self, message_id, message)
-	if message_id == hash("trigger_response")  and message.enter then
+	if message_id == hash("trigger_response") and message.enter then
 		go.delete()
 	end
 
 	if message_id == hash("position") then
-		print("Message Position: ", message.cursor_pos)
-		print("Object Pos: ", self.object_pos)
-		dir_to_mouse = message.cursor_pos - self.object_pos
+		print("Message Position: ", message.cursor_position)
+		print("Object Pos: ", message.cursor_position)
+		dir_to_mouse = message.cursor_position - object_pos
 	end
 end
 
 function update(self, dt)
 	dir_to_mouse.z = 0 -- Ensure it's in 2D
-	dir_to_mouse = vmath.normalize(dir_to_mouse) -- Normalize to get a unit vector
+	dir_to_mouse = normalize_vector(dir_to_mouse) -- Normalize to get a unit vector
 
 	print("dir_to_mouse: ", dir_to_mouse)
-	local new_pos = self.object_pos + dir_to_mouse * speed * dt --goes to position
-	go.set_position(new_pos)
+	local new_pos = object_pos + dir_to_mouse * speed * dt -- Move to the new position
 
+	local current_pos = go.get_position()
+	while current_pos.x < new_pos.x or current_pos.y < new_pos.y do
+		if current_pos.y < new_pos.y then
+			go.set_position(vmath.vector3(current_pos.x, (current_pos.y + 5), 0))
+		elseif current_pos.x < new_pos.x then
+			go.set_position(vmath.vector3((current_pos.x + 5), current_pos.y, 0))
+		end
+		
+	end
+		
 end
