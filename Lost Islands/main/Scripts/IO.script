@@ -8,7 +8,7 @@ local elements = 1
 local easyTable = {location, position, items, elements}
 
 function init(self)
-	defsave.appname = "The Elementalits: Lost Islands"
+	defsave.appname = "The Elementalists: Lost Islands"
 end
 
 function final(self)
