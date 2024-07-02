@@ -1,3 +1,11 @@
+local filename = "Data"
+local location
+local map = true
+local dungeon = false
+local establishment = false
+local elements
+local items
+
 function init(self)
 	
 end
@@ -15,6 +23,7 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+
 	
 end
 
