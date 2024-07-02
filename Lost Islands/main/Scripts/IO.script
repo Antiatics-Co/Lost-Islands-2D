@@ -18,6 +18,14 @@ function on_message(self, message_id, message, sender)
 	
 end
 
+function loadfile()
+
+end
+
+function save()
+
+end
+
 function on_input(self, action_id, action)
 	
 end
