@@ -1,5 +1,5 @@
 local defsave = require("defsave.defsave")
-local filename = "Data " + os.date()
+local filename = os.date()
 local location = ""
 local position = vmath.vector3(0, 0, 0)
 local items = ""
@@ -30,14 +30,14 @@ end
 
 function loadfile()
 
-	filename = filename + ".dat"
+	filename = filename .. ".dat"
 	defsave.load(filename)
 	easyTable = defsave.get(filename, "data")
 end
 
 function save()
 
-	filename = filename + ".dat"
+	filename = filename .. ".dat"
 
 	defsave.set(filename, "data", easyTable)
 	
