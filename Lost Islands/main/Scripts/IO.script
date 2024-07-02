@@ -29,10 +29,12 @@ end
 
 function loadfile()
 
+	filename = filename + ".dat"
 end
 
 function save()
 
+	filename = filename + ".dat"
 end
 
 function on_input(self, action_id, action)
