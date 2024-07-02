@@ -1,3 +1,10 @@
+--@Title Input Ouput
+--@Author Aidan Cox
+--@_VERSION July 2, 2024
+--@Description
+--	This script handles the saving to and loading from files
+
+
 local defsave = require("defsave.defsave")
 local filename = os.date()
 local location = ""
@@ -5,7 +12,7 @@ local position = vmath.vector3(0, 0, 0)
 local items = ""
 local elements = 1
 
-local easyTable = {location, position, items, elements}
+local easyTable = { location, position, items, elements }
 
 function init(self)
 	defsave.appname = "The Elementalists: Lost Islands"
