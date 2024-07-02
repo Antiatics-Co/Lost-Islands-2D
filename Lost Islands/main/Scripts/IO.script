@@ -1,13 +1,14 @@
+local defsave = require("defsave.defsave")
 local filename = "Data"
-local location
-local map = true
-local dungeon = false
-local establishment = false
-local elements
-local items
+local location = ""
+local position = vmath.vector3(0, 0, 0)
+local items = ""
+local elements = 1
+
+local easyTable = {location, position, items, elements}
 
 function init(self)
-	
+	defsave.appname = "The Elementalits: Lost Islands"
 end
 
 function final(self)
@@ -30,11 +31,17 @@ end
 function loadfile()
 
 	filename = filename + ".dat"
+	defsave.load(filename)
+	easyTable = defsave.get(filename, "data")
 end
 
 function save()
 
 	filename = filename + ".dat"
+
+	defsave.set(filename, "data", easyTable)
+	
+	defsave.save(filename)
 end
 
 function on_input(self, action_id, action)
