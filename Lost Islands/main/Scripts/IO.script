@@ -9,10 +9,11 @@ local defsave = require("defsave.defsave")
 local filename = os.date()
 local location = ""
 local position = vmath.vector3(0, 0, 0)
-local items = ""
+local items = {}
 local elements = 1
+local health = 100
 
-local easyTable = { location, position, items, elements }
+local easyTable = { location, position, items, elements, health }
 
 function init(self)
 	defsave.appname = "The Elementalists: Lost Islands"
@@ -32,11 +33,16 @@ end
 
 function on_message(self, message_id, message, sender)
 
-	
+	if message_id == "save" then
+		easyTable = message.save
+	end
+
+	if message_id == "load" then
+		loadfile()
+	end
 end
 
 function loadfile()
-
 	filename = filename .. ".dat"
 	defsave.load(filename)
 	easyTable = defsave.get(filename, "data")
