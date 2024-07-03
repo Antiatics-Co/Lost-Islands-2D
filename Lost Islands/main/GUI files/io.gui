@@ -59,8 +59,8 @@ nodes {
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
-  enabled: true
-  visible: true
+  enabled: false
+  visible: false
   material: ""
 }
 nodes {
@@ -117,8 +117,8 @@ nodes {
   template_node_child: false
   size_mode: SIZE_MODE_AUTO
   custom_type: 0
-  enabled: true
-  visible: true
+  enabled: false
+  visible: false
   material: ""
 }
 material: "/builtins/materials/gui.material"
