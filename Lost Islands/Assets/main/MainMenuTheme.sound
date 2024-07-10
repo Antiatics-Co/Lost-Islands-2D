@@ -1,4 +1,4 @@
-sound: "/Assets/Sounds/A Flock of Seagulls - I Ran (So Far Away).ogg"
+sound: "/Assets/Sounds/(Audio) LostIslands MainMenuMusic.ogg"
 looping: 0
 group: "master"
 gain: 1.0
