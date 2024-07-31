@@ -30,7 +30,6 @@ nodes {
   inherit_alpha: true
   alpha: 0.72
   size_mode: SIZE_MODE_AUTO
-  enabled: false
 }
 nodes {
   position {
@@ -140,7 +139,6 @@ nodes {
   parent: "pausemenu"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
-  enabled: false
 }
 nodes {
   scale {
@@ -216,6 +214,22 @@ nodes {
     z: 1.0
   }
   parent: "save"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 0.415298
+    y: 37.67586
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Paused"
+  font: "default"
+  id: "text2"
+  parent: "pausemenu"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

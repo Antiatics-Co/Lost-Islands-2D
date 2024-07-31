@@ -9,11 +9,12 @@ local items = { 0, 0 } --First Zero is item number and second is the number of t
 local elements = 1
 local health = 100
 
+local  pauseOpen = false --sets if you are in pause  menu
+local MainMenu = true
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	gui.set_enabled(gui.get_node("pausemenu"), false)
-	self.pauseOpen = false --sets if you are in pause  menu
-	self.MainMenu = true
 end
 
 function animation(node, newAnimation)
@@ -23,17 +24,17 @@ end
 function on_message(self, message_id, message)
 
 	if message_id == hash("start") then
-		self.MainMenu = false
+		MainMenu = false
 	end
 end
 
 function on_input(self, action_id, action)
 
-	if action_id == hash("esc") and self.MainMenu == false and action.released then
-		self.pauseOpen = not self.pauseOpen
-		gui.set_enabled(gui.get_node("pausemenu"), self.pauseOpen)
+	if action_id == hash("esc") and MainMenu == false and action.released then
+		pauseOpen = not pauseOpen
+		gui.set_enabled(gui.get_node("pausemenu"),pauseOpen)
 
-		if self.pauseOpen == true then
+		if pauseOpen == true then
 			msg.post("Player#Player", "stopRecievingInput")
 			msg.post("main#Level", "set_time_step", { factor = 0, mode = 0 })
 		else
@@ -49,7 +50,7 @@ function on_input(self, action_id, action)
 				animation(resume, "button") -- TO DO: Extend time on animation
 				gui.set_enabled(gui.get_node("pausemenu"), false)
 				msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
-				self.pauseOpen = false
+				pauseOpen = false
 		end
 		
 		local leave = gui.get_node("leave")
@@ -57,8 +58,8 @@ function on_input(self, action_id, action)
 			gui.set_enabled(gui.get_node("pausemenu"), false)
 			msg.post("/main#music", "stopAll")
 			msg.post("/main#music", "enterMain")
-			self.MainMenu = true
-			self.istrue = true
+			MainMenu = true
+			istrue = true
 			msg.post("/main#MainMenu", "istrue") --enables main menu and unloads level
 		end
 		
