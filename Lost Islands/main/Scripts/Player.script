@@ -13,6 +13,7 @@ local GRAVITY = 1200
 local JUMPTAKEOFF = 500
 local FIREDELAY = 0.5
 local recievingInputs = true
+local gravity = false
 
 local lastfired = -1
 
@@ -140,6 +141,10 @@ end
 
 
 function on_message(self, message_id, message, sender)
+	if message_id == "stopGravity" then
+		GRAVITY = 0
+	end
+	
 	if message_id == hash("contact_point_response") and
 	message.other_group == hash("level") then
 		handleLevelCollisions(self, message.normal, message.distance)
