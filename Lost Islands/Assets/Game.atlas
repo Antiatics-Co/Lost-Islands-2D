@@ -119,4 +119,11 @@ animations {
   playback: PLAYBACK_LOOP_FORWARD
   fps: 60
 }
+animations {
+  id: "IdleMap"
+  images {
+    image: "/Assets/Images/Testplayer/Sprite-0001.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
 extrude_borders: 2

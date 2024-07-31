@@ -1,1 +1,23 @@
 name: "MainMap"
+instances {
+  id: "PlayerMap"
+  prototype: "/main/Objects/PlayerMap/PlayerMap.go"
+  position {
+    x: 18.0
+    y: 15.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "Map"
+  data: "components {\n"
+  "  id: \"MainMap\"\n"
+  "  component: \"/Assets/Images/TileMaps/MainMap.tilemap\"\n"
+  "}\n"
+  ""
+  scale3 {
+    x: 26.450102
+    y: 27.36992
+  }
+}
