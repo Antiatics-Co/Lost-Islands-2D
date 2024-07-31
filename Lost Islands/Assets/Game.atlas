@@ -1,173 +1,122 @@
 animations {
   id: "idle"
   images {
-    image: "/Assets/Images/Testplayer/Sprite-0001.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+    image: "/Assets/Images/Testplayer/PlayerPlatformer.png"
   }
   playback: PLAYBACK_NONE
   fps: 60
-  flip_horizontal: 0
-  flip_vertical: 0
 }
 animations {
   id: "enemy"
   images {
     image: "/Assets/Images/EnemySprites/enemyTest.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
   fps: 60
-  flip_horizontal: 0
-  flip_vertical: 0
 }
 animations {
   id: "firebullet"
   images {
     image: "/Assets/Images/Elements/Fire/Fire Projectilee/FireBall.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 60
-  flip_horizontal: 0
   flip_vertical: 1
 }
 animations {
   id: "button"
   images {
     image: "/Assets/Images/Menu/Button-Pressed.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/Button-Unpressed.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
-  playback: PLAYBACK_ONCE_FORWARD
   fps: 60
-  flip_horizontal: 0
-  flip_vertical: 0
 }
 animations {
   id: "plus"
   images {
     image: "/Assets/Images/Menu/Plus.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/PlusPressed.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
-  playback: PLAYBACK_ONCE_FORWARD
   fps: 60
-  flip_horizontal: 0
-  flip_vertical: 0
 }
 animations {
   id: "minus"
   images {
     image: "/Assets/Images/Menu/Minus.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/MinusPressed.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
-  playback: PLAYBACK_ONCE_FORWARD
   fps: 60
-  flip_horizontal: 0
-  flip_vertical: 0
 }
 animations {
   id: "healthBar"
   images {
     image: "/Assets/Images/Menu/FullBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/sixSeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/fiveSeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/fourSeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/threeSeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/twoSeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/oneSeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/Bar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
   fps: 60
-  flip_horizontal: 0
-  flip_vertical: 0
 }
 animations {
   id: "energyBar"
   images {
     image: "/Assets/Images/Menu/FullEnergyBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/sixSeventhEnergyBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/fiveEnergySeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/fourSeventhEnergyBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/threeSeventhEnergyBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/twoSeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/oneSeventhBar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   images {
     image: "/Assets/Images/Menu/Bar.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_NONE
   fps: 60
-  flip_horizontal: 0
-  flip_vertical: 0
 }
 animations {
   id: "slime"
   images {
     image: "/Assets/Images/Menu/SlimeDefault.png"
-    sprite_trim_mode: SPRITE_TRIM_MODE_OFF
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 60
-  flip_horizontal: 0
-  flip_vertical: 0
 }
-margin: 0
 extrude_borders: 2
-inner_padding: 0
-max_page_width: 0
-max_page_height: 0
-rename_patterns: ""
