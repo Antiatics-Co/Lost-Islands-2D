@@ -36,8 +36,10 @@ function init(self) -- loads default data and creates save file if it doesn't ex
 	defsave.load(filename)
 	defsave.load(configName)
 
+	local checksum = md5.sumhexa(easyTable)
 
 	defsave.set(filename, "default", easyTable)
+	defsave.set(filename, "checksum", checksum)
 	defsave.set(configName, "default", config)
 
 	defsave.save(filename)
