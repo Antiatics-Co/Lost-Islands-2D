@@ -9,7 +9,7 @@
 local defsave = require("defsave.defsave")
 local md5 = require("main.Scripts.Checksum.md5")
 
-local filename = "Default"
+local filename = "save"
 local configName = "config.save"
 
 local location = "Default"
@@ -29,8 +29,8 @@ function generate_checksum(data)
 	return md5.sumhexa(data)
 end
 
-function file_exists(filepath)
-	filepath = "C:\\Users\\aidco\\AppData\\Roaming\\LostIslands\\" .. filename
+function file_exists(filename)
+	local filepath = sys.get_save_file("LostIslands", filename)
 	local file = io.open(filepath, "r")
 	if file then
 		io.close(file)
@@ -39,6 +39,7 @@ function file_exists(filepath)
 		return false
 	end
 end
+
 
 function table_to_string(tbl)
 	local result = ""
@@ -63,8 +64,17 @@ function init(self)
 	print("Type of vmath.vector3:", type(vmath.vector3))
 
 	filename = filename .. ".dat"
-	
-	defsave.load(filename)
+
+	local status, err = pcall(function()
+		defsave.load(filename)
+	end)
+
+	if not status then
+		print("Error loading save file:", err)
+		-- Handle the error, e.g., reset to default values
+		defsave.set(filename, "default", easyTable)
+		defsave.set(filename, "checksum", generate_checksum(table_to_string(easyTable)))
+	end
 
 	if file_exists(filename) then
 		local loadedChecksum = defsave.get(filename, "checksum")
@@ -88,7 +98,7 @@ function init(self)
 		print("No save file found.")
 		local checksum = generate_checksum(table_to_string(easyTable))
 		print("Initial Checksum: ", checksum)
-		
+
 		defsave.set(filename, "default", easyTable)
 		defsave.set(filename, "checksum", checksum)
 	end
@@ -96,12 +106,11 @@ function init(self)
 	defsave.load(configName)
 
 	if file_exists(configName) then
-		config = defsave.get(configName, "default")
-	
+		config = defsave.get(configName, "settings")
 	else
-		defsave.set(configName, "default", config)
+		defsave.set(configName, "settings", config)
 	end
-	
+
 	defsave.save(filename)
 	defsave.save(configName)
 
@@ -109,10 +118,11 @@ function init(self)
 end
 
 
+
 function on_message(self, message_id, message, sender)
 if message_id == "save" then
 	easyTable = message.save
-	save()
+	save(easyTable)
 end
 
 if message_id == "load" then
@@ -136,7 +146,7 @@ if message_id == "load" then
 end
 end
 
-function save()
+function save(easyTable)
 print("Easy Table", easyTable)
 
 local new_checksum = generate_checksum(table_to_string(easyTable))
