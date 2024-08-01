@@ -6,6 +6,7 @@
 
 
 local defsave = require("defsave.defsave")
+local md5 = require("md5")
 
 local filename = "Default"
 local configName = "config.save"
@@ -23,6 +24,10 @@ local volume = 100
 
 local config = { resolution, volume}
 
+function generate_checksum(data)
+	return md5.sumhexa(data)
+end
+
 function init(self) -- loads default data and creates save file if it doesn't exist
 	defsave.appname = "LostIslands"
 
@@ -38,6 +43,8 @@ function init(self) -- loads default data and creates save file if it doesn't ex
 	defsave.save(filename)
 	defsave.save(configName)
 
+	
+
 	print("Save file created and data saved.")
 end
 
@@ -45,17 +52,35 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == "save" then
 		easyTable = message.save
-		defsave.set(filename, "data", easyTable)
-		defsave.save(filename)
+		save()
 	end
 
 	if message_id == "load" then
 		easyTable = defsave.get(filename, "data")
+
+		local loadedChecksum = defsave.get("player", "checksum")
+
+		-- Verify the checksum
+		if easyTable then
+			local current_checksum = generate_checksum(tostring(easyTable))
+			if current_checksum == loadedChecksum then
+				print("Data integrity verified.")
+			else
+				print("Data integrity check failed.")
+			end
+		else
+			print("No saved data found.")
+		end
 	end
 end
 
 function save()
-
+	print("Easy Table", easyTable)
+	
+	local new_checksum = generate_checksum(tostring(easyTable))
+	defsave.set(filename, "checksum", new_checksum)
+	defsave.set(filename, "data", easyTable)
+	defsave.save(filename)
 	
 end
 
