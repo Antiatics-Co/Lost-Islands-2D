@@ -22,7 +22,7 @@ local volume = 100
 
 local config = { resolution, volume}
 
-function init(self)
+function init(self) -- loads default data and creates save file if it doesn't exist
 	defsave.appname = "LostIslands"
 
 
