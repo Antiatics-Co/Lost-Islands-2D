@@ -31,6 +31,14 @@ function on_message(self, message_id, message, sender)
 		inDungeon = false
 	end
 
+	if message_id == hash("setDefault") then
+		gui.set_enabled(gui.get_node("corruptFile"), false)
+	end
+
+	if message_id == hash("fileCorruption") then
+		gui.set_enabled(gui.get_node("corruptFile"), true)
+	end
+
 	if message_id == hash("enable") then
 		gui.set_enabled(gui.get_node("main"), true)
 	end

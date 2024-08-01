@@ -227,9 +227,10 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  id: "curruptFile"
+  id: "corruptFile"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   size {
@@ -248,7 +249,7 @@ nodes {
   "to continue"
   font: "default"
   id: "text4"
-  parent: "curruptFile"
+  parent: "corruptFile"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
