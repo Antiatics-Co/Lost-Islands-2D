@@ -213,5 +213,43 @@ nodes {
   parent: "Title"
   inherit_alpha: true
 }
+nodes {
+  position {
+    x: 495.0
+    y: 313.0
+  }
+  scale {
+    x: 3.523665
+    y: 5.633076
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "curruptFile"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "File Corrupted\n"
+  "resetting file to defaults\n"
+  "Press any button\n"
+  "to continue"
+  font: "default"
+  id: "text4"
+  parent: "curruptFile"
+  inherit_alpha: true
+}
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

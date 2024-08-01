@@ -72,6 +72,8 @@ function init(self)
 	if not status then
 		print("Error loading save file:", err)
 		-- Handle the error, e.g., reset to default values
+
+		msg.post( "main", "fileCorruption")
 		defsave.set(filename, "default", easyTable)
 		defsave.set(filename, "checksum", generate_checksum(table_to_string(easyTable)))
 	end
