@@ -8,6 +8,7 @@
 local defsave = require("defsave.defsave")
 
 local filename = "Default"
+local configName = "config.save"
 
 local location = "Default"
 local position = vmath.vector3(0, 0, 0)
@@ -28,11 +29,14 @@ function init(self) -- loads default data and creates save file if it doesn't ex
 
 	filename = filename .. ".dat"
 	defsave.load(filename)
+	defsave.load(configName)
 
 
-	defsave.set(filename, "data", easyTable)
+	defsave.set(filename, "default", easyTable)
+	defsave.set(configName, "default", config)
 
 	defsave.save(filename)
+	defsave.save(configName)
 
 	print("Save file created and data saved.")
 end
@@ -41,6 +45,8 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == "save" then
 		easyTable = message.save
+		defsave.set(filename, "data", easyTable)
+		defsave.save(filename)
 	end
 
 	if message_id == "load" then
