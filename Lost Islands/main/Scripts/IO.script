@@ -3,6 +3,7 @@
 --@_VERSION = 2
 --@Description
 --	This script handles the saving to and loading from files
+-- has a checksum to verify integrity of files
 
 
 local defsave = require("defsave.defsave")
