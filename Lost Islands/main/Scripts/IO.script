@@ -81,7 +81,7 @@ function init(self)
 	end)
 
 	if not status then
-		print("Error loading save file:", err)
+		print("Error loading save file:", err) -- add plAYER CHOICE TO KEEP FILE OR RESET?
 		-- Handle the error, e.g., reset to default values
 		msg.post(".", "acquire_input_focus")
 		
