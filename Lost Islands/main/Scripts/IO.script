@@ -1,16 +1,17 @@
 --@Title Input Ouput
 --@Author Aidan Cox
---@_VERSION July 2, 2024
+--@_VERSION July 31, 2024
 --@Description
 --	This script handles the saving to and loading from files
 
 
 local defsave = require("defsave.defsave")
-local filename = os.date()
 
-local location = ""
+local filename = "Default"
+
+local location = "Default"
 local position = vmath.vector3(0, 0, 0)
-local items = {}
+local items = { 0, 0, 0}
 local elements = 1
 local health = 100
 
@@ -27,13 +28,19 @@ function init(self)
 
 	filename = filename .. ".dat"
 	defsave.load(filename)
+
+
+	defsave.set(filename, "data", easyTable)
+
+	defsave.save(filename)
+
+	print("Save file created and data saved.")
 end
 
 function on_message(self, message_id, message, sender)
 
 	if message_id == "save" then
 		easyTable = message.save
-		save()
 	end
 
 	if message_id == "load" then
@@ -43,20 +50,9 @@ end
 
 function save()
 
-	filename = filename .. ".dat"
-
-	defsave.set(filename, "data", easyTable)
-	
-	defsave.save(filename)
-end
-
-function on_input(self, action_id, action)
 	
 end
 
-function on_reload(self)
-	
-end
 
 
 
