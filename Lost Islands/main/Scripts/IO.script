@@ -7,6 +7,7 @@
 
 local defsave = require("defsave.defsave")
 local filename = os.date()
+
 local location = ""
 local position = vmath.vector3(0, 0, 0)
 local items = {}
@@ -15,37 +16,29 @@ local health = 100
 
 local easyTable = { location, position, items, elements, health }
 
+local resolution = 1 --just going to have multiple options and give a number depending upon the option
+local volume = 100
+
+local config = { resolution, volume}
+
 function init(self)
-	defsave.appname = "The Elementalists: Lost Islands"
-end
+	defsave.appname = "LostIslands"
 
-function final(self)
-	
-end
 
-function update(self, dt)
-	
-end
-
-function fixed_update(self, dt)
-	
+	filename = filename .. ".dat"
+	defsave.load(filename)
 end
 
 function on_message(self, message_id, message, sender)
 
 	if message_id == "save" then
 		easyTable = message.save
+		save()
 	end
 
 	if message_id == "load" then
-		loadfile()
+		easyTable = defsave.get(filename, "data")
 	end
-end
-
-function loadfile()
-	filename = filename .. ".dat"
-	defsave.load(filename)
-	easyTable = defsave.get(filename, "data")
 end
 
 function save()
@@ -63,4 +56,29 @@ end
 
 function on_reload(self)
 	
+end
+
+
+
+----------------------------------------------------------------------------_G
+
+
+local defsave = require("defsave.defsave")
+
+function init(self)
+	-- Step 1: Set the application name
+	defsave.appname = "my_awesome_game"
+
+	-- Step 2: Load the "player" save file
+	defsave.load("player")
+
+	-- Step 3: Get the current position from the save file
+	local loaded_position = defsave.get("player", "position")
+	print("Loaded position:", loaded_position)
+
+	-- Step 3: Set a new position in the save file
+	defsave.set("player", "position", vmath.vector3(100, 200, 0))
+
+	-- Step 4: Save all changes to the "player" save file
+	defsave.save("player")
 end
