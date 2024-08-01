@@ -6,7 +6,7 @@
 
 
 local defsave = require("defsave.defsave")
-local md5 = require("md5")
+local md5 = require("main.Scripts.Checksum.md5")
 
 local filename = "Default"
 local configName = "config.save"
@@ -36,7 +36,7 @@ function init(self) -- loads default data and creates save file if it doesn't ex
 	defsave.load(filename)
 	defsave.load(configName)
 
-	local checksum = md5.sumhexa(easyTable)
+	local checksum = md5.sumhexa(tostring(easyTable))
 
 	defsave.set(filename, "default", easyTable)
 	defsave.set(filename, "checksum", checksum)
