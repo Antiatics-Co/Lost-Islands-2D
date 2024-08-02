@@ -230,13 +230,11 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("configSave") then
-		config = message.config
-		configSave(config)
+		configSave(message.config)
 	end
 		
 	if message_id == hash("save") then
-		easyTable = message.data
-		save(easyTable)
+		save(message.data)
 	end
 
 	if message_id == hash("load") then
@@ -261,7 +259,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("configLoad") then
-		easyTable = defsave.get(configName, "data")
+		config = defsave.get(configName, "data")
 
 		local loadedChecksum = defsave.get(configName, "checksum")
 		print("Loaded Checksum: ", loadedChecksum)
@@ -284,41 +282,46 @@ function on_message(self, message_id, message, sender)
 end
 
 
-function save(easyTable)
-	if easyTable == nil then
-		print("Error: easyTable is nil")
+function save(data)
+	if data == nil then
+		print("Error: data is nil")
 		return
 	end
+	
+	print("data table", table_to_string(data))
+		
+	data.version = (data.version or 0) + 1  -- Increment version
+	print("Incremented data Version in Save: ", data.version)
 
-	easyTable.version = (easyTable.version or 0) + 1  -- Increment version
-	print("Incremented data Version in Save: ", easyTable.version)
+	print("Easy Table", data)
 
-	print("Easy Table", easyTable)
-
-	local new_checksum = generate_checksum(table_to_string(easyTable))
+	local new_checksum = generate_checksum(table_to_string(data))
 	print("New Checksum: ", new_checksum)
-	print("Before saving, version:", easyTable.version)
-	defsave.set(filename, "default", easyTable)
-	defsave.set(filename, "checksum", generate_checksum(table_to_string(easyTable)))
-	print("After saving, version:", easyTable.version)
+	print("Before saving, version:", data.version)
+	defsave.set(filename, "default", data)
+	defsave.set(filename, "checksum", generate_checksum(table_to_string(data)))
+	print("After saving, version:", data.version)
 	
 	defsave.save(filename)
 	print("Data saved successfully.")
 end
 
-function configSave(config)
+function configSave(configData)
 	if config == nil then
 		print("Error: config is nil")
 		return
 	end
 
-	config.configVersion = (config.configVersion or 0) + 1  -- Increment version
-	print("Incremented Config Version in configSave: ", config.configVersion)
+	print("data table", table_to_string(configData))
+	
 
-	local new_checksum = generate_checksum(table_to_string(config))
+	configData.configVersion = (configData.configVersion or 0) + 1  -- Increment version
+	print("Incremented Config Version in configSave: ", configData.configVersion)
+
+	local new_checksum = generate_checksum(table_to_string(configData))
 	print("New Checksum: ", new_checksum)
 	defsave.set(configName, "checksum", new_checksum)
-	defsave.set(configName, "data", config)
+	defsave.set(configName, "data", configData)
 	defsave.save(configName)
 	print("Config saved successfully.")
 end
