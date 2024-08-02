@@ -1,6 +1,6 @@
 
-ÊE
-®E--@Title Input Ouput
+¼H
+ H--@Title Input Ouput
 --@Author Aidan Cox
 --@_VERSION = 2
 --@Description
@@ -21,7 +21,7 @@ local items = { 0, 0, 0}
 local elements = 1
 local health = 100
 
-local easyTable = { location, position, items, elements, health, version = 1 }
+local easyTable = { location, position, items, elements, health, version = 100 }
 
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
 local volume = 100
@@ -112,13 +112,20 @@ function init(self)
 		if loadedData then
 			local current_checksum = generate_checksum(table_to_string(loadedData))
 			print("Current Checksum: ", current_checksum)
+			
 			if current_checksum == loadedChecksum then
+				
 				print("Data integrity verified.")
+				print("easyTable version:", easyTable.version)
 				easyTable = loadedData
 			else
+				
+				print("Loaded Data Version", loadedData.version)
+				print("loaded easytable Version", easyTable.version)
 				print("Data integrity check failed.")
 				print("Expected Checksum: ", loadedChecksum)
 				print("Actual Checksum: ", current_checksum)
+				
 				if loadedData.version and loadedData.version > (easyTable.version or 0) then
 					print("Data appears to be intentionally updated.")
 					easyTable = loadedData
@@ -166,6 +173,7 @@ function init(self)
 			local current_checksum = generate_checksum(loadedDataString)
 			print("Current Checksum: ", current_checksum)
 			print("Loaded Data String: ", loadedDataString)
+			
 			if current_checksum == loadedChecksum then
 				print("Data integrity verified.")
 				config = loadedData
@@ -234,7 +242,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("load") then
-		easyTable = defsave.get(filename, "data")
+		easyTable = defsave.get(filename, "default")
 
 		local loadedChecksum = defsave.get(filename, "checksum")
 		print("Loaded Checksum: ", loadedChecksum)
@@ -245,7 +253,6 @@ function on_message(self, message_id, message, sender)
 			print("Current Checksum: ", current_checksum)
 			if current_checksum == loadedChecksum then
 				print("Data integrity verified.")
-				easyTable = easyTable
 				msg.post("", "loadPlayerData", {data = easyTable}) --TO DO ***********************************************************
 			else
 				print("Data integrity check failed.")
@@ -286,13 +293,17 @@ function save(easyTable)
 	end
 
 	easyTable.version = (easyTable.version or 0) + 1  -- Increment version
+	print("Incremented data Version in Save: ", easyTable.version)
 
 	print("Easy Table", easyTable)
 
 	local new_checksum = generate_checksum(table_to_string(easyTable))
 	print("New Checksum: ", new_checksum)
-	defsave.set(filename, "checksum", new_checksum)
-	defsave.set(filename, "data", easyTable)
+	print("Before saving, version:", easyTable.version)
+	defsave.set(filename, "default", easyTable)
+	defsave.set(filename, "checksum", generate_checksum(table_to_string(easyTable)))
+	print("After saving, version:", easyTable.version)
+	
 	defsave.save(filename)
 	print("Data saved successfully.")
 end

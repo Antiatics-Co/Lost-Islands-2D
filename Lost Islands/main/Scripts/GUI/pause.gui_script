@@ -80,7 +80,7 @@ function on_input(self, action_id, action)
 
 		local save = gui.get_node("save")
 		if gui.pick_node(save, action.x, action.y) then
-			local data = { location, position, items, elements, health }
+			local data = { location, position, items, elements, health, version = 1 }
 			msg.post("IO#IO", "save", {data = data})
 		
 		end
