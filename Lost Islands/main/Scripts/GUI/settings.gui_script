@@ -4,80 +4,80 @@
 
 
 local leave = "MainMenu"
+local volume = 100
+local resolution = 1
+local config = { volume = volume, resolution = resolution, configVersion = 1 }
+
 
 function init(self)
 	gui.set_enabled(gui.get_node("settings"), false)
-	self.volume = 100 --When Saving is added change this to the previously saved value
-	gui.set_text(gui.get_node("SetVolume"), self.volume)
+	gui.set_text(gui.get_node("SetVolume"), volume)
 	print("Defaults loaded")
 end
 
-
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
 function on_message(self, message_id, message, sender)
+	if message_id == hash("configLoad") then
+		local newConfig = message.newConfig
+		if newConfig.configVersion and newConfig.configVersion > config.configVersion then
+			config = newConfig
+			volume = config.volume or volume
+			resolution = config.resolution or resolution
+			gui.set_text(gui.get_node("SetVolume"), volume)
+			print("Configuration updated from message")
+		else
+			print("Received configuration version is not newer. No update performed.")
+		end
+	end
+
 	if message_id == hash("enable") then
 		gui.set_enabled(gui.get_node("settings"), true)
 	end
 
 	if message_id == hash("fromPause") then
 		leave = "menu#PauseMenu"
-		print("From Pause Successfuly sent")
+		print("From Pause Successfully sent")
 	end
 
-	if message_id == hash("fromMain") then --doesn't work
+	if message_id == hash("fromMain") then
 		leave = "#MainMenu"
 		print("From Main Successfully sent")
 	end
 end
 
 function animation(node, newAnimation)
-		gui.play_flipbook(node, newAnimation) -- Extend time on animation
-	
+	gui.play_flipbook(node, newAnimation) -- Extend time on animation
 end
 
 function on_input(self, action_id, action)
 	if action_id == hash("touch") then
 		local plus = gui.get_node("plus")
 
-		if gui.pick_node(plus, action.x, action.y)  and self.volume ~= 100 then
+		if gui.pick_node(plus, action.x, action.y) and volume ~= 100 then
 			animation(plus, "plus")
-			self.volume = self.volume + 1
-			gui.set_text(gui.get_node("SetVolume"), self.volume)
-			sound.set_group_gain("master", (self.volume / 100))
+			volume = volume + 1
+			gui.set_text(gui.get_node("SetVolume"), volume)
+			sound.set_group_gain("master", (volume / 100))
 		end
 
 		local minus = gui.get_node("minus")
-		if gui.pick_node(minus, action.x, action.y) and self.volume ~= 0 then
-			animation(minus, "minus") -- TO DO: Extend time on animation
-			self.volume = self.volume  - 1
-			gui.set_text(gui.get_node("SetVolume"), self.volume)
-			sound.set_group_gain("master", (self.volume / 100))
+		if gui.pick_node(minus, action.x, action.y) and volume ~= 0 then
+			animation(minus, "minus")
+			volume = volume - 1
+			gui.set_text(gui.get_node("SetVolume"), volume)
+			sound.set_group_gain("master", (volume / 100))
 		end
-		
+
 		local back = gui.get_node("back")
 		if gui.pick_node(back, action.x, action.y) then
-			animation(back, "button") -- TO DO: Extend time on animation
+			animation(back, "button")
+			config.volume = volume
+			config.resolution = resolution
 			
+			msg.post("IO#IO", "configSave", {config = config}) 
+
 			gui.set_enabled(gui.get_node("settings"), false)
-			if leave == "#MainMenu" then
-				msg.post(leave, "enable")
-				print("Leave = ", leave)
-			else
-				msg.post(leave, "enable")
-				print("Leave = ", leave)
-			end
+			msg.post(leave, "enable")
+			print("Leave = ", leave)
 		end
 	end
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
 end

@@ -24,7 +24,7 @@ local easyTable = { location, position, items, elements, health, version = 1 }
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
 local volume = 100
 
-local config = { resolution, volume }
+local config = { volume, resolution, configVersion = 1 }
 
 function generate_checksum(data)
 	return md5.sumhexa(data)
@@ -138,13 +138,72 @@ function init(self)
 		defsave.set(filename, "checksum", checksum)
 	end
 
-	defsave.load(configName)
+	----------------------------------------------------------------------------------------_G
+
+
+	local status, err = pcall(function()
+		defsave.load(configName)
+	end)
+
+	if not status then
+		print("Error loading save file:", err)
+		-- Handle the error, e.g., reset to default values
+		defsave.set(configName, "default", config)
+		defsave.set(configName, "checksum", generate_checksum(table_to_string(config)))
+	end
 
 	if file_exists(configName) then
-		config = defsave.get(configName, "settings")
+		local loadedChecksum = defsave.get(configName, "checksum")
+		local loadedData = defsave.get(configName, "default")
+		print("Loaded Data: ", loadedData)
+		print("Loaded Checksum: ", loadedChecksum)
+
+		-- Verify the checksum
+		if loadedData then
+			local loadedDataString = table_to_string(loadedData)
+			local current_checksum = generate_checksum(loadedDataString)
+			print("Current Checksum: ", current_checksum)
+			print("Loaded Data String: ", loadedDataString)
+			if current_checksum == loadedChecksum then
+				print("Data integrity verified.")
+				config = loadedData
+			else
+				print("Data integrity check failed.")
+				print("Expected Checksum: ", loadedChecksum)
+				print("Actual Checksum: ", current_checksum)
+				print("Loaded Data Version", loadedData.configVersion)
+				print("loaded Config Version", config.configVersion)
+				if loadedData.configVersion and loadedData.configVersion > (config.configVersion or 0) then
+					print("Data appears to be intentionally updated.")
+					config = loadedData
+				else
+					print("Data corruption detected.")
+					local checksum = generate_checksum(table_to_string(config))
+					delete_file(configName)  -- Delete the corrupted file
+					defsave.set(configName, "default", config)
+					defsave.set(configName, "checksum", checksum)
+					defsave.save(configName)
+				end
+			end
+		else
+			print("No saved data found.")
+			local checksum = generate_checksum(table_to_string(config))
+			defsave.set(configName, "default", config)
+			defsave.set(configName, "checksum", checksum)
+			defsave.save(configName)
+		end
 	else
-		defsave.set(configName, "settings", config)
+		print("No save file found.")
+		local checksum = generate_checksum(table_to_string(config))
+		print("Initial Checksum: ", checksum)
+
+		defsave.set(configName, "default", config)
+		defsave.set(configName, "checksum", checksum)
+		defsave.save(configName)
 	end
+
+	
+	-------------------------------------------------------------------------------------------
 
 	defsave.save(filename)
 	defsave.save(configName)
@@ -161,7 +220,12 @@ function on_message(self, message_id, message, sender)
 		defsave.set(filename, "checksum", checksum)
 		defsave.save(filename)
 	end
-	
+
+	if message_id == hash("configSave") then
+		config = message.config
+		configSave(config)
+	end
+		
 	if message_id == hash("save") then
 		easyTable = message.data
 		save(easyTable)
@@ -180,6 +244,29 @@ function on_message(self, message_id, message, sender)
 			if current_checksum == loadedChecksum then
 				print("Data integrity verified.")
 				easyTable = easyTable
+				msg.post("", "loadPlayerData", {data = easyTable}) --TO DO ***********************************************************
+			else
+				print("Data integrity check failed.")
+			end
+		else
+			print("No saved data found.")
+		end
+	end
+
+	if message_id == hash("configLoad") then
+		easyTable = defsave.get(configName, "data")
+
+		local loadedChecksum = defsave.get(configName, "checksum")
+		print("Loaded Checksum: ", loadedChecksum)
+
+		-- Verify the checksum
+		if config then
+			local current_checksum = generate_checksum(table_to_string(config))
+			print("Current Checksum: ", current_checksum)
+			if current_checksum == loadedChecksum then
+				print("Data integrity verified.")
+				config = config
+				msg.post("main#Settings", "configLoad", {data = config})
 			else
 				print("Data integrity check failed.")
 			end
@@ -188,6 +275,7 @@ function on_message(self, message_id, message, sender)
 		end
 	end
 end
+
 
 function save(easyTable)
 	if easyTable == nil then
@@ -205,4 +293,21 @@ function save(easyTable)
 	defsave.set(filename, "data", easyTable)
 	defsave.save(filename)
 	print("Data saved successfully.")
+end
+
+function configSave(config)
+	if config == nil then
+		print("Error: config is nil")
+		return
+	end
+
+	config.configVersion = (config.configVersion or 0) + 1  -- Increment version
+	print("Incremented Config Version in configSave: ", config.configVersion)
+
+	local new_checksum = generate_checksum(table_to_string(config))
+	print("New Checksum: ", new_checksum)
+	defsave.set(configName, "checksum", new_checksum)
+	defsave.set(configName, "data", config)
+	defsave.save(configName)
+	print("Config saved successfully.")
 end
