@@ -3,11 +3,12 @@
 --@Description - Adjusts settings *** Currently only volume ***
 
 
-local leave = "MainMenu"
+local leave = ""
 local volume = 100
 local resolution = 1
 local config = { volume = volume, resolution = resolution, configVersion = 1 }
-
+local transitioning = false  -- Flag to prevent multiple transitions
+local settingsOpen = false
 
 function init(self)
 	gui.set_enabled(gui.get_node("settings"), false)
@@ -17,6 +18,8 @@ function init(self)
 end
 
 function on_message(self, message_id, message, sender)
+	print("Received message: ", message_id)
+
 	if message_id == hash("loadedConfig") then
 		local newConfig = message.data
 		if newConfig.configVersion and newConfig.configVersion > config.configVersion then
@@ -32,16 +35,19 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("enable") then
 		gui.set_enabled(gui.get_node("settings"), true)
+		transitioning = false  -- Reset the flag when settings menu is enabled
 	end
 
 	if message_id == hash("fromPause") then
 		leave = "menu#PauseMenu"
-		print("From Pause Successfully sent")
+		print("From Pause Successfully sent, leave = ", leave)
+		settingsOpen = not settingsOpen
 	end
 
 	if message_id == hash("fromMain") then
 		leave = "#MainMenu"
-		print("From Main Successfully sent")
+		print("From Main Successfully sent, leave = ", leave)
+		settingsOpen = not settingsOpen
 	end
 end
 
@@ -50,7 +56,7 @@ function animation(node, newAnimation)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("touch") then
+	if action_id == hash("touch") and settingsOpen then
 		local plus = gui.get_node("plus")
 
 		if gui.pick_node(plus, action.x, action.y) and volume ~= 100 then
@@ -69,18 +75,29 @@ function on_input(self, action_id, action)
 		end
 	end
 
-	if action_id == hash("touch") and action.released then
+	if action_id == hash("touch") and action.released and settingsOpen then
 		local back = gui.get_node("back")
 		if gui.pick_node(back, action.x, action.y) then
+			settingsOpen = not settingsOpen
+			
 			animation(back, "button")
-			config.volume = volume
-			config.resolution = resolution
-
-			msg.post("IO#IO", "configSave", {config = config}) 
-
-			gui.set_enabled(gui.get_node("settings"), false)
-			msg.post(leave, "enable")
-			print("Leave = ", leave)
+			leaveSettings(leave)
 		end
 	end
 end
+
+function leaveSettings(soLong)
+	if not transitioning then
+		transitioning = true  -- Set the flag to prevent multiple transitions
+		config.volume = volume
+		config.resolution = resolution
+		msg.post("IO#IO", "configSave", {config = config}) 
+
+		print("Leaving to: ", soLong)
+		gui.set_enabled(gui.get_node("settings"), false)
+		msg.post(soLong, "enable")
+	end
+end
+
+
+
