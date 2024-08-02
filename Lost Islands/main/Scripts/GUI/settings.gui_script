@@ -67,13 +67,15 @@ function on_input(self, action_id, action)
 			gui.set_text(gui.get_node("SetVolume"), volume)
 			sound.set_group_gain("master", (volume / 100))
 		end
+	end
 
+	if action_id == hash("touch") and action.released then
 		local back = gui.get_node("back")
 		if gui.pick_node(back, action.x, action.y) then
 			animation(back, "button")
 			config.volume = volume
 			config.resolution = resolution
-			
+
 			msg.post("IO#IO", "configSave", {config = config}) 
 
 			gui.set_enabled(gui.get_node("settings"), false)
