@@ -13,11 +13,12 @@ function init(self)
 	gui.set_enabled(gui.get_node("settings"), false)
 	gui.set_text(gui.get_node("SetVolume"), volume)
 	print("Defaults loaded")
+	msg.post("IO#IO", "configLoad")
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("configLoad") then
-		local newConfig = message.newConfig
+	if message_id == hash("loadedConfig") then
+		local newConfig = message.data
 		if newConfig.configVersion and newConfig.configVersion > config.configVersion then
 			config = newConfig
 			volume = config.volume or volume

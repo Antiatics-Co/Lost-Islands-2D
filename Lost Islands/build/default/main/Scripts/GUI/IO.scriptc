@@ -1,6 +1,6 @@
 
-ÃH
-§H--@Title Input Ouput
+ŽI
+îH--@Title Input Ouput
 --@Author Aidan Cox
 --@_VERSION = 2
 --@Description
@@ -265,21 +265,22 @@ function on_message(self, message_id, message, sender)
 
 		local loadedChecksum = defsave.get(configName, "checksum")
 		print("Loaded Checksum: ", loadedChecksum)
+		msg.post("main#Settings", "loadedConfig", {data = config})
 
 		-- Verify the checksum
-		if config then
+		--[[if config then
 			local current_checksum = generate_checksum(table_to_string(config))
 			print("Current Checksum: ", current_checksum)
 			if current_checksum == loadedChecksum then
 				print("Data integrity verified.")
-				config = config
-				msg.post("main#Settings", "configLoad", {data = config})
+				--config = config
+				msg.post("main#Settings", "loadedConfig", {data = config})
 			else
 				print("Data integrity check failed.")
 			end
 		else
 			print("No saved data found.")
-		end
+		end]]
 	end
 end
 
@@ -327,4 +328,4 @@ function configSave(configData)
 	defsave.save(configName)
 	print("Config saved successfully.")
 end
-@main/Scripts/IO.scriptdefsave.defsavemain.Scripts.Checksum.md5/defsave/defsave.luac/main/Scripts/Checksum/md5.luac" 
+@main/Scripts/GUI/IO.scriptdefsave.defsavemain.Scripts.Checksum.md5/defsave/defsave.luac/main/Scripts/Checksum/md5.luac" 
