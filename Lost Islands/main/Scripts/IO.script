@@ -155,13 +155,13 @@ function init(self)
 	if not status then
 		print("Error loading save file:", err)
 		-- Handle the error, e.g., reset to default values
-		defsave.set(configName, "default", config)
+		defsave.set(configName, "data", config)
 		defsave.set(configName, "checksum", generate_checksum(table_to_string(config)))
 	end
 
 	if file_exists(configName) then
 		local loadedChecksum = defsave.get(configName, "checksum")
-		local loadedData = defsave.get(configName, "default")
+		local loadedData = defsave.get(configName, "data")
 		print("Loaded Data: ", loadedData)
 		print("Loaded Checksum: ", loadedChecksum)
 
@@ -188,7 +188,7 @@ function init(self)
 					print("Data corruption detected.")
 					local checksum = generate_checksum(table_to_string(config))
 					delete_file(configName)  -- Delete the corrupted file
-					defsave.set(configName, "default", config)
+					defsave.set(configName, "data", config)
 					defsave.set(configName, "checksum", checksum)
 					defsave.save(configName)
 				end
@@ -196,7 +196,7 @@ function init(self)
 		else
 			print("No saved data found.")
 			local checksum = generate_checksum(table_to_string(config))
-			defsave.set(configName, "default", config)
+			defsave.set(configName, "data", config)
 			defsave.set(configName, "checksum", checksum)
 			defsave.save(configName)
 		end
@@ -205,7 +205,7 @@ function init(self)
 		local checksum = generate_checksum(table_to_string(config))
 		print("Initial Checksum: ", checksum)
 
-		defsave.set(configName, "default", config)
+		defsave.set(configName, "data", config)
 		defsave.set(configName, "checksum", checksum)
 		defsave.save(configName)
 	end
@@ -307,7 +307,7 @@ function save(data)
 end
 
 function configSave(configData)
-	if config == nil then
+	if configData == nil then
 		print("Error: config is nil")
 		return
 	end
