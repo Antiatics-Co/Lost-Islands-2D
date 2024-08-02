@@ -243,13 +243,77 @@ nodes {
     z: 0.0
   }
   type: TYPE_TEXT
-  text: "File Corrupted\n"
-  "resetting file to defaults\n"
-  "Press any button\n"
-  "to continue"
+  text: "File Corrupted"
   font: "default"
   id: "text4"
   parent: "corruptFile"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -71.23265
+    y: -22.72293
+  }
+  rotation {
+    x: -172.578
+  }
+  scale {
+    x: 0.970121
+    y: -0.373356
+  }
+  type: TYPE_BOX
+  texture: "Game/button"
+  id: "keep"
+  parent: "corruptFile"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.693035
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Keep File"
+  font: "default"
+  id: "text5"
+  parent: "keep"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 57.894268
+    y: -23.255499
+  }
+  scale {
+    x: 0.923948
+    y: -0.439256
+  }
+  type: TYPE_BOX
+  texture: "Game/button"
+  id: "reset"
+  parent: "corruptFile"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "default"
+  id: "text6"
+  parent: "reset"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

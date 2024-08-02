@@ -6,12 +6,12 @@
 -- has a checksum to verify integrity of files
 
 
+
 local defsave = require("defsave.defsave")
 local md5 = require("main.Scripts.Checksum.md5")
 
 local filename = "save"
 local configName = "config.save"
-local corrupt = false
 
 local location = "Default"
 local position = vmath.vector3(0, 0, 0)
@@ -19,7 +19,7 @@ local items = { 0, 0, 0}
 local elements = 1
 local health = 100
 
-local easyTable = { location, position, items, elements, health }
+local easyTable = { location, position, items, elements, health, version = 1 }
 
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
 local volume = 100
@@ -41,8 +41,21 @@ function file_exists(filename)
 	end
 end
 
+function string_to_table(str)
+	local func = load("return " .. str)
+	if func then
+		return func()
+	else
+		return nil
+	end
+end
+
 
 function table_to_string(tbl)
+	if tbl == nil then
+		return ""
+	end
+
 	local result = ""
 	for k, v in pairs(tbl) do
 		result = result .. tostring(k) .. value_to_string(v)
@@ -81,16 +94,8 @@ function init(self)
 	end)
 
 	if not status then
-		print("Error loading save file:", err) -- add plAYER CHOICE TO KEEP FILE OR RESET?
+		print("Error loading save file:", err)
 		-- Handle the error, e.g., reset to default values
-		msg.post(".", "acquire_input_focus")
-		
-		msg.post(  "main#MainMenu", "fileCorruption")
-		corrupt = true
-
-		delete_file(filename)
-		
-		defsave.load(filename)
 		defsave.set(filename, "default", easyTable)
 		defsave.set(filename, "checksum", generate_checksum(table_to_string(easyTable)))
 	end
@@ -107,11 +112,22 @@ function init(self)
 			print("Current Checksum: ", current_checksum)
 			if current_checksum == loadedChecksum then
 				print("Data integrity verified.")
+				easyTable = loadedData
 			else
 				print("Data integrity check failed.")
+				print("Expected Checksum: ", loadedChecksum)
+				print("Actual Checksum: ", current_checksum)
+				if loadedData.version and loadedData.version > (easyTable.version or 0) then
+					print("Data appears to be intentionally updated.")
+					easyTable = loadedData
+				else
+					print("Data corruption detected.")
+					msg.post("main#MainMenu", "fileCorruption")
+				end
 			end
 		else
 			print("No saved data found.")
+			msg.post("main#MainMenu", "fileCorruption")
 		end
 	else
 		print("No save file found.")
@@ -136,15 +152,22 @@ function init(self)
 	print("Save file created and data saved.")
 end
 
-
-
 function on_message(self, message_id, message, sender)
-	if message_id == "save" then
-		easyTable = message.save
+
+	if message_id == hash("reset") then
+		local checksum = generate_checksum(table_to_string(easyTable))
+		delete_file(filename)  -- Delete the corrupted file
+		defsave.set(filename, "default", easyTable)
+		defsave.set(filename, "checksum", checksum)
+		defsave.save(filename)
+	end
+	
+	if message_id == hash("save") then
+		easyTable = message.data
 		save(easyTable)
 	end
 
-	if message_id == "load" then
+	if message_id == hash("load") then
 		easyTable = defsave.get(filename, "data")
 
 		local loadedChecksum = defsave.get(filename, "checksum")
@@ -156,6 +179,7 @@ function on_message(self, message_id, message, sender)
 			print("Current Checksum: ", current_checksum)
 			if current_checksum == loadedChecksum then
 				print("Data integrity verified.")
+				easyTable = easyTable
 			else
 				print("Data integrity check failed.")
 			end
@@ -165,13 +189,14 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
-function on_input(self, action_id, action)
-	if action_id and corrupt == true then
-		msg.post( "main#MainMenu", "setDefault")
-	end
-end
-
 function save(easyTable)
+	if easyTable == nil then
+		print("Error: easyTable is nil")
+		return
+	end
+
+	easyTable.version = (easyTable.version or 0) + 1  -- Increment version
+
 	print("Easy Table", easyTable)
 
 	local new_checksum = generate_checksum(table_to_string(easyTable))
