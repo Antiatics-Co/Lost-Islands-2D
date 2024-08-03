@@ -3,17 +3,37 @@
 --@Version - 1
 --@Description - The Inventory system
 
+--Physical
+local UNEQUIPED = 0
+local WOODSWORD = 1
+local BROADSWORD = 2
+local SPEAR = 3
+local BOW = 4
 
 
+--Elements
+local FIRENUM = 5
+local WATER = 6
+local STONE = 7
 
+--shields
+local WOOD = 8
+local STEEL = 9
+local MAGICSHIELD = 10
 
+--Armour
+local LIGHT = 11
+local HEAVY = 12
+local MAGIC = 13
 
+--Money and Arrowa
+local PENDAL = 14
+local ARROW = 15
 
-
-
-
-
-
+--Quest Items
+local FIREDUNGEONKEYS = 16  --Player can only have one type of key  at a time, any leftover keys are Applied once the player reenters the dungeon
+local WATERDUNGEONKEYS = 17
+local STONEDUNGEONKEYS = 18
 
 function init(self)
 	-- Add initialization code here
