@@ -36,6 +36,14 @@ local FIREDUNGEONKEYS = 16  --Player can only have one type of key  at a time, a
 local WATERDUNGEONKEYS = 17
 local STONEDUNGEONKEYS = 18
 
+
+--[[ Planning
+
+
+
+
+]]
+
 function init(self)
 	-- Add initialization code here
 	-- Learn more: https://defold.com/manuals/script/
