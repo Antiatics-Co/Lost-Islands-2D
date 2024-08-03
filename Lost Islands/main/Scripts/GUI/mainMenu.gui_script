@@ -22,7 +22,42 @@ function update(self, dt)
 	--msg.post(receiver, message_id)
 end
 
+function save() --Temporarily sending default values for testing purposes, change to be correct when implementing complete load
+
+	----------------------------Setting defaults for testing --------------------------------
+	
+	------------------------------------Dungeons
+
+	local fireDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
+	local waterDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
+	local stoneDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
+
+	local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion = 1 }
+
+	-------------------------------------Location, Energy, and Health Data
+
+	local location = "Default"
+	local position = vmath.vector3(0, 0, 0)
+	local energy = 100
+	local health = 100
+
+
+	local easyTable = { location, position, energy, health, version = 1 }
+
+	-----------------------------------------------------------------------------
+	
+	msg.post("menu#PauseMenu", "playerReady", { playerData =  easyTable})
+	msg.post("Menu#PauseMenu", "dungeonReady", { dungeonsData =  dungeonStatus})
+
+	print("Save Data Posted From Main")
+	
+end
+
 function on_message(self, message_id, message, sender)
+
+	if message_id == "fileSave" then
+		save()
+	end
 
 	if message_id == hash("istrue") then
 		gui.set_enabled(gui.get_node("main"), true)

@@ -6,35 +6,50 @@
 -- these are the item numbers, for use in the inventory
 
 --Physical
-local UNEQUIPED = 0 -- this is the default in the equiped section
+
+local EMPTY = 0 -- this is the default in the equiped section
 local WOODSWORD = 1
 local BROADSWORD = 2
 local SPEAR = 3
 local BOW = 4
 
---Elements
-local FIRENUM = 5
-local WATER = 6
-local STONE = 7
-
 --shields
-local WOOD = 8
-local STEEL = 9
-local MAGICSHIELD = 10
+
+local WOOD = 5
+local STEEL = 6
+local MAGICSHIELD = 7
 
 --Armour
-local LIGHT = 11
-local HEAVY = 12
-local MAGIC = 13
+
+local LIGHT = 8
+local HEAVY = 9
+local MAGIC = 10
+
+--Elements
+
+local FIRENUM = 11
+local WATER = 12
+local STONE = 13
+
+
+--Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
+
+local FIREDUNGEONKEYS = { 14, 10 }--Player can only have one type of key  at a time, any leftover keys are Applied once the player reenters the dungeon
+local WATERDUNGEONKEYS = { 15, 10 }
+local STONEDUNGEONKEYS = { 16, 10 }
 
 --Money and Arrows --have a special section in inventory, may be in hud, same with keys
-local PENDAL = 14
-local ARROW = 15
 
---Quest Items
-local FIREDUNGEONKEYS = 16  --Player can only have one type of key  at a time, any leftover keys are Applied once the player reenters the dungeon
-local WATERDUNGEONKEYS = 17
-local STONEDUNGEONKEYS = 18
+local ARROW = { 17, 40 }
+local PENDAL = { 18, 100 }
+
+local EMPTYMISC = { 0, 0 }
+
+local items = { empty = EMPTY, woodSword = EMPTY, broadsword = EMPTY, spear = EMPTY, bow = EMPTY, 
+woodShield = EMPTY, steelShiel = EMPTY, magicShield = EMPTY, 
+lightArmour = EMPTY, heavyArmour = EMPTY, magicArmour = EMPTY, fireElement = EMPTY, 
+waterElement = EMPTY, stoneElement = EMPTY, fireDungeonKeys = EMPTYMISC, waterDungeonKeys = EMPTYMISC,
+stoneDungeonKeys = EMPTYMISC, arrow = EMPTYMISC, pendal = EMPTYMISC, itemVersion = 1 } --set number to item num above 0 default
 
 
 function init(self)

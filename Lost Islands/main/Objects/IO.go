@@ -4,5 +4,5 @@ components {
 }
 components {
   id: "IO"
-  component: "/main/Scripts/GUI/IO.script"
+  component: "/main/Scripts/IO.script"
 }
