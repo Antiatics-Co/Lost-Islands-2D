@@ -17,9 +17,9 @@ local configName = "config.save"
 
 ------------------------------------Dungeons
 
-local fireDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
-local waterDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
-local stoneDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
+local fireDungeon = { doors = { 0 }, chestsOpened = {  0 }, bossBeaten = false }
+local waterDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
+local stoneDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
 
 local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion = 1 }
 
@@ -28,7 +28,6 @@ local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion =
 local location = "Default"
 local position = vmath.vector3(0, 0, 0)
 local energy = 100
-local elements = 1
 local health = 100
 
 
@@ -107,14 +106,14 @@ function file_exists(filename)
 end
 
 function string_to_table(str)
-	local func = load("return " .. str)
+	local func, err = load("return " .. str)
 	if func then
 		return func()
 	else
+		print("Error loading string:", err)
 		return nil
 	end
 end
-
 
 function table_to_string(tbl)
 	if tbl == nil then
@@ -122,8 +121,16 @@ function table_to_string(tbl)
 	end
 
 	local result = ""
-	for k, v in pairs(tbl) do
-		result = result .. tostring(k) .. value_to_string(v)
+	local keys = {}
+	for k in pairs(tbl) do
+		table.insert(keys, k)
+	end
+	table.sort(keys, function(a, b)
+		return tostring(a) < tostring(b)
+	end)
+
+	for _, k in ipairs(keys) do
+		result = result .. tostring(k) .. "=" .. value_to_string(tbl[k]) .. ";"
 	end
 	return result
 end
@@ -131,12 +138,14 @@ end
 function value_to_string(value)
 	if type(value) == "table" then
 		return table_to_string(value)
-	elseif type(value) == "userdata" and vmath.vector3 and vmath.vector3(value) then
-		return tostring(value.x) .. tostring(value.y) .. tostring(value.z)
+	elseif type(value) == "userdata" and getmetatable(value) == getmetatable(vmath.vector3()) then
+		return tostring(value.x) .. "," .. tostring(value.y) .. "," .. tostring(value.z)
 	else
 		return tostring(value)
 	end
 end
+
+
 
 function delete_file(filename)
 	local filepath = sys.get_save_file("LostIslands", filename)
@@ -164,14 +173,20 @@ function init(self)
 		print("Error loading save file:", err)
 		-- Handle the error, e.g., reset to default values
 		defsave.set(filename, "default", easyTable)
-		defsave.set(filename, "checksum", generate_checksum(table_to_string(easyTable)))
+		defsave.set(filename, "checksumPlayer", generate_checksum(table_to_string(easyTable)))
+
+		defsave.set(filename, "dungeon", dungeonStatus)
+		defsave.set(filename, "checksumDungeons", generate_checksum(table_to_string(dungeonStatus)))
+
+		defsave.set(filename, "item", easyTable)
+		defsave.set(filename, "checksumItems", generate_checksum(table_to_string(items)))
 	end
 
 	if file_exists(filename) then
-		local loadedChecksum = defsave.get(filename, "checksum")
+		local loadedChecksum = defsave.get(filename, "checksumPlayer")
 		local loadedData = defsave.get(filename, "default")
 		print("Loaded Data: ", loadedData)
-		print("Loaded Checksum: ", loadedChecksum)
+		print("Loaded checksumPlayer: ", loadedChecksum)
 
 		-- Verify the checksum
 		if loadedData then
@@ -209,27 +224,16 @@ function init(self)
 		print("Initial Checksum: ", checksum)
 
 		defsave.set(filename, "default", easyTable)
-		defsave.set(filename, "checksum", checksum)
+		defsave.set(filename, "checksumPlayer", checksum)
 	end
 
 	-------------------------------Verification Dungeons--------------------------------------------
 
-	local status, err = pcall(function()
-		defsave.load(filename)
-	end)
-
-	if not status then
-		print("Error loading save file:", err)
-		-- Handle the error, e.g., reset to default values
-		defsave.set(filename, "dungeon", dungeonStatus)
-		defsave.set(filename, "checksum", generate_checksum(table_to_string(dungeonStatus)))
-	end
-
 	if file_exists(filename) then
-		local loadedChecksum = defsave.get(filename, "checksum")
+		local loadedChecksum = defsave.get(filename, "checksumDungeons")
 		local loadedData = defsave.get(filename, "dungeon")
 		print("Loaded Data: ", loadedData)
-		print("Loaded Checksum: ", loadedChecksum)
+		print("Loaded checksumDungeons: ", loadedChecksum)
 
 		-- Verify the checksum
 		if loadedData then
@@ -267,27 +271,16 @@ function init(self)
 		print("Initial Checksum: ", checksum)
 
 		defsave.set(filename, "dungeon", dungeonStatus)
-		defsave.set(filename, "checksum", checksum)
+		defsave.set(filename, "checksumDungeons", checksum)
 	end
 
 	-------------------------------Verification Items-----------------------------------------------
 
-	local status, err = pcall(function()
-		defsave.load(filename)
-	end)
-
-	if not status then
-		print("Error loading save file:", err)
-		-- Handle the error, e.g., reset to default values
-		defsave.set(filename, "item", items)
-		defsave.set(filename, "checksum", generate_checksum(table_to_string(items)))
-	end
-
 	if file_exists(filename) then
-		local loadedChecksum = defsave.get(filename, "checksum")
+		local loadedChecksum = defsave.get(filename, "checksumItems")
 		local loadedData = defsave.get(filename, "item")
 		print("Loaded Data: ", loadedData)
-		print("Loaded Checksum: ", loadedChecksum)
+		print("Loaded checksumItems: ", loadedChecksum)
 
 		-- Verify the checksum
 		if loadedData then
@@ -325,7 +318,7 @@ function init(self)
 		print("Initial Checksum: ", checksum)
 
 		defsave.set(filename, "item", items)
-		defsave.set(filename, "checksum", checksum)
+		defsave.set(filename, "checksumItems", checksum)
 	end
 
 	-------------------------------verifcation config-----------------------------------------------
