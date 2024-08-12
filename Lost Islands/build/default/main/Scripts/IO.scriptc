@@ -1,6 +1,6 @@
 
-Å
-©--@Title Input Ouput
+Ý€
+À€--@Title Input Ouput
 --@Author Aidan Cox
 --@_VERSION = 2
 --@Description
@@ -414,6 +414,12 @@ function on_message(self, message_id, message, sender)
 	end
 		
 	if message_id == hash("save") then
+		
+		print("Received save message")
+		print("Player data:", table_to_string(message.data))
+		print("Dungeon data:", table_to_string(message.dungeonData))
+		print("Item data:", table_to_string(message.itemData))
+		
 		save(message.data, message.dungeonData, message.itemData)
 	end
 
@@ -438,27 +444,26 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
-
 function save(data, dungeonData, itemData)
-
+	
 	-----------------------Save easyTable---------------------------------
 	if data == nil then
 		print("Error: data is nil")
 		return
 	end
-	
+
 	print("data table", table_to_string(data))
-		
+
 	data.version = (data.version or 0) + 1  -- Increment version
 	print("Incremented data Version in Save: ", data.version)
 
 	print("Easy Table", data)
 
-	local new_checksum = generate_checksum(table_to_string(data))
-	print("New Checksum: ", new_checksum)
+	local data_checksum = generate_checksum(table_to_string(data))
+	print("New Checksum: ", data_checksum)
 	print("Before saving, version:", data.version)
 	defsave.set(filename, "default", data)
-	defsave.set(filename, "checksum", generate_checksum(table_to_string(data)))
+	defsave.set(filename, "checksum", data_checksum)
 	print("After saving, version:", data.version)
 
 	---------------------------------Save Dungeons----------------------------
@@ -474,17 +479,17 @@ function save(data, dungeonData, itemData)
 
 	print("Dungeon ", dungeonData)
 
-	local new_checksum = generate_checksum(table_to_string(data))
-	print("New Checksum: ", new_checksum)
+	local dungeon_checksum = generate_checksum(table_to_string(dungeonData))
+	print("New Checksum: ", dungeon_checksum)
 	print("Before saving, statusVersion:", dungeonData.statusVersion)
 	defsave.set(filename, "dungeon", dungeonData)
-	defsave.set(filename, "checksum", generate_checksum(table_to_string(dungeonData)))
-	print("After saving, statusVersion:", dungeonData.statusVersion)	
+	defsave.set(filename, "checksum", dungeon_checksum)
+	print("After saving, statusVersion:", dungeonData.statusVersion)    
 
 	---------------------------------Save Items----------------------------
 
 	if itemData == nil then
-		print("Error: data is nil")
+		print("Error: itemData is nil")
 		return
 	end
 
@@ -495,19 +500,19 @@ function save(data, dungeonData, itemData)
 
 	print("Items ", itemData)
 
-	local new_checksum = generate_checksum(table_to_string(data))
-	print("New Checksum: ", new_checksum)
+	local item_checksum = generate_checksum(table_to_string(itemData))
+	print("New Checksum: ", item_checksum)
 	print("Before saving, itemVersion:", itemData.itemVersion)
 	defsave.set(filename, "item", itemData)
-	defsave.set(filename, "checksum", generate_checksum(table_to_string(itemData)))
+	defsave.set(filename, "checksum", item_checksum)
 	print("After saving, itemVersion:", itemData.itemVersion)
 
 	------------------------------------------------------------------
 
-	
 	defsave.save(filename)
 	print("Data saved successfully.")
 end
+
 
 function configSave(configData)
 	if configData == nil then

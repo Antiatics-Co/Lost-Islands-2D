@@ -22,7 +22,7 @@ function update(self, dt)
 	--msg.post(receiver, message_id)
 end
 
-function save() --Temporarily sending default values for testing purposes, change to be correct when implementing complete load
+local function save() --Temporarily sending default values for testing purposes, change to be correct when implementing complete load
 
 	----------------------------Setting defaults for testing --------------------------------
 	
@@ -47,7 +47,7 @@ function save() --Temporarily sending default values for testing purposes, chang
 	-----------------------------------------------------------------------------
 	
 	msg.post("menu#PauseMenu", "playerReady", { playerData =  easyTable})
-	msg.post("Menu#PauseMenu", "dungeonReady", { dungeonsData =  dungeonStatus})
+	msg.post("menu#PauseMenu", "dungeonsReady", { dungeonsData =  dungeonStatus})
 
 	print("Save Data Posted From Main")
 	
@@ -55,7 +55,8 @@ end
 
 function on_message(self, message_id, message, sender)
 
-	if message_id == "fileSave" then
+	if message_id == hash("fileSave") then
+		print("fileSave MainMenu")
 		save()
 	end
 

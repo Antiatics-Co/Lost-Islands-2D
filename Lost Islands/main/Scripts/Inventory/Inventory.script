@@ -1,13 +1,13 @@
 --@Title - Inventory
 --@Author - Aidan Cox
---@Version - 1
+--@Version - 3
 --@Description - The Inventory system
 
 -- these are the item numbers, for use in the inventory
 
 --Physical
 
-local EMPTY = 0 -- this is the default in the equiped section
+local EMPTY = 0 -- this is the default in the equipped section
 local WOODSWORD = 1
 local BROADSWORD = 2
 local SPEAR = 3
@@ -31,10 +31,9 @@ local FIRENUM = 11
 local WATER = 12
 local STONE = 13
 
-
 --Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
 
-local FIREDUNGEONKEYS = { 14, 10 }--Player can only have one type of key  at a time, any leftover keys are Applied once the player reenters the dungeon
+local FIREDUNGEONKEYS = { 14, 10 }--Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
 local WATERDUNGEONKEYS = { 15, 10 }
 local STONEDUNGEONKEYS = { 16, 10 }
 
@@ -45,69 +44,35 @@ local PENDAL = { 18, 100 }
 
 local EMPTYMISC = { 0, 0 }
 
+-- Define items as a global variable
 local items = { empty = EMPTY, woodSword = EMPTY, broadsword = EMPTY, spear = EMPTY, bow = EMPTY, 
-woodShield = EMPTY, steelShiel = EMPTY, magicShield = EMPTY, 
+woodShield = EMPTY, steelShield = EMPTY, magicShield = EMPTY, 
 lightArmour = EMPTY, heavyArmour = EMPTY, magicArmour = EMPTY, fireElement = EMPTY, 
 waterElement = EMPTY, stoneElement = EMPTY, fireDungeonKeys = EMPTYMISC, waterDungeonKeys = EMPTYMISC,
-stoneDungeonKeys = EMPTYMISC, arrow = EMPTYMISC, pendal = EMPTYMISC, itemVersion = 1 } --set number to item num above 0 default
+stoneDungeonKeys = EMPTYMISC, arrow = EMPTYMISC, pendal = EMPTYMISC, itemVersion = 1 }
 
+print("Items defined:", items)
 
---[[ Planning
-
-1. player picks up item
-2. player sends item information?  then all items are a game object.
-
-	this file just compiles all the items the player has, and the number of them, 
-	Item shops, would check to see if item exists in inventory, or if number is at limit
-	
-	]]
-
-function save()
-	msg.post("menu#PauseMenu", "itemsReady", {itemData = items} )
-	print("Save Data Posted From Inventory")
-end
-
-function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function fixed_update(self, dt)
-	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
-	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
-	-- Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-	if message_id == "fileSave" then
-		save()
+local function save()
+	print("Entered save function")
+-- Check if items is defined and not nil
+	if items then
+		msg.post("menu#PauseMenu", "itemsReady", {itemData = items})
+		print("Save Data Posted From Inventory")
+	else
+		print("Error: items is nil or not defined")
 	end
 end
 
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
+
+function init(self)
+	print("Script initialized")
+end
+
+function on_message(self, message_id, message, sender)
+	print("Received message:", message_id)
+	if message_id == hash("fileSave") then
+		print("fileSave Inventory")
+		save()
+	end
 end

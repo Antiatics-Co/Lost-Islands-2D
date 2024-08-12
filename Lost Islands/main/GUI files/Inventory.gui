@@ -25,6 +25,7 @@ nodes {
   id: "inventory"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
