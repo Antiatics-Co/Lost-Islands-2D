@@ -2,11 +2,16 @@ name: "MainMap"
 instances {
   id: "PlayerMap"
   prototype: "/main/Objects/PlayerMap/PlayerMap.go"
+  children: "OperatorMap"
   position {
     x: 18.0
     y: 15.0
     z: 1.0
   }
+}
+instances {
+  id: "OperatorMap"
+  prototype: "/main/Objects/PlayerMap/OperatorMap.go"
 }
 scale_along_z: 0
 embedded_instances {
