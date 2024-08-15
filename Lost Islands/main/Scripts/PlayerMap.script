@@ -5,6 +5,8 @@
 @Description - handles inputs and messages involving the player on the map
 ]]--
 
+
+
 function init(self)
 	msg.post(".","acquire_input_focus")
 	msg.post("@render", "use_camera_projection")
