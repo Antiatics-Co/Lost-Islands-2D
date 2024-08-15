@@ -11,6 +11,20 @@ embedded_components {
   "restitution: 0.5\n"
   "group: \"default\"\n"
   "mask: \"default\"\n"
+  "embedded_collision_shape {\n"
+  "  shapes {\n"
+  "    shape_type: TYPE_BOX\n"
+  "    position {\n"
+  "    }\n"
+  "    rotation {\n"
+  "    }\n"
+  "    index: 0\n"
+  "    count: 3\n"
+  "  }\n"
+  "  data: 16.056337\n"
+  "  data: 14.918033\n"
+  "  data: 10.0\n"
+  "}\n"
   ""
 }
 embedded_components {
@@ -23,4 +37,8 @@ embedded_components {
   "  texture: \"/Assets/Game.atlas\"\n"
   "}\n"
   ""
+  scale {
+    x: 1.016949
+    y: 0.953846
+  }
 }

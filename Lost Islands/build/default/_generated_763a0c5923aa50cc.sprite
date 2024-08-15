@@ -1,0 +1,7 @@
+default_animation: "slime"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA
+textures {
+  sampler: "texture_sampler"
+  texture: "/Assets/Game.atlas"
+}

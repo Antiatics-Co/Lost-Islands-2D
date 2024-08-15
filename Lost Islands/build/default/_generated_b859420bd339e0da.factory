@@ -1,0 +1,3 @@
+prototype: "/main/Objects/Elements/FireBulletEnemy.go"
+load_dynamically: false
+dynamic_prototype: false
