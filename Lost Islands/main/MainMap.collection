@@ -4,14 +4,22 @@ instances {
   prototype: "/main/Objects/PlayerMap/PlayerMap.go"
   children: "OperatorMap"
   position {
-    x: 18.0
-    y: 15.0
-    z: 1.0
+    x: 279.0
+    y: 355.0
+    z: 7.0
   }
 }
 instances {
   id: "OperatorMap"
   prototype: "/main/Objects/PlayerMap/OperatorMap.go"
+  position {
+    x: -4.0
+    z: 10.0
+  }
+  scale3 {
+    x: 2.933963
+    y: 2.830791
+  }
 }
 scale_along_z: 0
 embedded_instances {

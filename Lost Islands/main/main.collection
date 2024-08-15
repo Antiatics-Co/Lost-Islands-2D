@@ -48,6 +48,12 @@ embedded_instances {
   "  data: \"collection: \\\"/main/Level.collection\\\"\\n"
   "\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"MainMap\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/main/MainMap.collection\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }
 embedded_instances {
