@@ -38,12 +38,12 @@ end
 local function animate(self)
 	if self.groundContact then
 		if self.velocity == 0 then
-			play_animation(self, "idle")
+			play_animation(self, "IdleMap")
 		else 
-			play_animation(self, "idle") --idle is stand in for movement animation
+			play_animation(self, "IdleMap") --idle is stand in for movement animation
 		end
 	else
-		play_animation(self, "idle") -- idle is stand in for jumping animation
+		play_animation(self, "IdleMap") -- idle is stand in for jumping animation
 	end
 end
 
