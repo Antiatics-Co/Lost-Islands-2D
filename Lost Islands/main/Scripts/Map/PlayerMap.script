@@ -13,6 +13,7 @@ function init(self)
 	msg.post(".","acquire_input_focus")
 	msg.post("@render", "use_camera_projection")
 	camera.acquire_focus("operatorMap#cameramap")
+	self.correction = vmath.vector3(0, 0, 0)
 	self.vel = vmath.vector3() -- Initialize velocity
 end
 
@@ -65,8 +66,19 @@ end
 
 -- not causing gravity to player charavter on map
 local function handleLevelCollisions(self, normal, distance)
+	if normal == nil then
+		print("Error: normal is nil")
+		return
+	end
 
-	print("Collision Normal:", normal)
+	distance = math.abs(distance) * vmath.length(normal)
+	print("Distance abs:", distance)
+	
+	if distance == nil or distance <= 0 then
+		print("Error: distance is invalid:", distance)
+		return
+	end
+	print("Distance:", distance)
 
 	distance = distance * vmath.length(normal) --normal dist compensation
 
@@ -93,6 +105,11 @@ end
 
 
 function on_message(self, message_id, message, sender)
+
+	if message_id == hash("contact_point_response") then
+		print("Received normal:", message.normal)
+		handleLevelCollisions(self, message.normal, message.distance)
+	end
 
 	if message_id == hash("startRecievingInput") then
 		recievingInputs = true
