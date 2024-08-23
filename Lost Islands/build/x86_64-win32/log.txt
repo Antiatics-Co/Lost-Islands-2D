@@ -1,33 +1,192 @@
-clang++ -DDLIB_LOG_DOMAIN="DEFSAVEEXTENSION" -DDDF_EXPOSE_DESCRIPTORS -DDM_PLATFORM_WINDOWS -D_CRT_SECURE_NO_WARNINGS -D_CRT_USE_BUILTIN_OFFSETOF -D_WINSOCK_DEPRECATED_NO_WARNINGS -D__STDC_LIMIT_MACROS -DWINVER=0x0600 -DWIN32 -DNOMINMAX  -target x86_64-pc-win32-msvc -m64 -O2 -g -gcodeview -O2 -Wall -Werror=format -fvisibility=hidden -nostdinc++  -nostdinc++ -isystem /usr/lib/llvm-17/lib/clang/17/include -isystem /opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//include -isystem /opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//atlmfc/include -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/ucrt -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/winrt -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/um -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/shared  -Ibuild/defsave/ -Iupload/  -I/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//include -I/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include -I/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//ext/include  upload/defsave/src/defsave.cpp -c -o build/defsave.cpp_0.o
+clang++ -DDLIB_LOG_DOMAIN="DEFSAVEEXTENSION" -DDDF_EXPOSE_DESCRIPTORS -DDM_PLATFORM_WINDOWS -D_CRT_SECURE_NO_WARNINGS -D_CRT_USE_BUILTIN_OFFSETOF -D_WINSOCK_DEPRECATED_NO_WARNINGS -D__STDC_LIMIT_MACROS -DWINVER=0x0600 -DWIN32 -DNOMINMAX  -target x86_64-pc-win32-msvc -m64 -O2 -g -gcodeview -O2 -Wall -Werror=format -fvisibility=hidden -nostdinc++  -nostdinc++ -isystem /usr/lib/llvm-17/lib/clang/17/include -isystem /opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//include -isystem /opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//atlmfc/include -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/ucrt -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/winrt -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/um -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/shared  -Ibuild/defsave/ -Iupload/  -I/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//include -I/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include -I/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//ext/include  upload/defsave/src/defsave.cpp -c -o build/defsave.cpp_0.o
 In file included from upload/defsave/src/defsave.cpp:5:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/sdk.h:18:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/extension/extension.h:19:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/resource/resource.h:29:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/dlib/hash.h:21:
-/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/dlib/dalloca.h:33:13: warning: 'alloca' macro redefined [-Wmacro-redefined]
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/sdk.h:18:
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/extension/extension.h:19:
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/resource/resource.h:29:
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/dlib/hash.h:21:
+/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/dlib/dalloca.h:33:13: warning: 'alloca' macro redefined [-Wmacro-redefined]
    33 |     #define alloca(_SIZE) _alloca(_SIZE)
       |             ^
 /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/ucrt/malloc.h:176:13: note: previous definition is here
   176 |     #define alloca _alloca
       |             ^
 In file included from upload/defsave/src/defsave.cpp:5:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/sdk.h:19:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/engine/extension.h:26:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/engine/extension.hpp:21:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/gameobject/gameobject.h:22:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/dlib/vmath.h:18:
-In file included from /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/vectormath/cpp/vectormath_aos.h:40:
-/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/vectormath/cpp/../scalar/cpp/vectormath_aos.h:63:11: warning: private field 'd' is not used [-Wunused-private-field]
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/sdk.h:19:
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/engine/extension.h:26:
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/engine/extension.hpp:21:
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/gameobject/gameobject.h:22:
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/dlib/vmath.h:18:
+In file included from /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/vectormath/cpp/vectormath_aos.h:40:
+/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/vectormath/cpp/../scalar/cpp/vectormath_aos.h:63:11: warning: private field 'd' is not used [-Wunused-private-field]
    63 |     float d;
       |           ^
-/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include/dmsdk/vectormath/cpp/../scalar/cpp/vectormath_aos.h:607:11: warning: private field 'd' is not used [-Wunused-private-field]
+/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include/dmsdk/vectormath/cpp/../scalar/cpp/vectormath_aos.h:607:11: warning: private field 'd' is not used [-Wunused-private-field]
   607 |     float d;
       |           ^
 3 warnings generated.
-/usr/bin/ar rcs /tmp/job8701725871696378044/build/DefsaveExtension_1.lib build/defsave.cpp_0.o 
-windres -i /var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//lib/x86_64-win32/engine.rc -O coff -o build/dmengine.res
-clang++ -DDLIB_LOG_DOMAIN="UNKNOWN" -DDDF_EXPOSE_DESCRIPTORS -DDM_PLATFORM_WINDOWS -D_CRT_SECURE_NO_WARNINGS -D_CRT_USE_BUILTIN_OFFSETOF -D_WINSOCK_DEPRECATED_NO_WARNINGS -D__STDC_LIMIT_MACROS -DWINVER=0x0600 -DWIN32 -DNOMINMAX  -target x86_64-pc-win32-msvc -m64 -O2 -g -gcodeview -O2 -Wall -Werror=format -fvisibility=hidden -nostdinc++  -nostdinc++ -isystem /usr/lib/llvm-17/lib/clang/17/include -isystem /opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//include -isystem /opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//atlmfc/include -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/ucrt -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/winrt -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/um -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/shared   -I/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//include -I/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//sdk/include -I/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//ext/include  build/main.cpp -c -o build/main_tmp2.o
-clang++ -o build/dmengine.exe -target x86_64-pc-win32-msvc -m64 -O2 -g -O2 -fuse-ld=lld -Wl,/entry:mainCRTStartup -Wl,/safeseh:no  -L/tmp/job8701725871696378044/build  -lOpenGL32 -ldelayimp -lUser32 -lshell32 -lXinput9_1_0 -ldinput8 -ldxguid -lOpenAL32 -lWS2_32 -liphlpapi -lDbgHelp -lAdvAPI32 -lPsapi -lGdi32  -lDefsaveExtension_1  -L/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//lib/x86_64-win32 -L/var/extender/sdk/691478c02875b80e76da65d2f5756394e7a906b1/defoldsdk//ext/lib/x86_64-win32 -L/opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//lib/x64 -L/opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//atlmfc/lib/x64 -L/opt/platformsdk/Win32/WindowsKits/10//Lib/10.0.20348.0/ucrt/x64 -L/opt/platformsdk/Win32/WindowsKits/10//Lib/10.0.20348.0/um/x64  -llibengine -llibengine_service -llibmbedtls -llibzip -llibprofile -llibremotery -llibprofilerext -llibrecord -llibgameobject -llibddf -llibresource -llibgamesys -llibscript_box2d -llibgraphics -llibgraphics_transcoder_basisu -llibbasis_transcoder -llibphysics -llibBulletDynamics -llibBulletCollision -llibplatform -llibLinearMath -llibBox2D -llibrender -llibscript -llibluajit-5.1 -llibextension -llibhid -llibinput -llibparticle -llibrig -llibdlib -llibdmglfw -llibgui -llibcrashext -llibliveupdate -llibsound -lvpx  build/main_tmp2.o build/dmengine.res 
+/usr/bin/ar rcs /tmp/job13636160198377060823/build/DefsaveExtension_1.lib build/defsave.cpp_0.o 
+windres -i /var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//lib/x86_64-win32/engine.rc -O coff -o build/dmengine.res
+clang++ -DDLIB_LOG_DOMAIN="UNKNOWN" -DDDF_EXPOSE_DESCRIPTORS -DDM_PLATFORM_WINDOWS -D_CRT_SECURE_NO_WARNINGS -D_CRT_USE_BUILTIN_OFFSETOF -D_WINSOCK_DEPRECATED_NO_WARNINGS -D__STDC_LIMIT_MACROS -DWINVER=0x0600 -DWIN32 -DNOMINMAX  -target x86_64-pc-win32-msvc -m64 -O2 -g -gcodeview -O2 -Wall -Werror=format -fvisibility=hidden -nostdinc++  -nostdinc++ -isystem /usr/lib/llvm-17/lib/clang/17/include -isystem /opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//include -isystem /opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//atlmfc/include -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/ucrt -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/winrt -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/um -isystem /opt/platformsdk/Win32/WindowsKits/10//Include/10.0.20348.0/shared   -I/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//include -I/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//sdk/include -I/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//ext/include  build/main.cpp -c -o build/main_tmp2.o
+clang++ -o build/dmengine.exe -target x86_64-pc-win32-msvc -m64 -O2 -g -O2 -fuse-ld=lld -Wl,/entry:mainCRTStartup -Wl,/safeseh:no  -L/tmp/job13636160198377060823/build  -lOpenGL32 -ldelayimp -lUser32 -lshell32 -lXinput9_1_0 -ldinput8 -ldxguid -lOpenAL32 -lWS2_32 -liphlpapi -lDbgHelp -lAdvAPI32 -lPsapi -lGdi32  -lDefsaveExtension_1  -L/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//lib/x86_64-win32 -L/var/extender/sdk/3251ca82359cf238a1074e383281e3126547d50b/defoldsdk//ext/lib/x86_64-win32 -L/opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//lib/x64 -L/opt/platformsdk/Win32/MicrosoftVisualStudio2022/VC/Tools/MSVC/14.37.32822//atlmfc/lib/x64 -L/opt/platformsdk/Win32/WindowsKits/10//Lib/10.0.20348.0/ucrt/x64 -L/opt/platformsdk/Win32/WindowsKits/10//Lib/10.0.20348.0/um/x64  -llibengine -llibengine_service -llibmbedtls -llibzip -llibprofile -llibremotery -llibprofilerext -llibrecord -llibgameobject -llibddf -llibresource -llibgamesys -llibgamesys_model -llibgamesys_rig -llibscript_box2d -llibgraphics -llibgraphics_transcoder_basisu -llibbasis_transcoder -llibphysics -llibBulletDynamics -llibBulletCollision -llibplatform -llibLinearMath -llibBox2D -llibrender -llibscript -llibluajit-5.1 -llibextension -llibhid -llibinput -llibparticle -llibrig -llibdlib -llibimage -llibglfw3 -llibgui -llibcrashext -llibliveupdate -llibsound -lvpx  build/main_tmp2.o build/dmengine.res 
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_api.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_aux.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_err.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_obj.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_gc.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_debug.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_str.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_tab.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_func.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_udata.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_meta.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_state.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_trace.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_strscan.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_strfmt.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_init.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_load.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_cdata.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_buf.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_dispatch.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_vmevent.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_bc.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_prng.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_char.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_vmmath.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_strfmt_num.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_lib.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_ctype.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_lex.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_alloc.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_profile.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_opt_dce.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_opt_loop.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_opt_sink.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_mcode.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_snap.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_record.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_asm.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_base.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_ccallback.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_bit.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_math.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_string.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_table.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_io.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_os.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_package.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_debug.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_jit.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_ffi.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_bcwrite.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_bcread.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_parse.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
 lld-link: warning: Cannot use debug info for 'vpx.lib(vpx_src_vpx_image.obj)' [LNK4099]
 >>> failed to load reference 'C:\repos\defold\share\ext\vpx\tmp\x64\Release\vpx\vpx.pdb': No such file or directory
 
@@ -39,6 +198,39 @@ lld-link: warning: Cannot use debug info for 'vpx.lib(vpx_src_vpx_encoder.obj)' 
 
 lld-link: warning: Cannot use debug info for 'vpx.lib(vp8_vp8_cx_iface.obj)' [LNK4099]
 >>> failed to load reference 'C:\repos\defold\share\ext\vpx\tmp\x64\Release\vpx\vpx.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_cconv.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_ir.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_opt_fold.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_opt_mem.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_opt_narrow.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_ffrecord.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_carith.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lib_buffer.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_cparse.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_ccall.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_clib.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
 
 lld-link: warning: Cannot use debug info for 'vpx.lib(vpx_mem_vpx_mem.obj)' [LNK4099]
 >>> failed to load reference 'C:\repos\defold\share\ext\vpx\tmp\x64\Release\vpx\vpx.pdb': No such file or directory
@@ -54,6 +246,12 @@ lld-link: warning: Cannot use debug info for 'vpx.lib(vpx_scale_vpx_scale_rtcd.o
 
 lld-link: warning: Cannot use debug info for 'vpx.lib(vp8_encoder_onyx_if.obj)' [LNK4099]
 >>> failed to load reference 'C:\repos\defold\share\ext\vpx\tmp\x64\Release\vpx\vpx.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_serialize.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
+
+lld-link: warning: Cannot use debug info for 'libluajit-5.1.lib(lj_crecord.obj)' [LNK4099]
+>>> failed to load reference 'D:\a\defold\defold\share\ext\luajit\tmp_x64\LuaJIT-04dca7911ea255f37be799c18d74c305b921c1a6\src\vc140.pdb': No such file or directory
 
 lld-link: warning: Cannot use debug info for 'vpx.lib(vp8_encoder_x86_vp8_quantize_sse2.obj)' [LNK4099]
 >>> failed to load reference 'C:\repos\defold\share\ext\vpx\tmp\x64\Release\vpx\vpx.pdb': No such file or directory
