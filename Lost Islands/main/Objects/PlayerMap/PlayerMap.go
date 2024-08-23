@@ -1,6 +1,6 @@
 components {
   id: "PlayerMap"
-  component: "/main/Scripts/PlayerMap.script"
+  component: "/main/Scripts/Map/PlayerMap.script"
 }
 embedded_components {
   id: "collisionobject"

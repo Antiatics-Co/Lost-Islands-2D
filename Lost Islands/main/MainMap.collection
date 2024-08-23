@@ -13,7 +13,7 @@ instances {
   id: "OperatorMap"
   prototype: "/main/Objects/PlayerMap/OperatorMap.go"
   position {
-    z: 10.0
+    z: 100.0
   }
 }
 scale_along_z: 0
@@ -22,6 +22,10 @@ embedded_instances {
   data: "components {\n"
   "  id: \"MainMap\"\n"
   "  component: \"/Assets/Images/TileMaps/MainMap.tilemap\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"map\"\n"
+  "  component: \"/main/Scripts/Map/map.script\"\n"
   "}\n"
   ""
   scale3 {
