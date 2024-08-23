@@ -2,6 +2,9 @@ name: "main"
 instances {
   id: "Player"
   prototype: "/main/Objects/Player/Player.go"
+  position {
+    y: -702.0
+  }
 }
 instances {
   id: "IO"
@@ -10,6 +13,13 @@ instances {
 instances {
   id: "Inventory"
   prototype: "/main/Objects/Inventory.go"
+}
+instances {
+  id: "PlayerMap"
+  prototype: "/main/Objects/PlayerMap/PlayerMap.go"
+  position {
+    y: -709.0
+  }
 }
 scale_along_z: 0
 embedded_instances {
