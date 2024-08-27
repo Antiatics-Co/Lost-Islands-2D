@@ -21,9 +21,9 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 15.987804\n"
-  "  data: 14.858094\n"
-  "  data: 10.0\n"
+  "  data: 0.5\n"
+  "  data: 0.5\n"
+  "  data: 0.5\n"
   "}\n"
   ""
 }
