@@ -7,7 +7,7 @@
 
 local BASEVELOCITY = 150
 local recievingInputs = false
-local MAX_DISTANCE = .000002000000999999 --doesn't work still causes player to be pushed away , and collision doen't occur
+local MAX_DISTANCE = .0090 --doesn't work still causes player to be pushed away , and collision doen't occur
 
 
 
@@ -75,55 +75,30 @@ local function handleLevelCollisions(self, normal, distance)
 
 	print("Collision Normal:", normal)
 
-	distance = math.abs(distance) -- Use the absolute distance directly
-	--distance = distance * MAX_DISTANCE
+	-- distance = math.abs(distance) -- Use the absolute distance directly
+	distance = distance * (MAX_DISTANCE or 1)
 
 	print("Cdistance checker 1:", distance)
 
 	if distance > 0 then
 		-- Project accumulated correction onto the penetration vector
-		local projection = vmath.project(self.correction, normal * distance)
-		
+		local projection = vmath.dot(self.correction, normal) / distance
 		if projection < 1 then
 			local compensation = (distance - distance * projection) * normal
 			go.set_position(go.get_position() + compensation) -- Apply compensation
-			self.correction = self.correction + compensation
+			self.correction = --[[self.correction]] compensation
 		end
 	end
 
-	local normalLength = vmath.length(normal)
-	if normalLength > 0 then
-		self.vel.x = 0
-	end
-
-	if math.abs(normal.x) > 0 then
-		self.vel.x = 0
-	end
-	
 	-- Stop movement in the direction of the collision
-	--[[if math.abs(normal.x) > 0 then
+	if vmath.length(normal) > 0 then
 		self.vel.x = 0
-		local pos = go.get_position()
-		pos.x = pos.x + normal.x + distance
-		go.set_position(pos)
-	end]]
-
-	--[[if math.abs(normal.y) > 0 then
-		self.vel.y = 0
-		local pos = go.get_position()
-		pos.y = pos.y + normal.y + distance
-		go.set_position(pos)
-	end]]
-	
-	
-	if normalLength > 0 then
 		self.vel.y = 0
 	end
 
-	if math.abs(normal.y) > 0 then
-		self.vel.y = 0
-	end
+	--self.correction = vmath.vector3(0, 0, 0) --this causes the collision to occur so far away for some reason, it also makes the collision stable
 end
+
 
 
 function on_message(self, message_id, message, sender)
