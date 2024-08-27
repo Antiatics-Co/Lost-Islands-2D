@@ -7,7 +7,7 @@
 
 local BASEVELOCITY = 150
 local recievingInputs = false
-local MAX_DISTANCE = .099999999999999999
+local MAX_DISTANCE = .000002000000999999 --doesn't work still causes player to be pushed away , and collision doen't occur
 
 
 
@@ -68,6 +68,7 @@ end
 
 
 local function handleLevelCollisions(self, normal, distance)
+
 	if normal == nil then
 		print("Error: normal is nil")
 		return
@@ -76,6 +77,9 @@ local function handleLevelCollisions(self, normal, distance)
 	print("Collision Normal:", normal)
 
 	distance = math.abs(distance) -- Use the absolute distance directly
+	distance = distance * MAX_DISTANCE
+
+	print("Cdistance checker 1:", distance)
 
 	if distance > 0 then
 		-- Project accumulated correction onto the penetration vector
