@@ -1,5 +1,9 @@
 tile_set: "/Assets/Images/tile_set.tilesource"
 layers {
+  id: "layer1"
+  z: 0.0
+}
+layers {
   id: "Tile Layer 1"
   z: 1.0E-4
   cell {

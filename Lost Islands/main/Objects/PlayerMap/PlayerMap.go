@@ -10,7 +10,7 @@ embedded_components {
   "friction: 0.1\n"
   "restitution: 0.5\n"
   "group: \"playerMap\"\n"
-  "mask: \"map\"\n"
+  "mask: \"/Assets/Images/tile_set.tilesource\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
