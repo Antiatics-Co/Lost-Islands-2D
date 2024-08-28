@@ -112,6 +112,11 @@ end
 
 function on_message(self, message_id, message, sender)
 
+	if message_id == hash("collision_response") then
+		print("Collision detected with", message.other_id)
+		-- Handle collision logic here
+	end
+
 	if message_id == hash("contact_point_response") then
 		print("Received normal:", message.normal)
 		
