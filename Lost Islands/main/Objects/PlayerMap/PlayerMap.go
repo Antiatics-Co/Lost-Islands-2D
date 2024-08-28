@@ -11,8 +11,6 @@ embedded_components {
   "restitution: 0.5\n"
   "group: \"playerMap\"\n"
   "mask: \"Border\"\n"
-  "mask: \"town\"\n"
-  "mask: \"default\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"

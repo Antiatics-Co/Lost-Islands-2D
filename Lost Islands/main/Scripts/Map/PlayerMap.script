@@ -50,6 +50,9 @@ function update(self, dt)
 	go.set_position(pos) -- Set new position
 	self.vel.x = 0 -- Reset velocity
 	self.vel.y = 0
+
+	--reset correction
+	self.correction = vmath.vector3()
 end
 
 function on_input(self, action_id, action)
@@ -105,18 +108,9 @@ local function handleLevelCollisions(self, normal, distance)
 	end
 
 	go.set_position(pos)
-
-	-- Reset correction vector after applying it
-	self.correction = vmath.vector3(0, 0, 0)
 end
 
 function on_message(self, message_id, message, sender)
-
-	if message_id == hash("collision_response") then
-		print("Collision detected with", message.other_id)
-		-- Handle collision logic here
-	end
-
 	if message_id == hash("contact_point_response") then
 		print("Received normal:", message.normal)
 		
