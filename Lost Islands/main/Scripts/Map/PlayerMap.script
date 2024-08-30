@@ -7,7 +7,9 @@
 
 local BASEVELOCITY = 150
 local recievingInputs = false
-local MAX_DISTANCE = .0090 --doesn't work still causes player to be pushed away , and collision doen't occur
+
+local CONTACT_POINT_RESPONSE = hash("contact_point_response")
+local BORDER = hash("border")
 
 
 
@@ -98,8 +100,10 @@ local function handleLevelCollisions(self, normal, distance)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("contact_point_response") then
-		handleLevelCollisions(self, message.normal, message.distance)
+	if message_id == CONTACT_POINT_RESPONSE then
+		if message.group == BORDER then
+			handleLevelCollisions(self, message.normal, message.distance)
+		end
 	end
 
 	if message_id == hash("startRecievingInput") then

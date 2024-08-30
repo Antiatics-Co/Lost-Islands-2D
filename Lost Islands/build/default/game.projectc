@@ -131,7 +131,7 @@ max_particle_count = 1024
 [physics]
 allow_dynamic_transforms = 1
 contact_impulse_limit = 0.0
-debug = 0
+debug = 1
 debug_alpha = 0.9
 debug_scale = 30.0
 gravity_x = 0.0

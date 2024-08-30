@@ -15,9 +15,9 @@ convex_hulls {
 convex_hulls {
   index: 0
   count: 0
-  collision_group: "Border"
+  collision_group: "border"
 }
-collision_groups: "Border"
+collision_groups: "border"
 collision_groups: "default"
 collision_groups: "town"
 extrude_borders: 2
