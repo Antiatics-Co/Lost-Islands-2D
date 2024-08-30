@@ -5,18 +5,10 @@ instances {
   position {
     x: 237.0
     y: 365.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 3.0
     y: 3.0
-    z: 1.0
   }
 }
 instances {
@@ -25,13 +17,6 @@ instances {
   position {
     x: 4407.0
     y: 1177.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 0.983326
@@ -45,18 +30,9 @@ instances {
   position {
     x: 2958.0
     y: -4821.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 1.196698
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
@@ -64,19 +40,6 @@ instances {
   prototype: "/main/Objects/Sensors/OutOfBounds.go"
   position {
     x: -2785.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
@@ -86,37 +49,19 @@ instances {
   position {
     x: 8.0
     y: 300.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 3.0
     y: 3.0
-    z: 1.0
   }
 }
 instances {
   id: "operator"
   prototype: "/main/Objects/Player/Operator.go"
   position {
-    x: 0.0
-    y: 0.0
     z: 10.0
   }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
-    x: 1.0
-    y: 1.0
     z: 2.0
   }
 }
@@ -126,53 +71,14 @@ embedded_instances {
   data: "components {\n"
   "  id: \"Level1\"\n"
   "  component: \"/main/Scripts/Level/Level1.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
   "}\n"
   "components {\n"
   "  id: \"Test\"\n"
   "  component: \"/Assets/Images/TileMaps/Test.tilemap\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
   "}\n"
   "components {\n"
   "  id: \"Theme1\"\n"
   "  component: \"/Assets/Theme1.sound\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "  property_decls {\n"
-  "  }\n"
   "}\n"
   "embedded_components {\n"
   "  id: \"collisionobject\"\n"
@@ -184,38 +90,11 @@ embedded_instances {
   "restitution: 0.5\\n"
   "group: \\\"level\\\"\\n"
   "mask: \\\"player\\\"\\n"
-  "linear_damping: 0.0\\n"
-  "angular_damping: 0.0\\n"
-  "locked_rotation: false\\n"
-  "bullet: false\\n"
   "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
   "}\n"
   ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
   scale3 {
     x: 10.0
     y: 10.0
-    z: 1.0
   }
 }
