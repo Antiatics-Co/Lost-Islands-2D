@@ -1,0 +1,95 @@
+--@Title - Inventory gui
+--@Author - Aidan Cox
+--@Version - 1
+--@Description - the management file for the inventory
+
+-- these are the item numbers, for use in the inventory
+
+--Physical
+
+local EMPTY = 0 -- this is the default in the equiped section
+local WOODSWORD = 1
+local BROADSWORD = 2
+local SPEAR = 3
+local BOW = 4
+
+--shields
+
+local WOOD = 5
+local STEEL = 6
+local MAGICSHIELD = 7
+
+--Armour
+
+local LIGHT = 8
+local HEAVY = 9
+local MAGIC = 10
+
+--Elements
+
+local FIRENUM = 11
+local WATER = 12
+local STONE = 13
+
+
+--Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
+
+local FIREDUNGEONKEYS = { 14, 10 }--Player can only have one type of key  at a time, any leftover keys are Applied once the player reenters the dungeon
+local WATERDUNGEONKEYS = { 15, 10 }
+local STONEDUNGEONKEYS = { 16, 10 }
+
+--Money and Arrows --have a special section in inventory, may be in hud, same with keys
+
+local ARROW = { 17, 40 }
+local PENDAL = { 18, 100 }
+
+local EMPTYMISC = { 0, 0 }
+
+local items = { empty = EMPTY, woodSword = EMPTY, broadsword = EMPTY, spear = EMPTY, bow = EMPTY, 
+woodShield = EMPTY, steelShiel = EMPTY, magicShield = EMPTY, 
+lightArmour = EMPTY, heavyArmour = EMPTY, magicArmour = EMPTY, fireElement = EMPTY, 
+waterElement = EMPTY, stoneElement = EMPTY, fireDungeonKeys = EMPTYMISC, waterDungeonKeys = EMPTYMISC,
+stoneDungeonKeys = EMPTYMISC, arrow = EMPTYMISC, pendal = EMPTYMISC, itemVersion = 1 } --set number to item num above 0 default
+
+
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

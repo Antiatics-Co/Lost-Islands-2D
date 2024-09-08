@@ -1,0 +1,131 @@
+--Title: Pausemenu 
+--Author Aidan Cox
+--Version 4
+--This Function runs the pause menu
+
+local location = { "" , "", "" } --first set like an adress ex. { "MAP" , "TOWNPLACE", "INN" } or for a dungeon { "dungeon", "level", "bossrm" }
+local position = vmath.vector3(0, 0, 0)
+local items = { 0, 0 } --First Zero is item number and second is the number of that item
+local elements = 1
+local health = 100
+local energy = 100
+
+local dataReadyDungeons = false
+local dataReadyPlayer = false
+local dataReadyItems = false
+
+local  pauseOpen = false --sets if you are in pause  menu
+local MainMenu = true
+
+local saveTable = { dataTEMP = nil , dungeonDataTEMP = nil, ItemDataTEMP = nil }
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	gui.set_enabled(gui.get_node("pausemenu"), false)
+end
+
+function animation(node, newAnimation)
+	gui.play_flipbook(node, newAnimation) -- Extend time on animation
+end
+
+function on_message(self, message_id, message)
+	if message_id == hash("itemsReady") then
+		print("ItemsReady")
+		saveTable.ItemDataTEMP = message.itemData
+		dataReadyItems = true
+	end
+
+	if message_id == hash("playerReady") then
+		print("PlayerReady")
+		saveTable.dataTEMP = message.playerData
+		dataReadyPlayer = true
+	end
+
+	if message_id == hash("dungeonsReady") then
+		print("DungeonsReady")
+		saveTable.dungeonDataTEMP = message.dungeonsData
+		dataReadyDungeons = true
+	end
+	
+	if message_id == hash("enable") then
+		pauseOpen = true
+		gui.set_enabled(gui.get_node("pausemenu"),true)
+	end
+	
+	if message_id == hash("start") then
+		MainMenu = false
+	end
+end
+
+function on_input(self, action_id, action)
+
+	if action_id == hash("esc") and MainMenu == false and action.released then
+		
+		pauseOpen = not pauseOpen
+		gui.set_enabled(gui.get_node("pausemenu"),pauseOpen)
+
+		if pauseOpen == true then
+			msg.post("Player#Player", "stopRecievingInput")
+			msg.post("main#Level", "set_time_step", { factor = 0, mode = 0 })
+		else
+			msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
+			msg.post("Player#Player", "startRecievingInput")
+		end
+	end 
+
+	if action_id == hash("touch") and action.released and pauseOpen then
+	
+		local resume = gui.get_node("resume")
+		if gui.pick_node(resume, action.x, action.y) then
+			
+			animation(resume, "button") -- TO DO: Extend time on animation
+			
+			msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
+			msg.post("Player#Player", "startRecievingInput")
+			
+			gui.set_enabled(gui.get_node("pausemenu"), false)
+			pauseOpen = false
+		end
+		
+		local leave = gui.get_node("leave")
+		if gui.pick_node(leave, action.x, action.y) then
+			gui.set_enabled(gui.get_node("pausemenu"), false)
+			msg.post("/main#music", "stopAll")
+			msg.post("/main#music", "enterMain")
+			MainMenu = true
+			istrue = true
+			msg.post("/main#MainMenu", "istrue") --enables main menu and unloads level
+		end
+		
+		local settings = gui.get_node("settings")
+		if gui.pick_node(settings, action.x, action.y) then
+			gui.set_enabled(gui.get_node("pausemenu"), false)
+			pauseOpen = false
+			msg.post("main#Settings", "fromPause")
+			msg.post("main#Settings","enable")
+		end
+
+		local save = gui.get_node("save")
+		if gui.pick_node(save, action.x, action.y) then
+			msg.post("Inventory#inventory", "fileSave")
+			msg.post( "main#MainMenu", "fileSave")
+			
+		end
+	end
+end
+
+function save()
+	if dataReadyItems == true and dataReadyPlayer == true and dataReadyDungeons == true then
+		print("Saving player data")
+		local data = saveTable.dataTEMP
+		msg.post("IO#IO", "save", {data = data})
+		
+		print("Saving dungeon data")
+		local dungeon = saveTable.dungeonDataTEMP
+		msg.post("IO#IO", "save", {dungeonData = dungeon})
+
+		print("Saving item data")
+		local item = saveTable.ItemDataTEMP
+		msg.post("IO#IO", "save", {itemData = item})
+	end
+end

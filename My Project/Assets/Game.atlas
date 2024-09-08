@@ -1,0 +1,129 @@
+animations {
+  id: "idle"
+  images {
+    image: "/Assets/Images/Testplayer/PlayerPlatformer.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+}
+animations {
+  id: "enemy"
+  images {
+    image: "/Assets/Images/EnemySprites/enemyTest.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+}
+animations {
+  id: "firebullet"
+  images {
+    image: "/Assets/Images/Elements/Fire/Fire Projectilee/FireBall.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
+  flip_vertical: 1
+}
+animations {
+  id: "button"
+  images {
+    image: "/Assets/Images/Menu/Button-Pressed.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/Button-Unpressed.png"
+  }
+  fps: 60
+}
+animations {
+  id: "plus"
+  images {
+    image: "/Assets/Images/Menu/Plus.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/PlusPressed.png"
+  }
+  fps: 60
+}
+animations {
+  id: "minus"
+  images {
+    image: "/Assets/Images/Menu/Minus.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/MinusPressed.png"
+  }
+  fps: 60
+}
+animations {
+  id: "healthBar"
+  images {
+    image: "/Assets/Images/Menu/FullBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/sixSeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/fiveSeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/fourSeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/threeSeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/twoSeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/oneSeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/Bar.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+}
+animations {
+  id: "energyBar"
+  images {
+    image: "/Assets/Images/Menu/FullEnergyBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/sixSeventhEnergyBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/fiveEnergySeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/fourSeventhEnergyBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/threeSeventhEnergyBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/twoSeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/oneSeventhBar.png"
+  }
+  images {
+    image: "/Assets/Images/Menu/Bar.png"
+  }
+  playback: PLAYBACK_NONE
+  fps: 60
+}
+animations {
+  id: "slime"
+  images {
+    image: "/Assets/Images/Menu/SlimeDefault.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 60
+}
+animations {
+  id: "IdleMap"
+  images {
+    image: "/Assets/Images/Testplayer/Sprite-0001.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+extrude_borders: 2

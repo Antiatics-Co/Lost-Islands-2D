@@ -1,0 +1,65 @@
+
+local object_pos = vmath.vector3(0, 0, 0)
+local dir_to_mouse = vmath.vector3(0, 0, 0)
+local speed = 2500
+local duration = 1
+local elapsed_time = 0
+
+function init(self)
+	object_pos = go.get_position("Player")
+	--go.animate(".", "position.x", go.PLAYBACK_LOOP_FORWARD, 300, go.EASING_LINEAR, 1, 0)
+
+	timer.delay(duration, true, function()
+		go.delete()
+	end)
+end
+
+local function normalize_vector(vec)
+	local length = vmath.length(vec)
+	if length > 0 then
+		return vec / length
+	else
+		return vmath.vector3(0, 0, 0) -- Handle zero-length vectors
+	end
+end
+
+function on_message(self, message_id, message)
+	if message_id == hash("trigger_response") and message.enter then
+		go.delete()
+	end
+
+	if message_id == hash("position") then
+		print("Message Position: ", message.cursor_position)
+		print("Object Pos: ", message.cursor_position)
+
+		dir_to_mouse = vmath.vector3(0, 0, 0)
+		elapsed_time = 0
+		
+		dir_to_mouse = message.cursor_position - object_pos
+	end
+end
+
+function fixed_update(self, dt)
+	dir_to_mouse.z = 0 -- Ensure it's in 2D
+	dir_to_mouse = normalize_vector(dir_to_mouse) -- Normalize to get a unit vector
+
+	print("dir_to_mouse: ", dir_to_mouse)
+	local end_pos = object_pos + dir_to_mouse * speed * dt -- Move to the new position
+	
+	elapsed_time = elapsed_time + dt
+	local t = elapsed_time / duration
+	local new_pos = vmath.lerp(t , object_pos, end_pos)
+	go.set_position(new_pos)
+
+	
+--[[																					*************************************
+	local current_pos = go.get_position()												*		  Original animator			*
+	while current_pos.x < new_pos.x or current_pos.y < new_pos.y do						*************************************
+		if current_pos.y < new_pos.y then
+			go.set_position(vmath.vector3(current_pos.x, (current_pos.y + 5), 0))
+		elseif current_pos.x < new_pos.x then
+			go.set_position(vmath.vector3((current_pos.x + 100), current_pos.y, 0))
+		end
+	end
+	]]--
+end

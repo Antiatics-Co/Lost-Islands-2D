@@ -76,3 +76,4 @@ function on_message(self, message_id, message, sender)
 		save()
 	end
 end
+

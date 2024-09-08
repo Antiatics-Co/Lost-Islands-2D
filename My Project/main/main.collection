@@ -1,0 +1,92 @@
+name: "main"
+instances {
+  id: "Player"
+  prototype: "/main/Objects/Player/Player.go"
+  position {
+    y: -702.0
+  }
+}
+instances {
+  id: "IO"
+  prototype: "/main/Objects/IO.go"
+}
+instances {
+  id: "Inventory"
+  prototype: "/main/Objects/Inventory.go"
+}
+instances {
+  id: "PlayerMap"
+  prototype: "/main/Objects/PlayerMap/PlayerMap.go"
+  position {
+    y: -709.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "main"
+  data: "components {\n"
+  "  id: \"MainMenu\"\n"
+  "  component: \"/main/GUI files/MainMenu.gui\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"Settings\"\n"
+  "  component: \"/main/GUI files/Settings.gui\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"MainMenuTheme\"\n"
+  "  component: \"/Assets/main/MainMenuTheme.sound\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"Jumping\"\n"
+  "  component: \"/Assets/Jumping.sound\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"land\"\n"
+  "  component: \"/Assets/land.sound\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"Theme1\"\n"
+  "  component: \"/Assets/Theme1.sound\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"music\"\n"
+  "  component: \"/main/Scripts/music.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"Level\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/main/Level.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"MainMap\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/main/MainMap.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "menu"
+  data: "components {\n"
+  "  id: \"Death\"\n"
+  "  component: \"/main/GUI files/Death.gui\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"LevelComplete\"\n"
+  "  component: \"/main/GUI files/LevelComplete.gui\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"PauseMenu\"\n"
+  "  component: \"/main/GUI files/PauseMenu.gui\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "hud"
+  data: "components {\n"
+  "  id: \"hud\"\n"
+  "  component: \"/main/hud/hud.gui\"\n"
+  "}\n"
+  ""
+}

@@ -1,0 +1,92 @@
+image: "/Assets/Images/Testplayer/Sun.png"
+tile_width: 16
+tile_height: 16
+collision: "/Assets/Images/Testplayer/Sun.png"
+convex_hulls {
+  index: 0
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 4
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 8
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 12
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 16
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 20
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 24
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 28
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 32
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 36
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 40
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 44
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 48
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 52
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 56
+  count: 4
+  collision_group: "level"
+}
+convex_hulls {
+  index: 60
+  count: 4
+  collision_group: "level"
+}
+collision_groups: "default"
+collision_groups: "level"
+animations {
+  id: "anim"
+  start_tile: 1
+  end_tile: 1
+}
+extrude_borders: 2
