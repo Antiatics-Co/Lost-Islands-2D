@@ -35,7 +35,7 @@ embedded_instances {
   "mass: 0.0\\n"
   "friction: 0.1\\n"
   "restitution: 0.5\\n"
-  "group: \\\"\\\"\\n"
+  "group: \\\"border\\\"\\n"
   "mask: \\\"playerMap\\\"\\n"
   "\"\n"
   "}\n"
