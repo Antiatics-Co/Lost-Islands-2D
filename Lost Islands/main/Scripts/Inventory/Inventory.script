@@ -7,35 +7,35 @@
 
 --Physical
 
-local EMPTY = { 0, false } -- this is the default in the equipped section
-local WOODSWORD = { 1, false }
-local BROADSWORD = { 2,  false }
-local SPEAR = { 3, false }
-local BOW = { 4, false }
+local EMPTY = { 0, false, false } -- this is the default in the equipped section
+local WOODSWORD = { 1, false, false }
+local BROADSWORD = { 2,  false, false }
+local SPEAR = { 3, false, false }
+local BOW = { 4, false,false }
 
 --shields
 
 -- Item Slot, damage, energy usage
 
-local WOOD = { 5, false }
-local STEEL = { 6, false }
-local MAGICSHIELD = { 7, false }
+local WOOD = { 5, false, false }
+local STEEL = { 6, false, false }
+local MAGICSHIELD = { 7, false, false }
 
 --Armour
 
-local LIGHT = { 8, false }
-local HEAVY = { 9, false }
-local MAGIC = { 10, false }
+local LIGHT = { 8, false, false }
+local HEAVY = { 9, false, false }
+local MAGIC = { 10, false, false }
 
 --Elements
 
-local FIRE = { 11, false }
-local WATER = { 12, false }
-local STONE = { 13, false }
-local LIGHTENING = { 14, false }
-local ICE = { 15, false }
-local RAINBOW = { 16, false }
-local POISON = { 17, false }
+local FIRE = { 11, false, false }
+local WATER = { 12, false, false }
+local STONE = { 13, false, false }
+local LIGHTENING = { 14, false, false }
+local ICE = { 15, false, false }
+local RAINBOW = { 16, false, false }
+local POISON = { 17, false, false }
 
 --Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
 
@@ -48,7 +48,7 @@ local STONEDUNGEONKEYS = { 20, 10, false }
 local ARROW = { 21, 40, false }
 local PENDAL = { 22, 100, false }
 
-local EMPTYMISC = { 0, 0, false}
+local EMPTYMISC = { 0, 0, false }
 
 -- Define items as a global variable
 local items = { empty = EMPTY, woodSword = EMPTY, broadsword = EMPTY, spear = EMPTY, bow = EMPTY, 
@@ -93,6 +93,9 @@ function on_message(self, message_id, message, sender)
 end
 
 local function setupInventory()
-
+	
 end
 
+local function itemProperties()
+	local equippedItems = {  }
+end
