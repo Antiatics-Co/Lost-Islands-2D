@@ -5,17 +5,17 @@ collision: "/Assets/Images/MainMap/TileSet.png"
 convex_hulls {
   index: 0
   count: 0
-  collision_group: "town"
+  collision_group: ""
 }
 convex_hulls {
   index: 0
   count: 0
-  collision_group: "default"
+  collision_group: ""
 }
 convex_hulls {
   index: 0
   count: 0
-  collision_group: "border"
+  collision_group: ""
 }
 collision_groups: "border"
 collision_groups: "default"

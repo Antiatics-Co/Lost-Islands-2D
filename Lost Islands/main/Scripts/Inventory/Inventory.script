@@ -7,42 +7,48 @@
 
 --Physical
 
-local EMPTY = 0 -- this is the default in the equipped section
-local WOODSWORD = 1
-local BROADSWORD = 2
-local SPEAR = 3
-local BOW = 4
+local EMPTY = { 0, false } -- this is the default in the equipped section
+local WOODSWORD = { 1, false }
+local BROADSWORD = { 2,  false }
+local SPEAR = { 3, false }
+local BOW = { 4, false }
 
 --shields
 
-local WOOD = 5
-local STEEL = 6
-local MAGICSHIELD = 7
+-- Item Slot, damage, energy usage
+
+local WOOD = { 5, false }
+local STEEL = { 6, false }
+local MAGICSHIELD = { 7, false }
 
 --Armour
 
-local LIGHT = 8
-local HEAVY = 9
-local MAGIC = 10
+local LIGHT = { 8, false }
+local HEAVY = { 9, false }
+local MAGIC = { 10, false }
 
 --Elements
 
-local FIRENUM = 11
-local WATER = 12
-local STONE = 13
+local FIRE = { 11, false }
+local WATER = { 12, false }
+local STONE = { 13, false }
+local LIGHTENING = { 14, false }
+local ICE = { 15, false }
+local RAINBOW = { 16, false }
+local POISON = { 17, false }
 
 --Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
 
-local FIREDUNGEONKEYS = { 14, 10 }--Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
-local WATERDUNGEONKEYS = { 15, 10 }
-local STONEDUNGEONKEYS = { 16, 10 }
+local FIREDUNGEONKEYS = { 18, 10, false }--Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
+local WATERDUNGEONKEYS = { 19, 10, false }
+local STONEDUNGEONKEYS = { 20, 10, false }
 
 --Money and Arrows --have a special section in inventory, may be in hud, same with keys
 
-local ARROW = { 17, 40 }
-local PENDAL = { 18, 100 }
+local ARROW = { 21, 40, false }
+local PENDAL = { 22, 100, false }
 
-local EMPTYMISC = { 0, 0 }
+local EMPTYMISC = { 0, 0, false}
 
 -- Define items as a global variable
 local items = { empty = EMPTY, woodSword = EMPTY, broadsword = EMPTY, spear = EMPTY, bow = EMPTY, 
@@ -64,6 +70,11 @@ local function save()
 	end
 end
 
+local function load()
+	print("Loading Items Initiated")
+
+	
+end
 
 function init(self)
 	print("Script initialized")
@@ -75,5 +86,13 @@ function on_message(self, message_id, message, sender)
 		print("fileSave Inventory")
 		save()
 	end
+
+	if message_id == hash("loadItemData") then
+		items = message.data
+	end
+end
+
+local function setupInventory()
+
 end
 

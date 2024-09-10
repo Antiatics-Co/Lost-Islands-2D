@@ -430,7 +430,7 @@ function on_message(self, message_id, message, sender)
 		print("Loaded Checksum: ", loadedChecksum)
 		msg.post("", "loadPlayerData", {data = easyTable}) --TO DO ***********************************************************
 		msg.post("", "loadDungeonData", {data = dungeonStatus})
-		msg.post("", "loadItemData", {data = items})
+		msg.post("Inventory#inventory", "loadItemData", {data = items})
 	end
 
 	if message_id == hash("configLoad") then
