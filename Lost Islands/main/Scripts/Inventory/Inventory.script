@@ -7,48 +7,51 @@
 
 --Physical
 
-local EMPTY = { 0, false, false } -- this is the default in the equipped section
-local WOODSWORD = { 1, false, false }
-local BROADSWORD = { 2,  false, false }
-local SPEAR = { 3, false, false }
-local BOW = { 4, false,false }
+local equipped = false
+local defence
+
+local EMPTY = { 0, false, equipped } -- this is the default in the equipped section
+local WOODSWORD = { 1, false, equipped }
+local BROADSWORD = { 2,  false, equipped }
+local SPEAR = { 3, false, equipped }
+local BOW = { 4, false, equipped }
 
 --shields
 
 -- Item Slot, damage, energy usage
 
-local WOOD = { 5, false, false }
-local STEEL = { 6, false, false }
-local MAGICSHIELD = { 7, false, false }
+local WOOD = { 5, false, equipped }
+local STEEL = { 6, false, equipped }
+local MAGICSHIELD = { 7, false, equipped }
 
 --Armour
 
-local LIGHT = { 8, false, false }
-local HEAVY = { 9, false, false }
-local MAGIC = { 10, false, false }
+local LIGHT = { 8, false, equipped }
+local HEAVY = { 9, false, equipped }
+local MAGIC = { 10, false, equipped }
 
 --Elements
 
-local FIRE = { 11, false, false }
-local WATER = { 12, false, false }
-local STONE = { 13, false, false }
-local LIGHTENING = { 14, false, false }
-local ICE = { 15, false, false }
-local RAINBOW = { 16, false, false }
-local POISON = { 17, false, false }
+local FIRE = { 11, false, equipped }
+local WATER = { 12, false, equipped }
+local STONE = { 13, false, equipped }
+local LIGHTENING = { 14, false, equipped }
+local ICE = { 15, false, equipped }
+local RAINBOW = { 16, false, equipped }
+local POISON = { 17, false, equipped }
 
 --Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
 
-local FIREDUNGEONKEYS = { 18, 10, false }--Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
-local WATERDUNGEONKEYS = { 19, 10, false }
-local STONEDUNGEONKEYS = { 20, 10, false }
+local FIREDUNGEONKEYS = { 18, 10, equipped }--Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
+local WATERDUNGEONKEYS = { 19, 10, equipped }
+local STONEDUNGEONKEYS = { 20, 10, equipped }
 
 --Money and Arrows --have a special section in inventory, may be in hud, same with keys
 
-local ARROW = { 21, 40, false }
-local PENDAL = { 22, 100, false }
+local ARROW = { 21, 40, equipped }
+local PENDAL = { 22, 100, equipped }
 
-local EMPTYMISC = { 0, 0, false }
+local EMPTYMISC = { 0, 0, equipped }
 
 -- Define items as a global variable
 local items = { empty = EMPTY, woodSword = EMPTY, broadsword = EMPTY, spear = EMPTY, bow = EMPTY, 
@@ -97,5 +100,10 @@ local function setupInventory()
 end
 
 local function itemProperties()
-	local equippedItems = {  }
+
+	--defence
+	if items.WOOD.equipped == true then
+		defence = 10
+	
+	end
 end
