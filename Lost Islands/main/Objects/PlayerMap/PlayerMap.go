@@ -22,7 +22,7 @@ embedded_components {
   "    count: 3\n"
   "  }\n"
   "  data: 15.98481\n"
-  "  data: 14.965092\n"
+  "  data: 15.37528\n"
   "  data: 0.5\n"
   "}\n"
   ""

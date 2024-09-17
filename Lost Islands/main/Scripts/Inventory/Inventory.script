@@ -137,6 +137,7 @@ function applyProperties(damage, shield)
 			while(damage.shieldUp)
 			do
 				msg.post("", "", {usage = shield.energyUsage})
+			end
 		end
 	end 
 end

@@ -79,6 +79,7 @@ local function handleLevelCollisions(self, normal, distance)
 	end
 
 	print("Collision Normal:", normal)
+	print("Collision Distance:", distance)
 
 	-- Get the info needed to move out of collision. We might
 	-- get several contact points back and have to calculate
@@ -88,13 +89,16 @@ local function handleLevelCollisions(self, normal, distance)
 		-- First, project the accumulated correction onto
 		-- the penetration vector
 		local proj = vmath.project(self.correction, normal * distance)
+		print("Projection:", proj)
 		if proj < 1 then
 			-- Only care for projections that does not overshoot.
 			local comp = (distance - distance * proj) * normal
 			-- Apply compensation
+			print("Compensation:", comp)
 			go.set_position(go.get_position() + comp)
 			-- Accumulate correction done
 			self.correction = self.correction + comp
+			print("Accumulated Correction:", self.correction)
 		end
 	end
 end
