@@ -27,5 +27,4 @@ splash_image = /Assets/Images/SplashImage/Isaac Newton.png
 
 [physics]
 use_fixed_timestep = 1
-debug = 1
 

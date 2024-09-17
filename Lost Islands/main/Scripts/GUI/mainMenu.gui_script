@@ -90,13 +90,14 @@ function on_input(self, action_id, action)
 			gui.set_enabled(gui.get_node("main"), false)
 
 			msg.post("menu#PauseMenu", "start")
---[[
+
 			msg.post("#MainMap", "load")
 			msg.post("#MainMap", "enable")
-			]]
-		
+			
+		--[[
 			msg.post("#Level", "load")
 			msg.post("#Level", "enable")
+			]]
 			
 			msg.post("#music", "stopAll")
 		end

@@ -9,7 +9,7 @@ local BASEVELOCITY = 150
 local recievingInputs = false
 
 local CONTACT_POINT_RESPONSE = hash("contact_point_response")
-local BORDER = hash("border")
+local BORDER = hash("Border")
 
 
 

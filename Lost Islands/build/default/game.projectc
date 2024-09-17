@@ -41,6 +41,7 @@ width = 960
 
 [engine]
 fixed_update_frequency = 60
+max_time_step = 0.5
 run_while_iconified = 0
 
 [factory]
@@ -131,7 +132,7 @@ max_particle_count = 1024
 [physics]
 allow_dynamic_transforms = 1
 contact_impulse_limit = 0.0
-debug = 1
+debug = 0
 debug_alpha = 0.9
 debug_scale = 30.0
 gravity_x = 0.0

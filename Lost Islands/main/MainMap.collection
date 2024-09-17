@@ -4,7 +4,7 @@ instances {
   prototype: "/main/Objects/PlayerMap/PlayerMap.go"
   children: "OperatorMap"
   position {
-    x: 1832.0
+    x: 543.0
     y: 4223.0
     z: 1.0
   }
@@ -13,7 +13,8 @@ instances {
   id: "OperatorMap"
   prototype: "/main/Objects/PlayerMap/OperatorMap.go"
   position {
-    z: 100.0
+    x: 0.09375
+    z: 500.0
   }
 }
 scale_along_z: 0
@@ -35,7 +36,7 @@ embedded_instances {
   "mass: 0.0\\n"
   "friction: 0.1\\n"
   "restitution: 0.5\\n"
-  "group: \\\"border\\\"\\n"
+  "group: \\\"\\\"\\n"
   "mask: \\\"playerMap\\\"\\n"
   "\"\n"
   "}\n"
