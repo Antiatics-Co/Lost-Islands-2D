@@ -1,0 +1,46 @@
+name: "TutorialTown"
+instances {
+  id: "PlayerMap"
+  prototype: "/main/Objects/PlayerMap/PlayerMap.go"
+  children: "OperatorMap"
+  position {
+    x: 543.0
+    y: 4223.0
+    z: 1.0
+  }
+}
+instances {
+  id: "OperatorMap"
+  prototype: "/main/Objects/PlayerMap/OperatorMap.go"
+  position {
+    x: 0.09375
+    z: 500.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "Town"
+  data: "components {\n"
+  "  id: \"tutorial\"\n"
+  "  component: \"/main/Scripts/Map/TutorialTown/tutorial.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collisionobject\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"type: COLLISION_OBJECT_TYPE_STATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"\\\"\\n"
+  "mask: \\\"playerMap\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    y: 3.0
+  }
+  scale3 {
+    x: 26.450102
+    y: 27.36992
+  }
+}
