@@ -1,0 +1,22 @@
+type: COLLISION_OBJECT_TYPE_TRIGGER
+mass: 0.0
+friction: 0.1
+restitution: 0.5
+group: "level"
+mask: "player"
+embedded_collision_shape {
+  shapes {
+    shape_type: TYPE_BOX
+    position {
+      x: -581.96936
+      y: 91.0
+    }
+    rotation {
+    }
+    index: 0
+    count: 3
+  }
+  data: 1606.0988
+  data: 3770.4697
+  data: 10.0
+}

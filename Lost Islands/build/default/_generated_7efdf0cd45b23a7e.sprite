@@ -1,0 +1,6 @@
+default_animation: "slime"
+material: "/builtins/materials/sprite.material"
+textures {
+  sampler: "texture_sampler"
+  texture: "/Assets/Game.atlas"
+}

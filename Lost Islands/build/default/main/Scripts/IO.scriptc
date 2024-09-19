@@ -1,23 +1,23 @@
 
-Ä
-”Ä--@Title Input Ouput
---@Author Aidan Cox
---@_VERSION = 2
---@Description
---	This script handles the saving to and loading from files
--- has a checksum to verify integrity of files
+çt
+Òs
+
+
+
+
+
 
 
 
 local defsave = require("defsave.defsave")
 local md5 = require("main.Scripts.Checksum.md5")
 
-------------------------------------Filenames
+
 
 local filename = "save"
 local configName = "config.save"
 
-------------------------------------Dungeons
+
 
 local fireDungeon = { doors = { 0 }, chestsOpened = {  0 }, bossBeaten = false }
 local waterDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
@@ -25,7 +25,7 @@ local stoneDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
 
 local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion = 1 }
 
--------------------------------------Location, Energy, and Health Data
+
 
 local location = "Default"
 local position = vmath.vector3(0, 0, 0)
@@ -35,42 +35,42 @@ local health = 100
 
 local easyTable = { location, position, energy, health, version = 1 }
 
-------------------------------------Items/Inventory/Elements
 
---Physical
 
-local EMPTY = 0 -- this is the default in the equiped section
+
+
+local EMPTY = 0 
 local WOODSWORD = 1
 local BROADSWORD = 2
 local SPEAR = 3
 local BOW = 4
 
---shields
+
 
 local WOOD = 5
 local STEEL = 6
 local MAGICSHIELD = 7
 
---Armour
+
 
 local LIGHT = 8
 local HEAVY = 9
 local MAGIC = 10
 
---Elements
+
 
 local FIRENUM = 11
 local WATER = 12
 local STONE = 13
 
 
---Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
 
-local FIREDUNGEONKEYS = { 14, 10 }--Player can only have one type of key  at a time, any leftover keys are Applied once the player reenters the dungeon
+
+local FIREDUNGEONKEYS = { 14, 10 }
 local WATERDUNGEONKEYS = { 15, 10 }
 local STONEDUNGEONKEYS = { 16, 10 }
 
---Money and Arrows --have a special section in inventory, may be in hud, same with keys
+
 
 local ARROW = { 17, 40 }
 local PENDAL = { 18, 100 }
@@ -81,16 +81,16 @@ local items = { empty = EMPTY, woodSword = EMPTY, broadsword = EMPTY, spear = EM
 				woodShield = EMPTY, steelShiel = EMPTY, magicShield = EMPTY, 
 				lightArmour = EMPTY, heavyArmour = EMPTY, magicArmour = EMPTY, fireElement = EMPTY, 
 				waterElement = EMPTY, stoneElement = EMPTY, fireDungeonKeys = EMPTYMISC, waterDungeonKeys = EMPTYMISC,
-				stoneDungeonKeys = EMPTYMISC, arrow = EMPTYMISC, pendal = EMPTYMISC, itemVersion = 1 } --set number to item num above 0 default
+				stoneDungeonKeys = EMPTYMISC, arrow = EMPTYMISC, pendal = EMPTYMISC, itemVersion = 1 } 
 
-----------------------------------------------Config
 
-local resolution = 1 --just going to have multiple options and give a number depending upon the option
+
+local resolution = 1 
 local volume = 100
 
 local config = { volume, resolution, configVersion = 1 }
 
----------------------------------------------------------------------------
+
 
 function generate_checksum(data)
 	return md5.sumhexa(data)
@@ -165,7 +165,7 @@ function init(self)
 
 	filename = filename .. ".dat"
 
-	---------------------------playerdata------------------------------------------
+	
 	
 	local status, err = pcall(function()
 		defsave.load(filename)
@@ -173,7 +173,7 @@ function init(self)
 
 	if not status then
 		print("Error loading save file:", err)
-		-- Handle the error, e.g., reset to default values
+		
 		defsave.set(filename, "default", easyTable)
 		defsave.set(filename, "checksumPlayer", generate_checksum(table_to_string(easyTable)))
 
@@ -190,7 +190,7 @@ function init(self)
 		print("Loaded Data: ", loadedData)
 		print("Loaded checksumPlayer: ", loadedChecksum)
 
-		-- Verify the checksum
+		
 		if loadedData then
 			local current_checksum = generate_checksum(table_to_string(loadedData))
 			print("Current Checksum: ", current_checksum)
@@ -229,7 +229,7 @@ function init(self)
 		defsave.set(filename, "checksumPlayer", checksum)
 	end
 
-	-------------------------------Verification Dungeons--------------------------------------------
+	
 
 	if file_exists(filename) then
 		local loadedChecksum = defsave.get(filename, "checksumDungeons")
@@ -237,7 +237,7 @@ function init(self)
 		print("Loaded Data: ", loadedData)
 		print("Loaded checksumDungeons: ", loadedChecksum)
 
-		-- Verify the checksum
+		
 		if loadedData then
 			local current_checksum = generate_checksum(table_to_string(loadedData))
 			print("Current Checksum: ", current_checksum)
@@ -276,7 +276,7 @@ function init(self)
 		defsave.set(filename, "checksumDungeons", checksum)
 	end
 
-	-------------------------------Verification Items-----------------------------------------------
+	
 
 	if file_exists(filename) then
 		local loadedChecksum = defsave.get(filename, "checksumItems")
@@ -284,7 +284,7 @@ function init(self)
 		print("Loaded Data: ", loadedData)
 		print("Loaded checksumItems: ", loadedChecksum)
 
-		-- Verify the checksum
+		
 		if loadedData then
 			local current_checksum = generate_checksum(table_to_string(loadedData))
 			print("Current Checksum: ", current_checksum)
@@ -323,7 +323,7 @@ function init(self)
 		defsave.set(filename, "checksumItems", checksum)
 	end
 
-	-------------------------------verifcation config-----------------------------------------------
+	
 
 
 	local status, err = pcall(function()
@@ -332,7 +332,7 @@ function init(self)
 
 	if not status then
 		print("Error loading save file:", err)
-		-- Handle the error, e.g., reset to default values
+		
 		defsave.set(configName, "data", config)
 		defsave.set(configName, "checksum", generate_checksum(table_to_string(config)))
 	end
@@ -343,7 +343,7 @@ function init(self)
 		print("Loaded Data: ", loadedData)
 		print("Loaded Checksum: ", loadedChecksum)
 
-		-- Verify the checksum
+		
 		if loadedData then
 			local loadedDataString = table_to_string(loadedData)
 			local current_checksum = generate_checksum(loadedDataString)
@@ -365,7 +365,7 @@ function init(self)
 				else
 					print("Data corruption detected.")
 					local checksum = generate_checksum(table_to_string(config))
-					delete_file(configName)  -- Delete the corrupted file
+					delete_file(configName)  
 					defsave.set(configName, "data", config)
 					defsave.set(configName, "checksum", checksum)
 					defsave.save(configName)
@@ -389,7 +389,7 @@ function init(self)
 	end
 
 	
-	-------------------------------------------------------------------------------------------
+	
 
 	defsave.save(filename)
 	defsave.save(configName)
@@ -401,7 +401,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("reset") then
 		local checksum = generate_checksum(table_to_string(easyTable))
-		delete_file(filename)  -- Delete the corrupted file
+		delete_file(filename)  
 		defsave.set(filename, "default", easyTable)
 		defsave.set(filename, "dungeon", dungeonStatus)
 		defsave.set(filename, "item", items)
@@ -430,7 +430,7 @@ function on_message(self, message_id, message, sender)
 
 		local loadedChecksum = defsave.get(filename, "checksum")
 		print("Loaded Checksum: ", loadedChecksum)
-		msg.post("", "loadPlayerData", {data = easyTable}) --TO DO ***********************************************************
+		msg.post("", "loadPlayerData", {data = easyTable}) 
 		msg.post("", "loadDungeonData", {data = dungeonStatus})
 		msg.post("Inventory#inventory", "loadItemData", {data = items})
 	end
@@ -446,7 +446,7 @@ end
 
 function save(data, dungeonData, itemData)
 	
-	-----------------------Save easyTable---------------------------------
+	
 	if data == nil then
 		print("Error: data is nil")
 		return
@@ -454,7 +454,7 @@ function save(data, dungeonData, itemData)
 
 	print("data table", table_to_string(data))
 
-	data.version = (data.version or 0) + 1  -- Increment version
+	data.version = (data.version or 0) + 1  
 	print("Incremented data Version in Save: ", data.version)
 
 	print("Easy Table", data)
@@ -466,7 +466,7 @@ function save(data, dungeonData, itemData)
 	defsave.set(filename, "checksum", data_checksum)
 	print("After saving, version:", data.version)
 
-	---------------------------------Save Dungeons----------------------------
+	
 	if dungeonData == nil then
 		print("Error: dungeonData is nil")
 		return
@@ -474,7 +474,7 @@ function save(data, dungeonData, itemData)
 
 	print("dungeonData table", table_to_string(dungeonData))
 
-	dungeonData.statusVersion = (dungeonData.statusVersion or 0) + 1  -- Increment statusVersion
+	dungeonData.statusVersion = (dungeonData.statusVersion or 0) + 1  
 	print("Incremented dungeonData Version in Save: ", dungeonData.statusVersion)
 
 	print("Dungeon ", dungeonData)
@@ -486,7 +486,7 @@ function save(data, dungeonData, itemData)
 	defsave.set(filename, "checksum", dungeon_checksum)
 	print("After saving, statusVersion:", dungeonData.statusVersion)    
 
-	---------------------------------Save Items----------------------------
+	
 
 	if itemData == nil then
 		print("Error: itemData is nil")
@@ -495,7 +495,7 @@ function save(data, dungeonData, itemData)
 
 	print("itemData table", table_to_string(itemData))
 
-	itemData.itemVersion = (itemData.itemVersion or 0) + 1  -- Increment itemVersion
+	itemData.itemVersion = (itemData.itemVersion or 0) + 1  
 	print("Incremented itemData Version in Save: ", itemData.itemVersion)
 
 	print("Items ", itemData)
@@ -507,7 +507,7 @@ function save(data, dungeonData, itemData)
 	defsave.set(filename, "checksum", item_checksum)
 	print("After saving, itemVersion:", itemData.itemVersion)
 
-	------------------------------------------------------------------
+	
 
 	defsave.save(filename)
 	print("Data saved successfully.")
@@ -523,7 +523,7 @@ function configSave(configData)
 	print("data table", table_to_string(configData))
 	
 
-	configData.configVersion = (configData.configVersion or 0) + 1  -- Increment version
+	configData.configVersion = (configData.configVersion or 0) + 1  
 	print("Incremented Config Version in configSave: ", configData.configVersion)
 
 	local new_checksum = generate_checksum(table_to_string(configData))
