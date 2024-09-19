@@ -1,12 +1,3 @@
-images {
-  image: "/Assets/Images/MainMap/BuildingTile.png"
-}
-images {
-  image: "/Assets/Images/MainMap/MapTile.png"
-}
-images {
-  image: "/Assets/Images/MainMap/TownTile.png"
-}
 animations {
   id: "Player"
   images {
