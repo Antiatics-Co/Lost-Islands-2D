@@ -60,10 +60,12 @@ function on_message(self, message_id, message, sender)
 		save()
 	end
 
-	if message_id == hash("istrue") then
+	if message_id == hash("istrue") then --NEEDS EDITTING***************************************
 		gui.set_enabled(gui.get_node("main"), true)
 		msg.post("#Level", "disable")
 		msg.post("#Level", "unload")
+		msg.post("#MainMap", "disable")
+		msg.post("#MainMap", "unload")
 		inDungeon = false
 	end
 

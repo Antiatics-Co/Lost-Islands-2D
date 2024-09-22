@@ -18,8 +18,8 @@ local gravity = false
 local lastfired = -1
 
 function init(self) --constructor
-	--msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
-	--msg.post("@render:", "use_camera_projection")
+	msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
+	msg.post("@render:", "use_camera_projection")
 	camera.acquire_focus("operator#camera")
 	
 	self.velocity = vmath.vector3(0, 0, 0)
@@ -215,7 +215,7 @@ function on_input(self, action_id, action)
 			flip(self.direction)
 			walk(self)
 		elseif action_id == hash("esc") and action.released then
-			msg.post("menu#PauseMenu", "enable")
+			msg.post("main:/menu#PauseMenu", "enable")
 		end
 	end
 end
