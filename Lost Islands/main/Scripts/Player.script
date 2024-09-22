@@ -18,8 +18,8 @@ local gravity = false
 local lastfired = -1
 
 function init(self) --constructor
-	msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
-	msg.post("@render:", "use_camera_projection")
+	--msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
+	--msg.post("@render:", "use_camera_projection")
 	camera.acquire_focus("operator#camera")
 	
 	self.velocity = vmath.vector3(0, 0, 0)
