@@ -6,6 +6,16 @@
 --26/3/2024 - jumping, new animate func
 --29/3/2024 - more collisions - fixed gravity debug
 
+--PREHASHING-------------------------------------------------------
+
+local STOPGRAVITY = hash("stopGravity")
+local CONTACTPOINTRESPONSE = hash("contact_point_response")
+local LEVELGROUP = hash("level")
+local STARTRECIEVINGINPUTS = hash("startRecievingInputs")
+local STOPRECIEVINGINPUTS = hash("stopRecievingInput")
+
+-------------------------------------------------------------------
+
 local DIRECTIONRIGHT = 1
 local DIRECTIONLEFT = -1
 local BASEVELOCITY = 500
@@ -141,12 +151,12 @@ end
 
 
 function on_message(self, message_id, message, sender)
-	if message_id == "stopGravity" then
+	if message_id == STOPGRAVITY then
 		GRAVITY = 0
 	end
 	
-	if message_id == hash("contact_point_response") and
-	message.other_group == hash("level") then
+	if message_id == CONTACTPOINTRESPONSE and
+	message.other_group == LEVELGROUP then
 		handleLevelCollisions(self, message.normal, message.distance)
 	end
 
@@ -157,13 +167,13 @@ function on_message(self, message_id, message, sender)
 		go.set_position(pos)
 	end
 
-	if message_id == hash("startRecievingInput") then
+	if message_id == STARTRECIEVINGINPUTS then
 		recievingInputs = true
 		--gravity = true
 		print("restarting inputs")
 	end
 	
-	if message_id == hash("stopRecievingInput") then
+	if message_id == STOPRECIEVINGINPUTS then
 		recievingInputs = false --this isn't connecting properlt eith itself in this script
 		gravity = false
 		print("Stopping all inputs")

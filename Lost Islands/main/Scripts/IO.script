@@ -7,6 +7,18 @@
 
 
 
+
+
+-----------------PREHASHES
+
+local RESET = hash("reset")
+local CONFIGSAVE = hash("configSave")
+local SAVE = hash("save")
+local LOAD = hash("load")
+local CONFIGLOAD = hash("configLoad")
+
+---------------------------
+
 local defsave = require("defsave.defsave")
 local md5 = require("main.Scripts.Checksum.md5")
 
@@ -397,7 +409,7 @@ end
 
 function on_message(self, message_id, message, sender)
 
-	if message_id == hash("reset") then
+	if message_id == RESET then
 		local checksum = generate_checksum(table_to_string(easyTable))
 		delete_file(filename)  -- Delete the corrupted file
 		defsave.set(filename, "default", easyTable)
@@ -407,11 +419,11 @@ function on_message(self, message_id, message, sender)
 		defsave.save(filename)
 	end
 
-	if message_id == hash("configSave") then
+	if message_id == CONFIGSAVE then
 		configSave(message.config)
 	end
 		
-	if message_id == hash("save") then
+	if message_id == SAVE then
 		
 		print("Received save message")
 		print("Player data:", table_to_string(message.data))
@@ -421,7 +433,7 @@ function on_message(self, message_id, message, sender)
 		save(message.data, message.dungeonData, message.itemData)
 	end
 
-	if message_id == hash("load") then
+	if message_id == LOAD then
 		easyTable = defsave.get(filename, "default")
 		dungeonStatus = defsave.get(filename, "dungeon")
 		items = defsave.get(filename, "item")
@@ -433,7 +445,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("Inventory#inventory", "loadItemData", {data = items})
 	end
 
-	if message_id == hash("configLoad") then
+	if message_id == CONFIGLOAD then
 		config = defsave.get(configName, "data")
 
 		local loadedChecksum = defsave.get(configName, "checksum")
