@@ -65,11 +65,11 @@ function on_input(self, action_id, action)
 		gui.set_enabled(gui.get_node("pausemenu"),pauseOpen)
 
 		if pauseOpen == true then
-			msg.post("Player#Player", "stopRecievingInput")
+			msg.post("Level:/Player#Player", "stopRecievingInput")
 			msg.post("main#Level", "set_time_step", { factor = 0, mode = 0 })
 		else
 			msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
-			msg.post("Player#Player", "startRecievingInput")
+			msg.post("Level:/Player#Player", "startRecievingInput")
 		end
 	end 
 
