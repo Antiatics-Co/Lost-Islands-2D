@@ -12,10 +12,17 @@ local FILESAVE = hash("fileSave")
 local FIRE = hash("fire")
 --------------------------------------------------------------
 
---Physical
+--Properties
 
 local equipped = false
 local defence
+local usage
+
+-------------------------------------------------------------
+
+--Physical
+
+
 
 local EMPTY = { 0, hasItem = true, equipped } -- this is the default in the equipped section
 local WOODSWORD = { 1, hasItem = false, equipped }
@@ -92,6 +99,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	print("Received message:", message_id)
+	
 	if message_id == FILESAVE then
 		print("fileSave Inventory")
 		save()
@@ -143,8 +151,10 @@ function applyProperties(damage, shield)
 		if shield.type == 3 then
 			while(damage.shieldUp)
 			do
-				msg.post("", "", {usage = shield.energyUsage})
+				usage = shield.energyUsage
+				--msg.post("hud#hud", "useEnergy", {currentEnergy = usage})
 			end
+			
 		end
 	end 
 end
