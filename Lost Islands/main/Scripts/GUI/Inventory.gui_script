@@ -43,46 +43,49 @@ local ROCK = { itemNum = 16, hasItem = false, equipped = false }
 
 -- Item Slot, damage, energy usage
 
-local WOOD = { itemNum = 5, hasItem = false, equipped = false }
-local STEEL = { itemNum = 6, hasItem = false, equipped = false }
-local MAGICSHIELD = { itemNum = 7, hasItem = false, equipped = false }
+local WOOD = { itemNum = 17, hasItem = false, equipped = false }
+local STEEL = { itemNum = 18, hasItem = false, equipped = false }
+local MAGICSHIELD = { itemNum = 19, hasItem = false, equipped = false }
 
 --Armour
 
-local LIGHT = { itemNum = 8, hasItem = false, equipped = false }
-local HEAVY = { itemNum = 9, hasItem = false, equipped = false }
-local MAGIC = { itemNum = 10, hasItem = false, equipped = false }
+local LIGHT = { itemNum = 20, hasItem = false, equipped = false }
+local HEAVY = { itemNum = 21, hasItem = false, equipped = false }
+local MAGIC = { itemNum = 22, hasItem = false, equipped = false }
 
 --Elements
 
-local FIRE = { itemNum = 11, hasItem = false, equipped = false }
-local WATER = { itemNum = 12, hasItem = false, equipped = false }
-local STONE = { itemNum = 13, hasItem = false, equipped = false }
-local LIGHTNING = { itemNum = 14, hasItem = false, equipped = false }
-local ICE = { itemNum = 15, hasItem = false, equipped = false }
-local RAINBOW = { itemNum = 16, hasItem = false, equipped = false }
-local POISON = { itemNum = 17, hasItem = false, equipped = false }
+local FIRE = { itemNum = 23, hasItem = false, equipped = false }
+local WATER = { itemNum = 24, hasItem = false, equipped = false }
+local STONE = { itemNum = 25, hasItem = false, equipped = false }
+local LIGHTNING = { itemNum = 26, hasItem = false, equipped = false }
+local ICE = { itemNum = 27, hasItem = false, equipped = false }
+local RAINBOW = { itemNum = 28, hasItem = false, equipped = false }
+local POISON = { itemNum = 29, hasItem = false, equipped = false }
 
 --Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
 
-local FIREDUNGEONKEYS = { itemNum = 18, max = 10, hasItem = false, holding = 0 }--Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
-local WATERDUNGEONKEYS = { itemNum = 19, max = 10, hasItem = false, holding = 0 }
-local STONEDUNGEONKEYS = { itemNum = 20, max = 10, hasItem = false, holding = 0 }
+local FIREDUNGEONKEYS = { itemNum = 30, max = 10, hasItem = false, holding = 0 }--Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
+local WATERDUNGEONKEYS = { itemNum = 31, max = 10, hasItem = false, holding = 0 }
+local STONEDUNGEONKEYS = { itemNum = 32, max = 10, hasItem = false, holding = 0 }
 
 --Money and Arrows --have a special section in inventory, may be in hud, same with keys
 
-local ARROW = { itemNum = 21, max = 40, hasItem = false, holding = 0 }
-local SHELLS = { itemNum = 22, max = 5, hasItem = false, holding = 0 }
-local MUSKETBALLS = {itemNum = 23, max = 30, hasItem = false, holding = 0}
-local PENDAL = { itemNum = 24, max = 99999, hasItem = false, holding = 0 }
+local ARROW = { itemNum = 33, max = 40, hasItem = false, holding = 0 }
+local SHELLS = { itemNum = 34, max = 5, hasItem = false, holding = 0 }
+local MUSKETBALLS = {itemNum = 35, max = 30, hasItem = false, holding = 0}
+local PENDAL = { itemNum = 36, max = 99999, hasItem = false, holding = 0 }
 
 -- Define items as a global variable
-local items = {  woodSword = WOODSWORD, broadsword = BROADSWORD, spear = SPEAR, bow = BOW, 
-woodShield = WOOD, steelShield = STEEL, magicShield = MAGICSHIELD, 
-lightArmour = LIGHT, heavyArmour = HEAVY, magicArmour = MAGIC, fireElement = FIRE,
-waterElement = WATER, stoneElement = STONE, lightning =  LIGHTNING, ice = ICE, rainbow = RAINBOW,
-poison = POISON, fireDungeonKeys = FIREDUNGEONKEYS, waterDungeonKeys = WATERDUNGEONKEYS,
-stoneDungeonKeys = STONEDUNGEONKEYS, arrow = ARROW, pendal = PENDAL, itemVersion = 1 }
+local items = {  woodSword = WOODSWORD, broadsword = BROADSWORD, spear = SPEAR, bow = BOW,
+	musket = MUSKET, scythe = SCYTHE, sai = SAI, baton = BATON, assault = ASSAULTRIFLE, rocket = ROCKETLAUNCHER,
+	crossbow = CROSSBOW, blunderbuss = BLUNDERBUSS, grenade = GRENADE, hammer = BIGHAMMER, knife = KNIFE, rock = ROCK,
+	woodShield = WOOD, steelShield = STEEL, magicShield = MAGICSHIELD, 
+	lightArmour = LIGHT, heavyArmour = HEAVY, magicArmour = MAGIC, fireElement = FIRE,
+	waterElement = WATER, stoneElement = STONE, lightning =  LIGHTNING, ice = ICE, rainbow = RAINBOW,
+	poison = POISON, fireDungeonKeys = FIREDUNGEONKEYS, waterDungeonKeys = WATERDUNGEONKEYS,
+	stoneDungeonKeys = STONEDUNGEONKEYS, arrow = ARROW, shells = SHELLS, musketBalls = MUSKETBALLS, 
+	pendal = PENDAL, itemVersion = 1 }
 
 print("Items defined:", items)
 
@@ -97,9 +100,14 @@ local function save()
 	end
 end
 
-local function load()
+local function load(currentItems)
 	print("Loading Items Initiated")
+	items = currentItems
 
+	if items.WoodSword.hasItem then
+
+	--elseif 
+	end
 
 end
 
@@ -116,7 +124,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == LOADITEMDATA then
-		items = message.data
+		load(message.data)
 	end
 end
 
