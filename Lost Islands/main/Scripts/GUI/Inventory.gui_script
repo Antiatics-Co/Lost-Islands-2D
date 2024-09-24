@@ -21,9 +21,6 @@ local usage
 
 --Physical
 
-
-
-local EMPTY = { itemNum = 0, hasItem = true, equipped = true } -- this is the default in the equipped section
 local WOODSWORD = { itemNum = 1, hasItem = false, equipped =  false }
 local BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false }
 local SPEAR = { itemNum = 3, hasItem = false, equipped = false }
@@ -48,7 +45,7 @@ local MAGIC = { itemNum = 10, hasItem = false, equipped = false }
 local FIRE = { itemNum = 11, hasItem = false, equipped = false }
 local WATER = { itemNum = 12, hasItem = false, equipped = false }
 local STONE = { itemNum = 13, hasItem = false, equipped = false }
-local LIGHTENING = { itemNum = 14, hasItem = false, equipped = false }
+local LIGHTNING = { itemNum = 14, hasItem = false, equipped = false }
 local ICE = { itemNum = 15, hasItem = false, equipped = false }
 local RAINBOW = { itemNum = 16, hasItem = false, equipped = false }
 local POISON = { itemNum = 17, hasItem = false, equipped = false }
@@ -62,14 +59,16 @@ local STONEDUNGEONKEYS = { itemNum = 20, max = 10, hasItem = false, holding = 0 
 --Money and Arrows --have a special section in inventory, may be in hud, same with keys
 
 local ARROW = { itemNum = 21, max = 40, hasItem = false, holding = 0 }
+local SHELLS = {}
+local MUSKETBALLS = {}
 local PENDAL = { itemNum = 22, max = 99999, hasItem = false, holding = 0 }
 
-
 -- Define items as a global variable
-local items = { empty = EMPTY, woodSword = WOODSWORD, broadsword = BROADSWORD, spear = SPEAR, bow = BOW, 
+local items = {  woodSword = WOODSWORD, broadsword = BROADSWORD, spear = SPEAR, bow = BOW, 
 woodShield = WOOD, steelShield = STEEL, magicShield = MAGICSHIELD, 
-lightArmour = LIGHT, heavyArmour = HEAVY, magicArmour = MAGIC, fireElement = FIRE, 
-waterElement = WATER, stoneElement = STONE, fireDungeonKeys = FIREDUNGEONKEYS, waterDungeonKeys = WATERDUNGEONKEYS,
+lightArmour = LIGHT, heavyArmour = HEAVY, magicArmour = MAGIC, fireElement = FIRE,
+waterElement = WATER, stoneElement = STONE, lightning =  LIGHTNING, ice = ICE, rainbow = RAINBOW,
+poison = POISON, fireDungeonKeys = FIREDUNGEONKEYS, waterDungeonKeys = WATERDUNGEONKEYS,
 stoneDungeonKeys = STONEDUNGEONKEYS, arrow = ARROW, pendal = PENDAL, itemVersion = 1 }
 
 print("Items defined:", items)

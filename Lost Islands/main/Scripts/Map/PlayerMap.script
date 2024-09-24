@@ -10,7 +10,7 @@ local recievingInputs = false
 
 local CONTACT_POINT_RESPONSE = hash("contact_point_response")
 local BORDER = hash("Border")
-
+local DUNGEON = hash("Dungeon")
 
 
 function init(self)
@@ -108,6 +108,19 @@ function on_message(self, message_id, message, sender)
 		if message.group == BORDER then
 			handleLevelCollisions(self, message.normal, message.distance)
 		end
+		
+		if message.group == DUNGEON then
+			msg.post("main:/menu#PauseMenu", "save")
+
+			msg.post("main:/main#music", "stopAll")
+			
+			msg.post("main:/main#Level", "load")
+			msg.post("main:/main#Level", "enable")
+
+			msg.post("main:/main#MainMap", "disable")
+			msg.post("main:/main#MainMap", "unload")
+		end
+	
 	end
 
 	if message_id == hash("startRecievingInput") then

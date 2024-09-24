@@ -10,7 +10,7 @@ local ENABLE = hash("enable")
 local DUNGEONSREADY = hash("dungeonsReady")
 local PLAYERREADY = hash("playerReady")
 local ITEMSREADY = hash("itemsReady")
-
+local SAVE = hash("save")
 -----------------------------------------------------------------
 
 
@@ -40,6 +40,10 @@ function animation(node, newAnimation)
 end
 
 function on_message(self, message_id, message)
+	if message_id == SAVE then
+		save()
+	end
+	
 	if message_id == ITEMSREADY then
 		print("ItemsReady")
 		saveTable.ItemDataTEMP = message.itemData

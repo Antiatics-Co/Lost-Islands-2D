@@ -203,6 +203,9 @@ function on_input(self, action_id, action)
 		particlefx.play("#dust")
 		--sound.play("#Jumping")
 	end]]--
+	recievingInputs = true
+	gravity = true
+	
 	if recievingInputs == true and gravity == true then
 		if action_id == hash("up") and self.groundContact then
 			self.velocity.y = JUMPTAKEOFF
