@@ -7,10 +7,12 @@
 
 ---PREHASHING-------------------------------------------------
 
-local itm = require("Modules.items")
+itm = require("main.Scripts.Modules.items")
 
 local LOADITEMDATA =  hash("loadItemData")
 local FILESAVE = hash("fileSave")
+local ADDITEM = hash("addItem")
+
 --------------------------------------------------------------
 
 
@@ -39,6 +41,15 @@ local function save()
 	end
 end
 
+local function addItem(itemNum)
+
+	if itemNum > 29 and items.itemNum.holding < items.itemNum.max then
+		print("Exeeds monetary limit")
+	end
+
+		
+
+end
 
 local function setupInventory()
 
@@ -333,6 +344,7 @@ end
 
 function init(self)
 	print("Script initialized")
+	addItem(36)
 end
 
 function on_message(self, message_id, message, sender)
@@ -347,7 +359,9 @@ function on_message(self, message_id, message, sender)
 		load(message.data)
 	end
 
-	
+	if message_id == ADDITEM then
+		addItem(message.itemID)
+	end
 end
 
 
