@@ -77,7 +77,7 @@ local MUSKETBALLS = {itemNum = 35, max = 30, hasItem = false, holding = 0}
 local PENDAL = { itemNum = 36, max = 99999, hasItem = false, holding = 0 }
 
 -- Define items as a global variable
-local items = {  woodSword = WOODSWORD, broadsword = BROADSWORD, spear = SPEAR, bow = BOW,
+local items = {  woodsword = WOODSWORD, broadsword = BROADSWORD, spear = SPEAR, bow = BOW,
 	musket = MUSKET, scythe = SCYTHE, sai = SAI, baton = BATON, assault = ASSAULTRIFLE, rocket = ROCKETLAUNCHER,
 	crossbow = CROSSBOW, blunderbuss = BLUNDERBUSS, grenade = GRENADE, hammer = BIGHAMMER, knife = KNIFE, rock = ROCK,
 	woodShield = WOOD, steelShield = STEEL, magicShield = MAGICSHIELD, 
@@ -88,6 +88,7 @@ local items = {  woodSword = WOODSWORD, broadsword = BROADSWORD, spear = SPEAR, 
 	pendal = PENDAL, itemVersion = 1 }
 
 print("Items defined:", items)
+
 
 local function save()
 	print("Entered save function")
@@ -100,40 +101,261 @@ local function save()
 	end
 end
 
-local function load(currentItems)
-	print("Loading Items Initiated")
-	items = currentItems
 
-	
+local function setupInventory()
 
-	if items.WoodSword.hasItem then
-		
+	if items.woodsword.hasItem then
+		if items.woodsword.equipped then
+
+
+		end
 	end
-	
+
 	if items.broadsword.hasItem then
-		
-	end
-	
-	if items.spear.hasItem then
+		if items.broadsword.equipped then
 
+
+		end
+	end
+
+	if items.spear.hasItem then
+		if items.spear.equipped then
+
+
+		end
 	end
 
 	if items.bow.hasItem then
+		if items.bow.equipped then
 
+
+		end
 	end
 
 	if items.musket.hasItem then
+		if items.musket.equipped then
 
-	end
 
-	if items.musket.hasItem then
-
+		end
 	end
 
 	if items.scythe.hasItem then
+		if items.scythe.equipped then
+
+
+		end
+	end
+
+	if items.sai.hasItem then
+		if items.sai.equipped then
+
+
+		end
+	end
+
+	if items.baton.hasItem then
+		if items.baton.equipped then
+
+
+		end
+	end
+
+	if items.assault.hasItem then
+		if items.assault.equipped then
+
+
+		end
+	end
+
+	if items.rocket.hasItem then
+		if items.rocket.equipped then
+
+
+		end
+	end
+
+	if items.crossbow.hasItem then
+		if items.crossbow.equipped then
+
+
+		end
+	end
+
+
+	if items.blunderbuss.hasItem then
+		if items.blunderbuss.equipped then
+
+
+		end
+	end
+
+	if items.grenade.hasItem then
+		if items.grenade.equipped then
+
+
+		end
+	end
+
+	if items.hammer.hasItem then
+		if items.hammer.equipped then
+
+
+		end
+	end
+
+	if items.knife.hasItem then
+		if items.knife.equipped then
+
+
+		end
+	end
+
+	if items.rock.hasItem then
+		if items.rock.equipped then
+
+
+		end
+	end
+
+	if items.woodShield.hasItem then
+		if items.woodShield.equipped then
+
+
+		end
+	end
+
+	if items.steelShield.hasItem then
+		if items.steelShield.equipped then
+
+
+		end
+	end
+
+	if items.magicShield.hasItem then
+		if items.magicShield.equipped then
+
+
+		end
+	end
+
+	if items.lightArmour.hasItem then
+		if items.lightArmour.equipped then
+
+
+		end
+	end
+
+	if items.heavyArmour.hasItem then
+		if items.heavyArmour.equipped then
+
+
+		end
+	end
+
+	if items.magicArmour.hasItem then
+		if items.magicArmour.equipped then
+
+
+		end
+	end
+
+	if items.fireElement.hasItem then
+		if items.fireElement.equipped then
+
+
+		end
+	end
+
+	if items.waterElement.hasItem then
+		if items.waterElement.equipped then
+
+
+		end
+	end
+
+
+	if items.stoneElement.hasItem then
+		if items.stoneElement.equipped then
+
+
+		end
+	end
+
+	if items.lightning.hasItem then
+		if items.lightning.equipped then
+
+
+		end
+	end
+
+	if items.ice.hasItem then
+		if items.ice.equipped then
+
+
+		end
+	end
+
+	if items.rainbow.hasItem then
+		if items.rainbow.equipped then
+
+
+		end
+	end
+
+	if items.poison.hasItem then
+		if items.poison.equipped then
+
+
+		end
+	end
+
+	if items.fireDungeonKeys.hasItem then
+		if items.fireDungeonKeys.equipped then
+
+
+		end
+	end
+
+	if items.waterDungeonKeys.hasItem then
+		if items.waterDungeonKeys.equipped then
+
+
+		end
+	end
+
+	if items.stoneDungeonKeys.hasItem then
+		if items.stoneDungeonKeys.equipped then
+
+
+		end
+	end
+
+	if items.stoneDungeonKeys.hasItem then
+		if items.stoneDungeonKeys.equipped then
+
+
+		end
+	end
+
+	if items.shells.hasItem then
+		
+	end
+
+	if items.musketBalls.hasItem then
 
 	end
 	
+	if items.pendal.hasItem then
+
+	end
+end
+
+local function load(currentItems)
+	print("Loading Items Initiated")
+	items = currentItems
+	setupInventory()
+	
+
 end
 
 function init(self)
@@ -151,20 +373,11 @@ function on_message(self, message_id, message, sender)
 	if message_id == LOADITEMDATA then
 		load(message.data)
 	end
+
+	
 end
 
-local function setupInventory()
 
-end
-
-local function itemProperties()
-
-	--defence
-	if items.WOOD.equipped == true then
-		defence = 10
-
-	end
-end
 
 function getShieldProperties()
 
