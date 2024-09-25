@@ -13,13 +13,6 @@ local LOADITEMDATA =  hash("loadItemData")
 local FILESAVE = hash("fileSave")
 --------------------------------------------------------------
 
---Properties
-
-local equipped = false
-local defence
-local usage
-
-
 
 -- Define items as a global variable
 local items = {  woodsword = itm.WOODSWORD, broadsword = itm.BROADSWORD, spear = itm.SPEAR, bow = itm.BOW,
