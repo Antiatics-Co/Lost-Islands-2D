@@ -7,6 +7,8 @@
 
 ---PREHASHING-------------------------------------------------
 
+local itm = require("Modules.items")
+
 local LOADITEMDATA =  hash("loadItemData")
 local FILESAVE = hash("fileSave")
 --------------------------------------------------------------
@@ -17,75 +19,18 @@ local equipped = false
 local defence
 local usage
 
--------------------------------------------------------------
 
---Physical
-
-local WOODSWORD = { itemNum = 1, hasItem = false, equipped =  false }
-local BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false }
-local SPEAR = { itemNum = 3, hasItem = false, equipped = false }
-local BOW = { itemNum = 4, hasItem = false, equipped = false }
-local MUSKET = { itemNum = 5, hasItem = false, equipped = false }
-local SCYTHE = { itemNum = 6, hasItem = false, equipped = false }
-local SAI = { itemNum = 7, hasItem = false, equipped = false }
-local BATON = { itemNum = 8, hasItem = false, equipped = false }
-local ASSAULTRIFLE = { itemNum = 9, hasItem = false, equipped = false }
-local ROCKETLAUNCHER = { itemNum = 10, hasItem = false, equipped = false }
-local CROSSBOW = { itemNum = 11, hasItem = false, equipped = false }
-local BLUNDERBUSS = { itemNum = 12, hasItem = false, equipped = false }
-local GRENADE = { itemNum = 13, hasItem = false, equipped = false }
-local BIGHAMMER = { itemNum = 14, hasItem = false, equipped = false }
-local KNIFE = { itemNum = 15, hasItem = false, equipped = false }
-local ROCK = { itemNum = 16, hasItem = false, equipped = false }
-
-
---shields
-
--- Item Slot, damage, energy usage
-
-local WOOD = { itemNum = 17, hasItem = false, equipped = false }
-local STEEL = { itemNum = 18, hasItem = false, equipped = false }
-local MAGICSHIELD = { itemNum = 19, hasItem = false, equipped = false }
-
---Armour
-
-local LIGHT = { itemNum = 20, hasItem = false, equipped = false }
-local HEAVY = { itemNum = 21, hasItem = false, equipped = false }
-local MAGIC = { itemNum = 22, hasItem = false, equipped = false }
-
---Elements
-
-local FIRE = { itemNum = 23, hasItem = false, equipped = false }
-local WATER = { itemNum = 24, hasItem = false, equipped = false }
-local STONE = { itemNum = 25, hasItem = false, equipped = false }
-local LIGHTNING = { itemNum = 26, hasItem = false, equipped = false }
-local ICE = { itemNum = 27, hasItem = false, equipped = false }
-local RAINBOW = { itemNum = 28, hasItem = false, equipped = false }
-local POISON = { itemNum = 29, hasItem = false, equipped = false }
-
---Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
-
-local FIREDUNGEONKEYS = { itemNum = 30, max = 10, hasItem = false, holding = 0 }--Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
-local WATERDUNGEONKEYS = { itemNum = 31, max = 10, hasItem = false, holding = 0 }
-local STONEDUNGEONKEYS = { itemNum = 32, max = 10, hasItem = false, holding = 0 }
-
---Money and Arrows --have a special section in inventory, may be in hud, same with keys
-
-local ARROW = { itemNum = 33, max = 40, hasItem = false, holding = 0 }
-local SHELLS = { itemNum = 34, max = 5, hasItem = false, holding = 0 }
-local MUSKETBALLS = {itemNum = 35, max = 30, hasItem = false, holding = 0}
-local PENDAL = { itemNum = 36, max = 99999, hasItem = false, holding = 0 }
 
 -- Define items as a global variable
-local items = {  woodsword = WOODSWORD, broadsword = BROADSWORD, spear = SPEAR, bow = BOW,
-	musket = MUSKET, scythe = SCYTHE, sai = SAI, baton = BATON, assault = ASSAULTRIFLE, rocket = ROCKETLAUNCHER,
-	crossbow = CROSSBOW, blunderbuss = BLUNDERBUSS, grenade = GRENADE, hammer = BIGHAMMER, knife = KNIFE, rock = ROCK,
-	woodShield = WOOD, steelShield = STEEL, magicShield = MAGICSHIELD, 
-	lightArmour = LIGHT, heavyArmour = HEAVY, magicArmour = MAGIC, fireElement = FIRE,
-	waterElement = WATER, stoneElement = STONE, lightning =  LIGHTNING, ice = ICE, rainbow = RAINBOW,
-	poison = POISON, fireDungeonKeys = FIREDUNGEONKEYS, waterDungeonKeys = WATERDUNGEONKEYS,
-	stoneDungeonKeys = STONEDUNGEONKEYS, arrow = ARROW, shells = SHELLS, musketBalls = MUSKETBALLS, 
-	pendal = PENDAL, itemVersion = 1 }
+local items = {  woodsword = itm.WOODSWORD, broadsword = itm.BROADSWORD, spear = itm.SPEAR, bow = itm.BOW,
+musket = itm.MUSKET, scythe = itm.SCYTHE, sai = itm.SAI, baton = itm.BATON, assault = itm.ASSAULTRIFLE, rocket = itm.ROCKETLAUNCHER,
+crossbow = itm.CROSSBOW, blunderbuss = itm.BLUNDERBUSS, grenade = itm.GRENADE, hammer = itm.BIGHAMMER, knife = itm.KNIFE, rock = itm.ROCK,
+woodShield = itm.WOOD, steelShield = itm.STEEL, magicShield = itm.MAGICSHIELD, 
+lightArmour =itm. itm.LIGHT, heavyArmour = itm.HEAVY, magicArmour = itm.MAGIC, fireElement = itm.FIRE,
+waterElement = itm.WATER, stoneElement = itm.STONE, lightning =  itm.LIGHTNING, ice = itm.ICE, rainbow = itm.RAINBOW,
+poison = itm.POISON, fireDungeonKeys = itm.FIREDUNGEONKEYS, waterDungeonKeys = itm.WATERDUNGEONKEYS,
+stoneDungeonKeys = itm.STONEDUNGEONKEYS, arrow = itm.ARROW, shells = itm.SHELLS, musketBalls = itm.MUSKETBALLS, 
+pendal = itm.PENDAL, itemVersion = 1 }
 
 print("Items defined:", items)
 
@@ -105,13 +50,17 @@ end
 local function setupInventory()
 
 	if items.woodsword.hasItem then
+		--set slot with item to exist
+		
 		if items.woodsword.equipped then
+			--highlight slot and apply properties
 
-
+			
 		end
 	end
 
 	if items.broadsword.hasItem then
+		
 		if items.broadsword.equipped then
 
 
@@ -119,6 +68,7 @@ local function setupInventory()
 	end
 
 	if items.spear.hasItem then
+		
 		if items.spear.equipped then
 
 
@@ -126,6 +76,7 @@ local function setupInventory()
 	end
 
 	if items.bow.hasItem then
+		
 		if items.bow.equipped then
 
 
@@ -133,6 +84,7 @@ local function setupInventory()
 	end
 
 	if items.musket.hasItem then
+		
 		if items.musket.equipped then
 
 
@@ -140,6 +92,7 @@ local function setupInventory()
 	end
 
 	if items.scythe.hasItem then
+		
 		if items.scythe.equipped then
 
 
@@ -147,6 +100,7 @@ local function setupInventory()
 	end
 
 	if items.sai.hasItem then
+		
 		if items.sai.equipped then
 
 
@@ -154,6 +108,7 @@ local function setupInventory()
 	end
 
 	if items.baton.hasItem then
+		
 		if items.baton.equipped then
 
 
@@ -161,6 +116,7 @@ local function setupInventory()
 	end
 
 	if items.assault.hasItem then
+		
 		if items.assault.equipped then
 
 
@@ -168,6 +124,7 @@ local function setupInventory()
 	end
 
 	if items.rocket.hasItem then
+		
 		if items.rocket.equipped then
 
 
@@ -175,6 +132,7 @@ local function setupInventory()
 	end
 
 	if items.crossbow.hasItem then
+		
 		if items.crossbow.equipped then
 
 
@@ -183,6 +141,7 @@ local function setupInventory()
 
 
 	if items.blunderbuss.hasItem then
+		
 		if items.blunderbuss.equipped then
 
 
@@ -190,6 +149,7 @@ local function setupInventory()
 	end
 
 	if items.grenade.hasItem then
+		
 		if items.grenade.equipped then
 
 
@@ -197,6 +157,7 @@ local function setupInventory()
 	end
 
 	if items.hammer.hasItem then
+		
 		if items.hammer.equipped then
 
 
@@ -204,6 +165,7 @@ local function setupInventory()
 	end
 
 	if items.knife.hasItem then
+		
 		if items.knife.equipped then
 
 
@@ -211,6 +173,7 @@ local function setupInventory()
 	end
 
 	if items.rock.hasItem then
+		
 		if items.rock.equipped then
 
 
@@ -218,6 +181,7 @@ local function setupInventory()
 	end
 
 	if items.woodShield.hasItem then
+		
 		if items.woodShield.equipped then
 
 
@@ -225,6 +189,7 @@ local function setupInventory()
 	end
 
 	if items.steelShield.hasItem then
+		
 		if items.steelShield.equipped then
 
 
@@ -232,6 +197,7 @@ local function setupInventory()
 	end
 
 	if items.magicShield.hasItem then
+		
 		if items.magicShield.equipped then
 
 
@@ -239,6 +205,7 @@ local function setupInventory()
 	end
 
 	if items.lightArmour.hasItem then
+		
 		if items.lightArmour.equipped then
 
 
@@ -246,6 +213,7 @@ local function setupInventory()
 	end
 
 	if items.heavyArmour.hasItem then
+		
 		if items.heavyArmour.equipped then
 
 
@@ -253,6 +221,7 @@ local function setupInventory()
 	end
 
 	if items.magicArmour.hasItem then
+		
 		if items.magicArmour.equipped then
 
 
@@ -260,6 +229,7 @@ local function setupInventory()
 	end
 
 	if items.fireElement.hasItem then
+		
 		if items.fireElement.equipped then
 
 
@@ -267,6 +237,7 @@ local function setupInventory()
 	end
 
 	if items.waterElement.hasItem then
+		
 		if items.waterElement.equipped then
 
 
@@ -275,6 +246,7 @@ local function setupInventory()
 
 
 	if items.stoneElement.hasItem then
+		
 		if items.stoneElement.equipped then
 
 
@@ -282,6 +254,7 @@ local function setupInventory()
 	end
 
 	if items.lightning.hasItem then
+		
 		if items.lightning.equipped then
 
 
@@ -289,6 +262,7 @@ local function setupInventory()
 	end
 
 	if items.ice.hasItem then
+		
 		if items.ice.equipped then
 
 
@@ -296,6 +270,7 @@ local function setupInventory()
 	end
 
 	if items.rainbow.hasItem then
+		
 		if items.rainbow.equipped then
 
 
@@ -303,6 +278,7 @@ local function setupInventory()
 	end
 
 	if items.poison.hasItem then
+		
 		if items.poison.equipped then
 
 
@@ -310,6 +286,7 @@ local function setupInventory()
 	end
 
 	if items.fireDungeonKeys.hasItem then
+		
 		if items.fireDungeonKeys.equipped then
 
 
@@ -317,6 +294,7 @@ local function setupInventory()
 	end
 
 	if items.waterDungeonKeys.hasItem then
+		
 		if items.waterDungeonKeys.equipped then
 
 
@@ -324,6 +302,7 @@ local function setupInventory()
 	end
 
 	if items.stoneDungeonKeys.hasItem then
+		
 		if items.stoneDungeonKeys.equipped then
 
 
@@ -331,9 +310,10 @@ local function setupInventory()
 	end
 
 	if items.stoneDungeonKeys.hasItem then
+		
 		if items.stoneDungeonKeys.equipped then
 
-
+			
 		end
 	end
 
@@ -342,11 +322,11 @@ local function setupInventory()
 	end
 
 	if items.musketBalls.hasItem then
-
+		
 	end
 	
 	if items.pendal.hasItem then
-
+		
 	end
 end
 
