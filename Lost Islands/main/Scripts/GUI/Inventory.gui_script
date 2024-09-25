@@ -104,11 +104,36 @@ local function load(currentItems)
 	print("Loading Items Initiated")
 	items = currentItems
 
-	if items.WoodSword.hasItem then
+	
 
-	--elseif 
+	if items.WoodSword.hasItem then
+		
+	end
+	
+	if items.broadsword.hasItem then
+		
+	end
+	
+	if items.spear.hasItem then
+
 	end
 
+	if items.bow.hasItem then
+
+	end
+
+	if items.musket.hasItem then
+
+	end
+
+	if items.musket.hasItem then
+
+	end
+
+	if items.scythe.hasItem then
+
+	end
+	
 end
 
 function init(self)
