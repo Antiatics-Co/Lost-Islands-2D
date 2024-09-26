@@ -7,7 +7,7 @@
 
 ---PREHASHING-------------------------------------------------
 
-itm = require("main.Scripts.Modules.items")
+local itm = require("main.Scripts.Modules.items")
 
 local LOADITEMDATA =  hash("loadItemData")
 local FILESAVE = hash("fileSave")
@@ -21,7 +21,7 @@ local items = {  woodsword = itm.WOODSWORD, broadsword = itm.BROADSWORD, spear =
 musket = itm.MUSKET, scythe = itm.SCYTHE, sai = itm.SAI, baton = itm.BATON, assault = itm.ASSAULTRIFLE, rocket = itm.ROCKETLAUNCHER,
 crossbow = itm.CROSSBOW, blunderbuss = itm.BLUNDERBUSS, grenade = itm.GRENADE, hammer = itm.BIGHAMMER, knife = itm.KNIFE, rock = itm.ROCK,
 woodShield = itm.WOOD, steelShield = itm.STEEL, magicShield = itm.MAGICSHIELD, 
-lightArmour =itm. itm.LIGHT, heavyArmour = itm.HEAVY, magicArmour = itm.MAGIC, fireElement = itm.FIRE,
+lightArmour = itm.LIGHT, heavyArmour = itm.HEAVY, magicArmour = itm.MAGIC, fireElement = itm.FIRE,
 waterElement = itm.WATER, stoneElement = itm.STONE, lightning =  itm.LIGHTNING, ice = itm.ICE, rainbow = itm.RAINBOW,
 poison = itm.POISON, fireDungeonKeys = itm.FIREDUNGEONKEYS, waterDungeonKeys = itm.WATERDUNGEONKEYS,
 stoneDungeonKeys = itm.STONEDUNGEONKEYS, arrow = itm.ARROW, shells = itm.SHELLS, musketBalls = itm.MUSKETBALLS, 
