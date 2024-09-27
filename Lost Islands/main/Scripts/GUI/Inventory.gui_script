@@ -13,6 +13,7 @@ local LOADITEMDATA =  hash("loadItemData")
 local FILESAVE = hash("fileSave")
 local ADDITEM = hash("addItem")
 local USEITEM = hash("useItem")
+local TOUCH = hash("touch")
 
 --------------------------------------------------------------
 
@@ -364,36 +365,6 @@ local function useItem(itemNum)
 	end
 end
 
-function init(self)
-	print("Script initialized")
-end
-
-function on_message(self, message_id, message, sender)
-	print("Received message:", message_id)
-	
-	if message_id == FILESAVE then
-		print("fileSave Inventory")
-		save()
-	end
-
-	if message_id == LOADITEMDATA then
-		load(message.data)
-	end
-
-	if message_id == ADDITEM then
-		--ID = { num, name, addNum }
-		addItem(message.itemID)
-	end
-
-	if message_id == USEITEM then
-		--for items such as arrows or keys that are limited in use
-		--also for items that are burnt
-		--ID = { num, name, addNum }
-		useItem(message.ID)
-	end
-end
-
---the get properties function will be called from setup
 
 function getShieldProperties(ID) --ID = { num, name, addNum }
 
@@ -404,6 +375,7 @@ function getShieldProperties(ID) --ID = { num, name, addNum }
 	end
 end
 
+--the get properties function will be called from setup
 function getWeaponProperties(ID) --ID =  num 
 	--deals with sidearms, mainarms, and elements
 end
@@ -433,7 +405,43 @@ function applyProperties(damage, shield)
 				usage = shield.energyUsage * os.time() --definitely doesn't work
 				--msg.post("hud#hud", "useEnergy", {currentEnergy = usage})
 			end
-			
+
 		end
 	end 
+end
+
+function init(self)
+	print("Script initialized")
+end
+
+function on_message(self, message_id, message, sender)
+	print("Received message:", message_id)
+	
+	if message_id == FILESAVE then
+		print("fileSave Inventory")
+		save()
+	end
+
+	if message_id == LOADITEMDATA then
+		load(message.data)
+	end
+
+	if message_id == ADDITEM then
+		--ID = { num, name, addNum }
+		addItem(message.itemID)
+	end
+
+	if message_id == USEITEM then
+		--for items such as arrows or keys that are limited in use
+		--also for items that are burnt
+		--ID = { num, name, addNum }
+		useItem(message.ID)
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id ==  TOUCH and action.released then
+
+
+	end
 end
