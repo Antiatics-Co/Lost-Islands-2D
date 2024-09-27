@@ -1,6 +1,6 @@
 --@Title - Inventory
 --@Author - Aidan Cox
---@Version - 3
+--@Version - 4
 --@Description - The Inventory system
 
 -- these are the item numbers, for use in the inventory
@@ -43,15 +43,18 @@ end
 
 
 local function addItem(itemNum)
-
 	if itemNum.num > 29 and (items[itemNum.name].holding + itemNum.addNum) < items[itemNum.name].max then
+		items[itemNum.name].holding = items[itemNum.name].holding + itemNum.addNum
+
+		setupInventory()()
 		
 	elseif  items[itemNum.name].hasItem  == false then
+		items[itemNum.name].hasItem = true
 		
-		
-		
+		setupInventory()		
 	else
 		print("Exeeds Item limit")
+		return
 	end
 end
 
