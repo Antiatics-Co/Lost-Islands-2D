@@ -411,6 +411,7 @@ function applyProperties(damage, shield)
 end
 
 function init(self)
+	msg.post(".", "acquire_input_focus")
 	print("Script initialized")
 end
 
@@ -440,8 +441,17 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	if action_id ==  TOUCH and action.released then
 
+	if action_id == TOUCH and action.released then
+		local mouse_x = action.x
+		local mouse_y = action.y
 
+		for _, slot in ipairs(items) do
+			if gui.pick_node(slot.node, mouse_x, mouse_y) then
+				gui.set_color(slot.node, vmath.vector4(0, 1, 0, 1)) -- Change color to green
+				print("Selected item: " .. slot.item)
+				break
+			end
+		end	
 	end
 end
