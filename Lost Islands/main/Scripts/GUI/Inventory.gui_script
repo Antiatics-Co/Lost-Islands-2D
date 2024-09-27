@@ -41,14 +41,18 @@ local function save()
 	end
 end
 
+
 local function addItem(itemNum)
 
-	if itemNum > 29 and items.itemNum.holding < items.itemNum.max then
-		print("Exeeds monetary limit")
-	end
-
+	if itemNum.num > 29 and (items[itemNum.name].holding + itemNum.addNum) < items[itemNum.name].max then
 		
-
+	elseif  items[itemNum.name].hasItem  == false then
+		
+		
+		
+	else
+		print("Exeeds Item limit")
+	end
 end
 
 local function setupInventory()
@@ -344,7 +348,8 @@ end
 
 function init(self)
 	print("Script initialized")
-	addItem(36)
+	local ID = { num = 36, name = "pendal", addNum = 10 }
+	addItem(ID)
 end
 
 function on_message(self, message_id, message, sender)

@@ -57,7 +57,7 @@ STONEDUNGEONKEYS = { itemNum = 32, max = 10, hasItem = false, holding = 0 },
 ARROW = { itemNum = 33, max = 40, hasItem = false, holding = 0 },
 SHELLS = { itemNum = 34, max = 5, hasItem = false, holding = 0 },
 MUSKETBALLS = {itemNum = 35, max = 30, hasItem = false, holding = 0},
-PENDAL = { itemNum = 36, max = 99999, hasItem = false, holding = 0 }
+PENDAL = { itemNum = 36, max = 99999, hasItem = false, holding = 99999 }
 }
 
 return(itemList)
