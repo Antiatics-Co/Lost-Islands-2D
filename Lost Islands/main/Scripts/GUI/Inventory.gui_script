@@ -402,6 +402,13 @@ function getShieldProperties()
 	if items.WOOD.equipped then
 		shield = { defence = 10, pierce = 35, energyUsage = 0, type = 1 }
 	end
+end
+
+function getWeaponProperties()
+	--deals with sidearms, mainarms, and elements
+end
+
+function getArmourProperties()
 
 end
 
