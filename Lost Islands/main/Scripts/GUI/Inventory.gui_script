@@ -12,6 +12,7 @@ local itm = require("main.Scripts.Modules.items")
 local LOADITEMDATA =  hash("loadItemData")
 local FILESAVE = hash("fileSave")
 local ADDITEM = hash("addItem")
+local USEITEM = hash("useItem")
 
 --------------------------------------------------------------
 
@@ -345,7 +346,9 @@ local function load(currentItems)
 	print("Loading Items Initiated")
 	items = currentItems
 	setupInventory()
-	
+end
+
+local function useItem()
 
 end
 
@@ -368,6 +371,10 @@ function on_message(self, message_id, message, sender)
 	if message_id == ADDITEM then
 		--ID = { num, name, addNum }
 		addItem(message.itemID)
+	end
+
+	if message_id == USEITEM then
+		--for items such as arrows or keys that are limited in use
 	end
 end
 
