@@ -12,55 +12,32 @@ local itm = require("main.Scripts.Modules.items")
 local LOADITEMDATA =  hash("loadItemData")
 local FILESAVE = hash("fileSave")
 local ADDITEM = hash("addItem")
-local USEITEM = hash("useItem")
+local CONSUMEITEM = hash("consumeItem")
 local TOUCH = hash("touch")
+local BURN = hash("burn")
 
 --------------------------------------------------------------
 
 
 -- Define items as a global variable
-local items = {  woodsword = itm.WOODSWORD, broadsword = itm.BROADSWORD, spear = itm.SPEAR, bow = itm.BOW,
-musket = itm.MUSKET, scythe = itm.SCYTHE, sai = itm.SAI, baton = itm.BATON, assault = itm.ASSAULTRIFLE, rocket = itm.ROCKETLAUNCHER,
-crossbow = itm.CROSSBOW, blunderbuss = itm.BLUNDERBUSS, grenade = itm.GRENADE, hammer = itm.BIGHAMMER, knife = itm.KNIFE, rock = itm.ROCK,
-woodShield = itm.WOOD, steelShield = itm.STEEL, magicShield = itm.MAGICSHIELD, 
-lightArmour = itm.LIGHT, heavyArmour = itm.HEAVY, magicArmour = itm.MAGIC, fireElement = itm.FIRE,
-waterElement = itm.WATER, stoneElement = itm.STONE, lightning =  itm.LIGHTNING, ice = itm.ICE, rainbow = itm.RAINBOW,
-poison = itm.POISON, fireDungeonKeys = itm.FIREDUNGEONKEYS, waterDungeonKeys = itm.WATERDUNGEONKEYS,
-stoneDungeonKeys = itm.STONEDUNGEONKEYS, arrow = itm.ARROW, shells = itm.SHELLS, musketBalls = itm.MUSKETBALLS, 
-pendal = itm.PENDAL, itemVersion = 1 }
+local items = {  
+	woodsword = itm.WOODSWORD, broadsword = itm.BROADSWORD, spear = itm.SPEAR, bow = itm.BOW,
+	musket = itm.MUSKET, scythe = itm.SCYTHE, sai = itm.SAI, baton = itm.BATON, assault = itm.ASSAULTRIFLE, rocket = itm.ROCKETLAUNCHER,
+	crossbow = itm.CROSSBOW, blunderbuss = itm.BLUNDERBUSS, grenade = itm.GRENADE, hammer = itm.BIGHAMMER, knife = itm.KNIFE, rock = itm.ROCK,
+	woodShield = itm.WOOD, steelShield = itm.STEEL, magicShield = itm.MAGICSHIELD, 
+	lightArmour = itm.LIGHT, heavyArmour = itm.HEAVY, magicArmour = itm.MAGIC, fireElement = itm.FIRE,
+	waterElement = itm.WATER, stoneElement = itm.STONE, lightning =  itm.LIGHTNING, ice = itm.ICE, rainbow = itm.RAINBOW,
+	poison = itm.POISON, fireDungeonKeys = itm.FIREDUNGEONKEYS, waterDungeonKeys = itm.WATERDUNGEONKEYS,
+	stoneDungeonKeys = itm.STONEDUNGEONKEYS, arrow = itm.ARROW, shells = itm.SHELLS, musketBalls = itm.MUSKETBALLS, 
+	pendal = itm.PENDAL, itemVersion = 1 
+}
 
 print("Items defined:", items)
 
 
-local function save()
-	print("Entered save function")
-	-- Check if items is defined and not nil
-	if items then
-		msg.post("menu#PauseMenu", "itemsReady", {itemData = items})
-		print("Save Data Posted From Inventory")
-	else
-		print("Error: items is nil or not defined")
-	end
-end
 
 
-local function addItem(itemNum)
-	if itemNum.num > 29 and (items[itemNum.name].holding + itemNum.addNum) < items[itemNum.name].max then
-		items[itemNum.name].holding = items[itemNum.name].holding + itemNum.addNum
-
-		setupInventory()
-		
-	elseif  items[itemNum.name].hasItem  == false then
-		items[itemNum.name].hasItem = true
-		
-		setupInventory()		
-	else
-		print("Exeeds Item limit")
-		return
-	end
-end
-
-local function setupInventory()
+local function setupInventory() --setds up inventory and applies all properties on startup.
 
 	if items.woodsword.hasItem then
 		--set slot with item to exist
@@ -343,20 +320,81 @@ local function setupInventory()
 	end
 end
 
+local function applyProperties(ID) --applies the properties of a change in 1 item
+	--ID = {name, change}?
+	
+	if ID.change == BURN then
+		if ID.name == items.woodsword then
+			attack = 0
+
+		else
+			defence = 0
+
+		end
+	end
+end
+
+local function temphandleprop(damage, shield, ID) -- damage and gunk should have its own script, or be handled in player
+								--think about map encounters
+
+	if damage.shieldUp then
+		math.randomseed(os.time())
+
+		if math.random(1, 100) <= shield.pierce then
+			damage.isPierced = true
+			damage.shieldUp = false
+
+		end
+	end 
+end
+
 local function load(currentItems)
 	print("Loading Items Initiated")
 	items = currentItems
 	setupInventory()
 end
 
-local function useItem(itemNum)
+local function save()
+	print("Entered save function")
+	-- Check if items is defined and not nil
+	if items then
+		msg.post("menu#PauseMenu", "itemsReady", {itemData = items})
+		print("Save Data Posted From Inventory")
+	else
+		print("Error: items is nil or not defined")
+	end
+end
+
+
+local function addItem(itemNum)
 	if itemNum.num > 29 and (items[itemNum.name].holding + itemNum.addNum) < items[itemNum.name].max then
+		items[itemNum.name].holding = items[itemNum.name].holding + itemNum.addNum
+
+		setupInventory()
+
+	elseif  items[itemNum.name].hasItem  == false then
+		items[itemNum.name].hasItem = true
+
+		setupInventory()		
+	else
+		print("Exeeds Item limit")
+		return
+	end
+end
+
+local function consumeItem(itemNum)
+	if itemNum.num > 29  then
 		items[itemNum.name].holding = items[itemNum.name].holding - itemNum.addNum
 
 		setupInventory()
 
 	elseif  items[itemNum.name].hasItem  == true then
 		items[itemNum.name].hasItem = false
+		if items[itemNum.name].equipped then
+			items[itemNum.name].equipped = false
+			
+			applyProperties(damage, shield, ID)
+		end
 
 		setupInventory()		
 	else
@@ -376,39 +414,15 @@ function getShieldProperties(ID) --ID = { num, name, addNum }
 end
 
 --the get properties function will be called from setup
-function getWeaponProperties(ID) --ID =  num 
+local function getWeaponProperties(ID) --ID =  num 
 	--deals with sidearms, mainarms, and elements
 end
 
-function getArmourProperties(ID) --ID =  num 
+local function getArmourProperties(ID) --ID =  num 
 
 end
 
-function applyProperties(damage, shield)
-	if damage.shieldUp then
-		math.randomseed(os.time())
 
-		if math.random(1, 100) <= shield.pierce then
-			damage.isPierced = true
-			damage.shieldUp = false
-
-		end
-
-		if shield.type == 1 and damage.type == 11 then --fire elementsal type
-			items.WOOD.equipped = false
-			items.WOOD.hasItem = false
-		end
-
-		if shield.type == 3 then
-			while(damage.shieldUp)
-			do
-				usage = shield.energyUsage * os.time() --definitely doesn't work
-				--msg.post("hud#hud", "useEnergy", {currentEnergy = usage})
-			end
-
-		end
-	end 
-end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -432,7 +446,7 @@ function on_message(self, message_id, message, sender)
 		addItem(message.itemID)
 	end
 
-	if message_id == USEITEM then
+	if message_id == CONSUMEITEM then
 		--for items such as arrows or keys that are limited in use
 		--also for items that are burnt
 		--ID = { num, name, addNum }
@@ -447,8 +461,8 @@ function on_input(self, action_id, action)
 		local mouse_y = action.y
 
 		for _, slot in ipairs(items) do
-			if gui.pick_node(slot.node, mouse_x, mouse_y) then
-				gui.set_color(slot.node, vmath.vector4(0, 1, 0, 1)) -- Change color to green
+			if gui.pick_node(gui.get_node(slot.node), mouse_x, mouse_y) then
+				gui.set_color(gui.get_node(slot.node), vmath.vector4(0, 1, 0, 1)) -- Change color to green
 				print("Selected item: " .. slot.item)
 				break
 			end
