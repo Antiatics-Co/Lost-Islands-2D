@@ -14,7 +14,6 @@ local FILESAVE = hash("fileSave")
 local ADDITEM = hash("addItem")
 local CONSUMEITEM = hash("consumeItem")
 local TOUCH = hash("touch")
-local BURN = hash("burn")
 
 --------------------------------------------------------------
 
@@ -33,8 +32,6 @@ local items = {
 }
 
 print("Items defined:", items)
-
-
 
 
 local function setupInventory() --setds up inventory and applies all properties on startup.
@@ -270,7 +267,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.poison.hasItem then
 		
 		if items.poison.equipped then
-
+			
 
 		end
 	end
@@ -299,14 +296,6 @@ local function setupInventory() --setds up inventory and applies all properties 
 		end
 	end
 
-	if items.stoneDungeonKeys.hasItem then
-		
-		if items.stoneDungeonKeys.equipped then
-
-			
-		end
-	end
-
 	if items.shells.hasItem then
 		
 	end
@@ -320,33 +309,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	end
 end
 
-local function applyProperties(ID) --applies the properties of a change in 1 item
-	--ID = {name, change}?
-	
-	if ID.change == BURN then
-		if ID.name == items.woodsword then
-			attack = 0
 
-		else
-			defence = 0
-
-		end
-	end
-end
-
-local function temphandleprop(damage, shield, ID) -- damage and gunk should have its own script, or be handled in player
-								--think about map encounters
-
-	if damage.shieldUp then
-		math.randomseed(os.time())
-
-		if math.random(1, 100) <= shield.pierce then
-			damage.isPierced = true
-			damage.shieldUp = false
-
-		end
-	end 
-end
 
 local function load(currentItems)
 	print("Loading Items Initiated")
@@ -393,7 +356,7 @@ local function consumeItem(itemNum)
 		if items[itemNum.name].equipped then
 			items[itemNum.name].equipped = false
 			
-			applyProperties(damage, shield, ID)
+			applyProperties()
 		end
 
 		setupInventory()		
@@ -404,23 +367,7 @@ local function consumeItem(itemNum)
 end
 
 
-function getShieldProperties(ID) --ID = { num, name, addNum }
 
-	local shield = { defence = 0, pierce = 0, energyUsage = 0 }
-
-	if items.WOOD.equipped then
-		shield = { defence = 10, pierce = 35, energyUsage = 0, type = 1 }
-	end
-end
-
---the get properties function will be called from setup
-local function getWeaponProperties(ID) --ID =  num 
-	--deals with sidearms, mainarms, and elements
-end
-
-local function getArmourProperties(ID) --ID =  num 
-
-end
 
 
 

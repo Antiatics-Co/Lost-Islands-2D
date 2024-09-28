@@ -1,0 +1,108 @@
+
+local BURN = hash("burn")
+
+
+
+
+
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
+
+function getShieldProperties(ID) --ID = { num, name, addNum }
+
+	local shield = { defence = 0, pierce = 0, energyUsage = 0 }
+
+	if items.WOOD.equipped then
+		shield = { defence = 10, pierce = 35, energyUsage = 0, type = 1 }
+	end
+end
+
+--the get properties function will be called from setup
+local function getWeaponProperties(ID) --ID =  num 
+	--deals with sidearms, mainarms, and elements
+end
+
+local function getArmourProperties(ID) --ID =  num 
+
+end
+
+local function applyProperties(ID) --applies the properties of a change in 1 item
+	--ID = {name, change, num}?  TMaybe all thye properties stuff should be in its own file
+
+	if ID.change == BURN then
+		if ID.name == items.woodsword then
+			msg.post("", "burntSword", {attack = 0})
+
+		else
+			msg.post("", "burntShield", {defence = 0})
+		end
+	end
+
+	if ID.change == DISABLEENERGY then
+		if ID.num < 30 and ID > 22 then
+
+		end
+	end
+end
+
+local function temphandleprop(damage, shield, ID) -- damage and gunk should have its own script, or be handled in player
+	--think about map encounters
+
+	if damage.shieldUp then
+		math.randomseed(os.time())
+
+		if math.random(1, 100) <= shield.pierce then
+			damage.isPierced = true
+			damage.shieldUp = false
+
+		end
+	end 
+end
