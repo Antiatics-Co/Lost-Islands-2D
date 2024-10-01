@@ -4,5 +4,5 @@ components {
 }
 components {
   id: "ItemProperties"
-  component: "/main/Scripts/ItemProperties.script"
+  component: "/main/Scripts/PlayerProperties.script"
 }

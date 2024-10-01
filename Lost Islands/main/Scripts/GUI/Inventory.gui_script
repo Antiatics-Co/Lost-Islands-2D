@@ -34,6 +34,12 @@ local items = {
 print("Items defined:", items)
 
 
+local function equipItem(ID) --ID = { name, type }
+		items[ID.name].equipped = true
+		msg.post("#PlayerProperties", "sendEquipped", { item = items[ID.name]})
+
+end
+
 local function setupInventory() --setds up inventory and applies all properties on startup.
 
 	if items.woodsword.hasItem then
@@ -41,7 +47,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 		
 		if items.woodsword.equipped then
 			--highlight slot and apply properties
-
+			equipItem("woodsword")
 			
 		end
 	end
@@ -49,7 +55,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.broadsword.hasItem then
 		
 		if items.broadsword.equipped then
-
+			equipItem("broadsword")
 
 		end
 	end
@@ -57,7 +63,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.spear.hasItem then
 		
 		if items.spear.equipped then
-
+			equipItem("spear")
 
 		end
 	end
@@ -65,7 +71,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.bow.hasItem then
 		
 		if items.bow.equipped then
-
+			equipItem("bow")
 
 		end
 	end
@@ -73,7 +79,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.musket.hasItem then
 		
 		if items.musket.equipped then
-
+			equipItem("musket")
 
 		end
 	end
@@ -81,7 +87,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.scythe.hasItem then
 		
 		if items.scythe.equipped then
-
+			equipItem("scythe")
 
 		end
 	end
@@ -89,7 +95,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.sai.hasItem then
 		
 		if items.sai.equipped then
-
+			equipItem("sai")
 
 		end
 	end
@@ -97,7 +103,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.baton.hasItem then
 		
 		if items.baton.equipped then
-
+			equipItem("baton")
 
 		end
 	end
@@ -105,7 +111,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.assault.hasItem then
 		
 		if items.assault.equipped then
-
+			equipItem("assault")
 
 		end
 	end
@@ -113,7 +119,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rocket.hasItem then
 		
 		if items.rocket.equipped then
-
+			equipItem("rocket")
 
 		end
 	end
@@ -121,7 +127,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.crossbow.hasItem then
 		
 		if items.crossbow.equipped then
-
+			equipItem("crossbow")
 
 		end
 	end
@@ -130,7 +136,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.blunderbuss.hasItem then
 		
 		if items.blunderbuss.equipped then
-
+			equipItem("blunderbuss")
 
 		end
 	end
@@ -138,7 +144,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.grenade.hasItem then
 		
 		if items.grenade.equipped then
-
+			equipItem("grenade")
 
 		end
 	end
@@ -146,7 +152,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.hammer.hasItem then
 		
 		if items.hammer.equipped then
-
+			equipItem("hammer")
 
 		end
 	end
@@ -154,7 +160,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.knife.hasItem then
 		
 		if items.knife.equipped then
-
+			equipItem("knife")
 
 		end
 	end
@@ -162,7 +168,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rock.hasItem then
 		
 		if items.rock.equipped then
-
+			equipItem("rock")
 
 		end
 	end
@@ -170,7 +176,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.woodShield.hasItem then
 		
 		if items.woodShield.equipped then
-
+			equipItem("woodShield")
 
 		end
 	end
@@ -178,7 +184,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.steelShield.hasItem then
 		
 		if items.steelShield.equipped then
-
+			equipItem("steelShield")
 
 		end
 	end
@@ -186,7 +192,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.magicShield.hasItem then
 		
 		if items.magicShield.equipped then
-
+			equipItem("magicShield")
 
 		end
 	end
@@ -194,7 +200,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.lightArmour.hasItem then
 		
 		if items.lightArmour.equipped then
-
+			equipItem("lightArmour")
 
 		end
 	end
@@ -202,7 +208,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.heavyArmour.hasItem then
 		
 		if items.heavyArmour.equipped then
-
+			equipItem("heavyArmour")
 
 		end
 	end
@@ -210,7 +216,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.magicArmour.hasItem then
 		
 		if items.magicArmour.equipped then
-
+			equipItem("magicArmour")
 
 		end
 	end
@@ -219,14 +225,14 @@ local function setupInventory() --setds up inventory and applies all properties 
 		
 		if items.fireElement.equipped then
 
-
+			equipItem("fireElement")
 		end
 	end
 
 	if items.waterElement.hasItem then
 		
 		if items.waterElement.equipped then
-
+			equipItem("waterElement")
 
 		end
 	end
@@ -236,14 +242,14 @@ local function setupInventory() --setds up inventory and applies all properties 
 		
 		if items.stoneElement.equipped then
 
-
+			equipItem("stoneElement")
 		end
 	end
 
 	if items.lightning.hasItem then
 		
 		if items.lightning.equipped then
-
+			equipItem("lightning")
 
 		end
 	end
@@ -251,7 +257,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.ice.hasItem then
 		
 		if items.ice.equipped then
-
+			equipItem("ice")
 
 		end
 	end
@@ -259,7 +265,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rainbow.hasItem then
 		
 		if items.rainbow.equipped then
-
+			equipItem("rainbow")
 
 		end
 	end
@@ -267,15 +273,17 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.poison.hasItem then
 		
 		if items.poison.equipped then
-			
+			equipItem("poison")
 
 		end
 	end
 
-	if items.fireDungeonKeys.hasItem then
+	if items.fireDungeonKeys.hasItem then  --keys may not call equip item finc
+		--Texture will change indicating the key will only work in that temple,
+		--while in main they won't appear in inv
 		
 		if items.fireDungeonKeys.equipped then
-
+			
 
 		end
 	end
@@ -283,7 +291,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.waterDungeonKeys.hasItem then
 		
 		if items.waterDungeonKeys.equipped then
-
+			
 
 		end
 	end
@@ -291,7 +299,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.stoneDungeonKeys.hasItem then
 		
 		if items.stoneDungeonKeys.equipped then
-
+			
 
 		end
 	end
@@ -363,12 +371,6 @@ local function consumeItem(itemNum)
 	else
 		print("Doesn't have item")
 		return
-	end
-end
-
-local function equipItem(ID)
-	if items[ID.name].equipped == false and items[ID.name].hasItem then
-
 	end
 end
 

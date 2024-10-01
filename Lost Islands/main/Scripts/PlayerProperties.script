@@ -1,6 +1,13 @@
 
 local BURN = hash("burn")
-local GETITEMS = hash("getItems")
+local GETEQUIPPED = hash("sendEquipped")
+local DISABLEENERGY = hash("disableEnergy")
+local UNEQUIP = hash("unequip")
+local USEHEALTH
+local USEENERGY
+
+local health
+local equipped = {}
 
 function getShieldProperties(ID, items) --ID = { num, name, addNum }
 
@@ -53,17 +60,35 @@ local function temphandleprop(damage, shield, ID) -- damage and gunk should have
 	end 
 end
 
+local function getDamage(damage)
+	local denecePercent = getArmourProperties(ID)
+	defencePercent = defencePercent + getShieldProperties(ID)
 
+	damage = damage * defencePercent
+end
+
+local function setHealth(damage)
+	getDamage(damage)
+	health = health - damage
+
+end
+
+local function setEnergy()
+
+end
 
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	health = 100
+	
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == GETITEMS then
+	if message_id == GETEQUIPPED then
+		equipped.insert(message.item)
+	end
 
+	if message_id == UNEQUIP then
+		equipped.remove(message.item)
 	end
 end
 
