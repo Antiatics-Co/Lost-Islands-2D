@@ -1,62 +1,8 @@
 
 local BURN = hash("burn")
+local GETITEMS = hash("getItems")
 
-
-
-
-
-function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function fixed_update(self, dt)
-	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
-	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
-	-- Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
-end
-
-function getShieldProperties(ID) --ID = { num, name, addNum }
+function getShieldProperties(ID, items) --ID = { num, name, addNum }
 
 	local shield = { defence = 0, pierce = 0, energyUsage = 0 }
 
@@ -66,15 +12,15 @@ function getShieldProperties(ID) --ID = { num, name, addNum }
 end
 
 --the get properties function will be called from setup
-local function getWeaponProperties(ID) --ID =  num 
+local function getWeaponProperties(ID, items) --ID =  num 
 	--deals with sidearms, mainarms, and elements
 end
 
-local function getArmourProperties(ID) --ID =  num 
+local function getArmourProperties(ID, items) --ID =  num 
 
 end
 
-local function applyProperties(ID) --applies the properties of a change in 1 item
+local function applyProperties(ID, items) --applies the properties of a change in 1 item
 	--ID = {name, change, num}?  TMaybe all thye properties stuff should be in its own file
 
 	if ID.change == BURN then
@@ -106,3 +52,31 @@ local function temphandleprop(damage, shield, ID) -- damage and gunk should have
 		end
 	end 
 end
+
+
+
+function init(self)
+	-- Add initialization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == GETITEMS then
+
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+

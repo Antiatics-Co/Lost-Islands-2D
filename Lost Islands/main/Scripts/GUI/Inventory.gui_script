@@ -356,7 +356,7 @@ local function consumeItem(itemNum)
 		if items[itemNum.name].equipped then
 			items[itemNum.name].equipped = false
 			
-			applyProperties()
+			
 		end
 
 		setupInventory()		
@@ -366,10 +366,17 @@ local function consumeItem(itemNum)
 	end
 end
 
+local function equipItem(ID)
+	if items[ID.name].equipped == false and items[ID.name].hasItem then
 
+	end
+end
 
+local function unequipItem(ID)
+	if items[ID.name].equipped then
 
-
+	end
+end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -397,7 +404,7 @@ function on_message(self, message_id, message, sender)
 		--for items such as arrows or keys that are limited in use
 		--also for items that are burnt
 		--ID = { num, name, addNum }
-		useItem(message.ID)
+		consumeItem(message.ID)
 	end
 end
 
