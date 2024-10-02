@@ -3,11 +3,13 @@
 local FILECORRUPTION = hash("fileCorruption")
 local TOMAINMENU = hash( "ToMain")
 local FILESAVE = hash("fileSave")
-
+local HEALTH = hash("health")
 
 ----------------------------------------------------
 
 local inDungeon = false
+local easyTable = {}
+local health = 100
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -45,10 +47,9 @@ local function save() --Temporarily sending default values for testing purposes,
 	local location = "Default"
 	local position = vmath.vector3(0, 0, 0)
 	local energy = 100
-	local health = 100
 
 
-	local easyTable = { location, position, energy, health, version = 1 }
+	easyTable = { location, position, energy, health, version = 1 }
 
 	-----------------------------------------------------------------------------
 	
@@ -75,6 +76,11 @@ function on_message(self, message_id, message, sender)
 		msg.post("#MainMap", "disable")
 		msg.post("#MainMap", "unload")
 		inDungeon = false
+	end
+
+	if message_id == HEALTH then
+		easyTable.health = message.data
+		msg.post("hud#hud", "setHealth", { health = easyTable.health })
 	end
 
 	if message_id == FILECORRUPTION then

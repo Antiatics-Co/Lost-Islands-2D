@@ -60,6 +60,7 @@ function on_message(self, message_id, message)
 		print("DungeonsReady")
 		saveTable.dungeonDataTEMP = message.dungeonsData
 		dataReadyDungeons = true
+		save()
 	end
 	
 	if message_id == ENABLE then

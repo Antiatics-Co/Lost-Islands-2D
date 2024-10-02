@@ -26,7 +26,7 @@ local itemList = {  --NODES NEED TO BE REDONE
 
 -- Item Slot, damage, energy usage
 
-	WOOD = { itemNum = 17, hasItem = false, equipped = false, node = ("WOOD") },
+	WOOD = { itemNum = 17, hasItem = true, equipped = true, node = ("WOOD") },
 	STEEL = { itemNum = 18, hasItem = false, equipped = false, node = ("STEEL") },
 	MAGICSHIELD = { itemNum = 19, hasItem = false, equipped = false, node = ("MAGICSHIELD") },
 

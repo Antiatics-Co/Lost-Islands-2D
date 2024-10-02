@@ -3,74 +3,80 @@ local BURN = hash("burn")
 local GETEQUIPPED = hash("sendEquipped")
 local DISABLEENERGY = hash("disableEnergy")
 local UNEQUIP = hash("unequip")
+local CALCDAMAGE = hash("sendDamage")
+local SHIELDUP = hash("shield")
 local USEHEALTH
 local USEENERGY
 
+
+local MAXHEALTH = 100
+local MINHEALTH = 1
+
 local health
 local equipped = {}
+local shieldUp = false
 
-function getShieldProperties(ID, items) --ID = { num, name, addNum }
 
-	local shield = { defence = 0, pierce = 0, energyUsage = 0 }
-
-	if items.WOOD.equipped then
-		shield = { defence = 10, pierce = 35, energyUsage = 0, type = 1 }
+local function isItemEquipped(equipped, itemName)
+		if equipped and itemName then
+			return equipped[itemName] ~= nil
+		end
+		return false
 	end
-end
 
 --the get properties function will be called from setup
-local function getWeaponProperties(ID, items) --ID =  num 
+local function getWeaponProperties(items) --ID =  num 
 	--deals with sidearms, mainarms, and elements
 end
 
-local function getArmourProperties(ID, items) --ID =  num 
+local function getShieldProperties(items) --ID = { name, type }
+	if isItemEquipped(equipped, "woodShield") then
+		return(.10)
 
-end
+	elseif isItemEquipped(equipped, "steelShield") then
+		return
 
-local function applyProperties(ID, items) --applies the properties of a change in 1 item
-	--ID = {name, change, num}?  TMaybe all thye properties stuff should be in its own file
-
-	if ID.change == BURN then
-		if ID.name == items.woodsword then
-			msg.post("", "burntSword", {attack = 0})
-
-		else
-			msg.post("", "burntShield", {defence = 0})
-		end
-	end
-
-	if ID.change == DISABLEENERGY then
-		if ID.num < 30 and ID > 22 then
-
-		end
+	elseif isItemEquipped(equipped, "magicShield") then
+		
+		return
+		
+	else
+		return(0)
 	end
 end
 
-local function temphandleprop(damage, shield, ID) -- damage and gunk should have its own script, or be handled in player
-	--think about map encounters
+local function getArmourProperties(items) --ID =  num 
 
-	if damage.shieldUp then
-		math.randomseed(os.time())
-
-		if math.random(1, 100) <= shield.pierce then
-			damage.isPierced = true
-			damage.shieldUp = false
-
-		end
-	end 
 end
+
 
 local function getDamage(damage)
-	local denecePercent = getArmourProperties(ID)
-	defencePercent = defencePercent + getShieldProperties(ID)
+	local defencePercent = 0
+	--defencePercent = getArmourProperties(equipped)
+	
+	defencePercent = defencePercent + getShieldProperties(equipped)
 
+	if defencePercent == 0 then
+		defencePercent  = 1
+	end
+	
 	damage = damage * defencePercent
+
+	return(damage)
 end
 
 local function setHealth(damage)
-	getDamage(damage)
+	damage = getDamage(damage)
 	health = health - damage
+	print(damage)
+	print(health)
+	if health < MINHEALTH then
+		print("dead")
+		--msg.post("main:/menu#Death", "enable")
+	else
 
+		msg.post("main#MainMenu", "health", { data = health })
+	end
 end
 
 local function setEnergy()
@@ -78,17 +84,30 @@ local function setEnergy()
 end
 
 function init(self)
-	health = 100
+	health = MAXHEALTH
 	
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == GETEQUIPPED then
-		equipped.insert(message.item)
+
+		equipped[message.item.name] = message.item
+		print("equipped test 1: " .. message.item.name)
+		print("equipped test 2: " .. equipped[message.item.name].name)
+
+		setHealth(100)
 	end
 
 	if message_id == UNEQUIP then
 		equipped.remove(message.item)
+	end
+
+	if message_id == CALCDAMAGE then
+		setHealth(message.damage)
+	end
+
+	if message_id == SHIELDUP then
+		shieldUp = true
 	end
 end
 

@@ -3,6 +3,6 @@ components {
   component: "/main/GUI files/Inventory.gui"
 }
 components {
-  id: "ItemProperties"
+  id: "PlayerProperties"
   component: "/main/Scripts/PlayerProperties.script"
 }

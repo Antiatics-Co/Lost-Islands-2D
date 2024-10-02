@@ -35,9 +35,10 @@ print("Items defined:", items)
 
 
 local function equipItem(ID) --ID = { name, type }
-		items[ID.name].equipped = true
-		msg.post("#PlayerProperties", "sendEquipped", { item = items[ID.name]})
-
+	items[ID.name].equipped = true
+	local item = { name = ID.name, type = ID.type}
+	msg.post("#PlayerProperties", "sendEquipped", { item = ID })
+	print("Item:" .. item.name)
 end
 
 local function setupInventory() --setds up inventory and applies all properties on startup.
@@ -46,8 +47,9 @@ local function setupInventory() --setds up inventory and applies all properties 
 		--set slot with item to exist
 		
 		if items.woodsword.equipped then
-			--highlight slot and apply properties
-			equipItem("woodsword")
+			--TO DO highlight slot and apply properties
+			
+			equipItem({ name = "woodsword", type = "melee" })
 			
 		end
 	end
@@ -55,7 +57,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.broadsword.hasItem then
 		
 		if items.broadsword.equipped then
-			equipItem("broadsword")
+			equipItem({ name = "broadsword", type = "melee" })
 
 		end
 	end
@@ -63,7 +65,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.spear.hasItem then
 		
 		if items.spear.equipped then
-			equipItem("spear")
+			equipItem({ name = "spear", type = "melee"} )
 
 		end
 	end
@@ -71,7 +73,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.bow.hasItem then
 		
 		if items.bow.equipped then
-			equipItem("bow")
+			equipItem({ name = "bow", type = "ranged" })
 
 		end
 	end
@@ -79,7 +81,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.musket.hasItem then
 		
 		if items.musket.equipped then
-			equipItem("musket")
+			equipItem({ name = "musket", type = "ranged" })
 
 		end
 	end
@@ -87,7 +89,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.scythe.hasItem then
 		
 		if items.scythe.equipped then
-			equipItem("scythe")
+			equipItem({ name = "scythe", type = "melee" })
 
 		end
 	end
@@ -95,7 +97,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.sai.hasItem then
 		
 		if items.sai.equipped then
-			equipItem("sai")
+			equipItem({ name = "sai", type = "melee" })
 
 		end
 	end
@@ -103,7 +105,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.baton.hasItem then
 		
 		if items.baton.equipped then
-			equipItem("baton")
+			equipItem({ name = "baton", type = "melee" })
 
 		end
 	end
@@ -111,7 +113,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.assault.hasItem then
 		
 		if items.assault.equipped then
-			equipItem("assault")
+			equipItem({ name = "assault", type = "side" })
 
 		end
 	end
@@ -119,7 +121,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rocket.hasItem then
 		
 		if items.rocket.equipped then
-			equipItem("rocket")
+			equipItem({ name = "rocket", type = "side" })
 
 		end
 	end
@@ -127,7 +129,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.crossbow.hasItem then
 		
 		if items.crossbow.equipped then
-			equipItem("crossbow")
+			equipItem({ name = "crossbow", type = "ranged" })
 
 		end
 	end
@@ -136,7 +138,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.blunderbuss.hasItem then
 		
 		if items.blunderbuss.equipped then
-			equipItem("blunderbuss")
+			equipItem({ name = "blunderbuss", type = "side" })
 
 		end
 	end
@@ -144,7 +146,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.grenade.hasItem then
 		
 		if items.grenade.equipped then
-			equipItem("grenade")
+			equipItem({ name = "grenade", type = "ranged" })
 
 		end
 	end
@@ -152,7 +154,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.hammer.hasItem then
 		
 		if items.hammer.equipped then
-			equipItem("hammer")
+			equipItem({ name = "hammer", type = "melee" })
 
 		end
 	end
@@ -160,7 +162,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.knife.hasItem then
 		
 		if items.knife.equipped then
-			equipItem("knife")
+			equipItem({ name = "knife", type = "melee" })
 
 		end
 	end
@@ -168,7 +170,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rock.hasItem then
 		
 		if items.rock.equipped then
-			equipItem("rock")
+			equipItem({ name = "rock", type = "melee" })
 
 		end
 	end
@@ -176,7 +178,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.woodShield.hasItem then
 		
 		if items.woodShield.equipped then
-			equipItem("woodShield")
+			equipItem({ name = "woodShield", type = "shield" })
 
 		end
 	end
@@ -184,7 +186,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.steelShield.hasItem then
 		
 		if items.steelShield.equipped then
-			equipItem("steelShield")
+			equipItem({ name = "steelShield", type = "shield" })
 
 		end
 	end
@@ -192,7 +194,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.magicShield.hasItem then
 		
 		if items.magicShield.equipped then
-			equipItem("magicShield")
+			equipItem({ name = "magicShield", type = "shield" })
 
 		end
 	end
@@ -200,7 +202,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.lightArmour.hasItem then
 		
 		if items.lightArmour.equipped then
-			equipItem("lightArmour")
+			equipItem({ name = "lightArmour", type = "armour" })
 
 		end
 	end
@@ -208,7 +210,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.heavyArmour.hasItem then
 		
 		if items.heavyArmour.equipped then
-			equipItem("heavyArmour")
+			equipItem({ name = "heavyArmour", type = "armour"})
 
 		end
 	end
@@ -216,7 +218,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.magicArmour.hasItem then
 		
 		if items.magicArmour.equipped then
-			equipItem("magicArmour")
+			equipItem({ name = "magicArmour", type = "armour" })
 
 		end
 	end
@@ -225,14 +227,14 @@ local function setupInventory() --setds up inventory and applies all properties 
 		
 		if items.fireElement.equipped then
 
-			equipItem("fireElement")
+			equipItem({ name = "fireElement", type = "ranged" })
 		end
 	end
 
 	if items.waterElement.hasItem then
 		
 		if items.waterElement.equipped then
-			equipItem("waterElement")
+			equipItem({ name = "waterElement", type = "ranged" })
 
 		end
 	end
@@ -242,14 +244,14 @@ local function setupInventory() --setds up inventory and applies all properties 
 		
 		if items.stoneElement.equipped then
 
-			equipItem("stoneElement")
+			equipItem({ name = "stoneElement", type = "ranged" })
 		end
 	end
 
 	if items.lightning.hasItem then
 		
 		if items.lightning.equipped then
-			equipItem("lightning")
+			equipItem({ name = "lightning", type = "ranged" })
 
 		end
 	end
@@ -257,7 +259,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.ice.hasItem then
 		
 		if items.ice.equipped then
-			equipItem("ice")
+			equipItem({ name = "ice", type = "ranged" })
 
 		end
 	end
@@ -265,7 +267,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rainbow.hasItem then
 		
 		if items.rainbow.equipped then
-			equipItem("rainbow")
+			equipItem({ name = "rainbow", type = "ranged" })
 
 		end
 	end
@@ -273,7 +275,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.poison.hasItem then
 		
 		if items.poison.equipped then
-			equipItem("poison")
+			equipItem({ name = "poison", type = "ranged" })
 
 		end
 	end
@@ -325,9 +327,44 @@ local function load(currentItems)
 	setupInventory()
 end
 
+local function test_buffer()
+	-- Create a buffer with a larger size
+	local buffer = buffer.create(28, { { name = hash("itemNum"), type = buffer.VALUE_TYPE_UINT8 } })
+
+	-- Check if buffer is created successfully
+	if buffer then
+		print("Buffer created successfully")
+	else
+		print("Error: Failed to create buffer")
+	end
+end
+
+local function test_stream()
+	local buffer = buffer.create(28, { { name = hash("itemNum"), type = buffer.VALUE_TYPE_UINT8 } })
+
+	if buffer then
+		local stream = buffer.get_stream(buffer, hash("itemNum"))
+
+		-- Check if stream is valid
+		if stream then
+			print("Stream accessed successfully")
+		else
+			print("Error: Failed to get stream from buffer")
+		end
+	else
+		print("Error: Failed to create buffer")
+	end
+end
+
+
+
 local function save()
 	print("Entered save function")
 	-- Check if items is defined and not nil
+	
+	buffer.create(28, { { name = hash("itemNum"), type = buffer.VALUE_TYPE_UINT8 } })
+
+
 	if items then
 		msg.post("menu#PauseMenu", "itemsReady", {itemData = items})
 		print("Save Data Posted From Inventory")
@@ -335,6 +372,7 @@ local function save()
 		print("Error: items is nil or not defined")
 	end
 end
+
 
 
 local function addItem(itemNum)
@@ -383,6 +421,8 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	print("Script initialized")
+	ID = {}
+	setupInventory()
 end
 
 function on_message(self, message_id, message, sender)
