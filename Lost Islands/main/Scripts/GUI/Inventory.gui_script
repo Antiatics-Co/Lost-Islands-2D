@@ -373,8 +373,6 @@ local function save()
 	end
 end
 
-
-
 local function addItem(itemNum)
 	if itemNum.num > 29 and (items[itemNum.name].holding + itemNum.addNum) < items[itemNum.name].max then
 		items[itemNum.name].holding = items[itemNum.name].holding + itemNum.addNum
