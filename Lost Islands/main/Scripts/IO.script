@@ -7,6 +7,7 @@
 
 
 local itm = require("main.Scripts.Modules.items")
+local loc = require("main.Scripts.Modules.PlayerLocations")
 
 items = {itm.get_itemList(), itemVersion = 1 }
 
@@ -132,7 +133,7 @@ function init(self)
 	print("Type of vmath.vector3:", type(vmath.vector3))
 
 	filename = filename .. ".dat"
-
+	
 	---------------------------playerdata------------------------------------------
 	
 	local status, err = pcall(function()
