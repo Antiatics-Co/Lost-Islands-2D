@@ -14,7 +14,7 @@ local FILESAVE = hash("fileSave")
 local ADDITEM = hash("addItem")
 local CONSUMEITEM = hash("consumeItem")
 local TOUCH = hash("touch")
-
+local OPENINV = hash("openInv")
 --------------------------------------------------------------
 
 
@@ -374,7 +374,7 @@ local function save()
 	end
 end
 
-local function addItem(itemNum)
+local function addItem(itemNum) --itemNum = {name, num} 
 	if itemNum.num > 29 and (items[itemNum.name].holding + itemNum.addNum) < items[itemNum.name].max then
 		items[itemNum.name].holding = items[itemNum.name].holding + itemNum.addNum
 
@@ -413,7 +413,9 @@ end
 
 local function unequipItem(ID)
 	if items[ID.name].equipped then
+		items[ID.name].equipped = false
 
+		--TODO aet item to be shown as unequipped in menu
 	end
 end
 
@@ -422,6 +424,7 @@ function init(self)
 	print("Script initialized")
 	ID = {}
 	setupInventory()
+	addItem({name = "woodShield", num = 17})
 end
 
 function on_message(self, message_id, message, sender)
@@ -446,6 +449,10 @@ function on_message(self, message_id, message, sender)
 		--also for items that are burnt
 		--ID = { num, name, addNum }
 		consumeItem(message.ID)
+	end
+
+	if message_id == OPENINV then
+
 	end
 end
 
