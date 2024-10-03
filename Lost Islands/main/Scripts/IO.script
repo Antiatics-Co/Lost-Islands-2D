@@ -6,7 +6,7 @@
 -- has a checksum to verify integrity of files
 
 
-
+local itm = require("main.Scripts.Modules.items")
 
 
 -----------------PREHASHES
@@ -428,9 +428,9 @@ function on_message(self, message_id, message, sender)
 		print("Received save message")
 		print("Player data:", table_to_string(message.data))
 		print("Dungeon data:", table_to_string(message.dungeonData))
-		print("Item data:", table_to_string(message.itemData))
+		print("Item data:", table_to_string(itm.get_itemList()))
 		
-		save(message.data, message.dungeonData, message.itemData)
+		save(message.data, message.dungeonData, itm.get_itemList())
 	end
 
 	if message_id == LOAD then

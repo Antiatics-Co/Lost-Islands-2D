@@ -1,6 +1,6 @@
 
 
-local collectionTracker = require "main.Scripts.Modules.CollectionTracker"
+local collectionTracker = require("main.Scripts.Modules.CollectionTracker")
 
 
 --PreHashing for better preformance

@@ -5,7 +5,10 @@
 
 --Message Prehashes
 
-local collectionTracker = require "main.Scripts.Modules.CollectionTracker"
+
+local collectionTracker = require("main.Scripts.Modules.CollectionTracker")
+local itm = require("main.Scripts.Modules.items")
+
 
 local START = hash("start")
 local ENABLE = hash("enable")
@@ -30,7 +33,7 @@ local dataReadyItems = false
 local  pauseOpen = false --sets if you are in pause  menu
 local MainMenu = true
 
-local saveTable = { dataTEMP = nil , dungeonDataTEMP = nil, ItemDataTEMP = nil }
+local saveTable = { dataTEMP = nil , dungeonDataTEMP = nil }
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -48,7 +51,6 @@ function on_message(self, message_id, message)
 	
 	if message_id == ITEMSREADY then
 		print("ItemsReady")
-		saveTable.ItemDataTEMP = message.itemData
 		dataReadyItems = true
 	end
 
@@ -154,7 +156,5 @@ function save()
 		msg.post("IO#IO", "save", {dungeonData = dungeon})
 
 		print("Saving item data")
-		local item = saveTable.ItemDataTEMP
-		msg.post("IO#IO", "save", {itemData = item})
 	end
 end

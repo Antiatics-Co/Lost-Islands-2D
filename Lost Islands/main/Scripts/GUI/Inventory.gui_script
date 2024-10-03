@@ -20,15 +20,18 @@ local TOUCH = hash("touch")
 
 -- Define items as a global variable
 local items = {  
-	woodsword = itm.WOODSWORD, broadsword = itm.BROADSWORD, spear = itm.SPEAR, bow = itm.BOW,
-	musket = itm.MUSKET, scythe = itm.SCYTHE, sai = itm.SAI, baton = itm.BATON, assault = itm.ASSAULTRIFLE, rocket = itm.ROCKETLAUNCHER,
-	crossbow = itm.CROSSBOW, blunderbuss = itm.BLUNDERBUSS, grenade = itm.GRENADE, hammer = itm.BIGHAMMER, knife = itm.KNIFE, rock = itm.ROCK,
-	woodShield = itm.WOOD, steelShield = itm.STEEL, magicShield = itm.MAGICSHIELD, 
-	lightArmour = itm.LIGHT, heavyArmour = itm.HEAVY, magicArmour = itm.MAGIC, fireElement = itm.FIRE,
-	waterElement = itm.WATER, stoneElement = itm.STONE, lightning =  itm.LIGHTNING, ice = itm.ICE, rainbow = itm.RAINBOW,
-	poison = itm.POISON, fireDungeonKeys = itm.FIREDUNGEONKEYS, waterDungeonKeys = itm.WATERDUNGEONKEYS,
-	stoneDungeonKeys = itm.STONEDUNGEONKEYS, arrow = itm.ARROW, shells = itm.SHELLS, musketBalls = itm.MUSKETBALLS, 
-	pendal = itm.PENDAL, itemVersion = 1 
+	woodsword = itm.get_itemList().WOODSWORD, broadsword = itm.get_itemList().BROADSWORD, spear = itm.get_itemList().SPEAR, bow = itm.get_itemList().BOW,
+	musket = itm.get_itemList().MUSKET, scythe = itm.get_itemList().SCYTHE, 
+	sai = itm.get_itemList().SAI, baton = itm.get_itemList().BATON, assault = itm.get_itemList().ASSAULTRIFLE, rocket = itm.get_itemList().ROCKETLAUNCHER,
+	crossbow = itm.get_itemList().CROSSBOW, blunderbuss = itm.get_itemList().BLUNDERBUSS, grenade = itm.get_itemList().GRENADE,
+	hammer = itm.get_itemList().BIGHAMMER, knife = itm.get_itemList().KNIFE, rock = itm.get_itemList().ROCK,
+	woodShield = itm.get_itemList().WOOD, steelShield = itm.get_itemList().STEEL, magicShield = itm.get_itemList().MAGICSHIELD, 
+	lightArmour = itm.get_itemList().LIGHT, heavyArmour = itm.get_itemList().HEAVY, magicArmour = itm.get_itemList().MAGIC, fireElement = itm.get_itemList().FIRE,
+	waterElement = itm.get_itemList().WATER, stoneElement = itm.get_itemList().STONE,
+	lightning =  itm.get_itemList().LIGHTNING, ice = itm.get_itemList().ICE, rainbow = itm.get_itemList().RAINBOW,
+	poison = itm.get_itemList().POISON, fireDungeonKeys = itm.get_itemList().FIREDUNGEONKEYS, waterDungeonKeys = itm.get_itemList().WATERDUNGEONKEYS,
+	stoneDungeonKeys = itm.get_itemList().STONEDUNGEONKEYS, arrow = itm.get_itemList().ARROW, shells = itm.get_itemList().SHELLS, 
+	musketBalls = itm.get_itemList().MUSKETBALLS, pendal = itm.get_itemList().PENDAL, itemVersion = 1 
 }
 
 print("Items defined:", items)
@@ -361,12 +364,10 @@ end
 local function save()
 	print("Entered save function")
 	-- Check if items is defined and not nil
-	
-	buffer.create(28, { { name = hash("itemNum"), type = buffer.VALUE_TYPE_UINT8 } })
-
 
 	if items then
-		msg.post("menu#PauseMenu", "itemsReady", {itemData = items})
+		itm.set_itemList(items)
+		msg.post("menu#PauseMenu", "itemsReady")
 		print("Save Data Posted From Inventory")
 	else
 		print("Error: items is nil or not defined")

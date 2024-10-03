@@ -3,7 +3,9 @@
 -- require "my_directory.my_file"
 -- in any script using the functions.
 
-local itemList = {  --NODES NEED TO BE REDONE
+local M = {}
+
+itemList = {  --NODES NEED TO BE REDONE
 	WOODSWORD = { itemNum = 1, hasItem = false, equipped =  false, node = "WOODSWORD" },
 	BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD" },
 	SPEAR = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR" },
@@ -60,4 +62,13 @@ local itemList = {  --NODES NEED TO BE REDONE
 	PENDAL = { itemNum = 36, max = 99999, hasItem = false, holding = 99999, node = ("PENDAL") }
 }
 
-return(itemList)
+function M.set_itemList(item)
+	itemList = item
+end
+
+function M.get_itemList()
+	return(itemList)
+end
+
+return(M)
+
