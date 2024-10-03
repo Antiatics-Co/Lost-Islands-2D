@@ -1,4 +1,8 @@
 
+
+local collectionTracker = require "main.Scripts.Modules.CollectionTracker"
+
+
 --PreHashing for better preformance
 local FILECORRUPTION = hash("fileCorruption")
 local TOMAINMENU = hash( "ToMain")
@@ -61,7 +65,8 @@ local function save() --Temporarily sending default values for testing purposes,
 end
 
 function on_message(self, message_id, message, sender)
-
+	collectionTracker.on_message(message_id, message, sender)
+	
 	if message_id == FILESAVE then
 		print("fileSave MainMenu")
 		save()

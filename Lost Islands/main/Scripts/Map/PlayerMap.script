@@ -6,7 +6,7 @@
 ]]--
 
 local BASEVELOCITY = 150
-local recievingInputs = false
+local recievingInputs = true
 
 local CONTACT_POINT_RESPONSE = hash("contact_point_response")
 local BORDER = hash("Border")
@@ -57,21 +57,6 @@ function update(self, dt)
 	self.correction = vmath.vector3()
 end
 
-function on_input(self, action_id, action)
-	if action_id == hash("up") then
-		self.vel.y = BASEVELOCITY -- Move up
-	elseif action_id == hash("down") then
-		self.vel.y = -BASEVELOCITY -- Move down
-	elseif action_id == hash("left") then
-		self.vel.x = -BASEVELOCITY -- Move left
-	elseif action_id == hash("right") then
-		self.vel.x = BASEVELOCITY -- Move right
-	elseif action_id == hash("esc") and action.released then
-		msg.post("main:/menu#PauseMenu", "enable")
-	end
-end
-
-
 local function handleLevelCollisions(self, normal, distance)
 	if normal == nil then
 		print("Error: normal is nil")
@@ -108,28 +93,42 @@ function on_message(self, message_id, message, sender)
 		if message.group == BORDER then
 			handleLevelCollisions(self, message.normal, message.distance)
 		end
-		
+
 		if message.group == DUNGEON then
 			msg.post("main:/menu#PauseMenu", "save")
 
 			msg.post("main:/main#music", "stopAll")
-			
+
 			msg.post("main:/main#Level", "load")
 			msg.post("main:/main#Level", "enable")
 
 			msg.post("main:/main#MainMap", "disable")
 			msg.post("main:/main#MainMap", "unload")
 		end
-	
+
 	end
 
-	if message_id == hash("startRecievingInput") then
-		recievingInputs = true
-		print("restarting inputs")
-	end
-
-	if message_id == hash("stopRecievingInput") then
-		recievingInputs = false --this isn't connecting properlt eith itself in this script
-		print("Stopping all inputs")
+	if message_id == hash("recievingInput") then
+		recievingInputs = not recievingInputs
+		print("inputs")
 	end
 end
+
+function on_input(self, action_id, action)
+	if recievingInputs then
+		if action_id == hash("up") then
+			self.vel.y = BASEVELOCITY -- Move up
+		elseif action_id == hash("down") then
+			self.vel.y = -BASEVELOCITY -- Move down
+		elseif action_id == hash("left") then
+			self.vel.x = -BASEVELOCITY -- Move left
+		elseif action_id == hash("right") then
+			self.vel.x = BASEVELOCITY -- Move right
+			
+		elseif action_id == hash("esc") and action.released then
+			msg.post("main:/menu#PauseMenu", "enable")
+		end
+	end
+end
+
+

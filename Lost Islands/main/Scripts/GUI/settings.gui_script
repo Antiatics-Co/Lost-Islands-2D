@@ -4,7 +4,7 @@
 
 
 local leave = ""
-local volume = 100
+local volume = 50
 local resolution = 1
 local config = { volume = volume, resolution = resolution, configVersion = 1 }
 local transitioning = false  -- Flag to prevent multiple transitions
