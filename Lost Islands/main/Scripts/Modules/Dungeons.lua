@@ -26,7 +26,7 @@ quarry = {},
 sewage = {},
 
 
-frozenLake = {},
+frozenLandscape = {},
 }
 
 function M.getDungeonCompletion(name)
