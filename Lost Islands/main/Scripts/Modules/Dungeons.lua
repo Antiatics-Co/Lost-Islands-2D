@@ -12,21 +12,99 @@
 
 local M = {}
 
-local dungeons =
+local dungeons = --contains the total number of each dungeon items
 {
-sunkenCity = {},
+	sunkenCity = {
+		chests = { 
+			one = true,
+			two = true,
+			three = true,
+			four = true,
+			five = true,
+			six = true,
+			seven = true,
+			eight = true,
+			nine = true,
+			ten = true
+		}
+		
 
 
-fireTemple = {},
+	},
 
 
-quarry = {},
+	fireTemple = {
+		chests = { 
+			one = true,
+			two = true,
+			three = true,
+			four = true,
+			five = true,
+			six = true,
+			seven = true,
+			eight = true,
+			nine = true,
+			ten = true
+		}
+		
 
 
-sewage = {},
+	},
 
 
-frozenLandscape = {},
+	quarry = {
+		chests = { 
+			one = true,
+			two = true,
+			three = true,
+			four = true,
+			five = true,
+			six = true,
+			seven = true,
+			eight = true,
+			nine = true,
+			ten = true
+		}
+		
+
+		
+	},
+
+
+	sewage = {
+		chests = { 
+			one = true,
+			two = true,
+			three = true,
+			four = true,
+			five = true,
+			six = true,
+			seven = true,
+			eight = true,
+			nine = true,
+			ten = true
+		}
+		
+		
+	},
+
+
+	frozenLandscape = {
+		chests = { 
+			one = true,
+			two = true,
+			three = true,
+			four = true,
+			five = true,
+			six = true,
+			seven = true,
+			eight = true,
+			nine = true,
+			ten = true
+		}
+
+		
+	}
 }
 
 function M.getDungeonCompletion(name)
@@ -34,7 +112,7 @@ function M.getDungeonCompletion(name)
 end
 
 function M.setDungeonCompletion(dungeon)
-	dungeons[dungeon.name] = dungeon
+	dungeons = dungeon
 end
 
 return(M)
