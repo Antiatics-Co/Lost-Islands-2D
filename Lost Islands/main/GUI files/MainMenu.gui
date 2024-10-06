@@ -10,7 +10,7 @@ textures {
 nodes {
   position {
     x: 495.0
-    y: 313.0
+    y: 335.0
   }
   scale {
     x: 4.906924
@@ -165,53 +165,18 @@ nodes {
 }
 nodes {
   position {
-    y: 36.282276
+    y: 30.585058
   }
   scale {
-    x: 0.983039
-    y: 0.309589
-    z: 1.14
-  }
-  size {
-    x: 200.0
-    y: 100.0
+    x: 0.364559
+    y: 0.202427
   }
   type: TYPE_BOX
+  texture: "Game/Title"
   id: "Title"
   parent: "main"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  scale {
-    x: 0.557849
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_TEXT
-  text: "The Elementalists: Lost Islands\n"
-  ""
-  font: "default"
-  id: "text3"
-  outline {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-  shadow {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-  parent: "Title"
-  inherit_alpha: true
 }
 nodes {
   position {
