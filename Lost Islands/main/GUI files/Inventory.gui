@@ -5,194 +5,33 @@ textures {
 }
 nodes {
   position {
-    x: 490.0
-    y: 325.0
+    x: 483.0
+    y: 321.0
   }
   scale {
-    x: 4.769269
-    y: 6.423329
+    x: 19.428879
+    y: 12.776627
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   color {
-    x: 0.4
-    y: 0.4
-    z: 0.4
+    x: 0.302
+    y: 0.0
+    z: 0.102
   }
   type: TYPE_BOX
-  id: "inventory"
+  id: "box"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  type: TYPE_TEMPLATE
+  id: "template"
+  inherit_alpha: true
+  template: "/main/GUI files/InventoryTEMPLATE.gui"
   enabled: false
-}
-nodes {
-  position {
-    x: -62.483376
-  }
-  scale {
-    x: 1.502111
-    y: 1.436935
-  }
-  type: TYPE_BOX
-  texture: "Game/idle"
-  id: "player"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: -18.66114
-    y: 37.363804
-  }
-  scale {
-    x: 0.120554
-    y: 0.165841
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "slotOne"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: -18.66114
-    y: 16.969395
-  }
-  scale {
-    x: 0.120554
-    y: 0.165841
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "slotTwo"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: -18.66114
-    y: -4.203428
-  }
-  scale {
-    x: 0.120554
-    y: 0.165841
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "slotThree"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: -18.66114
-    y: -25.37625
-  }
-  scale {
-    x: 0.120554
-    y: 0.165841
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "slotFour"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 11.951518
-    y: -25.37625
-  }
-  scale {
-    x: 0.120554
-    y: 0.165841
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "slotFive"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 11.951518
-    y: -4.35911
-  }
-  scale {
-    x: 0.120554
-    y: 0.165841
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "slotSix"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 11.951518
-    y: 17.125076
-  }
-  scale {
-    x: 0.120554
-    y: 0.165841
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "slotSeven"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 11.951518
-    y: 36.896755
-  }
-  scale {
-    x: 0.120554
-    y: 0.165841
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "slotEight"
-  parent: "inventory"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
