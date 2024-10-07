@@ -133,4 +133,11 @@ animations {
   }
   playback: PLAYBACK_LOOP_FORWARD
 }
+animations {
+  id: "Splash"
+  images {
+    image: "/Assets/Images/SplashImage/Isaac Newton.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
 extrude_borders: 2

@@ -1,0 +1,21 @@
+script: "/main/Scripts/GUI/splash.gui_script"
+textures {
+  name: "Game"
+  texture: "/Assets/Game.atlas"
+}
+nodes {
+  position {
+    x: 486.0
+    y: 316.0
+  }
+  scale {
+    x: 0.850215
+  }
+  type: TYPE_BOX
+  texture: "Game/Splash"
+  id: "box"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

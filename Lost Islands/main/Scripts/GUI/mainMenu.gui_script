@@ -2,7 +2,6 @@
 
 local collectionTracker = require("main.Scripts.Modules.CollectionTracker")
 
-
 --PreHashing for better preformance
 local FILECORRUPTION = hash("fileCorruption")
 local TOMAINMENU = hash( "ToMain")
@@ -15,8 +14,20 @@ local inDungeon = false
 local easyTable = {}
 local health = 100
 
+local function delaySplash()
+	local minTime = 2
+	msg.post("#splash", "on")
+	
+	timer.delay(minTime, false, function()
+		msg.post("#splash", "on")
+		msg.post("#music", "enterMain")
+		return
+	end)
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	delaySplash()
 	gui.set_enabled(gui.get_node("main"), true)
 	
 end

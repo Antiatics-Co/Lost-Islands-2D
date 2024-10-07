@@ -7,7 +7,7 @@ local TUTORIALDUNGEONTHEME = hash("level1")
 
 
 function init(self)
-	sound.play("#MainMenuTheme")
+	--sound.play("#MainMenuTheme")
 end
 
 function final(self)
