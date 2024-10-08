@@ -5,7 +5,7 @@
 
 local M = {}
 
-itemList = {  --NODES NEED TO BE REDONE
+local itemList = {  --NODES NEED TO BE REDONE
 	WOODSWORD = { itemNum = 1, hasItem = false, equipped =  false, node = "WOODSWORD" },
 	BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD" },
 	SPEAR = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR" },

@@ -29,7 +29,6 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	delaySplash()
 	gui.set_enabled(gui.get_node("main"), true)
-	
 end
 
 function final(self)
@@ -120,7 +119,7 @@ function on_input(self, action_id, action)
 			animation(start, "button") -- TO DO: Extend time on animation
 			inDungeon = true
 			gui.set_enabled(gui.get_node("main"), false)
-
+			--msg.post("Inventory#Inventory", "openInv")
 			msg.post("menu#PauseMenu", "start")
 
 			msg.post("#MainMap", "load")

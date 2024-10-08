@@ -1,38 +1,363 @@
 script: "/main/Scripts/GUI/Inventory.gui_script"
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
 textures {
   name: "Game"
   texture: "/Assets/Game.atlas"
 }
 nodes {
-  position {
-    x: 483.0
-    y: 321.0
-  }
-  scale {
-    x: 19.428879
-    y: 12.776627
-  }
   size {
-    x: 50.0
-    y: 50.0
-  }
-  color {
-    x: 0.302
-    y: 0.0
-    z: 0.102
+    x: 200.0
+    y: 100.0
   }
   type: TYPE_BOX
-  id: "box"
+  id: "layer1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
   enabled: false
+  visible: false
 }
 nodes {
-  type: TYPE_TEMPLATE
-  id: "template"
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "org_Armour"
+  parent: "layer1"
   inherit_alpha: true
-  template: "/main/GUI files/InventoryTEMPLATE.gui"
+  size_mode: SIZE_MODE_AUTO
   enabled: false
+  visible: false
+}
+nodes {
+  position {
+    x: 97.0
+    y: 495.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "player"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Player"
+  font: "default"
+  id: "text1"
+  parent: "player"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 97.0
+    y: 294.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "weapons"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Weapons"
+  font: "default"
+  id: "text3"
+  parent: "weapons"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "org_Elements"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+  visible: false
+}
+nodes {
+  position {
+    x: 450.0
+    y: 351.0
+  }
+  scale {
+    x: 3.067244
+    y: 2.989836
+  }
+  type: TYPE_BOX
+  texture: "Game/firebullet"
+  id: "fire"
+  parent: "org_Elements"
+  layer: "Elements"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 450.0
+    y: 162.0
+  }
+  scale {
+    x: 0.501057
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "water"
+  parent: "org_Elements"
+  layer: "Elements"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 657.0
+    y: 351.0
+  }
+  scale {
+    x: 0.501057
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "steel"
+  parent: "org_Elements"
+  layer: "Elements"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 502.0
+    y: 586.0
+  }
+  scale {
+    x: 2.415746
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "Name"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.694042
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "[NAME]"
+  font: "default"
+  id: "text"
+  parent: "Name"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "org_weapon"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+  visible: false
+}
+nodes {
+  position {
+    x: 450.0
+    y: 162.0
+  }
+  scale {
+    x: 0.501057
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "STEELSWORD"
+  parent: "org_weapon"
+  layer: "Weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 657.0
+    y: 351.0
+  }
+  scale {
+    x: 0.501057
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "MAGICSWORD"
+  parent: "org_weapon"
+  layer: "Weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 450.0
+    y: 359.0
+  }
+  scale {
+    x: 0.501057
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "WOODSWORD"
+  parent: "org_weapon"
+  layer: "Weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    y: 0.771813
+  }
+  type: TYPE_BOX
+  texture: "Game/plus"
+  id: "woodswordTexture"
+  parent: "WOODSWORD"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 97.0
+    y: 396.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "elements"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Elements"
+  font: "default"
+  id: "text2"
+  parent: "elements"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 97.0
+    y: 192.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "armour"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Armour"
+  font: "default"
+  id: "text4"
+  parent: "armour"
+  inherit_alpha: true
+}
+layers {
+  name: "Weapon"
+}
+layers {
+  name: "Elements"
+}
+layers {
+  name: "Armour"
+}
+layers {
+  name: "Player"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
