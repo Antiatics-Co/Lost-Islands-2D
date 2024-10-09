@@ -9,6 +9,9 @@ local resolution = 1
 local config = { volume = volume, resolution = resolution, configVersion = 1 }
 local transitioning = false  -- Flag to prevent multiple transitions
 local settingsOpen = false
+local timerId = nil
+local hold_duration = 0.25 --seconds
+local press_start_time = nil
 
 function init(self)
 	gui.set_enabled(gui.get_node("settings"), false)
@@ -56,23 +59,75 @@ function animation(node, newAnimation)
 	gui.play_flipbook(node, newAnimation) -- Extend time on animation
 end
 
+local function startRapidDecrease(minus)
+	animation(minus, "minus")
+	timerId = timer.delay(0.1, true, function()
+		if volume > 0 then
+			volume = volume - 1
+			gui.set_text(gui.get_node("SetVolume"), volume)
+			sound.set_group_gain("master", (volume / 100))
+		end
+	end)
+end
+
+local function startRapidIncrease(plus)
+	animation(plus, "plus")
+	timerId = timer.delay(0.1, true, function()
+		if volume ~= 100 then
+			volume = volume + 1
+			gui.set_text(gui.get_node("SetVolume"), volume)
+			sound.set_group_gain("master", (volume / 100))
+		end
+	end)
+end
+
 function on_input(self, action_id, action)
 	if action_id == hash("touch") and settingsOpen then
 		local plus = gui.get_node("plus")
 
 		if gui.pick_node(plus, action.x, action.y) and volume ~= 100 then
-			animation(plus, "plus")
-			volume = volume + 1
-			gui.set_text(gui.get_node("SetVolume"), volume)
-			sound.set_group_gain("master", (volume / 100))
+			if action.pressed then
+				press_start_time = socket.gettime()
+				timerId = timer.delay(hold_duration, false, function()
+
+					startRapidIncrease(plus)
+				end)
+			elseif action.released then
+				local press_duration = socket.gettime() - press_start_time
+				if press_duration < hold_duration then
+					animation(plus, "plus")
+					volume = volume + 1
+					gui.set_text(gui.get_node("SetVolume"), volume)
+					sound.set_group_gain("master", (volume / 100))
+				end
+				if timerId then
+					timer.cancel(timerId)
+					timerId = nil
+				end
+			end
 		end
 
 		local minus = gui.get_node("minus")
 		if gui.pick_node(minus, action.x, action.y) and volume ~= 0 then
-			animation(minus, "minus")
-			volume = volume - 1
-			gui.set_text(gui.get_node("SetVolume"), volume)
-			sound.set_group_gain("master", (volume / 100))
+			if action.pressed then
+				press_start_time = socket.gettime()
+				timerId = timer.delay(hold_duration, false, function()
+					
+					startRapidDecrease(minus)
+				end)
+			elseif action.released then
+				local press_duration = socket.gettime() - press_start_time
+				if press_duration < hold_duration then
+					animation(minus, "minus")
+					volume = volume - 1
+					gui.set_text(gui.get_node("SetVolume"), volume)
+					sound.set_group_gain("master", (volume / 100))
+				end
+				if timerId then
+					timer.cancel(timerId)
+					timerId = nil
+				end
+			end
 		end
 	end
 
