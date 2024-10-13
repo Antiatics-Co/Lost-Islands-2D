@@ -112,7 +112,7 @@ function on_input(self, action_id, action)
 
 		if pauseOpen then
 			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-				msg.post("Level:/Player#Player", "RecievingInput")
+				msg.post("Level:/Player#Player", "recievingInput")
 				msg.post("main#Level", "set_time_step", { factor = 0, mode = 0 })
 				print("turning off inputs")
 				
@@ -124,7 +124,7 @@ function on_input(self, action_id, action)
 			end
 		else
 			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-				msg.post("Level:/Player#Player", "RecievingInput")
+				msg.post("Level:/Player#Player", "recievingInput")
 				msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
 
 			elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then

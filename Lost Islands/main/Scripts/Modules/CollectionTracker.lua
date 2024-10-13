@@ -11,11 +11,12 @@ function M.on_message(self, message_id, message, sender)
 		M.collections[sender] = true
 		print("Collection loaded:", tostring(sender))
 	elseif message_id == hash("proxy_unloaded") then
-		M.collections[sender] = nil
-		print("Collection unloaded:", tostring(sender))
+	M.collections[sender] = nil
+	print("Collection unloaded:", tostring(sender))
 	end
 	M.print_loaded_collections()
 end
+
 
 function M.is_collection_loaded(collection_url)
 	print("Checking collection:", tostring(collection_url))

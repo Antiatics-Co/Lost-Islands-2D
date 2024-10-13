@@ -88,6 +88,14 @@ local function handleLevelCollisions(self, normal, distance)
 	end
 end
 
+local function delayed_message(target, message, delay)
+	timer.delay(delay, false, function()
+		msg.post(target, message)
+		print("Message sent:", message, "to:", target)
+	end)
+end
+
+
 function on_message(self, message_id, message, sender)
 	if message_id == CONTACT_POINT_RESPONSE then
 		if message.group == BORDER then
@@ -96,7 +104,6 @@ function on_message(self, message_id, message, sender)
 
 		if message.group == DUNGEON then
 			msg.post("main:/menu#PauseMenu", "save")
-
 			msg.post("main:/main#music", "stopAll")
 
 			msg.post("main:/main#Level", "load")
