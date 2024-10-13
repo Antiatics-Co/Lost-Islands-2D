@@ -73,7 +73,7 @@ end
 local function startRapidIncrease(plus)
 	animation(plus, "plus")
 	timerId = timer.delay(0.1, true, function()
-		if volume ~= 100 then
+		if volume < 100 then
 			volume = volume + 1
 			gui.set_text(gui.get_node("SetVolume"), volume)
 			sound.set_group_gain("master", (volume / 100))
@@ -91,7 +91,7 @@ function on_input(self, action_id, action)
 				timerId = timer.delay(hold_duration, false, function()
 
 					startRapidIncrease(plus)
-				end)
+			end)
 			elseif action.released then
 				local press_duration = socket.gettime() - press_start_time
 				if press_duration < hold_duration then
@@ -100,6 +100,7 @@ function on_input(self, action_id, action)
 					gui.set_text(gui.get_node("SetVolume"), volume)
 					sound.set_group_gain("master", (volume / 100))
 				end
+				
 				if timerId then
 					timer.cancel(timerId)
 					timerId = nil
@@ -154,6 +155,3 @@ function leaveSettings(soLong)
 		msg.post(soLong, "enable")
 	end
 end
-
-
-

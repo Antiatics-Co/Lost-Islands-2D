@@ -11,7 +11,7 @@
 local STOPGRAVITY = hash("stopGravity")
 local CONTACTPOINTRESPONSE = hash("contact_point_response")
 local LEVELGROUP = hash("level")
-local STARTRECIEVINGINPUTS = hash("RecievingInputs")
+local STARTRECIEVINGINPUTS = hash("recievingInputs")
 
 -------------------------------------------------------------------
 
