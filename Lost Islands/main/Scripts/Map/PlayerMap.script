@@ -21,7 +21,6 @@ function init(self)
 	self.vel = vmath.vector3(0, 0, 0) -- Initialize velocity
 end
 
-
 local function flip(direction)
 	sprite.set_hflip("#sprite", direction < 0) --flips sprite horizontally, first file, 2nd true false if they Should be flipped
 end
@@ -88,15 +87,8 @@ local function handleLevelCollisions(self, normal, distance)
 	end
 end
 
-local function delayed_message(target, message, delay)
-	timer.delay(delay, false, function()
-		msg.post(target, message)
-		print("Message sent:", message, "to:", target)
-	end)
-end
-
-
 function on_message(self, message_id, message, sender)
+	
 	if message_id == CONTACT_POINT_RESPONSE then
 		if message.group == BORDER then
 			handleLevelCollisions(self, message.normal, message.distance)
@@ -112,7 +104,6 @@ function on_message(self, message_id, message, sender)
 			msg.post("main:/main#MainMap", "disable")
 			msg.post("main:/main#MainMap", "unload")
 		end
-
 	end
 
 	if message_id == hash("recievingInput") then
@@ -137,5 +128,3 @@ function on_input(self, action_id, action)
 		end
 	end
 end
-
-

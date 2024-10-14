@@ -4,7 +4,7 @@ instances {
   prototype: "/main/Objects/PlayerMap/PlayerMap.go"
   children: "OperatorMap"
   position {
-    x: 543.0
+    x: 4114.0
     y: 4223.0
     z: 1.0
   }
