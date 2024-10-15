@@ -6,7 +6,17 @@
 -- It also contains a list of enemies with all their properties
 
 
+local itm = require("main.Scripts.Modules.ItemProperties")
+
 local M = {}
 
+
+M.enemies = {}
+
+M.npc = {}
+
+local function getAttack()
+
+end
 
 return(M)
