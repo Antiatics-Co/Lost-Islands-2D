@@ -6,22 +6,22 @@
 local M = {}
 
 local itemList = {  --NODES NEED TO BE REDONE
-	WOODSWORD = { itemNum = 1, hasItem = false, equipped =  false, node = "WOODSWORD" },
-	BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD" },
-	SPEAR = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR" },
-	BOW = { itemNum = 4, hasItem = false, equipped = false, node = "BOW" },
-	MUSKET = { itemNum = 5, hasItem = false, equipped = false, node = "MUSKET" },
-	SCYTHE = { itemNum = 6, hasItem = false, equipped = false, node = "SCYTHE" },
-	SAI = { itemNum = 7, hasItem = false, equipped = false, node = "SAI" },
-	BATON = { itemNum = 8, hasItem = false, equipped = false, node = "BATON" },
-	ASSAULTRIFLE = { itemNum = 9, hasItem = false, equipped = false, node = ("ASSAULTRIFLE") },
-	ROCKETLAUNCHER = { itemNum = 10, hasItem = false, equipped = false, node = ("ROCKETLAUNCHER") },
-	CROSSBOW = { itemNum = 11, hasItem = false, equipped = false, node = ("CROSSBOW") },
-	BLUNDERBUSS = { itemNum = 12, hasItem = false, equipped = false, node = ("BLUNDERBUSS") },
-	GRENADE = { itemNum = 13, hasItem = false, equipped = false, node = ("GRENADE") },
-	BIGHAMMER = { itemNum = 14, hasItem = false, equipped = false, node = ("BIGHAMMER") },
-	KNIFE = { itemNum = 15, hasItem = false, equipped = false, node = ("KNIFE") },
-	ROCK = { itemNum = 16, hasItem = false, equipped = false, node = ("ROCK") },
+	WOODSWORD = { itemNum = 1, hasItem = false, equipped =  false, node = "WOODSWORD", type = "main" },
+	BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD", type = "main"  },
+	SPEAR = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR", type = "main"  },
+	BOW = { itemNum = 4, hasItem = false, equipped = false, node = "BOW", type = "range"  },
+	MUSKET = { itemNum = 5, hasItem = false, equipped = false, node = "MUSKET", type = "range"  },
+	SCYTHE = { itemNum = 6, hasItem = false, equipped = false, node = "SCYTHE", type = "main"  },
+	SAI = { itemNum = 7, hasItem = false, equipped = false, node = "SAI", type = "main"  },
+	BATON = { itemNum = 8, hasItem = false, equipped = false, node = "BATON", type = "main"  },
+	ASSAULTRIFLE = { itemNum = 9, hasItem = false, equipped = false, node = ("ASSAULTRIFLE"), type = "side", combo = 10    }, --has combo
+	ROCKETLAUNCHER = { itemNum = 10, hasItem = false, equipped = false, node = ("ROCKETLAUNCHER"), type = "side", combo = 10    }, --has combo
+	CROSSBOW = { itemNum = 11, hasItem = false, equipped = false, node = ("CROSSBOW"), type = "range"  },
+	BLUNDERBUSS = { itemNum = 12, hasItem = false, equipped = false, node = ("BLUNDERBUSS"), type = "side", combo = 10    }, --has combo
+	GRENADE = { itemNum = 13, hasItem = false, equipped = false, node = ("GRENADE"), type = "range"  },
+	BIGHAMMER = { itemNum = 14, hasItem = false, equipped = false, node = ("BIGHAMMER"), type = "main"  },
+	KNIFE = { itemNum = 15, hasItem = false, equipped = false, node = ("KNIFE"), type = "side", combo = 10  }, --has combo
+	ROCK = { itemNum = 16, hasItem = false, equipped = false, node = ("ROCK"), type = "main"  },
 
 
 --shields

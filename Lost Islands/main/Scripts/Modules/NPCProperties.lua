@@ -11,11 +11,22 @@ local itm = require("main.Scripts.Modules.ItemProperties")
 local M = {}
 
 
-M.enemies = {}
+local TutorialEnemies = {}
 
-M.npc = {}
+M.tutorialTown = {
+	Mayor = {},
+	Mother = {}
+}
 
-local function getAttack()
+local function calcDamage(enemy, combo)
+	local damage = 0.0
+	damage = itm.getMainAttack()
+	damage = damage + itm.getSideAttack(combo)
+	
+	TutorialEnemies[enemy].health = TutorialEnemies[enemy].health - damage
+end
+
+local function getDialog(person)
 
 end
 

@@ -12,6 +12,7 @@ local equipped = {}
 local shieldUp = false
 local energy = MAXENERGY
 
+local equippedMelee = { main = nil, side = nil }
 
 local function useEnergy(usage)
 	energy = energy - usage
@@ -83,16 +84,22 @@ function M.getElementAttack()
 	
 end
 
-function M.getPhysicalAttack(weapons, combo) --Deals with physical attack damagr, not anything that uses energy
-	local item = {}
-	if M.isItemEquipped(weapons.main.name) then
-		item = { attack = equipped[weapons.main.name].attack, type = equipped[weapons.main.name].type}
-		return(item)
-	end
+local item = {}
 
-	if M.isItemEquipped(weapons.side.name) and combo == equipped[weapons.side.name].combo then 
-		item = { attack = equipped[weapons.side.name].attack, type = equipped[weapons.side.name].type}
-		return(item)
+function M.getMainAttack() --Deals with physical attack damagr, not anything that uses energy
+		--item = { attack = equipped[equippedMelee.main].attack, type = equipped[equippedMelee.main].type}
+		--return(item)
+
+		return(equipped[equippedMelee.main].attack)
+end
+
+function M.getSideAttack(combo)
+	if combo == equipped[equippedMelee.side].combo then 
+		--item = { attack = equipped[equippedMelee.main].attack, type = equipped[equippedMelee.main].type}
+		--return(item)
+		return(equipped[equippedMelee.side].attack)
+	else
+		return(0)
 	end
 end
 
@@ -100,6 +107,14 @@ end
 
 function M.isItemEquipped(itemName)
 	if equipped and itemName then
+		if equipped[itemName].type ~= nil then
+			if equipped[itemName].type == "main" then
+				equippedMelee.main = itemName
+			elseif equipped[itemName].type == "side" then
+				equippedMelee.side = itemName
+			end
+		end
+		
 		return equipped[itemName] ~= nil
 	end
 	return false
