@@ -7,14 +7,17 @@
 
 local M = {}
 
-local eyes
+local eyes = {}
+
 local mouth
-local hair
+local hair = {}
+
 local shirt
 local trousers
 local shoes
+local skinTone
 
-function M.setEyes(eye)
+function M.setEyes(eye) -- eye = {shape, color}
 	eyes = eyes
 end
 
@@ -36,6 +39,10 @@ end
 
 function M.setShoes(shoe)
 	shoes = shoe
+end
+
+function M.setSkinTone(tone)
+	skinTone = tone
 end
 
 -----------------------------------------------------------------
@@ -64,4 +71,9 @@ function M.getShoes()
 	return(shoes)
 end
 
+function M.getSkinTone()
+	return(skinTone)
+end
+
 return(M)
+
