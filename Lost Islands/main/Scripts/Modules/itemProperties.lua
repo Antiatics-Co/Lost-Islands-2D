@@ -148,7 +148,15 @@ function M.unequip(item)
 end
 
 
-function M.setHealth(damage)
+function M.setHealth(heal)
+	health = heal
+end
+
+function M.setEnergy(en)
+	energy = en
+end
+
+function M.setCombatHealth(damage)
 	damage = getDamage(damage)
 	health = health - damage
 	print(damage)

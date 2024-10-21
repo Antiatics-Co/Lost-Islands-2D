@@ -10,30 +10,18 @@
 
 --]]
 
-
 local M = {}
 
-
-local locations = 
-{
-	stoneDungeon = false
-
-
-
-}
-
-
-function M.getLocation(location)
-	print("locations:" .. locations.name)
-	return(locations[location])
+local position
+function M.getPosition()
+	
+	return(position)
 end
 
-function M.setLocation(location) 
+function M.setPosition(pos) 
 	--hasnext func setting all locations to false
-	locations[location] = true
+	position = pos
 	
 end
-
-
 
 return(M)

@@ -7,15 +7,15 @@
 
 local M = {}
 
-local eyes = {}
-
-local mouth
-local hair = {}
-
-local shirt
-local trousers
-local shoes
-local skinTone
+M.sprite = {
+	eyes = {},
+	mouth,
+	hair = {},
+	shirt,
+	trousers,
+	shoes,
+	skinTone
+}
 
 function M.setEyes(eye) -- eye = {shape, color}
 	eyes = eyes

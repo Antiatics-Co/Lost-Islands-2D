@@ -7,7 +7,10 @@
 
 
 local itm = require("main.Scripts.Modules.items")
-local loc = require("main.Scripts.Modules.PlayerLocations")
+local eh = require("main.Scripts.Modules.ItemProperties")
+local pos = require("main.Scripts.Modules.PlayerPosition")
+local loc = require("main.Scripts.Modules.CollectionTracker")
+local char = require("main.Scripts.Modules.CharacterSprites")
 
 items = {itm.get_itemList(), itemVersion = 1 }
 
@@ -39,13 +42,13 @@ local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion =
 
 -------------------------------------Location, Energy, and Health Data
 
-local location = "Default"
+local location = "default"
 local position = vmath.vector3(0, 0, 0)
 local energy = 100
 local health = 100
 
 
-local easyTable = { location, position, energy, health, version = 1 }
+local easyTable = { location, position, energy, health, character = {}, version = 1 }
 
 ------------------------------------Items/Inventory/Elements
 
@@ -61,11 +64,11 @@ local config = { volume, resolution, configVersion = 1 }
 
 ---------------------------------------------------------------------------
 
-function generate_checksum(data)
+local function generate_checksum(data)
 	return md5.sumhexa(data)
 end
 
-function file_exists(filename)
+local function file_exists(filename)
 	local filepath = sys.get_save_file("LostIslands", filename)
 	local file = io.open(filepath, "r")
 	if file then
@@ -611,6 +614,13 @@ end
 local function save(data, dungeonData, itemData)
 	
 	-----------------------Save easyTable---------------------------------
+
+	data.location = loc.collections
+	data.position = pos.getPosition()
+	data.health = eh.getHealth()
+	data.energy = eh.getEnergy()
+	data.character = char.sprite
+	
 	if data == nil then
 		print("Error: data is nil")
 		return
@@ -732,7 +742,13 @@ function on_message(self, message_id, message, sender)
 
 		local loadedChecksum = defsave.get(filename, "checksum")
 		print("Loaded Checksum: ", loadedChecksum)
-		msg.post("", "loadPlayerData", {data = easyTable}) --TO DO ***********************************************************
+		--msg.post("", "loadPlayerData", {data = easyTable}) --TO DO ***********************************************************
+		
+		pos.setPosition(easyTable.position)
+		loc.collections = easyTable.location
+		eh.setHealth(easyTable.health)
+		eh.setEnergy(easyTable.energy)
+		char.sprite = easyTable.character
 		msg.post("", "loadDungeonData", {data = dungeonStatus})
 		msg.post("Inventory#inventory", "loadItemData", {data = items})
 	end
