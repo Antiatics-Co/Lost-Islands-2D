@@ -76,6 +76,17 @@ end
 
 function on_message(self, message_id, message, sender)
 	collectionTracker.on_message(self, message_id, message, sender)
+
+	if message_id == hash("enterDungeon") then
+		print("enable Level")
+
+		msg.post("main:/main#Level", "load")
+		msg.post("main:/main#Level", "enable")
+		
+		print("disable map")
+		msg.post("main:/main#MainMap", "disable")
+		msg.post("main:/main#MainMap", "unload")
+	end
 	
 	if message_id == FILESAVE then
 		print("fileSave MainMenu")

@@ -1,3 +1,9 @@
+local mod = require("main.Scripts.Modules.CollectionTracker")
+
 function init(self)
 	msg.post("main:/main#music", "level1")
+	print("first check")
+	mod.print_loaded_collections()
+	print("second check")
+	print("is mainmap Loaded when entering level: " .. tostring(mod.is_collection_loaded("main:/main#MainMap")))
 end

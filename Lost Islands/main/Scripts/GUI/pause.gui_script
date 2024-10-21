@@ -87,7 +87,7 @@ function on_message(self, message_id, message)
 		print("pauseOpen: " .. tostring(pauseOpen)) -- Check toggle
 		gui.set_enabled(gui.get_node("pausemenu"), pauseOpen)
 		print("Pause menu set to: " .. tostring(pauseOpen))
-		collectionTracker.print_loaded_collections()
+		--collectionTracker.print_loaded_collections()
 	end
 	
 	
