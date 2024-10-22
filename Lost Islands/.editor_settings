@@ -73,10 +73,6 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/NPCProperties.lua"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/characterCreation.gui_script"
         :code
       ]
@@ -150,6 +146,10 @@
       ]
       [
         "/main/Scripts/Modules/CoincidingPlayerInputs.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/NPCProperties.lua"
         :code
       ]
     ]

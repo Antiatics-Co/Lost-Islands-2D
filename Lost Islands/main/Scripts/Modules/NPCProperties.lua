@@ -10,10 +10,9 @@ local itm = require("main.Scripts.Modules.ItemProperties")
 
 local M = {}
 
-
 local TutorialEnemies = {}
 
-M.tutorialTown = {
+local npc = {
 	Mayor = {},
 	Mother = {}
 }
@@ -27,7 +26,9 @@ local function calcDamage(enemy, combo)
 end
 
 local function getDialog(person)
-
+	
 end
+
+
 
 return(M)
