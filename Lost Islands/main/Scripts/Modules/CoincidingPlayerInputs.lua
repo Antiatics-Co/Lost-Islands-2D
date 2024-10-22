@@ -1,4 +1,11 @@
--- Put functions in this file to use them in several other scripts.
--- To get access to the functions, you need to put:
--- require "my_directory.my_file"
--- in any script using the functions.
+--[[
+
+@Author Aidan Cox
+@Title Coinciding Player Input Handler
+@Description
+	Handles all duplicate input methods in player and playerMap
+@Version 1
+
+--]]
+
+

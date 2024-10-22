@@ -1,0 +1,157 @@
+{
+  :bundle {
+    :build-report false
+    :contentless false
+    :debug-symbols false
+    :html5 {
+      :architecture {
+        :js-web false
+        :wasm-web true
+      }
+    }
+    :liveupdate false
+    :output-directory "C:\\Users\\aidco\\Documents\\GitHub\\Lost-Islands-2D\\Bundles\\0.0.1.7\\x86_64-win32"
+    :texture-compression "editor"
+    :variant "debug"
+    :windows {
+      :platform "x86_64-win32"
+    }
+  }
+  :code {
+    :find {
+      :term "setHealth"
+    }
+  }
+  :workflow {
+    :recent-files [
+      [
+        "/main/Scripts/Modules/EnemyProperties.lua"
+        :code
+      ]
+      [
+        "/Assets/Game.atlas"
+        :scene
+      ]
+      [
+        "/main/GUI files/splash.gui"
+        :scene
+      ]
+      [
+        "/main/Scripts/music.script"
+        :code
+      ]
+      [
+        "/main/GUI files/InventoryTEMPLATE.gui"
+        :scene
+      ]
+      [
+        "/input/game.input_binding"
+        :cljfx-form-view
+      ]
+      [
+        "/main/Scripts/GUI/splash.gui_script"
+        :code
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
+      ]
+      [
+        "/main/town.collection"
+        :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/main/Scripts/Modules/items.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/settings.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/characterCreation.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI files/CharacterCreation.gui"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/Level.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Level/Level1.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/pause.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/Scripts/PlayerProperties.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/PlayerLocations.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/HandleCoincidingPlayerInputs.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CharacterSprites.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Dungeons.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CoincidingPlayerInputs.lua"
+        :code
+      ]
+    ]
+  }
+}

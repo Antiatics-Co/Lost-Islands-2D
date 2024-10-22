@@ -8,72 +8,13 @@
 local M = {}
 
 M.sprite = {
-	eyes = {},
-	mouth,
-	hair = {},
-	shirt,
-	trousers,
-	shoes,
-	skinTone
+	eyes = { shape = 0, colour = 0 },
+	mouth = 0,
+	hair = { shape = 0, colour = 0 },
+	shirt = 0,
+	trousers = 0,
+	shoes = 0,
+	skinTone = 0
 }
-
-function M.setEyes(eye) -- eye = {shape, color}
-	eyes = eyes
-end
-
-function M.setMouth(mou)
-	mouth = mou
-end
-
-function M.setHair(hai)
-	hair = hai
-end
-
-function M.setShirt(shrt)
-	shirt = shrt
-end
-
-function M.setTrousers(pants)
-	trousers = pants
-end
-
-function M.setShoes(shoe)
-	shoes = shoe
-end
-
-function M.setSkinTone(tone)
-	skinTone = tone
-end
-
------------------------------------------------------------------
-
-function M.getEyes()
-	return(eyes)
-end
-
-function M.getMouth()
-	return(mouth)
-end
-
-function M.getHair()
-	return(hair)
-end
-
-function M.getShirt()
-	return(shirt)
-end
-
-function M.getTrousers()
-	return(trousers)
-end
-
-function M.getShoes()
-	return(shoes)
-end
-
-function M.getSkinTone()
-	return(skinTone)
-end
-
 return(M)
 
