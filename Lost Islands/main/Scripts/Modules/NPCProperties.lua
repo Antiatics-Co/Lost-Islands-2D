@@ -10,11 +10,13 @@ local itm = require("main.Scripts.Modules.ItemProperties")
 
 local M = {}
 
-local TutorialEnemies = {}
-
 local npc = {
-	Mayor = {},
-	Mother = {}
+		tutorialTown = { --use collecion url as name
+				Mayor = { activity }, --activity is whatever phase of speaking they have with the player, like if a they complete a quest
+				Mother = {}
+		}
+
+		
 }
 
 local function calcDamage(enemy, combo)
