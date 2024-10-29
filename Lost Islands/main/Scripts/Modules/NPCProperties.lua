@@ -12,23 +12,31 @@ local M = {}
 
 local npc = {
 		tutorialTown = { --use collecion url as name
-				Mayor = { activity }, --activity is whatever phase of speaking they have with the player, like if a they complete a quest
-				Mother = {}
+				Mayor = { activity = 0 }, --activity is whatever phase of speaking they have with the player, like if a they complete a quest
+				Mother = { activity = 0 }
 		}
 
 		
-}
+	}
 
-local function calcDamage(enemy, combo)
+	local enemies = {
+		tutorialTown = { --use collecion url as name
+			slime = {health = 35, damage = 5}
+	}
+
+
+	}
+
+local function calcDamage(enemy, combo, url)
 	local damage = 0.0
 	damage = itm.getMainAttack()
 	damage = damage + itm.getSideAttack(combo)
 	
-	TutorialEnemies[enemy].health = TutorialEnemies[enemy].health - damage
+	enemies[url][enemy].health = enemies[url][enemy].health - damage
 end
 
-local function getDialog(person)
-	
+function M.getAttackDamage(enemy, url)
+	return(enemies[url][enemy].damage)
 end
 
 
