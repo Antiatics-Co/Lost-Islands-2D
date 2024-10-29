@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term "setHealth"
+      :term "send"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Scripts/Modules/EnemyProperties.lua"
-        :code
-      ]
       [
         "/Assets/Game.atlas"
         :scene
@@ -113,10 +109,6 @@
         :code
       ]
       [
-        "/main/Scripts/GUI/Inventory.gui_script"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/PlayerLocations.lua"
         :code
       ]
@@ -133,15 +125,7 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/Dungeons.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/CollectionTracker.lua"
         :code
       ]
       [
@@ -149,7 +133,23 @@
         :code
       ]
       [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
         "/main/Scripts/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
+        "/main/Objects/Inventory.go"
+        :scene
+      ]
+      [
+        "/main/Scripts/GUI/Inventory.gui_script"
         :code
       ]
     ]

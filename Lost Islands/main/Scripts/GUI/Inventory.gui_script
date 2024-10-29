@@ -52,12 +52,18 @@ print("Items defined:", items)
 
 
 local function equipItem(ID) --ID = { name, type }
-	items[ID.name].equipped = true
+	items[ID.name].equipped = not items[ID.name].equipped
 	local item = { name = ID.name, type = ID.type}
-	msg.post("#PlayerProperties", "sendEquipped", { item = ID })
-	print("Item:" .. item.name)
-
-	gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(0, 1, 0, 1)) -- Change color to green
+	--msg.post("#PlayerProperties", "sendEquipped", { item = ID })
+	
+	if items[ID.name].equipped then
+		print("Item Equipped:" .. item.name)
+		gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(0, 1, 0, 1)) -- Change color to green
+	else
+		print("Item Unequipped:" .. item.name)
+		gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(1, 1, 1, 1)) -- Change color to white
+		--first = red, second = green, third = blue, fourth = alpha
+	end
 end
 
 local function setupInventory() --setds up inventory and applies all properties on startup.

@@ -7,6 +7,7 @@
 
 
 local itm = require("main.Scripts.Modules.ItemProperties")
+local collection = require("main.Scripts.Modules.CollectionTracker")
 
 local M = {}
 
@@ -20,25 +21,24 @@ local npc = {
 	}
 
 	local enemies = {
-		tutorialTown = { --use collecion url as name
-			slime = {health = 35, damage = 5}
+		mainmap = { --use collecion url as name
+			slime = { totalHealth = 35, attack = 5}
+			
 	}
 
 
 	}
 
-local function calcDamage(enemy, combo, url)
-	local damage = 0.0
+function M.calcEnemyHealth(enemy, combo)
+	local damage = 0
 	damage = itm.getMainAttack()
 	damage = damage + itm.getSideAttack(combo)
 	
-	enemies[url][enemy].health = enemies[url][enemy].health - damage
+	return(enemies[tostring(collection.collections)][enemy].totalHealth - damage)
 end
 
-function M.getAttackDamage(enemy, url)
-	return(enemies[url][enemy].damage)
+function M.AttackPlayer(enemy)
+	itm.setCombatHealth(enemies[tostring(collection.collections)][enemy].damage)
 end
-
-
 
 return(M)
