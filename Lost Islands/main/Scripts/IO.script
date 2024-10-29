@@ -11,6 +11,7 @@ local eh = require("main.Scripts.Modules.ItemProperties")
 local pos = require("main.Scripts.Modules.PlayerPosition")
 local loc = require("main.Scripts.Modules.CollectionTracker")
 local char = require("main.Scripts.Modules.CharacterSprites")
+local mob = require("main.Scripts.Modules.NPCProperties")
 
 items = {itm.get_itemList(), itemVersion = 1 }
 
@@ -48,7 +49,7 @@ local energy = 100
 local health = 100
 
 
-local easyTable = { location, position, energy, health, character = {}, version = 1 }
+local easyTable = { location, position, energy, health, character = {}, npcStatus = {}, version = 1 }
 
 ------------------------------------Items/Inventory/Elements
 
@@ -620,6 +621,7 @@ local function save(data, dungeonData, itemData)
 	data.health = eh.getHealth()
 	data.energy = eh.getEnergy()
 	data.character = char.sprite
+	data.npcStatus = mob.npc
 	
 	if data == nil then
 		print("Error: data is nil")
@@ -749,6 +751,7 @@ function on_message(self, message_id, message, sender)
 		eh.setHealth(easyTable.health)
 		eh.setEnergy(easyTable.energy)
 		char.sprite = easyTable.character
+		mob.npc = easyTable.npcStatus
 		msg.post("", "loadDungeonData", {data = dungeonStatus})
 		msg.post("Inventory#inventory", "loadItemData", {data = items})
 	end
