@@ -129,10 +129,6 @@
         :code
       ]
       [
-        "/main/MainMap.collection"
-        :scene
-      ]
-      [
         "/main/Objects/PlayerMap/PlayerMap.go"
         :scene
       ]
@@ -151,6 +147,10 @@
       [
         "/main/Scripts/Modules/NPCProperties.lua"
         :code
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
       ]
     ]
   }
