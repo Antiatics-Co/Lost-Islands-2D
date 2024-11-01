@@ -25,14 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/music.script"
-        :code
-      ]
-      [
-        "/main/GUI files/InventoryTEMPLATE.gui"
-        :scene
-      ]
-      [
         "/input/game.input_binding"
         :cljfx-form-view
       ]
@@ -147,6 +139,14 @@
       [
         "/main/Scripts/Modules/NPCProperties.lua"
         :code
+      ]
+      [
+        "/main/Scripts/Enemies/firstMap/slimeMap.script"
+        :code
+      ]
+      [
+        "/main/Objects/Enemies/slimeMap.go"
+        :scene
       ]
       [
         "/main/MainMap.collection"
