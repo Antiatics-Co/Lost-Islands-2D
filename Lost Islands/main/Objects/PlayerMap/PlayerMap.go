@@ -12,6 +12,7 @@ embedded_components {
   "group: \"playerMap\"\n"
   "mask: \"Border\"\n"
   "mask: \"Dungeon\"\n"
+  "mask: \"Enemy\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"

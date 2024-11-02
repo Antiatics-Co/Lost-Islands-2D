@@ -25,19 +25,38 @@ local enemies = {
 	}
 }
 
--- Helper function to extract the last part of the URL
+-- Helper function to extract the last part of the URL and clean it
 local function get_collection_key(url)
 	local parts = {}
-	for part in string.gmatch(url, "[^/]+") do
+	for part in string.gmatch(url, "[^:/#]+") do
 		table.insert(parts, part)
 	end
-	return parts[#parts]
+	local key = parts[#parts]
+	if key:sub(-1) == "]" then
+		key = key:sub(1, -2)
+	end
+	return key == "main" and parts[#parts - 1] or key
 end
 
--- Updated calcEnemyHealth and AttackPlayer functions
+
+-- Updated calcEnemyHealth function
 function M.calcEnemyHealth(enemy, combo)
 	local damage = itm.getMainAttack() + itm.getSideAttack(combo)
-	local current_collection = get_collection_key(tostring(collection.collections))
+
+	local current_collection_url = collection.get_loaded_collection()
+	if not current_collection_url then
+		print("Error: No collection is currently loaded")
+		return nil
+	end
+
+	print("Collection: " .. current_collection_url)
+
+	local current_collection = get_collection_key(current_collection_url)
+
+	print("Collection returned: " .. tostring(current_collection))
+	print(tostring(enemies[current_collection]))
+	print(tostring(enemies[current_collection] and enemies[current_collection][enemy]))
+
 	if enemies[current_collection] and enemies[current_collection][enemy] then
 		return (enemies[current_collection][enemy].totalHealth - damage)
 	else
@@ -53,6 +72,10 @@ function M.AttackPlayer(enemy)
 	else
 		print("Error: Enemy not found in current collection")
 	end
+end
+
+function M.resetCombo(combo)
+	return(itm.resetCombo(combo))
 end
 
 return(M)

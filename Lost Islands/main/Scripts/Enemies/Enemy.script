@@ -20,13 +20,12 @@ function on_message(self, message_id, message)
 		go.delete()
 	end
 
-	if message_id == hash("reset") then			
+	--[[if message_id == hash("reset") then			
 		go.delete()
 		
 		local pos = go.get_position()
 		pos.x = 237
 		pos.y = 365
 		go.create(go.set_position(pos))
-		
-	end
+	end]]
 end

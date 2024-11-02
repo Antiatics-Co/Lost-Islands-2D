@@ -84,20 +84,36 @@ function M.getElementAttack()
 	
 end
 
-local item = {}
-
 function M.getMainAttack() --Deals with physical attack damagr, not anything that uses energy
 		--item = { attack = equipped[equippedMelee.main].attack, type = equipped[equippedMelee.main].type}
 		--return(item)
-
-		return(equipped[equippedMelee.main].attack)
+		print(equipped[equippedMelee.main])
+		if equipped[equippedMelee.main] ~= nil then
+			return(equipped[equippedMelee.main].attack)
+		else
+			return(0)
+		end
 end
 
 function M.getSideAttack(combo)
-	if combo == equipped[equippedMelee.side].combo then 
-		--item = { attack = equipped[equippedMelee.main].attack, type = equipped[equippedMelee.main].type}
-		--return(item)
-		return(equipped[equippedMelee.side].attack)
+	if equipped[equippedMelee.side] ~= nil then
+		if combo == equipped[equippedMelee.side].combo then 
+			--item = { attack = equipped[equippedMelee.main].attack, type = equipped[equippedMelee.main].type}
+			--return(item)
+			return(equipped[equippedMelee.side].attack)
+		end
+	else
+		return(0)
+	end
+end
+
+function M.resetCombo(combo)
+	if equipped[equippedMelee.side] ~= nil then
+		if combo == equipped[equippedMelee.side].combo then
+			return(0)
+		else
+			return(combo)
+		end
 	else
 		return(0)
 	end

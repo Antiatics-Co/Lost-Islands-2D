@@ -41,6 +41,16 @@ function M.is_collection_loaded(collection_url)
 		end
 	end
 		return(bool)
+	end
+
+function M.get_loaded_collection()
+	for url, loaded in pairs(M.collections) do
+		if loaded then
+			return(tostring(url))
+		else
+			print("Not Loaded URL:", url, "State:", loaded) -- Optional to see all states
+		end
+	end
 end
 
 function M.print_loaded_collections()
