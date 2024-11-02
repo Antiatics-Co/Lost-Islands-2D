@@ -8,6 +8,7 @@
 ---PREHASHING-------------------------------------------------
 
 local itm = require("main.Scripts.Modules.items")
+local prop = require("main.Scripts.Modules.ItemProperties")
 local collectionTracker = require("main.Scripts.Modules.CollectionTracker")
 
 local LOADITEMDATA =  hash("loadItemData")
@@ -51,21 +52,6 @@ local layers = {
 print("Items defined:", items)
 
 
-local function equipItem(ID) --ID = { name, type }
-	items[ID.name].equipped = not items[ID.name].equipped
-	local item = { name = ID.name, type = ID.type}
-	--msg.post("#PlayerProperties", "sendEquipped", { item = ID })
-	
-	if items[ID.name].equipped then
-		print("Item Equipped:" .. item.name)
-		gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(0, 1, 0, 1)) -- Change color to green
-	else
-		print("Item Unequipped:" .. item.name)
-		gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(1, 1, 1, 1)) -- Change color to white
-		--first = red, second = green, third = blue, fourth = alpha
-	end
-end
-
 local function setupInventory() --setds up inventory and applies all properties on startup.
 
 	if items.woodsword.hasItem then
@@ -74,7 +60,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 		if items.woodsword.equipped then
 			--TO DO highlight slot and apply properties
 			
-			equipItem({ name = "woodsword", type = "main", attack = 10 })
+			prop.equip({ name = "woodsword", type = "main", attack = 10 })
 			
 		end
 	end
@@ -82,7 +68,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.broadsword.hasItem then
 		
 		if items.broadsword.equipped then
-			equipItem({ name = "broadsword", type = "main", attack = 10 })
+			prop.equip({ name = "broadsword", type = "main", attack = 10 })
 
 		end
 	end
@@ -90,7 +76,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.spear.hasItem then
 		
 		if items.spear.equipped then
-			equipItem({ name = "spear", type = "main", attack = 10 })
+			prop.equip({ name = "spear", type = "main", attack = 10 })
 
 		end
 	end
@@ -98,7 +84,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.bow.hasItem then
 		
 		if items.bow.equipped then
-			equipItem({ name = "bow", type = "ranged", attack = 10, speed  = 10 })
+			prop.equip({ name = "bow", type = "ranged", attack = 10, speed  = 10 })
 
 		end
 	end
@@ -106,7 +92,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.musket.hasItem then
 		
 		if items.musket.equipped then
-			equipItem({ name = "musket", type = "ranged", attack = 10, speed = 100 })
+			prop.equip({ name = "musket", type = "ranged", attack = 10, speed = 100 })
 
 		end
 	end
@@ -114,7 +100,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.scythe.hasItem then
 		
 		if items.scythe.equipped then
-			equipItem({ name = "scythe", type = "main", attack = 10 })
+			prop.equip({ name = "scythe", type = "main", attack = 10 })
 
 		end
 	end
@@ -122,7 +108,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.sai.hasItem then
 		
 		if items.sai.equipped then
-			equipItem({ name = "sai", type = "main", attack = 10 })
+			prop.equip({ name = "sai", type = "main", attack = 10 })
 
 		end
 	end
@@ -130,7 +116,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.baton.hasItem then
 		
 		if items.baton.equipped then
-			equipItem({ name = "baton", type = "main", attack = 10 })
+			prop.equip({ name = "baton", type = "main", attack = 10 })
 
 		end
 	end
@@ -138,7 +124,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.assault.hasItem then
 		
 		if items.assault.equipped then
-			equipItem({ name = "assault", type = "side", attack = 10, combo = 8 })
+			prop.equip({ name = "assault", type = "side", attack = 10, combo = 8 })
 
 		end
 	end
@@ -146,7 +132,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rocket.hasItem then
 		
 		if items.rocket.equipped then
-			equipItem({ name = "rocket", type = "side" , attack = 30, combo = 16})
+			prop.equip({ name = "rocket", type = "side" , attack = 30, combo = 16})
 
 		end
 	end
@@ -154,7 +140,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.crossbow.hasItem then
 		
 		if items.crossbow.equipped then
-			equipItem({ name = "crossbow", type = "ranged", attack = 10, speed = 40 })
+			prop.equip({ name = "crossbow", type = "ranged", attack = 10, speed = 40 })
 
 		end
 	end
@@ -163,7 +149,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.blunderbuss.hasItem then
 		
 		if items.blunderbuss.equipped then
-			equipItem({ name = "blunderbuss", type = "side", attack = 10, combo = 4 })
+			prop.equip({ name = "blunderbuss", type = "side", attack = 10, combo = 4 })
 
 		end
 	end
@@ -171,7 +157,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.grenade.hasItem then
 		
 		if items.grenade.equipped then
-			equipItem({ name = "grenade", type = "ranged", attack = 10, speed = 6 })
+			prop.equip({ name = "grenade", type = "ranged", attack = 10, speed = 6 })
 
 		end
 	end
@@ -179,7 +165,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.hammer.hasItem then
 		
 		if items.hammer.equipped then
-			equipItem({ name = "hammer", type = "main", attack = 10 })
+			prop.equip({ name = "hammer", type = "main", attack = 10 })
 
 		end
 	end
@@ -187,7 +173,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.knife.hasItem then
 		
 		if items.knife.equipped then
-			equipItem({ name = "knife", type = "side", attack = 10, combo = 3 })
+			prop.equip({ name = "knife", type = "side", attack = 10, combo = 3 })
 
 		end
 	end
@@ -195,7 +181,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rock.hasItem then
 		
 		if items.rock.equipped then
-			equipItem({ name = "rock", type = "main", attack = 10 })
+			prop.equip({ name = "rock", type = "main", attack = 10 })
 
 		end
 	end
@@ -203,7 +189,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.woodShield.hasItem then
 		
 		if items.woodShield.equipped then
-			equipItem({ name = "woodShield", type = "shield" })
+			prop.equip({ name = "woodShield", type = "shield" })
 
 		end
 	end
@@ -211,7 +197,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.steelShield.hasItem then
 		
 		if items.steelShield.equipped then
-			equipItem({ name = "steelShield", type = "shield" })
+			prop.equip({ name = "steelShield", type = "shield" })
 
 		end
 	end
@@ -219,7 +205,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.magicShield.hasItem then
 		
 		if items.magicShield.equipped then
-			equipItem({ name = "magicShield", type = "shield" })
+			prop.equip({ name = "magicShield", type = "shield" })
 
 		end
 	end
@@ -227,7 +213,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.lightArmour.hasItem then
 		
 		if items.lightArmour.equipped then
-			equipItem({ name = "lightArmour", type = "armour" })
+			prop.equip({ name = "lightArmour", type = "armour" })
 
 		end
 	end
@@ -235,7 +221,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.heavyArmour.hasItem then
 		
 		if items.heavyArmour.equipped then
-			equipItem({ name = "heavyArmour", type = "armour"})
+			prop.equip({ name = "heavyArmour", type = "armour"})
 
 		end
 	end
@@ -243,7 +229,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.magicArmour.hasItem then
 		
 		if items.magicArmour.equipped then
-			equipItem({ name = "magicArmour", type = "armour" })
+			prop.equip({ name = "magicArmour", type = "armour" })
 
 		end
 	end
@@ -252,14 +238,14 @@ local function setupInventory() --setds up inventory and applies all properties 
 		
 		if items.fireElement.equipped then
 
-			equipItem({ name = "fireElement", type = "ranged" })
+			prop.equip({ name = "fireElement", type = "ranged" })
 		end
 	end
 
 	if items.waterElement.hasItem then
 		
 		if items.waterElement.equipped then
-			equipItem({ name = "waterElement", type = "ranged" })
+			prop.equip({ name = "waterElement", type = "ranged" })
 
 		end
 	end
@@ -269,14 +255,14 @@ local function setupInventory() --setds up inventory and applies all properties 
 		
 		if items.stoneElement.equipped then
 
-			equipItem({ name = "stoneElement", type = "ranged" })
+			prop.equip({ name = "stoneElement", type = "ranged" })
 		end
 	end
 
 	if items.lightning.hasItem then
 		
 		if items.lightning.equipped then
-			equipItem({ name = "lightning", type = "ranged" })
+			prop.equip({ name = "lightning", type = "ranged" })
 
 		end
 	end
@@ -284,7 +270,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.ice.hasItem then
 		
 		if items.ice.equipped then
-			equipItem({ name = "ice", type = "ranged" })
+			prop.equip({ name = "ice", type = "ranged" })
 
 		end
 	end
@@ -292,7 +278,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.rainbow.hasItem then
 		
 		if items.rainbow.equipped then
-			equipItem({ name = "rainbow", type = "ranged" })
+			prop.equip({ name = "rainbow", type = "ranged" })
 
 		end
 	end
@@ -300,7 +286,7 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.poison.hasItem then
 		
 		if items.poison.equipped then
-			equipItem({ name = "poison", type = "ranged" })
+			prop.equip({ name = "poison", type = "ranged" })
 
 		end
 	end
@@ -486,10 +472,11 @@ function on_input(self, action_id, action)
 			button = gui.get_node("WOODSWORD")
 
 			if gui.pick_node(button, action.x, action.y) then
-				equipItem({ name = "woodsword", type = "melee" })
+				items.woodsword.equipped = true
 			end
 
 		end
+		setupInventory()
 	elseif action_id == E  and action.released then
 		
 			invopen = not invopen

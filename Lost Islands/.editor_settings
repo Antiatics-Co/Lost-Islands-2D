@@ -129,15 +129,7 @@
         :code
       ]
       [
-        "/main/Scripts/GUI/Inventory.gui_script"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/NPCProperties.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/ItemProperties.lua"
         :code
       ]
       [
@@ -150,6 +142,14 @@
       ]
       [
         "/main/Scripts/Enemies/firstMap/slimeMap.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/Inventory.gui_script"
         :code
       ]
     ]
