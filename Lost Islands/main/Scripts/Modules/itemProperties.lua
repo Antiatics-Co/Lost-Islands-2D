@@ -1,4 +1,5 @@
 
+local itm = require("main.Scripts.Modules.items")
 
 local M = {}
 
@@ -156,6 +157,15 @@ function M.equip(item) -- item = {name} if weapon item = {name, attack, combo, t
 	equipped[item.name] = item
 	print("equipped test 1: " .. item.name)
 	print("equipped test 2: " .. equipped[item.name].name)
+
+
+	if equipped[item.name].type ~= nil then
+		if equipped[item.name].type == "main" then
+			equippedMelee.main = item.name
+		elseif equipped[item.name].type == "side" then
+			equippedMelee.side = item.name
+		end
+	end
 end
 
 function M.unequip(item)

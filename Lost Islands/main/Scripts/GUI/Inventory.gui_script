@@ -52,96 +52,119 @@ local layers = {
 print("Items defined:", items)
 
 
-local function setupInventory() --setds up inventory and applies all properties on startup.
+local function InvItemStatus(ID) --ID = { name, type }
+	--items[ID.name].equipped = not items[ID.name].equipped 
+	
+	if items[ID.name].equipped then
+		print("Item Equipped:" .. ID.name)
+		gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(0, 1, 0, 1)) -- Change color to green
+	else
+		print("Item Unequipped:" .. ID.name)
+		gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(1, 1, 1, 1)) -- Change color to white
+		--first = red, second = green, third = blue, fourth = alpha
+	end
+end
 
+local function setupInventory() --setds up inventory and applies all properties on startup.
+local item
 	if items.woodsword.hasItem then
 		--set slot with item to exist
 		
 		if items.woodsword.equipped then
 			--TO DO highlight slot and apply properties
-			
-			prop.equip({ name = "woodsword", type = "main", attack = 10 })
-			
+			item = { name = "woodsword", type = "main", attack = 10 }
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.broadsword.hasItem then
 		
 		if items.broadsword.equipped then
-			prop.equip({ name = "broadsword", type = "main", attack = 10 })
-
+			item = { name = "broadsword", type = "main", attack = 10 }
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.spear.hasItem then
 		
 		if items.spear.equipped then
-			prop.equip({ name = "spear", type = "main", attack = 10 })
-
+			item = ({ name = "spear", type = "main", attack = 10 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.bow.hasItem then
 		
 		if items.bow.equipped then
-			prop.equip({ name = "bow", type = "ranged", attack = 10, speed  = 10 })
-
+			item = ({ name = "bow", type = "ranged", attack = 10, speed  = 10 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.musket.hasItem then
 		
 		if items.musket.equipped then
-			prop.equip({ name = "musket", type = "ranged", attack = 10, speed = 100 })
-
+			item = ({ name = "musket", type = "ranged", attack = 10, speed = 100 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.scythe.hasItem then
 		
 		if items.scythe.equipped then
-			prop.equip({ name = "scythe", type = "main", attack = 10 })
-
+			item = ({ name = "scythe", type = "main", attack = 10 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.sai.hasItem then
 		
 		if items.sai.equipped then
-			prop.equip({ name = "sai", type = "main", attack = 10 })
-
+			item = ({ name = "sai", type = "main", attack = 10 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.baton.hasItem then
 		
 		if items.baton.equipped then
-			prop.equip({ name = "baton", type = "main", attack = 10 })
-
+			item = ({ name = "baton", type = "main", attack = 10 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.assault.hasItem then
 		
 		if items.assault.equipped then
-			prop.equip({ name = "assault", type = "side", attack = 10, combo = 8 })
-
+			item = ({ name = "assault", type = "side", attack = 10, combo = 8 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.rocket.hasItem then
 		
 		if items.rocket.equipped then
-			prop.equip({ name = "rocket", type = "side" , attack = 30, combo = 16})
-
+			item = ({ name = "rocket", type = "side" , attack = 30, combo = 16})
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.crossbow.hasItem then
 		
 		if items.crossbow.equipped then
-			prop.equip({ name = "crossbow", type = "ranged", attack = 10, speed = 40 })
-
+			item = ({ name = "crossbow", type = "ranged", attack = 10, speed = 40 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
@@ -149,104 +172,117 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.blunderbuss.hasItem then
 		
 		if items.blunderbuss.equipped then
-			prop.equip({ name = "blunderbuss", type = "side", attack = 10, combo = 4 })
-
+			item = ({ name = "blunderbuss", type = "side", attack = 10, combo = 4 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.grenade.hasItem then
 		
 		if items.grenade.equipped then
-			prop.equip({ name = "grenade", type = "ranged", attack = 10, speed = 6 })
-
+			item = ({ name = "grenade", type = "ranged", attack = 10, speed = 6 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.hammer.hasItem then
 		
 		if items.hammer.equipped then
-			prop.equip({ name = "hammer", type = "main", attack = 10 })
-
+			item = ({ name = "hammer", type = "main", attack = 10 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.knife.hasItem then
 		
 		if items.knife.equipped then
-			prop.equip({ name = "knife", type = "side", attack = 10, combo = 3 })
-
+			item = ({ name = "knife", type = "side", attack = 10, combo = 3 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.rock.hasItem then
 		
 		if items.rock.equipped then
-			prop.equip({ name = "rock", type = "main", attack = 10 })
-
+			item = ({ name = "rock", type = "main", attack = 10 })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.woodShield.hasItem then
 		
 		if items.woodShield.equipped then
-			prop.equip({ name = "woodShield", type = "shield" })
-
+			item = ({ name = "woodShield", type = "shield" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.steelShield.hasItem then
 		
 		if items.steelShield.equipped then
-			prop.equip({ name = "steelShield", type = "shield" })
-
+			item = ({ name = "steelShield", type = "shield" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.magicShield.hasItem then
 		
 		if items.magicShield.equipped then
-			prop.equip({ name = "magicShield", type = "shield" })
-
+			item = ({ name = "magicShield", type = "shield" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.lightArmour.hasItem then
 		
 		if items.lightArmour.equipped then
-			prop.equip({ name = "lightArmour", type = "armour" })
-
+			item = ({ name = "lightArmour", type = "armour" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.heavyArmour.hasItem then
 		
 		if items.heavyArmour.equipped then
-			prop.equip({ name = "heavyArmour", type = "armour"})
-
+			item = ({ name = "heavyArmour", type = "armour"})
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.magicArmour.hasItem then
 		
 		if items.magicArmour.equipped then
-			prop.equip({ name = "magicArmour", type = "armour" })
-
+			item = ({ name = "magicArmour", type = "armour" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.fireElement.hasItem then
 		
 		if items.fireElement.equipped then
-
-			prop.equip({ name = "fireElement", type = "ranged" })
+			item = ({ name = "fireElement", type = "ranged" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.waterElement.hasItem then
 		
 		if items.waterElement.equipped then
-			prop.equip({ name = "waterElement", type = "ranged" })
-
+			item = ({ name = "waterElement", type = "ranged" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
@@ -254,40 +290,45 @@ local function setupInventory() --setds up inventory and applies all properties 
 	if items.stoneElement.hasItem then
 		
 		if items.stoneElement.equipped then
-
-			prop.equip({ name = "stoneElement", type = "ranged" })
+			item = ({ name = "stoneElement", type = "ranged" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.lightning.hasItem then
 		
 		if items.lightning.equipped then
-			prop.equip({ name = "lightning", type = "ranged" })
-
+			item = ({ name = "lightning", type = "ranged" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.ice.hasItem then
 		
 		if items.ice.equipped then
-			prop.equip({ name = "ice", type = "ranged" })
-
+			item = ({ name = "ice", type = "ranged" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.rainbow.hasItem then
 		
 		if items.rainbow.equipped then
-			prop.equip({ name = "rainbow", type = "ranged" })
-
+			item = ({ name = "rainbow", type = "ranged" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
 	if items.poison.hasItem then
 		
 		if items.poison.equipped then
-			prop.equip({ name = "poison", type = "ranged" })
-
+			item = ({ name = "poison", type = "ranged" })
+			prop.equip(item)
+			InvItemStatus(item)
 		end
 	end
 
@@ -458,8 +499,6 @@ end
 function on_input(self, action_id, action)
 
 	if action_id == TOUCH and invopen and action.released then
-		local mouse_x = action.x
-		local mouse_y = action.y
 
 		local button = gui.get_node("weapons")
 
@@ -472,7 +511,7 @@ function on_input(self, action_id, action)
 			button = gui.get_node("WOODSWORD")
 
 			if gui.pick_node(button, action.x, action.y) then
-				items.woodsword.equipped = true
+				items.woodsword.equipped = not items.woodsword.equipped
 			end
 
 		end
@@ -505,4 +544,8 @@ function on_input(self, action_id, action)
 			end
 		end 
 	end
+end
+
+function final(self)
+	itm.set_itemList(items)
 end

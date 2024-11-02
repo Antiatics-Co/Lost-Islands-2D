@@ -8,7 +8,7 @@
 
 local itm = require("main.Scripts.Modules.ItemProperties")
 local collection = require("main.Scripts.Modules.CollectionTracker")
-
+local health = nil
 local M = {}
 
 M.npc = {
@@ -57,8 +57,15 @@ function M.calcEnemyHealth(enemy, combo)
 	print(tostring(enemies[current_collection]))
 	print(tostring(enemies[current_collection] and enemies[current_collection][enemy]))
 
+	
+	if health == nil then
+		health = enemies[current_collection][enemy].totalHealth 
+	end
+	
+	health = health - damage
+		
 	if enemies[current_collection] and enemies[current_collection][enemy] then
-		return (enemies[current_collection][enemy].totalHealth - damage)
+		return (health)
 	else
 		print("Error: Enemy not found in current collection")
 		return nil

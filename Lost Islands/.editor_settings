@@ -19,7 +19,7 @@
   }
   :code {
     :find {
-      :term "send"
+      :term ""
     }
   }
   :workflow {
@@ -125,14 +125,6 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/items.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/NPCProperties.lua"
-        :code
-      ]
-      [
         "/main/MainMap.collection"
         :scene
       ]
@@ -141,7 +133,15 @@
         :code
       ]
       [
+        "/main/Scripts/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
         "/main/Scripts/Enemies/firstMap/slimeMap.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/items.lua"
         :code
       ]
       [
