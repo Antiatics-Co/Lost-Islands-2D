@@ -33,6 +33,72 @@ nodes {
   visible: false
 }
 nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "WOOD"
+  parent: "org_Armour"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "STEEL"
+  parent: "org_Armour"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "MAGICSHIELD"
+  parent: "org_Armour"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "LIGHT"
+  parent: "org_Armour"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "HEAVY"
+  parent: "org_Armour"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "MAGIC"
+  parent: "org_Armour"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
   position {
     x: 97.0
     y: 495.0
@@ -120,7 +186,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "Game/firebullet"
-  id: "fire"
+  id: "FIRE"
   parent: "org_Elements"
   layer: "Elements"
   inherit_alpha: true
@@ -139,7 +205,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  id: "water"
+  id: "WATER"
   parent: "org_Elements"
   layer: "Elements"
   inherit_alpha: true
@@ -158,9 +224,53 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  id: "steel"
+  id: "STONE"
   parent: "org_Elements"
   layer: "Elements"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "LIGHTNING"
+  parent: "org_Elements"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "ICE"
+  parent: "org_Elements"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "RAINBOW"
+  parent: "org_Elements"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "POISON"
+  parent: "org_Elements"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -228,7 +338,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  id: "STEELSWORD"
+  id: "BROADSWORD"
   parent: "org_weapon"
   layer: "Weapon"
   inherit_alpha: true
@@ -280,6 +390,160 @@ nodes {
   texture: "Game/plus"
   id: "woodswordTexture"
   parent: "WOODSWORD"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "SPEAR"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "BOW"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "MUSKET"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "SCYTHE"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "SAI"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "BATON"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "ASSAULTRIFLE"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "ROCKETLAUNCHER"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "CROSSBOW"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "BLUNDERBUSS"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "GRENADE"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "BIGHAMMER"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "KNIFE"
+  parent: "org_weapon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "ROCK"
+  parent: "org_weapon"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -346,6 +610,83 @@ nodes {
   id: "text4"
   parent: "armour"
   inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "PENDAL"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "FIREDUNGEONKEYS"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "WATERDUNGEONKEYS"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "STONEDUNGEONKEYS"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "SHELLS"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "ARROW"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "MUSKETBALLS"
+  parent: "layer1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
 }
 layers {
   name: "Weapon"

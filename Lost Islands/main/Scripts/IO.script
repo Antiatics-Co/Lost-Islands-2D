@@ -610,87 +610,102 @@ function init(self)
 	print("Save file created and data saved.")
 end
 
+local i = 0
 
+local function sanitize_table_keys(tbl)
+	for key, value in pairs(tbl) do
+		if type(key) ~= "number" and type(key) ~= "string" then
+			print("Invalid key type detected:", type(key))
+			tbl[key] = nil -- or handle it appropriately
+		elseif type(value) == "table" then
+			sanitize_table_keys(value) -- recurse for nested tables
+		end
+	end
+end
 
 local function save(data, dungeonData, itemData)
-	
+
 	-----------------------Save easyTable---------------------------------
 
-	data.location = loc.collections
-	data.position = pos.getPosition()
-	data.health = eh.getHealth()
-	data.energy = eh.getEnergy()
-	data.character = char.sprite
-	data.npcStatus = mob.npc
 	
-	if data == nil then
-		print("Error: data is nil")
-		return
+	
+	data = easyTable
+
+	sanitize_table_keys(data)
+	sanitize_table_keys(dungeonData)
+	sanitize_table_keys(itemData)
+	
+	if i < 1 then
+		i = i + 1
+		if data == nil then
+			print("Error: data is nil")
+			return
+		end
+
+		print("data table", table_to_string(data))
+
+		data.version = (data.version or 0) + 1  -- Increment version
+		print("Incremented data Version in Save: ", data.version)
+
+		--print("Easy Table", data)
+
+		local data_checksum = generate_checksum(table_to_string(data))
+		print("New Checksum: ", data_checksum)
+		print("Before saving, version:", data.version - 1)
+		defsave.set(filename, "default", data)
+		defsave.set(filename, "checksum", data_checksum)
+		print("After saving, version:", data.version)
+
+		---------------------------------Save Dungeons----------------------------
+		-- dungeonData = {1, statusVersion = 1}  --FOR TESTING USE ONLY
+
+		if dungeonData == nil then
+			print("Error: dungeonData is nil")
+			os.exit()
+		end
+
+
+
+		print("dungeonData table", table_to_string(dungeonData))
+
+		dungeonData.statusVersion = (dungeonData.statusVersion or 0) + 1  -- Increment statusVersion
+		print("Incremented dungeonData Version in Save: ", dungeonData.statusVersion)
+
+		--print("Dungeon ", dungeonData)
+
+		local dungeon_checksum = generate_checksum(table_to_string(dungeonData))
+		print("New Checksum: ", dungeon_checksum)
+		print("Before saving, statusVersion:", dungeonData.statusVersion - 1)
+		defsave.set(filename, "dungeon", dungeonData)
+		defsave.set(filename, "checksum", dungeon_checksum)
+		print("After saving, statusVersion:", dungeonData.statusVersion)    
+
+		---------------------------------Save Items----------------------------
+
+		if itemData == nil then
+			print("Error: itemData is nil")
+			return
+		end
+
+		print("itemData table", table_to_string(itemData))
+
+		itemData.itemVersion = (itemData.itemVersion or 0) + 1  -- Increment itemVersion
+		print("Incremented itemData Version in Save: ", itemData.itemVersion)
+
+		--print("Items ", itemData)
+
+		local item_checksum = generate_checksum(table_to_string(itemData))
+		print("New Checksum: ", item_checksum)
+		print("Before saving, itemVersion:", itemData.itemVersion - 1)
+		defsave.set(filename, "item", itemData)
+		defsave.set(filename, "checksum", item_checksum)
+		print("After saving, itemVersion:", itemData.itemVersion)
+
+		------------------------------------------------------------------
+
+		defsave.save(filename)
+		print("Data saved successfully.")
 	end
-
-	print("data table", table_to_string(data))
-
-	data.version = (data.version or 0) + 1  -- Increment version
-	print("Incremented data Version in Save: ", data.version)
-
-	--print("Easy Table", data)
-
-	local data_checksum = generate_checksum(table_to_string(data))
-	print("New Checksum: ", data_checksum)
-	print("Before saving, version:", data.version - 1)
-	defsave.set(filename, "default", data)
-	defsave.set(filename, "checksum", data_checksum)
-	print("After saving, version:", data.version)
-
-	---------------------------------Save Dungeons----------------------------
-	-- dungeonData = {1, statusVersion = 1}  --FOR TESTING USE ONLY
-
-	if dungeonData == nil then
-		print("Error: dungeonData is nil")
-		return
-	end
-
-
-
-	print("dungeonData table", table_to_string(dungeonData))
-
-	dungeonData.statusVersion = (dungeonData.statusVersion or 0) + 1  -- Increment statusVersion
-	print("Incremented dungeonData Version in Save: ", dungeonData.statusVersion)
-
-	--print("Dungeon ", dungeonData)
-
-	local dungeon_checksum = generate_checksum(table_to_string(dungeonData))
-	print("New Checksum: ", dungeon_checksum)
-	print("Before saving, statusVersion:", dungeonData.statusVersion - 1)
-	defsave.set(filename, "dungeon", dungeonData)
-	defsave.set(filename, "checksum", dungeon_checksum)
-	print("After saving, statusVersion:", dungeonData.statusVersion)    
-
-	---------------------------------Save Items----------------------------
-
-	if itemData == nil then
-		print("Error: itemData is nil")
-		return
-	end
-
-	print("itemData table", table_to_string(itemData))
-
-	itemData.itemVersion = (itemData.itemVersion or 0) + 1  -- Increment itemVersion
-	print("Incremented itemData Version in Save: ", itemData.itemVersion)
-
-	--print("Items ", itemData)
-
-	local item_checksum = generate_checksum(table_to_string(itemData))
-	print("New Checksum: ", item_checksum)
-	print("Before saving, itemVersion:", itemData.itemVersion - 1)
-	defsave.set(filename, "item", itemData)
-	defsave.set(filename, "checksum", item_checksum)
-	print("After saving, itemVersion:", itemData.itemVersion)
-
-	------------------------------------------------------------------
-
-	defsave.save(filename)
-	print("Data saved successfully.")
 end
 
 
@@ -728,19 +743,29 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == SAVE then
-
+		i = 0
+		print("I"..i)
 		print("Received save message, now saving")
 		--print("Player data:", table_to_string(message.data))
 		--print("Dungeon data:", table_to_string(message.dungeonData))
 		--print("Item data:", table_to_string(itm.get_itemList()))
+		
+		local table = {location = loc.collections,
+		position = pos.getPosition(),
+		health = eh.getHealth(),
+		energy = eh.getEnergy(),
+		character = char.sprite,
+		npcStatus = mob.npc}
 
-		save(message.data, message.dungeonData, itm.get_itemList())
+
+		
+		save(table, message.dungeonData, itm.get_itemList())
 	end
 
 	if message_id == LOAD then
 		easyTable = defsave.get(filename, "default")
 		dungeonStatus = defsave.get(filename, "dungeon")
-		items = defsave.get(filename, "item")
+		itm.set_itemList(defsave.get(filename, "item"))
 
 		local loadedChecksum = defsave.get(filename, "checksum")
 		print("Loaded Checksum: ", loadedChecksum)
@@ -752,8 +777,8 @@ function on_message(self, message_id, message, sender)
 		eh.setEnergy(easyTable.energy)
 		char.sprite = easyTable.character
 		mob.npc = easyTable.npcStatus
+		
 		msg.post("", "loadDungeonData", {data = dungeonStatus})
-		msg.post("Inventory#inventory", "loadItemData", {data = items})
 	end
 
 	if message_id == CONFIGLOAD then

@@ -5,23 +5,23 @@
 
 local M = {}
 
-local itemList = {  --NODES NEED TO BE REDONE
-	WOODSWORD = { itemNum = 1, hasItem = true, equipped = true, node = "WOODSWORD", type = "main" },
-	BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD", type = "main"  },
-	SPEAR = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR", type = "main"  },
-	BOW = { itemNum = 4, hasItem = false, equipped = false, node = "BOW", type = "range"  },
-	MUSKET = { itemNum = 5, hasItem = false, equipped = false, node = "MUSKET", type = "range"  },
-	SCYTHE = { itemNum = 6, hasItem = false, equipped = false, node = "SCYTHE", type = "main"  },
-	SAI = { itemNum = 7, hasItem = false, equipped = false, node = "SAI", type = "main"  },
-	BATON = { itemNum = 8, hasItem = false, equipped = false, node = "BATON", type = "main"  },
-	ASSAULTRIFLE = { itemNum = 9, hasItem = false, equipped = false, node = ("ASSAULTRIFLE"), type = "side", combo = 10    }, --has combo
-	ROCKETLAUNCHER = { itemNum = 10, hasItem = false, equipped = false, node = ("ROCKETLAUNCHER"), type = "side", combo = 10    }, --has combo
-	CROSSBOW = { itemNum = 11, hasItem = false, equipped = false, node = ("CROSSBOW"), type = "range"  },
-	BLUNDERBUSS = { itemNum = 12, hasItem = false, equipped = false, node = ("BLUNDERBUSS"), type = "side", combo = 10    }, --has combo
-	GRENADE = { itemNum = 13, hasItem = false, equipped = false, node = ("GRENADE"), type = "range"  },
-	BIGHAMMER = { itemNum = 14, hasItem = false, equipped = false, node = ("BIGHAMMER"), type = "main"  },
-	KNIFE = { itemNum = 15, hasItem = false, equipped = false, node = ("KNIFE"), type = "side", combo = 10  }, --has combo
-	ROCK = { itemNum = 16, hasItem = false, equipped = false, node = ("ROCK"), type = "main"  },
+local itemList = {  --attacks and speeds and combosnee to be redone
+	WOODSWORD = { itemNum = 1, hasItem = true, equipped = false, node = "WOODSWORD", type = "main", attack = 10, speed = 0 },
+	BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD", type = "main", attack = 10, speed = 0   },
+	SPEAR = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR", type = "main", attack = 10, speed = 0   },
+	BOW = { itemNum = 4, hasItem = false, equipped = false, node = "BOW", type = "range", attack = 10, speed = 0   },
+	MUSKET = { itemNum = 5, hasItem = false, equipped = false, node = "MUSKET", type = "range", attack = 10, speed = 0   },
+	SCYTHE = { itemNum = 6, hasItem = false, equipped = false, node = "SCYTHE", type = "main", attack = 10, speed = 0   },
+	SAI = { itemNum = 7, hasItem = false, equipped = false, node = "SAI", type = "main", attack = 10, speed = 0   },
+	BATON = { itemNum = 8, hasItem = false, equipped = false, node = "BATON", type = "main" , attack = 10, speed = 0  },
+	ASSAULTRIFLE = { itemNum = 9, hasItem = false, equipped = false, node = ("ASSAULTRIFLE"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
+	ROCKETLAUNCHER = { itemNum = 10, hasItem = false, equipped = false, node = ("ROCKETLAUNCHER"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
+	CROSSBOW = { itemNum = 11, hasItem = false, equipped = false, node = ("CROSSBOW"), type = "range", attack = 10, speed = 0   },
+	BLUNDERBUSS = { itemNum = 12, hasItem = false, equipped = false, node = ("BLUNDERBUSS"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
+	GRENADE = { itemNum = 13, hasItem = false, equipped = false, node = ("GRENADE"), type = "range", attack = 10, speed = 0   },
+	BIGHAMMER = { itemNum = 14, hasItem = false, equipped = false, node = ("BIGHAMMER"), type = "main", attack = 10, speed = 0   },
+	KNIFE = { itemNum = 15, hasItem = false, equipped = false, node = ("KNIFE"), type = "side", combo = 10, attack = 10, speed = 0   }, --has combo
+	ROCK = { itemNum = 16, hasItem = false, equipped = false, node = ("ROCK"), type = "main", attack = 10, speed = 0   },
 
 
 --shields

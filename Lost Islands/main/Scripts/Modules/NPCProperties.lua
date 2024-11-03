@@ -42,7 +42,7 @@ end
 -- Updated calcEnemyHealth function
 function M.calcEnemyHealth(enemy, combo)
 	local damage = itm.getMainAttack() + itm.getSideAttack(combo)
-
+	print("dmage:" .. tostring(damage))
 	local current_collection_url = collection.get_loaded_collection()
 	if not current_collection_url then
 		print("Error: No collection is currently loaded")
@@ -63,7 +63,7 @@ function M.calcEnemyHealth(enemy, combo)
 	end
 	
 	health = health - damage
-		
+	print("current health" .. health)
 	if enemies[current_collection] and enemies[current_collection][enemy] then
 		return (health)
 	else

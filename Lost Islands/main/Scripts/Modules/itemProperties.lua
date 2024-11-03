@@ -88,10 +88,11 @@ end
 function M.getMainAttack() --Deals with physical attack damagr, not anything that uses energy
 		--item = { attack = equipped[equippedMelee.main].attack, type = equipped[equippedMelee.main].type}
 		--return(item)
-		print(equipped[equippedMelee.main])
 		if equipped[equippedMelee.main] ~= nil then
+			print("main attack" .. tostring(equipped[equippedMelee.main].attack))
 			return(equipped[equippedMelee.main].attack)
 		else
+			print("main attack is nil")
 			return(0)
 		end
 end

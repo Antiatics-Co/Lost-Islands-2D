@@ -24,9 +24,8 @@ function on_message(self, message_id, message, sender)
 		print("Attack Recieved")
 		combo = combo + 1
 		
-		print("Health:" .. enem.calcEnemyHealth("slime", combo))
-		
 		if(enem.calcEnemyHealth("slime", combo)) <= 0 then
+			print("enemy died")
 			go.delete()
 		end
 

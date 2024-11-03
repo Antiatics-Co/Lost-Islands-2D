@@ -52,20 +52,52 @@ local layers = {
 print("Items defined:", items)
 
 
-local function InvItemStatus(ID) --ID = { name, type }
-	--items[ID.name].equipped = not items[ID.name].equipped 
-	
+local function InvItemStatus(ID)
+	local node_name = items[ID.name].node
+	if type(node_name) ~= "string" then
+		print("Error: Invalid node name for", ID.name)
+		return
+	end
+
+	local node = gui.get_node(node_name)
+	if not node then
+		print("Error: Node not found for", ID.name)
+		return
+	end
+
 	if items[ID.name].equipped then
-		print("Item Equipped:" .. ID.name)
-		gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(0, 1, 0, 1)) -- Change color to green
+		print("Item Equipped:", ID.name)
+		gui.set_color(node, vmath.vector4(0, 1, 0, 1)) -- Change color to green
 	else
-		print("Item Unequipped:" .. ID.name)
-		gui.set_color(gui.get_node(items[ID.name].node), vmath.vector4(1, 1, 1, 1)) -- Change color to white
-		--first = red, second = green, third = blue, fourth = alpha
+		print("Item Unequipped:", ID.name)
+		gui.set_color(node, vmath.vector4(1, 1, 1, 1)) -- Change color to white
+		print("Attempted to set color to white for:", ID.name)
+	end
+
+	-- Confirm the color was set
+	local current_color = gui.get_color(node)
+	print("Current color of", ID.name, ":", current_color)
+end
+
+
+local function setupInventory()
+	for name, item in pairs(items) do
+		if type(item) == "table" and item.hasItem ~= nil then
+			if item.hasItem then
+				if item.equipped then
+					prop.equip({ name = name, type = item.type, attack = item.attack, combo = item.combo, speed = item.speed })
+				end
+			end
+			InvItemStatus({ name = name }) -- Ensure it gets called for all items
+		end
 	end
 end
 
-local function setupInventory() --setds up inventory and applies all properties on startup.
+
+
+
+
+--[[local function setupInventory() --setds up inventory and applies all properties on startup.
 local item
 	if items.woodsword.hasItem then
 		--set slot with item to exist
@@ -106,230 +138,205 @@ local item
 	end
 
 	if items.musket.hasItem then
-		
+		item = ({ name = "musket", type = "ranged", attack = 10, speed = 100 })
 		if items.musket.equipped then
-			item = ({ name = "musket", type = "ranged", attack = 10, speed = 100 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.scythe.hasItem then
-		
+		item = ({ name = "scythe", type = "main", attack = 10 })
 		if items.scythe.equipped then
-			item = ({ name = "scythe", type = "main", attack = 10 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.sai.hasItem then
-		
+		item = ({ name = "sai", type = "main", attack = 10 })
 		if items.sai.equipped then
-			item = ({ name = "sai", type = "main", attack = 10 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.baton.hasItem then
-		
+		item = ({ name = "baton", type = "main", attack = 10 })
 		if items.baton.equipped then
-			item = ({ name = "baton", type = "main", attack = 10 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.assault.hasItem then
-		
+		item = ({ name = "assault", type = "side", attack = 10, combo = 8 })
 		if items.assault.equipped then
-			item = ({ name = "assault", type = "side", attack = 10, combo = 8 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.rocket.hasItem then
-		
+		item = ({ name = "rocket", type = "side" , attack = 30, combo = 16})
 		if items.rocket.equipped then
-			item = ({ name = "rocket", type = "side" , attack = 30, combo = 16})
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.crossbow.hasItem then
-		
+		item = ({ name = "crossbow", type = "ranged", attack = 10, speed = 40 })
 		if items.crossbow.equipped then
-			item = ({ name = "crossbow", type = "ranged", attack = 10, speed = 40 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 
 	if items.blunderbuss.hasItem then
-		
+		item = ({ name = "blunderbuss", type = "side", attack = 10, combo = 4 })
 		if items.blunderbuss.equipped then
-			item = ({ name = "blunderbuss", type = "side", attack = 10, combo = 4 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.grenade.hasItem then
-		
+		item = ({ name = "grenade", type = "ranged", attack = 10, speed = 6 })
 		if items.grenade.equipped then
-			item = ({ name = "grenade", type = "ranged", attack = 10, speed = 6 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.hammer.hasItem then
-		
+		item = ({ name = "hammer", type = "main", attack = 10 })
 		if items.hammer.equipped then
-			item = ({ name = "hammer", type = "main", attack = 10 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.knife.hasItem then
-		
+		item = ({ name = "knife", type = "side", attack = 10, combo = 3 })	
 		if items.knife.equipped then
-			item = ({ name = "knife", type = "side", attack = 10, combo = 3 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.rock.hasItem then
-		
+		item = ({ name = "rock", type = "main", attack = 10 })
 		if items.rock.equipped then
-			item = ({ name = "rock", type = "main", attack = 10 })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.woodShield.hasItem then
-		
+		item = ({ name = "woodShield", type = "shield" })
 		if items.woodShield.equipped then
-			item = ({ name = "woodShield", type = "shield" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.steelShield.hasItem then
-		
+		item = ({ name = "steelShield", type = "shield" })
 		if items.steelShield.equipped then
-			item = ({ name = "steelShield", type = "shield" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.magicShield.hasItem then
-		
+		item = ({ name = "magicShield", type = "shield" })
 		if items.magicShield.equipped then
-			item = ({ name = "magicShield", type = "shield" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.lightArmour.hasItem then
-		
+		item = ({ name = "lightArmour", type = "armour" })
 		if items.lightArmour.equipped then
-			item = ({ name = "lightArmour", type = "armour" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.heavyArmour.hasItem then
-		
+		item = ({ name = "heavyArmour", type = "armour"})
 		if items.heavyArmour.equipped then
-			item = ({ name = "heavyArmour", type = "armour"})
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.magicArmour.hasItem then
-		
+		item = ({ name = "magicArmour", type = "armour" })
 		if items.magicArmour.equipped then
-			item = ({ name = "magicArmour", type = "armour" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.fireElement.hasItem then
-		
+		item = ({ name = "fireElement", type = "ranged" })
 		if items.fireElement.equipped then
-			item = ({ name = "fireElement", type = "ranged" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.waterElement.hasItem then
-		
+		item = ({ name = "waterElement", type = "ranged" })
 		if items.waterElement.equipped then
-			item = ({ name = "waterElement", type = "ranged" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 
 	if items.stoneElement.hasItem then
-		
+		item = ({ name = "stoneElement", type = "ranged" })
 		if items.stoneElement.equipped then
-			item = ({ name = "stoneElement", type = "ranged" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.lightning.hasItem then
-		
+		item = ({ name = "lightning", type = "ranged" })
 		if items.lightning.equipped then
-			item = ({ name = "lightning", type = "ranged" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.ice.hasItem then
-		
+		item = ({ name = "ice", type = "ranged" })
 		if items.ice.equipped then
-			item = ({ name = "ice", type = "ranged" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.rainbow.hasItem then
-		
+		item = ({ name = "rainbow", type = "ranged" })
 		if items.rainbow.equipped then
-			item = ({ name = "rainbow", type = "ranged" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.poison.hasItem then
-		
+		item = ({ name = "poison", type = "ranged" })
 		if items.poison.equipped then
-			item = ({ name = "poison", type = "ranged" })
 			prop.equip(item)
-			InvItemStatus(item)
 		end
+		InvItemStatus(item)
 	end
 
 	if items.fireDungeonKeys.hasItem then  --keys may not call equip item finc
@@ -369,7 +376,7 @@ local item
 	if items.pendal.hasItem then
 		
 	end
-end
+end]]
 
 
 
@@ -462,7 +469,7 @@ function init(self)
 	ID = {}
 	disableLayer("org_")
 	setupInventory()
-	addItem({name = "woodShield", num = 17})
+	--addItem({name = "woodShield", num = 17})
 end
 
 function on_message(self, message_id, message, sender)
@@ -497,9 +504,7 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-
 	if action_id == TOUCH and invopen and action.released then
-
 		local button = gui.get_node("weapons")
 
 		if gui.pick_node(button, action.x, action.y) then
@@ -507,45 +512,45 @@ function on_input(self, action_id, action)
 			gui.set_enabled(gui.get_node("org_weapon"), inWeapons)
 		end
 
-		if action_id == TOUCH and invopen and inWeapons and action.released then
-			button = gui.get_node("WOODSWORD")
+		if inWeapons then
+			local weaponButtons = {"WOODSWORD", --[["BROADSWORD", "SPEAR", "BOW", "MUSKET", "SCYTHE", 
+													"SAI", "BATON", "ASSAULTRIFLE", "ROCKETLAUNCHER", "CROSSBOW", 
+													"BLUNDERBUSS", "GRENADE", "BIGHAMMER", "KNIFE", "ROCK"]]}
 
-			if gui.pick_node(button, action.x, action.y) then
-				items.woodsword.equipped = not items.woodsword.equipped
-			end
+			for _, weaponName in ipairs(weaponButtons) do
+				button = gui.get_node(weaponName)
 
-		end
-		setupInventory()
-	elseif action_id == E  and action.released then
-		
-			invopen = not invopen
-			gui.set_enabled(gui.get_node("layer1"), invopen)
-			print("inventory opened")
-
-			if invopen then
-				if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-					msg.post("Level:/Player#Player", "RecievingInput")
-					msg.post("main#Level", "set_time_step", { factor = 0, mode = 0 })
-
-				elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
-					msg.post("main#MainMap", "set_time_step", { factor = 0, mode = 0 })
-					msg.post("MainMap:/PlayerMap#PlayerMap", "recievingInput")
-
-					--print("no relavant collections")
+				if gui.pick_node(button, action.x, action.y) then
+					print("Before toggle: " .. tostring(weaponName) .. " equipped: " .. tostring(items[string.lower(weaponName)].equipped))
+					items[string.lower(weaponName)].equipped = not items[string.lower(weaponName)].equipped
+					print("After toggle: " .. tostring(weaponName) .. " equipped: " .. tostring(items[string.lower(weaponName)].equipped))
+					setupInventory()
 				end
-			else
-				if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-					msg.post("Level:/Player#Player", "RecievingInput")
-					msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
-
-				elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
-					msg.post("main#MainMap", "set_time_step", { factor = 1, mode = 1 })
-					msg.post("MainMap:/PlayerMap#PlayerMap", "recievingInput")
 			end
-		end 
-	end
-end
+		end
+	elseif action_id == E and action.released then
+		invopen = not invopen
+		gui.set_enabled(gui.get_node("layer1"), invopen)
+		print("inventory opened")
 
-function final(self)
-	itm.set_itemList(items)
+		if invopen then
+			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
+				msg.post("Level:/Player#Player", "RecievingInput")
+				msg.post("main#Level", "set_time_step", { factor = 0, mode = 0 })
+
+			elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
+				msg.post("main#MainMap", "set_time_step", { factor = 0, mode = 0 })
+				msg.post("MainMap:/PlayerMap#PlayerMap", "recievingInput")
+			end
+		else
+			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
+				msg.post("Level:/Player#Player", "RecievingInput")
+				msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
+
+			elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
+				msg.post("main#MainMap", "set_time_step", { factor = 1, mode = 1 })
+				msg.post("MainMap:/PlayerMap#PlayerMap", "recievingInput")
+			end
+		end
+	end
 end
