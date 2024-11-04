@@ -14,7 +14,9 @@ end
 function init(self)
 	self.object_pos = startpos.getPosition()
 	local screen_mouse_pos = startpos.getMousePosition()
-	local world_mouse_pos = startpos.screen_to_world(screen_mouse_pos)
+	local world_mouse_pos = startpos.screen_to_world(screen_mouse_pos.x, screen_mouse_pos.y,
+		0, go.get("Operator#camera", "projection"),
+		go.get("Operator#camera", "view"))
 
 	self.dir_to_mouse = world_mouse_pos - self.object_pos
 	self.dir_to_mouse = normalize_vector(self.dir_to_mouse)

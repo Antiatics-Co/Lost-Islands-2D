@@ -90,6 +90,10 @@ local function update_state(state)
     for _, camera in pairs(state.cameras) do
         update_camera(camera, state)
     end
+    
+    pos.setWindowHeight(render.get_height())
+    pos.setWindowWidth(render.get_width())
+    
     return true
 end
 
@@ -152,7 +156,6 @@ function init(self)
     local camera_gui = create_camera(state, "camera_gui")
     init_camera(camera_gui, get_gui_projection)
     update_state(state)
-    pos.screen_res = vmath.vector3(render.get_window_width(), render.get_window_height(), 0)
 end
 
 function update(self)

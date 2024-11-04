@@ -1,5 +1,5 @@
 embedded_components {
-  id: "cameramap"
+  id: "camera"
   type: "camera"
   data: "aspect_ratio: 1.0\n"
   "fov: 0.98\n"

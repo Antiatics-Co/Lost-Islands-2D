@@ -113,14 +113,6 @@
         :scene
       ]
       [
-        "/main/MainMap.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
         "/builtins/render/default.render_script"
         :code
       ]
@@ -141,15 +133,23 @@
         :cljfx-form-view
       ]
       [
-        "/main/Scripts/Elements/Fire/FireBall.script"
-        :code
+        "/main/MainMap.collection"
+        :scene
       ]
       [
         "/main/Scripts/Modules/default.render_script"
         :code
       ]
       [
+        "/main/Scripts/Elements/Fire/FireBall.script"
+        :code
+      ]
+      [
         "/main/Scripts/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
         :code
       ]
     ]
