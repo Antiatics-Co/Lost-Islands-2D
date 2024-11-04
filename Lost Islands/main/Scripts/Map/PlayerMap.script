@@ -11,7 +11,7 @@ local recievingInputs = true
 local CONTACT_POINT_RESPONSE = hash("contact_point_response")
 local BORDER = hash("Border")
 local DUNGEON = hash("Dungeon")
-
+local po = require("main.Scripts.Modules.PlayerPosition")
 
 function init(self)
 	msg.post("#","acquire_input_focus")
@@ -51,9 +51,9 @@ function update(self, dt)
 	go.set_position(pos) -- Set new position
 	self.vel.x = 0 -- Reset velocity
 	self.vel.y = 0
-
 	--reset correction
 	self.correction = vmath.vector3()
+	po.setPosition(pos)
 end
 
 local function handleLevelCollisions(self, normal, distance)
@@ -118,7 +118,9 @@ function on_input(self, action_id, action)
 			self.vel.x = -BASEVELOCITY -- Move left
 		elseif action_id == hash("right") then
 			self.vel.x = BASEVELOCITY -- Move right
-			
+		elseif action_id == hash("touch") and action.pressed then
+			po.setMousePosition(vmath.vector3(action.x, action.y, 0))
+			factory.create("#factory")
 		elseif action_id == hash("esc") and action.released then
 			msg.post("main:/menu#PauseMenu", "enable")
 		end

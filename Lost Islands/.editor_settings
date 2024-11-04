@@ -19,31 +19,11 @@
   }
   :code {
     :find {
-      :term ""
+      :term "pos"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
-        "/main/Scripts/GUI/settings.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/characterCreation.gui_script"
-        :code
-      ]
-      [
-        "/main/GUI files/CharacterCreation.gui"
-        :scene
-      ]
-      [
-        "/main/Level.collection"
-        :scene
-      ]
       [
         "/main/Scripts/Level/Level1.script"
         :code
@@ -89,20 +69,8 @@
         :scene
       ]
       [
-        "/main/Objects/PlayerMap/PlayerMap.go"
-        :scene
-      ]
-      [
-        "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
         "/main/Scripts/Map/map.script"
         :code
-      ]
-      [
-        "/main/Objects/Enemies/slimeMap.go"
-        :scene
       ]
       [
         "/main/Scripts/Modules/CollectionTracker.lua"
@@ -111,10 +79,6 @@
       [
         "/main/Scripts/Enemies/Enemy.script"
         :code
-      ]
-      [
-        "/main/MainMap.collection"
-        :scene
       ]
       [
         "/main/main.collection"
@@ -150,6 +114,42 @@
       ]
       [
         "/main/Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/Objects/Enemies/slimeMap.go"
+        :scene
+      ]
+      [
+        "/main/Objects/PlayerMap/PlayerMap.go"
+        :scene
+      ]
+      [
+        "/main/Objects/Elements/FireBullet.go"
+        :scene
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
+        "/builtins/render/default.render_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Elements/Fire/FireBall.script"
         :code
       ]
     ]

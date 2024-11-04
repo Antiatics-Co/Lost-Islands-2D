@@ -23,8 +23,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 16.0\n"
-  "  data: 16.0\n"
+  "  data: 16.25\n"
+  "  data: 15.25\n"
   "  data: 0.5\n"
   "}\n"
   ""
@@ -43,4 +43,10 @@ embedded_components {
     x: 1.016949
     y: 0.953846
   }
+}
+embedded_components {
+  id: "factory"
+  type: "factory"
+  data: "prototype: \"/main/Objects/Elements/FireBullet.go\"\n"
+  ""
 }
