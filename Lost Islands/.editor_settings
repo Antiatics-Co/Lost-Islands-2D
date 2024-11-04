@@ -25,22 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Level/Level1.script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/pause.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
         "/main/Scripts/PlayerProperties.script"
         :code
       ]
@@ -133,10 +117,6 @@
         :scene
       ]
       [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
         "/main/Scripts/Map/PlayerMap.script"
         :code
       ]
@@ -145,11 +125,31 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/PlayerPosition.lua"
-        :code
+        "/builtins/render/default.render"
+        :cljfx-form-view
+      ]
+      [
+        "/builtins/render/default.display_profiles"
+        :cljfx-form-view
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/default.render"
+        :cljfx-form-view
       ]
       [
         "/main/Scripts/Elements/Fire/FireBall.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/default.render_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/PlayerPosition.lua"
         :code
       ]
     ]

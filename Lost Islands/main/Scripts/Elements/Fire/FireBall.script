@@ -44,9 +44,10 @@ function fixed_update(self, dt)
 
 	-- Normalize direction vector
 	self.dir_to_mouse = normalize_vector(self.dir_to_mouse)
-	print("normalized dir_to_mouse" .. self.dir_to_mouse)
+
 	-- Calculate new position
 	local new_pos = go.get_position() + self.dir_to_mouse * speed * dt
+	print("New Position: ", new_pos)
 
 	-- Update the object's position
 	go.set_position(new_pos)
@@ -57,6 +58,7 @@ function fixed_update(self, dt)
 		go.delete()
 	end
 end
+
 
 
 
