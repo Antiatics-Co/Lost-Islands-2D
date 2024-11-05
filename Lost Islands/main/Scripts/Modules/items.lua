@@ -5,70 +5,74 @@
 
 local M = {}
 
-local itemList = {  --attacks and speeds and combosnee to be redone
-	WOODSWORD = { itemNum = 1, hasItem = true, equipped = false, node = "WOODSWORD", type = "main", attack = 10, speed = 0 },
-	BROADSWORD = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD", type = "main", attack = 10, speed = 0   },
-	SPEAR = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR", type = "main", attack = 10, speed = 0   },
-	BOW = { itemNum = 4, hasItem = false, equipped = false, node = "BOW", type = "range", attack = 10, speed = 0   },
-	MUSKET = { itemNum = 5, hasItem = false, equipped = false, node = "MUSKET", type = "range", attack = 10, speed = 0   },
-	SCYTHE = { itemNum = 6, hasItem = false, equipped = false, node = "SCYTHE", type = "main", attack = 10, speed = 0   },
-	SAI = { itemNum = 7, hasItem = false, equipped = false, node = "SAI", type = "main", attack = 10, speed = 0   },
-	BATON = { itemNum = 8, hasItem = false, equipped = false, node = "BATON", type = "main" , attack = 10, speed = 0  },
-	ASSAULTRIFLE = { itemNum = 9, hasItem = false, equipped = false, node = ("ASSAULTRIFLE"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
-	ROCKETLAUNCHER = { itemNum = 10, hasItem = false, equipped = false, node = ("ROCKETLAUNCHER"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
-	CROSSBOW = { itemNum = 11, hasItem = false, equipped = false, node = ("CROSSBOW"), type = "range", attack = 10, speed = 0   },
-	BLUNDERBUSS = { itemNum = 12, hasItem = false, equipped = false, node = ("BLUNDERBUSS"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
-	GRENADE = { itemNum = 13, hasItem = false, equipped = false, node = ("GRENADE"), type = "range", attack = 10, speed = 0   },
-	BIGHAMMER = { itemNum = 14, hasItem = false, equipped = false, node = ("BIGHAMMER"), type = "main", attack = 10, speed = 0   },
-	KNIFE = { itemNum = 15, hasItem = false, equipped = false, node = ("KNIFE"), type = "side", combo = 10, attack = 10, speed = 0   }, --has combo
-	ROCK = { itemNum = 16, hasItem = false, equipped = false, node = ("ROCK"), type = "main", attack = 10, speed = 0   },
+M.itemList = M.itemList or {  --attacks and speeds and combosnee to be redone
+	woodsword = { itemNum = 1, hasItem = true, equipped = false, node = "WOODSWORD", type = "main", attack = 10, speed = 0 },
+	broadsword = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD", type = "main", attack = 10, speed = 0   },
+	spear = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR", type = "main", attack = 10, speed = 0   },
+	bow = { itemNum = 4, hasItem = false, equipped = false, node = "BOW", type = "range", attack = 10, speed = 0   },
+	musket = { itemNum = 5, hasItem = false, equipped = false, node = "MUSKET", type = "range", attack = 10, speed = 0   },
+	scythe = { itemNum = 6, hasItem = false, equipped = false, node = "SCYTHE", type = "main", attack = 10, speed = 0   },
+	sai = { itemNum = 7, hasItem = false, equipped = false, node = "SAI", type = "main", attack = 10, speed = 0   },
+	baton = { itemNum = 8, hasItem = false, equipped = false, node = "BATON", type = "main" , attack = 10, speed = 0  },
+	assault = { itemNum = 9, hasItem = false, equipped = false, node = ("ASSAULTRIFLE"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
+	rocket = { itemNum = 10, hasItem = false, equipped = false, node = ("ROCKETLAUNCHER"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
+	crossbow = { itemNum = 11, hasItem = false, equipped = false, node = ("CROSSBOW"), type = "range", attack = 10, speed = 0   },
+	blunderbuss = { itemNum = 12, hasItem = false, equipped = false, node = ("BLUNDERBUSS"), type = "side", combo = 10, attack = 10, speed = 0     }, --has combo
+	grenade = { itemNum = 13, hasItem = false, equipped = false, node = ("GRENADE"), type = "range", attack = 10, speed = 0   },
+	hammer = { itemNum = 14, hasItem = false, equipped = false, node = ("BIGHAMMER"), type = "main", attack = 10, speed = 0   },
+	knife = { itemNum = 15, hasItem = false, equipped = false, node = ("KNIFE"), type = "side", combo = 10, attack = 10, speed = 0   }, --has combo
+	rock = { itemNum = 16, hasItem = false, equipped = false, node = ("ROCK"), type = "main", attack = 10, speed = 0   },
 
 
 --shields
 
 -- Item Slot, damage, energy usage
 
-	WOOD = { itemNum = 17, hasItem = false, equipped = false, node = ("WOOD") },
-	STEEL = { itemNum = 18, hasItem = false, equipped = false, node = ("STEEL") },
-	MAGICSHIELD = { itemNum = 19, hasItem = false, equipped = false, node = ("MAGICSHIELD") },
+	woodShield = { itemNum = 17, hasItem = false, equipped = false, node = ("WOOD") },
+	steelShield = { itemNum = 18, hasItem = false, equipped = false, node = ("STEEL") },
+	magicShield = { itemNum = 19, hasItem = false, equipped = false, node = ("MAGICSHIELD") },
 
 --Armour
 
-	LIGHT = { itemNum = 20, hasItem = false, equipped = false, node = ("LIGHT") },
-	HEAVY = { itemNum = 21, hasItem = false, equipped = false, node = ("HEAVY") },
-	MAGIC = { itemNum = 22, hasItem = false, equipped = false, node = ("MAGIC") },
+	lightArmour = { itemNum = 20, hasItem = false, equipped = false, node = ("LIGHT") },
+	heavyArmour = { itemNum = 21, hasItem = false, equipped = false, node = ("HEAVY") },
+	magicArmour = { itemNum = 22, hasItem = false, equipped = false, node = ("MAGIC") },
 
 --Elements
 
-	FIRE = { itemNum = 23, hasItem = false, equipped = false, node = ("FIRE") },
-	WATER = { itemNum = 24, hasItem = false, equipped = false, node = ("WATER") },
-	STONE = { itemNum = 25, hasItem = false, equipped = false, node = ("STONE") },
-	LIGHTNING = { itemNum = 26, hasItem = false, equipped = false, node = ("LIGHTNING") },
-	ICE = { itemNum = 27, hasItem = false, equipped = false, node = ("ICE") },
-	RAINBOW = { itemNum = 28, hasItem = false, equipped = false, node = ("RAINBOW") },
-	POISON = { itemNum = 29, hasItem = false, equipped = false, node = ("POISON") },
+	fireElement = { itemNum = 23, hasItem = false, equipped = false, node = ("FIRE") },
+	waterElement = { itemNum = 24, hasItem = false, equipped = false, node = ("WATER") },
+	stoneElement = { itemNum = 25, hasItem = false, equipped = false, node = ("STONE") },
+	lightning = { itemNum = 26, hasItem = false, equipped = false, node = ("LIGHTNING") },
+	ice = { itemNum = 27, hasItem = false, equipped = false, node = ("ICE") },
+	rainbow = { itemNum = 28, hasItem = false, equipped = false, node = ("RAINBOW") },
+	posion = { itemNum = 29, hasItem = false, equipped = false, node = ("POISON") },
 
 --Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
 
-	FIREDUNGEONKEYS = { itemNum = 30, max = 10, hasItem = false, holding = 0, node = ("FIREDUNGEONKEYS") }, --Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
-	WATERDUNGEONKEYS = { itemNum = 31, max = 10, hasItem = false, holding = 0, node = ("WATERDUNGEONKEYS") },
-	STONEDUNGEONKEYS = { itemNum = 32, max = 10, hasItem = false, holding = 0, node = ("STONEDUNGEONKEYS") },
+	fireDungeonKeys = { itemNum = 30, max = 10, hasItem = false, holding = 0, node = ("FIREDUNGEONKEYS") }, --Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
+	waterDungeonKeys = { itemNum = 31, max = 10, hasItem = false, holding = 0, node = ("WATERDUNGEONKEYS") },
+	stoneDungeonKeys = { itemNum = 32, max = 10, hasItem = false, holding = 0, node = ("STONEDUNGEONKEYS") },
 
 --Money and Arrows --have a special section in inventory, may be in hud, same with keys
 
-	ARROW = { itemNum = 33, max = 40, hasItem = false, holding = 0, node = ("ARROW") },
-	SHELLS = { itemNum = 34, max = 5, hasItem = false, holding = 0, node = ("SHELLS") },
-	MUSKETBALLS = {itemNum = 35, max = 30, hasItem = false, holding = 0, node = ("MUSKETBALLS") },
-	PENDAL = { itemNum = 36, max = 99999, hasItem = false, holding = 99999, node = ("PENDAL") }
+	arrow = { itemNum = 33, max = 40, hasItem = false, holding = 0, node = ("ARROW") },
+	shells = { itemNum = 34, max = 5, hasItem = false, holding = 0, node = ("SHELLS") },
+	musketBalls = {itemNum = 35, max = 30, hasItem = false, holding = 0, node = ("MUSKETBALLS") },
+	pendal = { itemNum = 36, max = 99999, hasItem = false, holding = 99999, node = ("PENDAL") }
 }
 
 function M.set_itemList(item)
-	itemList = item
+	M.itemList = M.itemList
+	print("Set Item List Function")
+	M.itemList = item
 end
 
 function M.get_itemList()
-	return(itemList)
+	print("Get Item List" .. tostring(M.itemList))
+	return(M.itemList)
 end
+
 
 return(M)
 

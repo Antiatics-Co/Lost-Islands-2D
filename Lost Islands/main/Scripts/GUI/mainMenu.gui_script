@@ -27,6 +27,7 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	msg.post("IO#IO", "load")
 	delaySplash()
 	gui.set_enabled(gui.get_node("main"), true)
 end
@@ -132,12 +133,17 @@ function on_input(self, action_id, action)
 			gui.set_enabled(gui.get_node("main"), false)
 			--msg.post("Inventory#Inventory", "openInv")
 			msg.post("menu#PauseMenu", "start")
-
-			msg.post("#MainMap", "load")
-			msg.post("#MainMap", "enable")
+			if collectionTracker.key ~= nil then
+				msg.post("#".. collectionTracker.key, "load")
+				msg.post("#".. collectionTracker.key, "enable")
+			else
+				print("Collection Key nil")
+				msg.post("#MainMap", "load")
+				msg.post("#MainMap", "enable")
+			end
 			
-			msg.post("IO#IO", "load")
-		--[[
+			--[[
+			
 			msg.post("#Level", "load")
 			msg.post("#Level", "enable")
 			]]

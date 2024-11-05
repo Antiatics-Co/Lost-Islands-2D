@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term ""
+      :term "set_itemList"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Scripts/Modules/CoincidingPlayerInputs.lua"
-        :code
-      ]
       [
         "/main/Objects/Inventory.go"
         :scene
@@ -38,10 +34,6 @@
       ]
       [
         "/main/Scripts/Enemies/firstMap/slimeMap.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/NPCProperties.lua"
         :code
       ]
       [
@@ -101,20 +93,8 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/PlayerPosition.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Map/PlayerMap.script"
         :code
-      ]
-      [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
-        "/main/Level.collection"
-        :scene
       ]
       [
         "/main/main.collection"
@@ -125,23 +105,19 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/items.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/Inventory.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/IO.script"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/settings.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Level.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Modules/ItemProperties.lua"
         :code
       ]
       [
@@ -149,7 +125,31 @@
         :code
       ]
       [
+        "/main/Scripts/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/pause.gui_script"
+        :code
+      ]
+      [
         "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/items.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/Inventory.gui_script"
         :code
       ]
     ]

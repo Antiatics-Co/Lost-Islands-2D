@@ -29,20 +29,7 @@ local invopen = false
 
 
 -- Define items as a global variable
-local items = {  
-	woodsword = itm.get_itemList().WOODSWORD, broadsword = itm.get_itemList().BROADSWORD, spear = itm.get_itemList().SPEAR, bow = itm.get_itemList().BOW,
-	musket = itm.get_itemList().MUSKET, scythe = itm.get_itemList().SCYTHE, 
-	sai = itm.get_itemList().SAI, baton = itm.get_itemList().BATON, assault = itm.get_itemList().ASSAULTRIFLE, rocket = itm.get_itemList().ROCKETLAUNCHER,
-	crossbow = itm.get_itemList().CROSSBOW, blunderbuss = itm.get_itemList().BLUNDERBUSS, grenade = itm.get_itemList().GRENADE,
-	hammer = itm.get_itemList().BIGHAMMER, knife = itm.get_itemList().KNIFE, rock = itm.get_itemList().ROCK,
-	woodShield = itm.get_itemList().WOOD, steelShield = itm.get_itemList().STEEL, magicShield = itm.get_itemList().MAGICSHIELD, 
-	lightArmour = itm.get_itemList().LIGHT, heavyArmour = itm.get_itemList().HEAVY, magicArmour = itm.get_itemList().MAGIC, fireElement = itm.get_itemList().FIRE,
-	waterElement = itm.get_itemList().WATER, stoneElement = itm.get_itemList().STONE,
-	lightning =  itm.get_itemList().LIGHTNING, ice = itm.get_itemList().ICE, rainbow = itm.get_itemList().RAINBOW,
-	poison = itm.get_itemList().POISON, fireDungeonKeys = itm.get_itemList().FIREDUNGEONKEYS, waterDungeonKeys = itm.get_itemList().WATERDUNGEONKEYS,
-	stoneDungeonKeys = itm.get_itemList().STONEDUNGEONKEYS, arrow = itm.get_itemList().ARROW, shells = itm.get_itemList().SHELLS, 
-	musketBalls = itm.get_itemList().MUSKETBALLS, pendal = itm.get_itemList().PENDAL, itemVersion = 1 
-}
+local items = {}
 
 local layers = {
 	"_org"
@@ -378,6 +365,7 @@ end]]
 
 local function load()
 	print("Loading Items Initiated")
+	items = itm.get_itemList()
 	setupInventory()
 end
 
@@ -387,6 +375,7 @@ local function save()
 
 	if items then
 		itm.set_itemList(items)
+		print("Set Item List")
 		msg.post("menu#PauseMenu", "itemsReady")
 		print("Save Data Posted From Inventory")
 	else
@@ -461,10 +450,8 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	print("Script initialized")
-	ID = {}
 	disableLayer("org_")
-	setupInventory()
-	--addItem({name = "woodShield", num = 17})
+	--setupInventory()
 end
 
 function on_message(self, message_id, message, sender)
@@ -548,8 +535,4 @@ function on_input(self, action_id, action)
 			end
 		end
 	end
-end
-
-function final(self)
-	itm.set_itemList(items)
 end

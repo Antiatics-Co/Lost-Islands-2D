@@ -29,6 +29,21 @@ function M.on_message(self, message_id, message, sender)
 	M.print_loaded_collections()
 end
 
+M.key = nil
+
+function M.get_collection_key()
+	local url = M.get_loaded_collection()
+	local parts = {}
+	for part in string.gmatch(url, "[^:/#]+") do
+		table.insert(parts, part)
+	end
+	M.key = parts[#parts]
+	if M.key:sub(-1) == "]" then
+		M.key = M.key:sub(1, -2)
+	end
+	return M.key == "main" and parts[#parts - 1] or M.key
+end
+
 
 function M.is_collection_loaded(collection_url)
 	print("Checking collection:", tostring(collection_url))
@@ -54,6 +69,12 @@ function M.get_loaded_collection()
 end
 
 function M.print_loaded_collections()
+
+	if M.collections == nil then 
+		print("Error: collections table is nil") 
+		return
+	end
+	
 	print("Loaded collections:")
 	for url, loaded in pairs(M.collections) do
 		if loaded then

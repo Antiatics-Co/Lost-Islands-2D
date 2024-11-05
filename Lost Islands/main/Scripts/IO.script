@@ -52,11 +52,6 @@ local health = 100
 
 local easyTable = { location, position, energy, health, character = {}, npcStatus = {}, version = 1 }
 
-------------------------------------Items/Inventory/Elements
-
---Physical
-
-
 ----------------------------------------------Config
 
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
@@ -66,6 +61,20 @@ local config = { volume, resolution, configVersion = 1 }
 
 ---------------------------------------------------------------------------
 
+
+local function save_readable_file(name, data)
+	-- Specify the full path
+	local path = "C:\\Users\\aidco\\AppData\\Roaming\\LostIslands\\" .. name
+
+	local file = io.open(path, "w")
+	if file then
+		file:write(data)
+		file:close()
+		print("Data saved to", path)
+	else
+		print("Error opening file for writing")
+	end
+end
 
 local function string_to_table(str)
 	local func, err = load("return " .. str)
@@ -77,11 +86,34 @@ local function string_to_table(str)
 	end
 end
 
+local function table_to_string(tbl)
+	if tbl == nil then
+		return ""
+	end
+
+	local result = ""
+	local keys = {}
+	for k in pairs(tbl) do
+		table.insert(keys, k)
+	end
+	table.sort(keys, function(a, b)
+		return tostring(a) < tostring(b)
+	end)
+
+	for _, k in ipairs(keys) do
+		result = result .. tostring(k) .. "=" .. value_to_string(tbl[k]) .. ";"
+	end
+
+	--save_readable_file("your_readable_file.txt", result)
+	return result
+end
+
 local function loadSave()
 	defsave.load(filename)
 	easyTable = defsave.get(filename, "default")
 	dun.dungeons = defsave.get(filename, "dungeon")
 	itm.set_itemList(defsave.get(filename, "item"))
+	print("Set Item List")
 
 	local loadedChecksum = defsave.get(filename, "checksum")
 	print("Loaded Checksum: ", loadedChecksum)
@@ -90,17 +122,20 @@ local function loadSave()
 
 	-- Debug: Print the entire item list
 	local itemList = itm.get_itemList()
-	print("Item List: ", itemList)
+	--print("Item List: ", table_to_string(itemList))
 
-	if itemList["WOODSWORD"] then
-		print("woodsword loaded? " .. tostring(itemList["WOODSWORD"].equipped))
+	if itemList["woodsword"] then
+		if itemList["woodsword"].equipped then
+			print("woodsword equipped? " .. tostring(itemList["woodsword"].equipped))
+		end
 	else
 		print("woodsword not found in item list")
 	end
 
 	if easyTable ~= nil then
 		pos.setPosition(easyTable.position)
-		loc.collections = easyTable.location
+		loc.key = easyTable.location
+		print("loaded Collection: " .. easyTable.location)
 		eh.setHealth(easyTable.health)
 		eh.setEnergy(easyTable.energy)
 		char.sprite = easyTable.character
@@ -127,42 +162,8 @@ local function file_exists(filename)
 	end
 end
 
-local function save_readable_file(name, data)
-	-- Specify the full path
-	local path = "C:\\Users\\aidco\\AppData\\Roaming\\LostIslands\\" .. name
-
-	local file = io.open(path, "w")
-	if file then
-		file:write(data)
-		file:close()
-		print("Data saved to", path)
-	else
-		print("Error opening file for writing")
-	end
-end
 
 
-local function table_to_string(tbl)
-	if tbl == nil then
-		return ""
-	end
-
-	local result = ""
-	local keys = {}
-	for k in pairs(tbl) do
-		table.insert(keys, k)
-	end
-	table.sort(keys, function(a, b)
-		return tostring(a) < tostring(b)
-	end)
-
-	for _, k in ipairs(keys) do
-		result = result .. tostring(k) .. "=" .. value_to_string(tbl[k]) .. ";"
-	end
-
-	save_readable_file("your_readable_file.txt", result)
-	return result
-end
 
 function value_to_string(value)
 	if type(value) == "table" then
@@ -463,24 +464,63 @@ function verify_save_data(filename)
 	-- Verification for Player Data
 	local loadedChecksum = defsave.get(filename, "checksumPlayer")
 	local loadedData = defsave.get(filename, "default")
-	if loadedData and generate_checksum(table_to_string(loadedData)) ~= loadedChecksum then
-		print("Data corruption detected for player data.")
+	if loadedData then
+		local current_checksum = generate_checksum(table_to_string(loadedData))
+		if current_checksum ~= loadedChecksum then
+			print("Loaded Data Version", loadedData.version)
+			print("Data integrity check failed.")
+			if loadedData.version and loadedData.version > (easyTable.version or 0) then
+				print("Data appears to be intentionally updated.")
+				easyTable = loadedData
+			else
+				print("Data corruption detected for player data.")
+				msg.post("main#MainMenu", "fileCorruption")
+			end
+		end
+	else
+		print("No saved data found.")
 		msg.post("main#MainMenu", "fileCorruption")
 	end
 
 	-- Verification for Dungeon Data
 	local loadedChecksum = defsave.get(filename, "checksumDungeons")
 	local loadedData = defsave.get(filename, "dungeon")
-	if loadedData and generate_checksum(table_to_string(loadedData)) ~= loadedChecksum then
-		print("Data corruption detected for dungeon data.")
+	if loadedData then
+		local current_checksum = generate_checksum(table_to_string(loadedData))
+		if current_checksum ~= loadedChecksum then
+			print("Loaded Data Version", loadedData.statusVersion)
+			print("Data integrity check failed.")
+			if loadedData.statusVersion and loadedData.statusVersion > (dungeonStatus.statusVersion or 0) then
+				print("Data appears to be intentionally updated.")
+				dungeonStatus = loadedData
+			else
+				print("Data corruption detected for dungeon data.")
+				msg.post("main#MainMenu", "fileCorruption")
+			end
+		end
+	else
+		print("No saved data found.")
 		msg.post("main#MainMenu", "fileCorruption")
 	end
 
 	-- Verification for Item Data
 	local loadedChecksum = defsave.get(filename, "checksumItems")
 	local loadedData = defsave.get(filename, "item")
-	if loadedData and generate_checksum(table_to_string(loadedData)) ~= loadedChecksum then
-		print("Data corruption detected for item data.")
+	if loadedData then
+		local current_checksum = generate_checksum(table_to_string(loadedData))
+		if current_checksum ~= loadedChecksum then
+			print("Loaded Data Version", loadedData.itemVersion)
+			print("Data integrity check failed.")
+			if loadedData.itemVersion and loadedData.itemVersion > (items.itemVersion or 0) then
+				print("Data appears to be intentionally updated.")
+				items = loadedData
+			else
+				print("Data corruption detected for item data.")
+				msg.post("main#MainMenu", "fileCorruption")
+			end
+		end
+	else
+		print("No saved data found.")
 		msg.post("main#MainMenu", "fileCorruption")
 	end
 end
@@ -567,9 +607,9 @@ local function save(data, dungeonData, itemData)
 		itemData.itemVersion = 1 
 	end
 	
-	sanitize_table_keys(data)
-	sanitize_table_keys(dungeonData)
-	sanitize_table_keys(itemData)
+	--sanitize_table_keys(data)
+	--sanitize_table_keys(dungeonData)
+	--sanitize_table_keys(itemData)
 	
 	if i < 1 then
 		i = i + 1
@@ -679,14 +719,13 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == SAVE then
-		i = 0
 		print("I"..i)
 		print("Received save message, now saving")
 		--print("Player data:", table_to_string(message.data))
 		--print("Dungeon data:", table_to_string(message.dungeonData))
 		--print("Item data:", table_to_string(itm.get_itemList()))
 		
-		local table = {location = loc.collections,
+		local table = {location = loc.get_collection_key(),
 		position = pos.getPosition(),
 		health = eh.getHealth(),
 		energy = eh.getEnergy(),
