@@ -1,11 +1,8 @@
-function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == hash("trigger_response") and message.enter then
+	msg.post("main:/menu#PauseMenu", "save")
+	msg.post("main:/main#music", "stopAll")
+
+	msg.post("main:/main#MainMenu", "enterMap")		
+	end
 end

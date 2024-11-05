@@ -10,7 +10,7 @@
       }
     }
     :liveupdate false
-    :output-directory "C:\\Users\\aidco\\Documents\\GitHub\\Lost-Islands-2D\\Bundles\\0.0.1.7\\x86_64-win32"
+    :output-directory "C:\\Users\\aidco\\Documents\\GitHub\\Lost-Islands-2D\\Bundles\\0.0.2.0"
     :texture-compression "editor"
     :variant "debug"
     :windows {
@@ -24,14 +24,6 @@
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Objects/Inventory.go"
-        :scene
-      ]
-      [
-        "/main/Scripts/Map/map.script"
-        :code
-      ]
       [
         "/main/Scripts/Enemies/firstMap/slimeMap.script"
         :code
@@ -69,10 +61,6 @@
         :cljfx-form-view
       ]
       [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
         "/default.render"
         :cljfx-form-view
       ]
@@ -93,10 +81,6 @@
         :code
       ]
       [
-        "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
         "/main/main.collection"
         :scene
       ]
@@ -113,31 +97,11 @@
         :code
       ]
       [
-        "/main/Level.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/CollectionTracker.lua"
         :code
       ]
       [
         "/main/Scripts/Modules/NPCProperties.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/pause.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Player.script"
         :code
       ]
       [
@@ -150,6 +114,42 @@
       ]
       [
         "/main/Scripts/GUI/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/pause.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Level.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Sensors/OutOfBounds.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Sensors/LevelComplete.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ItemProperties.lua"
         :code
       ]
     ]

@@ -96,7 +96,7 @@ function fixed_update(self, dt)
 	local position = go.get_position()
 	position = position + self.velocity * dt
 	go.set_position(position)
-
+	po.setPosition(position)
 	animate(self)
 
 	print("Velocity Y:", self.velocity.y, "Ground Contact:", self.groundContact)

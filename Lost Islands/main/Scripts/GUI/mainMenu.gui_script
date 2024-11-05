@@ -88,6 +88,17 @@ function on_message(self, message_id, message, sender)
 		msg.post("main:/main#MainMap", "disable")
 		msg.post("main:/main#MainMap", "unload")
 	end
+			--Enter messages are tempory until a better solution can be made
+	if message_id == hash("enterMap") then
+		print("enable map")
+		msg.post("main:/main#MainMap", "load")
+		msg.post("main:/main#MainMap", "enable")
+		
+		print("disable level")
+
+		msg.post("main:/main#Level", "disable")
+		msg.post("main:/main#Level", "unload")
+	end
 	
 	if message_id == FILESAVE then
 		print("fileSave MainMenu")
