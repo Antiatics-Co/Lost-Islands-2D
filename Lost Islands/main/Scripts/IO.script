@@ -1,6 +1,6 @@
 --@Title Input Ouput
 --@Author Aidan Cox
---@_VERSION = 2
+--@_VERSION = 3
 --@Description
 --	This script handles the saving to and loading from files
 -- has a checksum to verify integrity of files
@@ -12,6 +12,7 @@ local pos = require("main.Scripts.Modules.PlayerPosition")
 local loc = require("main.Scripts.Modules.CollectionTracker")
 local char = require("main.Scripts.Modules.CharacterSprites")
 local mob = require("main.Scripts.Modules.NPCProperties")
+local dun = require("main.Scripts.Modules.Dungeons")
 
 items = {itm.get_itemList(), itemVersion = 1 }
 
@@ -59,11 +60,46 @@ local easyTable = { location, position, energy, health, character = {}, npcStatu
 ----------------------------------------------Config
 
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
-local volume = 100
+local volume = 50
 
 local config = { volume, resolution, configVersion = 1 }
 
 ---------------------------------------------------------------------------
+
+
+local function string_to_table(str)
+	local func, err = load("return " .. str)
+	if func then
+		return func()
+	else
+		print("Error loading string:", err)
+		return nil
+	end
+end
+
+local function loadSave()
+	defsave.load(filename)
+	easyTable = defsave.get(filename, "default")
+	dun.dungeons = defsave.get(filename, "dungeon")
+	itm.set_itemList(defsave.get(filename, "item"))
+
+	local loadedChecksum = defsave.get(filename, "checksum")
+	print("Loaded Checksum: ", loadedChecksum)
+
+	defsave.save()
+	
+	if easyTable ~= nil then
+		pos.setPosition(easyTable.position)
+		loc.collections = easyTable.location
+		eh.setHealth(easyTable.health)
+		eh.setEnergy(easyTable.energy)
+		char.sprite = easyTable.character
+		mob.npc = easyTable.npcStatus
+	end
+
+	msg.post("Inventory#Inventory", "loadItemData")
+end
+
 
 local function generate_checksum(data)
 	return md5.sumhexa(data)
@@ -80,17 +116,22 @@ local function file_exists(filename)
 	end
 end
 
-function string_to_table(str)
-	local func, err = load("return " .. str)
-	if func then
-		return func()
+local function save_readable_file(name, data)
+	-- Specify the full path
+	local path = "C:\\Users\\aidco\\AppData\\Roaming\\LostIslands\\" .. name
+
+	local file = io.open(path, "w")
+	if file then
+		file:write(data)
+		file:close()
+		print("Data saved to", path)
 	else
-		print("Error loading string:", err)
-		return nil
+		print("Error opening file for writing")
 	end
 end
 
-function table_to_string(tbl)
+
+local function table_to_string(tbl)
 	if tbl == nil then
 		return ""
 	end
@@ -107,6 +148,8 @@ function table_to_string(tbl)
 	for _, k in ipairs(keys) do
 		result = result .. tostring(k) .. "=" .. value_to_string(tbl[k]) .. ";"
 	end
+
+	save_readable_file("your_readable_file.txt", result)
 	return result
 end
 
@@ -119,8 +162,6 @@ function value_to_string(value)
 		return tostring(value)
 	end
 end
-
-
 
 function delete_file(name)
 	local filepath = sys.get_save_file("LostIslands", name)
@@ -602,8 +643,8 @@ function init(self)
 	end
 
 	
-	-------------------------------------------------------------------------------------------
-
+	------------------------------------------------------------------------------------------
+	
 	defsave.save(filename)
 	defsave.save(configName)
 
@@ -626,11 +667,21 @@ end
 local function save(data, dungeonData, itemData)
 
 	-----------------------Save easyTable---------------------------------
-
 	
+	itemData = itm.get_itemList()
 	
-	data = easyTable
+	if data.version == nil then
+		data.version = 1
+	end
+	
+	if dungeonData.statusVersion == nil then
+		dungeonData.statusVersion = 1
+	end
 
+	if itemData.itemVersion == nil then
+		itemData.itemVersion = 1 
+	end
+	
 	sanitize_table_keys(data)
 	sanitize_table_keys(dungeonData)
 	sanitize_table_keys(itemData)
@@ -759,26 +810,11 @@ function on_message(self, message_id, message, sender)
 
 
 		
-		save(table, message.dungeonData, itm.get_itemList())
+		save(table, dun.dungeons, itm.get_itemList())
 	end
 
 	if message_id == LOAD then
-		easyTable = defsave.get(filename, "default")
-		dungeonStatus = defsave.get(filename, "dungeon")
-		itm.set_itemList(defsave.get(filename, "item"))
-
-		local loadedChecksum = defsave.get(filename, "checksum")
-		print("Loaded Checksum: ", loadedChecksum)
-		--msg.post("", "loadPlayerData", {data = easyTable}) --TO DO ***********************************************************
-		
-		pos.setPosition(easyTable.position)
-		loc.collections = easyTable.location
-		eh.setHealth(easyTable.health)
-		eh.setEnergy(easyTable.energy)
-		char.sprite = easyTable.character
-		mob.npc = easyTable.npcStatus
-		
-		msg.post("", "loadDungeonData", {data = dungeonStatus})
+		loadSave()
 	end
 
 	if message_id == CONFIGLOAD then

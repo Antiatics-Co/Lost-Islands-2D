@@ -12,39 +12,56 @@
 
 local M = {}
 
-local dungeons = --contains the total number of each dungeon items
+M.dungeons = --contains the total number of each dungeon items
 {
 	sunkenCity = {
 		chests = { 
-			one = true,
-			two = true,
-			three = true,
-			four = true,
-			five = true,
-			six = true,
-			seven = true,
-			eight = true,
-			nine = true,
-			ten = true
-		}
-		
+			one = false,
+			two = false,
+			three = false,
+			four = false,
+			five = false,
+			six = false,
+			seven = false,
+			eight = false,
+			nine = false,
+			ten = false
+		},
 
+		bossBeaten = false,
+
+		doors = {
+			one = false,
+			two = false,
+			three = false
+		}
+
+
+		
 
 	},
 
 
 	fireTemple = {
 		chests = { 
-			one = true,
-			two = true,
-			three = true,
-			four = true,
-			five = true,
-			six = true,
-			seven = true,
-			eight = true,
-			nine = true,
-			ten = true
+			one = false,
+			two = false,
+			three = false,
+			four = false,
+			five = false,
+			six = false,
+			seven = false,
+			eight = false,
+			nine = false,
+			ten = false
+		},
+
+		bossBeaten = false,
+
+		doors = {
+			one = false,
+			two = false,
+			three = false
 		}
 		
 
@@ -54,65 +71,84 @@ local dungeons = --contains the total number of each dungeon items
 
 	quarry = {
 		chests = { 
-			one = true,
-			two = true,
-			three = true,
-			four = true,
-			five = true,
-			six = true,
-			seven = true,
-			eight = true,
-			nine = true,
-			ten = true
-		}
-		
+			chests = { 
+				one = false,
+				two = false,
+				three = false,
+				four = false,
+				five = false,
+				six = false,
+				seven = false,
+				eight = false,
+				nine = false,
+				ten = false
+			},
 
+			bossBeaten = false,
+
+			doors = {
+				one = false,
+				two = false,
+				three = false
+			}
+
+
+			
 		
+		},
 	},
-
 
 	sewage = {
 		chests = { 
-			one = true,
-			two = true,
-			three = true,
-			four = true,
-			five = true,
-			six = true,
-			seven = true,
-			eight = true,
-			nine = true,
-			ten = true
+			one = false,
+			two = false,
+			three = false,
+			four = false,
+			five = false,
+			six = false,
+			seven = false,
+			eight = false,
+			nine = false,
+			ten = false
+		},
+
+		bossBeaten = false,
+
+		doors = {
+			one = false,
+			two = false,
+			three = false		
+		
 		}
-		
-		
 	},
 
 
 	frozenLandscape = {
 		chests = { 
-			one = true,
-			two = true,
-			three = true,
-			four = true,
-			five = true,
-			six = true,
-			seven = true,
-			eight = true,
-			nine = true,
-			ten = true
+			one = false,
+			two = false,
+			three = false,
+			four = false,
+			five = false,
+			six = false,
+			seven = false,
+			eight = false,
+			nine = false,
+			ten = false
+		},
+
+		bossBeaten = false,
+
+		doors = {
+			one = false,
+			two = false,
+			three = false
 		}
 
+
 		
+		
+		}
 	}
-}
-
-function M.getDungeonCompletion(name)
-	return(dungeons[name])
-end
-
-function M.setDungeonCompletion(dungeon)
-	dungeons = dungeon
-end
 
 return(M)

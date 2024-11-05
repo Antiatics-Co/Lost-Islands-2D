@@ -90,10 +90,6 @@ local function update_state(state)
     for _, camera in pairs(state.cameras) do
         update_camera(camera, state)
     end
-    
-    pos.setWindowHeight(render.get_height())
-    pos.setWindowWidth(render.get_width())
-    
     return true
 end
 
@@ -212,6 +208,10 @@ function update(self)
     render.draw(predicates.debug_text, camera_gui.frustum)
     render.disable_state(graphics.STATE_STENCIL_TEST)
     render.disable_state(graphics.STATE_BLEND)
+
+
+    pos.setWindowHeight(render.get_height())
+    pos.setWindowWidth(render.get_width())
 end
 
 function on_message(self, message_id, message)

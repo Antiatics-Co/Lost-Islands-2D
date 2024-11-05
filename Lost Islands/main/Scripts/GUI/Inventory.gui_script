@@ -93,10 +93,6 @@ local function setupInventory()
 	end
 end
 
-
-
-
-
 --[[local function setupInventory() --setds up inventory and applies all properties on startup.
 local item
 	if items.woodsword.hasItem then
@@ -380,9 +376,8 @@ end]]
 
 
 
-local function load(currentItems)
+local function load()
 	print("Loading Items Initiated")
-	items = currentItems
 	setupInventory()
 end
 
@@ -481,7 +476,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == LOADITEMDATA then
-		load(message.data)
+		load()
 	end
 
 	if message_id == ADDITEM then
@@ -553,4 +548,8 @@ function on_input(self, action_id, action)
 			end
 		end
 	end
+end
+
+function final(self)
+	itm.set_itemList(items)
 end

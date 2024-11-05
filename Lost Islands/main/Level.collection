@@ -45,7 +45,7 @@ instances {
 instances {
   id: "Player"
   prototype: "/main/Objects/Player/Player.go"
-  children: "operator"
+  children: "Operator"
   position {
     x: 8.0
     y: 300.0
@@ -56,7 +56,7 @@ instances {
   }
 }
 instances {
-  id: "operator"
+  id: "Operator"
   prototype: "/main/Objects/Player/Operator.go"
   position {
     z: 10.0

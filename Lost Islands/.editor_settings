@@ -19,29 +19,13 @@
   }
   :code {
     :find {
-      :term "pos"
+      :term ""
     }
   }
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/PlayerProperties.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/PlayerLocations.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/HandleCoincidingPlayerInputs.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/CharacterSprites.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/Dungeons.lua"
         :code
       ]
       [
@@ -61,27 +45,7 @@
         :code
       ]
       [
-        "/main/Scripts/Enemies/Enemy.script"
-        :code
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/GUI/Inventory.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/items.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Enemies/firstMap/slimeMap.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/ItemProperties.lua"
         :code
       ]
       [
@@ -95,10 +59,6 @@
       [
         "/main/GUI files/Inventory.gui"
         :scene
-      ]
-      [
-        "/main/Scripts/IO.script"
-        :code
       ]
       [
         "/main/Objects/Enemies/slimeMap.go"
@@ -137,11 +97,15 @@
         :scene
       ]
       [
-        "/main/Scripts/Modules/default.render_script"
+        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
       [
         "/main/Scripts/Elements/Fire/FireBall.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/default.render_script"
         :code
       ]
       [
@@ -150,6 +114,42 @@
       ]
       [
         "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/Level.collection"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Dungeons.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/items.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/IO.script"
         :code
       ]
     ]

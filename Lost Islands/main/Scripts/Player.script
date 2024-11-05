@@ -6,6 +6,9 @@
 --26/3/2024 - jumping, new animate func
 --29/3/2024 - more collisions - fixed gravity debug
 
+-------------------------------------------------------------------
+local po = require("main.Scripts.Modules.PlayerPosition")
+
 --PREHASHING-------------------------------------------------------
 
 local STOPGRAVITY = hash("stopGravity")
@@ -205,14 +208,10 @@ function on_input(self, action_id, action)
 			--sound.play("#Jumping")
 		elseif action_id == hash("down") then
 			return
-		elseif action_id == hash("touch") and (lastfired == -1 or os.time(os.date("!*t")) - lastfired > FIREDELAY) then
-			local new_object_url = factory.create("#factory")
-			lastfired = os.time(os.date("!*t"))
-
-			local cursor_pos = vmath.vector3(0, 0, 0)
-			local cursor_pos = vmath.vector3(action.x, action.y, 0)
-			print( "Cursor Pos: ", cursor_pos)
-			msg.post(new_object_url, "position", { cursor_position = cursor_pos })
+		elseif action_id == hash("touch") and action.pressed then --(lastfired == -1 or os.time(os.date("!*t")) - lastfired > FIREDELAY) then
+			po.setMousePosition(vmath.vector3(action.x, action.y, 0))
+			factory.create("#factory")
+			--lastfired = os.time(os.date("!*t"))
 			
 		elseif action_id == hash("right") or action_id == hash("left") then
 			self.direction = (action_id == hash("right")) and DIRECTIONRIGHT or DIRECTIONLEFT
