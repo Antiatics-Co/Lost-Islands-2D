@@ -25,10 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Modules/CharacterSprites.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/CoincidingPlayerInputs.lua"
         :code
       ]
@@ -38,10 +34,6 @@
       ]
       [
         "/main/Scripts/Map/map.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/CollectionTracker.lua"
         :code
       ]
       [
@@ -129,10 +121,6 @@
         :scene
       ]
       [
-        "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/Dungeons.lua"
         :code
       ]
@@ -150,6 +138,18 @@
       ]
       [
         "/main/Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/settings.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
         :code
       ]
     ]
