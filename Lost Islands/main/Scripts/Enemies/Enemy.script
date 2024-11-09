@@ -1,32 +1,175 @@
 
-local lastfired = -1
+---is a very rough draft to be reviewed
 
-function init(self)
-	timer.delay(1, true, function()
-		if(lastfired == -1 or os.time(os.date("!*t")) - lastfired > 1) then
-			
-			--factory.create("#factory")
-			lastfired = os.time(os.date("!*t"))
-		end
-	end)
+local CELL_SIZE = 32
+
+local npc = require("main.Scripts.Modules.NPCProperties")
+local window = require("main.Scripts.Modules.PlayerPosition")
+
+local window_width = window.getWindowWidth()
+local window_height = window.getWindowHeight()
+local GRID_SIZE_X = math.ceil(window_width / CELL_SIZE)
+local GRID_SIZE_Y = math.ceil(window_height / CELL_SIZE)
+
+local grid = {}
+
+local function is_cell_unwalkable(cell_center)
+	-- Example: Manual setup of unwalkable cells (replace with actual logic)
+	-- Collision checks could be handled here if necessary
+	return false
 end
 
-function on_message(self, message_id, message)
-	if message_id == hash("trigger_response") and message.enter then
-		--[[sound.play(url)
-		sprite.play_flipbook(url, id, function()
-				go.delete()
-				particlefx.play(url)
-		end)]]--use when animation is added
-		go.delete()
+for y = 1, GRID_SIZE_Y do
+	grid[y] = {}
+	for x = 1, GRID_SIZE_X do
+		local cell_center = vmath.vector3((x - 0.5) * CELL_SIZE, (y - 0.5) * CELL_SIZE, 0)
+		if is_cell_unwalkable(cell_center) then
+			grid[y][x] = 1 -- Mark cell as unwalkable
+		else
+			grid[y][x] = 0 -- Walkable cell
+		end
+	end
+end
+
+local function is_walkable(node)
+	return grid[node.y] and grid[node.x] == 0
+end
+
+local function is_hole(node)
+	return grid[node.y] and grid[node.y][node.x] == -1
+end
+
+local function extract_key(go_id)
+	return go_id:match("(%w+)$")
+end
+
+local function heuristic(a, b)
+	return math.abs(a.x - b.x) + math.abs(a.y - b.y)
+end
+
+local function table_find(tbl, element)
+	for _, value in ipairs(tbl) do
+		if value.x == element.x and value.y == element.y then
+			return true
+		end
+	end
+	return false
+end
+
+local function a_star_platformer(start, goal, canMoveVertically, avoidHoles)
+	local open_set = { start }
+	local came_from = {}
+	local g_score = {}
+	local f_score = {}
+
+	g_score[start] = 0
+	f_score[start] = heuristic(start, goal)
+
+	while #open_set > 0 do
+		table.sort(open_set, function(a, b) return f_score[a] < f_score[b] end)
+		local current = table.remove(open_set, 1)
+
+		if current == goal then
+			local path = {}
+			while current do
+				table.insert(path, 1, current)
+				current = came_from[current]
+			end
+			return path
+		end
+
+		local neighbors = {
+			{x = current.x + 1, y = current.y},
+			{x = current.x - 1, y = current.y},
+			{x = current.x, y = current.y + 1},
+			{x = current.x, y = current.y - 1},
+		}
+
+		for _, neighbor in pairs(neighbors) do
+			local move_valid = true
+
+			if not canMoveVertically and neighbor.y ~= current.y then
+				move_valid = false
+			end
+
+			if avoidHoles and is_hole(neighbor) then
+				move_valid = false
+			end
+
+			if move_valid and neighbor.x > 0 and neighbor.x <= GRID_SIZE_X and neighbor.y > 0 and neighbor.y <= GRID_SIZE_Y and is_walkable(neighbor) then
+				local tentative_g_score = g_score[current] + 1
+
+				if g_score[neighbor] == nil or tentative_g_score < g_score[neighbor] then
+					came_from[neighbor] = current
+					g_score[neighbor] = tentative_g_score
+					f_score[neighbor] = g_score[neighbor] + heuristic(neighbor, goal)
+					if not table_find(open_set, neighbor) then
+						table.insert(open_set, neighbor)
+					end
+				end
+			end
+		end
 	end
 
-	--[[if message_id == hash("reset") then			
-		go.delete()
-		
-		local pos = go.get_position()
-		pos.x = 237
-		pos.y = 365
-		go.create(go.set_position(pos))
-	end]]
+	return nil -- No path found
+end
+
+local key = nil
+
+function init(self)
+	local go_id = go.get_id()  -- Get the current game object ID
+	key = extract_key(go_id)  -- Extract key from ID
+	self.position = go.get_position()
+
+	-- Set properties dynamically based on the key
+	self.viewDist = npc.enemy[key].viewDist
+	self.speed = npc.enemy[key].speed
+	self.attackDist = npc.enemy[key].attackDist
+	self.canMoveVertically = npc.enemy[key].canMoveVertically
+	self.avoidHoles = npc.enemy[key].avoidHoles
+	self.enraged = npc.enemy[key].enraged
+
+	-- Initial path setup
+	self.target = go.get_position("Player") or go.get_position("PlayerMap")
+	self.path = a_star_platformer(self.position, self.target, self.canMoveVertically, self.avoidHoles)
+	self.current_step = 1
+	self.recalc_timer = 0
+	self.recalc_interval = 1  -- Recalculate path every 1 second
+end
+
+function update(self, dt)
+	local enemyPosition = go.get_position()
+	local targetPosition = go.get_position("Player") or go.get_position("PlayerMap")
+	local diff = vmath.length(targetPosition - enemyPosition)
+
+	if diff <= self.viewDist then
+		self.recalc_timer = self.recalc_timer + dt
+		if self.recalc_timer >= self.recalc_interval then
+			self.target = targetPosition  -- Update target position dynamically
+			self.path = a_star_platformer(self.position, self.target, self.canMoveVertically, self.avoidHoles)
+			self.current_step = 1
+			self.recalc_timer = 0
+		end
+
+		if self.path and self.current_step <= #self.path then
+			local next_position = self.path[self.current_step]
+			local new_pos = go.get_position() + vmath.normalize(next_position - go.get_position()) * self.speed * dt
+			go.set_position(new_pos)
+			self.current_step = self.current_step + 1
+		end
+	end
+
+	if diff <= self.attackDist then
+		npc.attack(key)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("contact_point_response") then
+		if message.group == hash("player") then
+			-- Handle collision with player
+			print("Collided with player!")
+			-- Add your collision handling code here
+		end
+	end
 end

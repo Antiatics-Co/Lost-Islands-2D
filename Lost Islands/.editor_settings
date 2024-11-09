@@ -69,10 +69,6 @@
         :scene
       ]
       [
-        "/main/Scripts/Enemies/Enemy.script"
-        :code
-      ]
-      [
         "/main/Scripts/Elements/Fire/FireBall.script"
         :code
       ]
@@ -90,10 +86,6 @@
       ]
       [
         "/main/Scripts/GUI/settings.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/PlayerPosition.lua"
         :code
       ]
       [
@@ -150,6 +142,14 @@
       ]
       [
         "/main/Scripts/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
     ]

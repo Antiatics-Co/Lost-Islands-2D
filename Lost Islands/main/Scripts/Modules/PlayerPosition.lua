@@ -44,6 +44,14 @@ function M.setWindowHeight(height)
 	window_height = height
 end
 
+function M.getWindowWidth()
+	return(window_width)
+end
+
+function M.getWindowHeight()
+	return(window_height)
+end
+
 function M.screen_to_world(sx, sy, sz, projection, view)
 	local inv = vmath.inv(projection * view)
 	sx = (2 * sx / window_width) - 1
