@@ -7,6 +7,21 @@ local M = {}
 
 M.collections = {}
 
+-- CollectionTracker.lua
+
+-- List of game objects to initialize
+M.game_objects = { "slime"}  -- Add all game object IDs here
+
+-- Function to send a message to all game objects in the list
+function M.init_all_enemies()
+	local collection_key = M.get_collection_key()
+	for _, id in ipairs(M.game_objects) do
+		local url = msg.url(collection_key, "/"..id, "Enemy")
+		print("Sending 'init_enemy' to: ", url)
+		msg.post(url, "init_enemy")
+	end
+end
+
 function M.on_message(self, message_id, message, sender)
 	print("Collection Tracker on message func")
 
@@ -23,10 +38,12 @@ function M.on_message(self, message_id, message, sender)
 		end
 
 		M.collections[sender] = true
+		
 		print("Collection loaded:", tostring(sender))
 	end
 
-	M.print_loaded_collections()
+	M.print_loaded_collections()		
+	M.init_all_enemies()
 end
 
 M.key = nil

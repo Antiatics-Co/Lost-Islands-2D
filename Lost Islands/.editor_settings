@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term "set_itemList"
+      :term "is_cell"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Scripts/Enemies/firstMap/slimeMap.script"
-        :code
-      ]
       [
         "/defsave/defsave.lua"
         :code
@@ -69,10 +65,6 @@
         :scene
       ]
       [
-        "/main/Scripts/Elements/Fire/FireBall.script"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/default.render_script"
         :code
       ]
@@ -86,14 +78,6 @@
       ]
       [
         "/main/Scripts/GUI/settings.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/NPCProperties.lua"
         :code
       ]
       [
@@ -113,23 +97,11 @@
         :cljfx-form-view
       ]
       [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/pause.gui_script"
         :code
       ]
       [
         "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/Level.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/Map/PlayerMap.script"
         :code
       ]
       [
@@ -145,7 +117,35 @@
         :code
       ]
       [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Elements/Fire/FireBall.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
         "/main/Scripts/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Enemies/firstMap/slimeMap.script"
+        :code
+      ]
+      [
+        "/main/Level.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Modules/NPCProperties.lua"
         :code
       ]
       [

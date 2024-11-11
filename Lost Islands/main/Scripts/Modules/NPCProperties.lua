@@ -19,9 +19,11 @@ M.npc = {
 	
 }
 	
-local enemies = {
-	MainMap = {
-		slime = { totalHealth = 35, attack = 5}			
+M.enemies = {
+	Level = {
+		slime = { totalHealth = 35, attack = 5, 
+				viewDist = 1000, speed = 500, attackDist = 0, 
+				avoidHoles = true, canMoveVertically = false, enraged = false}			
 	}
 }
 
@@ -54,17 +56,17 @@ function M.calcEnemyHealth(enemy, combo)
 	local current_collection = get_collection_key(current_collection_url)
 
 	print("Collection returned: " .. tostring(current_collection))
-	print(tostring(enemies[current_collection]))
-	print(tostring(enemies[current_collection] and enemies[current_collection][enemy]))
+	print(tostring(M.enemies[current_collection]))
+	print(tostring(M.enemies[current_collection] and M.enemies[current_collection][enemy]))
 
 	
 	if health == nil then
-		health = enemies[current_collection][enemy].totalHealth 
+		health = M.enemies[current_collection][enemy].totalHealth 
 	end
 	
 	health = health - damage
 	print("current health" .. health)
-	if enemies[current_collection] and enemies[current_collection][enemy] then
+	if M.enemies[current_collection] and M.enemies[current_collection][enemy] then
 		return (health)
 	else
 		print("Error: Enemy not found in current collection")
@@ -74,8 +76,8 @@ end
 
 function M.AttackPlayer(enemy)
 	local current_collection = get_collection_key(tostring(collection.collections))
-	if enemies[current_collection] and enemies[current_collection][enemy] then
-		itm.setCombatHealth(enemies[current_collection][enemy].damage)
+	if M.enemies[current_collection] and M.enemies[current_collection][enemy] then
+		itm.setCombatHealth(M.enemies[current_collection][enemy].damage)
 	else
 		print("Error: Enemy not found in current collection")
 	end
