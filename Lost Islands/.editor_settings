@@ -19,27 +19,11 @@
   }
   :code {
     :find {
-      :term "is_cell"
+      :term "is_collision"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/defsave/defsave.lua"
-        :code
-      ]
-      [
-        "/main/GUI files/Inventory.gui"
-        :scene
-      ]
-      [
-        "/main/Objects/Enemies/slimeMap.go"
-        :scene
-      ]
-      [
-        "/main/Objects/PlayerMap/PlayerMap.go"
-        :scene
-      ]
       [
         "/main/Objects/Elements/FireBullet.go"
         :scene
@@ -93,10 +77,6 @@
         :code
       ]
       [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
         "/main/Scripts/GUI/pause.gui_script"
         :code
       ]
@@ -145,11 +125,31 @@
         :scene
       ]
       [
-        "/main/Scripts/Modules/NPCProperties.lua"
+        "/astar/ext.manifest"
+        :code
+      ]
+      [
+        "/astar/src/astar.cpp"
+        :code
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/project.shared_editor_settings"
+        :cljfx-form-view
+      ]
+      [
+        "/astar/api/astar.script_api"
         :code
       ]
       [
         "/main/Scripts/Enemies/Enemy.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/NPCProperties.lua"
         :code
       ]
     ]

@@ -1,0 +1,3 @@
+[extensions]
+build_server = http://localhost:9000
+

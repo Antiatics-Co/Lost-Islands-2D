@@ -22,7 +22,7 @@ M.npc = {
 M.enemies = {
 	Level = {
 		slime = { totalHealth = 35, attack = 5, 
-				viewDist = 1000, speed = 500, attackDist = 0, 
+				viewDist = 100, speed = 500, attackDist = 0, 
 				avoidHoles = true, canMoveVertically = false, enraged = false}			
 	}
 }

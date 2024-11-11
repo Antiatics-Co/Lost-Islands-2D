@@ -1,202 +1,111 @@
-
----is a very rough draft to be reviewed
-
-local CELL_SIZE = 32
-
 local npc = require("main.Scripts.Modules.NPCProperties")
 local window = require("main.Scripts.Modules.PlayerPosition")
 local col = require("main.Scripts.Modules.CollectionTracker")
 
 local window_width = window.getWindowWidth()
 local window_height = window.getWindowHeight()
-local GRID_SIZE_X = math.ceil(window_width / CELL_SIZE)
-local GRID_SIZE_Y = math.ceil(window_height / CELL_SIZE)
 
-local grid = {}
+local BASE_CELL_SIZE = math.min(window_width, window_height) * 0.1
+local CELL_SIZE = BASE_CELL_SIZE
+local GRID_SIZE_X
+local GRID_SIZE_Y
 local key = nil
 
-
-
-
--- Function to map world coordinates to grid coordinates
-local function map_to_grid(position)
-	local grid_x = math.floor(position.x / CELL_SIZE) + 1
-	local grid_y = math.floor(position.y / CELL_SIZE) + 1
-
-	-- Ensure the mapped coordinates are within the grid bounds
-	grid_x = math.max(1, math.min(GRID_SIZE_X, grid_x))
-	grid_y = math.max(1, math.min(GRID_SIZE_Y, grid_y))
-
-	return vmath.vector3(grid_x, grid_y, 0)
+local function get_dynamic_cell_size()
+	local go_size = false
+	--local go_size = go.get(".", "size")
+	if go_size then
+		local object_width = go_size.x
+		local object_height = go_size.y
+		return math.max(BASE_CELL_SIZE, object_width * 0.1, object_height * 0.1)
+	else
+		print("Size property does not exist for the game object")
+		return BASE_CELL_SIZE
+	end
 end
 
 local function is_collision_at_position(position)
-	local ray_start = position
-	local ray_end = vmath.vector3(position.x, position.y, position.z - 1) -- Cast a ray downward
+	local view_distance = npc.enemies[col.get_collection_key()][key].viewDist
+	local can_move_vertically = npc.enemies[col.get_collection_key()][key].canMoveVertically
+	local directions = {
+		vmath.vector3(view_distance, 0, 0),  -- Right
+		vmath.vector3(-view_distance, 0, 0), -- Left
+		vmath.vector3(0, view_distance, 0),  -- Up
+		vmath.vector3(0, -view_distance, 0)  -- Down
+	}
 
-	-- Define the collision type, e.g., "level"
-	local collision_type = hash("level")
-
-	-- Perform the raycast
-	local collision_response = physics.raycast(ray_start, ray_end, { collision_type })
-
-	-- Return true if there's a collision object
-	return collision_response ~= nil
-end
-
-
-
-local function is_cell_walkable(node)
-	-- Check if the node is within grid bounds
-	if node.x <= 0 or node.x > GRID_SIZE_X or node.y <= 0 or node.y > GRID_SIZE_Y then
-		return false
-	end
-	-- Perform raycasting to check for collision at the node position
-	local position = vmath.vector3((node.x - 0.5) * CELL_SIZE, (node.y - 0.5) * CELL_SIZE, 0)
-	return not is_collision_at_position(position)
-end
-
-
-function init(self)
-	for y = 1, GRID_SIZE_Y do
-		grid[y] = {}
-		for x = 1, GRID_SIZE_X do
-			local cell_center = vmath.vector3((x - 0.5) * CELL_SIZE, (y - 0.5) * CELL_SIZE, 0)
-			if is_cell_walkable(cell_center) then
-				grid[y][x] = 1 -- Mark cell as unwalkable
-			else
-				grid[y][x] = 0 -- Walkable cell
-			end
-		end
-	end
-end
-
-local function is_walkable(node)
-	return grid[node.y] and grid[node.x] == 0
-end
-
-local function is_hole(node)
-	return grid[node.y] and grid[node.y][node.x] == -1
-end
-
-local function extract_key(go_id)
-	-- Convert the hash to a string
-	local id_str = tostring(go_id)
-	print("Converted ID string:", id_str)
-
-	-- Extract the part between brackets
-	key = id_str:match("%[/(%w+)%]")
-	print("Extracted key:", key)
-
-	return key
-end
-
-
-
-local function heuristic(a, b)
-	return math.abs(a.x - b.x) + math.abs(a.y - b.y)
-end
-
-local function table_find(tbl, element)
-	for _, value in ipairs(tbl) do
-		if value.x == element.x and value.y == element.y then
+	for _, dir in ipairs(directions) do
+		local ray_start = position
+		local ray_end = position + dir
+		local collision_type = hash("level")
+		local collision_response = physics.raycast(ray_start, ray_end, { collision_type })
+		if collision_response then
 			return true
 		end
 	end
 	return false
 end
 
-local function a_star_platformer(start, goal, canMoveVertically, avoidHoles)
-	local open_set = { start }
-	local came_from = {}
-	local g_score = {}
-	local f_score = {}
 
-	g_score[start] = 0
-	f_score[start] = heuristic(start, goal)
+local function map_to_grid(position)
+	local grid_x = math.floor(position.x / CELL_SIZE) + 1
+	local grid_y = math.floor(position.y / CELL_SIZE) + 1
+	return vmath.vector3(grid_x, grid_y, 0)
+end
 
-	print("Starting A* Pathfinding")
-	print("Start:", start)
-	print("Goal:", goal)
+function init(self)
+	-- Initialization code that doesn't rely on the A* module
+end
 
-	while #open_set > 0 do
-		table.sort(open_set, function(a, b) return f_score[a] < f_score[b] end)
-		local current = table.remove(open_set, 1)
+local function extract_key(go_id)
+	local id_str = tostring(go_id)
+	key = id_str:match("%[/(%w+)%]")
+	return key
+end
 
-		print("Current node:", current)
+local function init_enemy(self)
+	CELL_SIZE = get_dynamic_cell_size()
+	GRID_SIZE_X = math.ceil(window_width / CELL_SIZE)
+	GRID_SIZE_Y = math.ceil(window_height / CELL_SIZE)
 
-		if current == goal then
-			local path = {}
-			while current do
-				table.insert(path, 1, current)
-				current = came_from[current]
-			end
-			print("Path found:", path)
-			return path
-		end
+	key = extract_key(go.get_id())
+	assert(key, "Extracted key is nil. Ensure the key extraction logic is correct.")
+	
+	-- A* setup
+	local map_width = GRID_SIZE_X
+	local map_height = GRID_SIZE_Y
+	local direction = astar.DIRECTION_EIGHT
+	local allocate = map_width * map_height
+	local typical_adjacent = 8
+	local cache = true
+	local flip_map = false
 
-		local neighbors = {
-			vmath.vector3(current.x + 1, current.y, 0),
-			vmath.vector3(current.x - 1, current.y, 0),
-			vmath.vector3(current.x, current.y + 1, 0),
-			vmath.vector3(current.x, current.y - 1, 0),
-		}
+	astar.setup(map_width, map_height, direction, allocate, typical_adjacent, cache, flip_map)
 
-		for _, neighbor in ipairs(neighbors) do
-			print("Checking neighbor:", neighbor)
-
-			-- Check if neighbor is within grid bounds
-			if neighbor.x > 0 and neighbor.x <= GRID_SIZE_X and neighbor.y > 0 and neighbor.y <= GRID_SIZE_Y then
-				print("Neighbor within bounds:", neighbor)
-
-				local move_valid = true
-				if not canMoveVertically and neighbor.y ~= current.y then
-					move_valid = false
-					print("Move invalid due to vertical restriction:", neighbor)
-				end
-
-				if avoidHoles and is_hole(neighbor) then
-					move_valid = false
-					print("Move invalid due to hole:", neighbor)
-				end
-
-				if move_valid and is_walkable(neighbor) then
-					print("Neighbor is walkable:", neighbor)
-					local tentative_g_score = g_score[current] + 1
-
-					if g_score[neighbor] == nil or tentative_g_score < g_score[neighbor] then
-						came_from[neighbor] = current
-						g_score[neighbor] = tentative_g_score
-						f_score[neighbor] = g_score[neighbor] + heuristic(neighbor, goal)
-						if not table_find(open_set, neighbor) then
-							table.insert(open_set, neighbor)
-						end
-						print("Neighbor added:", neighbor)
-					end
-				else
-					print("Neighbor is not walkable:", neighbor)
-				end
+	local map_data = {}
+	for y = 1, GRID_SIZE_Y do
+		map_data[y] = {}
+		for x = 1, GRID_SIZE_X do
+			local position = vmath.vector3((x - 0.5) * CELL_SIZE, (y - 0.5) * CELL_SIZE, 0)
+			if is_collision_at_position(position) then
+				map_data[y][x] = 1 -- Non-walkable tile
 			else
-				print("Move invalid due to out of bounds:", neighbor)
+				map_data[y][x] = 0 -- Walkable tile
 			end
 		end
 	end
 
-	print("No path found")
-	return nil -- No path found
-end
+	local costs = {
+		[0] = 1,
+		[1] = 100
+	}
 
-
-
-local function init_enemy(self)
-	local go_id = go.get_id()
-	key = extract_key(go_id)
-	print("Extracted key:", key)
-	assert(key, "Extracted key is nil. Ensure the key extraction logic is correct.")
+	astar.set_map(map_data)
+	astar.set_costs(costs)
+	
 	self.position = go.get_position()
 
 	local currentCollection = col.get_collection_key()
-
 	self.viewDist = npc.enemies[currentCollection][key].viewDist
 	self.speed = npc.enemies[currentCollection][key].speed
 	self.attackDist = npc.enemies[currentCollection][key].attackDist
@@ -206,21 +115,20 @@ local function init_enemy(self)
 
 	self.target = window.getPosition()
 
-	-- Map positions to grid coordinates
 	local start_grid = map_to_grid(self.position)
 	local goal_grid = map_to_grid(self.target)
 
-	print("Start Grid Position:", start_grid)
-	print("Goal Grid Position:", goal_grid)
-
-	-- Call pathfinding function with mapped coordinates
-	self.path = a_star_platformer(start_grid, goal_grid, self.canMoveVertically, self.avoidHoles)
-	print("New Path:", self.path)
-	self.current_step = 1
-	self.recalc_timer = 0
-	self.recalc_interval = .5
+	local result, size, total_cost, path = astar.solve(start_grid.x, start_grid.y, goal_grid.x, goal_grid.y)
+	
+	if result == astar.SOLVED then
+		self.path = path
+		self.current_step = 1
+		self.recalc_timer = 0
+		self.recalc_interval = 0.5
+	else
+		print("No path found!")
+	end
 end
-
 
 function update(self, dt)
 	local enemyPosition = go.get_position()
@@ -228,30 +136,23 @@ function update(self, dt)
 	local diff = vmath.length(targetPosition - enemyPosition)
 
 	if self.viewDist ~= nil and diff ~= nil then
-		print("Enemy Updating")
 		if diff <= self.viewDist then
 			self.recalc_timer = self.recalc_timer + dt
 			if self.recalc_timer >= self.recalc_interval then
-				self.target = targetPosition  -- Update target position dynamically
-				self.path = a_star_platformer(self.position, self.target, self.canMoveVertically, self.avoidHoles)
-				self.current_step = 1
-				self.recalc_timer = 0
-
-				-- Debugging path and current_step
-				print("New Path:", self.path)
-				print("Current Step:", self.current_step)
+				self.target = targetPosition
+				local start_grid = map_to_grid(self.position)
+				local goal_grid = map_to_grid(self.target)
+				local result, size, total_cost, path = astar.solve(start_grid.x, start_grid.y, goal_grid.x, goal_grid.y)
+				if result == astar.SOLVED then
+					self.path = path
+					self.current_step = 1
+					self.recalc_timer = 0
+				end
 			end
-
-			-- Debugging before entering the block
-			print("self.path:", self.path)
-			print("self.current_step:", self.current_step)
-			print("Path Length:", self.path and #self.path)
 
 			if self.path and self.current_step <= #self.path then
 				local next_position = self.path[self.current_step]
-				print("Next Position:", next_position)
-				local new_pos = go.get_position() + vmath.normalize(next_position - go.get_position()) * self.speed * dt
-				print("New Position:", new_pos)
+				local new_pos = go.get_position() + vmath.normalize(vmath.vector3((next_position.x - 0.5) * CELL_SIZE, (next_position.y - 0.5) * CELL_SIZE, 0) - go.get_position()) * self.speed * dt
 				go.set_position(new_pos)
 				self.current_step = self.current_step + 1
 			end
@@ -263,17 +164,13 @@ function update(self, dt)
 	end
 end
 
-
-
 function on_message(self, message_id, message, sender)
 	if message_id == hash("contact_point_response") then
 		if message.group == hash("player") then
-			-- Handle collision with player
 			print("Collided with player!")
-			-- Add your collision handling code here
 		end
 	end
-	
+
 	if message_id == hash("init_enemy") then
 		init_enemy(self)
 	end
