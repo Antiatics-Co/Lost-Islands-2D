@@ -40,10 +40,10 @@ function M.on_message(self, message_id, message, sender)
 		M.collections[sender] = true
 		
 		print("Collection loaded:", tostring(sender))
+		M.init_all_enemies()
 	end
 
 	M.print_loaded_collections()		
-	M.init_all_enemies()
 end
 
 M.key = nil

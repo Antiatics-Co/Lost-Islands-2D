@@ -90,6 +90,7 @@ embedded_instances {
   "restitution: 0.5\\n"
   "group: \\\"level\\\"\\n"
   "mask: \\\"player\\\"\\n"
+  "mask: \\\"enemy\\\"\\n"
   "\"\n"
   "}\n"
   ""

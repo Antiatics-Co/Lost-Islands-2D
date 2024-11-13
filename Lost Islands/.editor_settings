@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term "is_collision"
+      :term "position"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Objects/Elements/FireBullet.go"
-        :scene
-      ]
       [
         "/builtins/render/default.render_script"
         :code
@@ -113,16 +109,8 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Enemies/firstMap/slimeMap.script"
         :code
-      ]
-      [
-        "/main/Level.collection"
-        :scene
       ]
       [
         "/astar/ext.manifest"
@@ -137,8 +125,20 @@
         :cljfx-form-view
       ]
       [
+        "/main/Scripts/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
         "/project.shared_editor_settings"
         :cljfx-form-view
+      ]
+      [
+        "/ReadMe.txt"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
       ]
       [
         "/astar/api/astar.script_api"
@@ -149,8 +149,8 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/NPCProperties.lua"
-        :code
+        "/main/Level.collection"
+        :scene
       ]
     ]
   }
