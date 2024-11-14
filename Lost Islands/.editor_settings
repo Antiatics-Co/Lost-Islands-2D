@@ -137,10 +137,6 @@
         :scene
       ]
       [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
         "/defsave/defsave.lua"
         :code
       ]
@@ -151,6 +147,10 @@
       [
         "/main/Scripts/IO.script"
         :code
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
       ]
     ]
   }

@@ -152,7 +152,7 @@ default_language = en
 localizations = en
 
 [windows]
-app_icon = 
+app_icon = /Assets/Images/SplashImage/Masterpiece.ico
 
 [html5]
 custom_heap_size = 0
