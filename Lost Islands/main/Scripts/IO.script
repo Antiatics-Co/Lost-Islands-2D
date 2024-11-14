@@ -32,7 +32,7 @@ local md5 = require("main.Scripts.Checksum.md5")
 ------------------------------------Filenames
 
 local filename = "save"
-local configName = "config.save"
+local configName = "config.dat"
 
 ------------------------------------Dungeons
 
@@ -175,7 +175,7 @@ function value_to_string(value)
 	end
 end
 
-function delete_file(name)
+local function delete_file(name)
 	local filepath = sys.get_save_file("LostIslands", name)
 	local result, err = os.remove(filepath)
 	if result then
@@ -533,7 +533,7 @@ function loadConfig()
 
 	if not status then
 		print("Error loading config file:", err)
-		setup_default_config()
+		reloadConfigDefaults()
 	end
 
 	if file_exists(configName) then

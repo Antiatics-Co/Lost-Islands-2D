@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term "position"
+      :term "reload"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/builtins/render/default.render_script"
-        :code
-      ]
       [
         "/builtins/render/default.render"
         :cljfx-form-view
@@ -57,15 +53,7 @@
         :code
       ]
       [
-        "/main/Scripts/GUI/settings.gui_script"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/items.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/IO.script"
         :code
       ]
       [
@@ -121,10 +109,6 @@
         :code
       ]
       [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
         "/main/Scripts/Modules/NPCProperties.lua"
         :code
       ]
@@ -151,6 +135,22 @@
       [
         "/main/Level.collection"
         :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/defsave/defsave.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/settings.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/IO.script"
+        :code
       ]
     ]
   }

@@ -30,3 +30,6 @@ splash_image = /Assets/Images/SplashImage/Isaac Newton.png
 use_fixed_timestep = 1
 debug = 0
 
+[windows]
+app_icon = /Assets/Images/SplashImage/Masterpiece.ico
+
