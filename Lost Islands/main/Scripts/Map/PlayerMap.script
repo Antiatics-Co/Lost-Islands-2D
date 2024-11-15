@@ -14,6 +14,7 @@ local DUNGEON = hash("Dungeon")
 local po = require("main.Scripts.Modules.PlayerPosition")
 
 function init(self)
+	po.setPosition(go.get_position())
 	msg.post("#","acquire_input_focus")
 	msg.post("@render:", "use_camera_projection")
 	camera.acquire_focus("Operator#camera")

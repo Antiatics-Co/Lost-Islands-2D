@@ -1,4 +1,8 @@
 components {
+  id: "Enemy"
+  component: "/main/Scripts/Enemies/Enemy.script"
+}
+components {
   id: "slimeMap"
   component: "/main/Scripts/Enemies/firstMap/slimeMap.script"
 }

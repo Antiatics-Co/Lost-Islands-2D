@@ -23,7 +23,15 @@ M.enemies = {
 	Level = {
 		slime = { totalHealth = 35, attack = 5, 
 				viewDist = 100, speed = 500, attackDist = 0, 
-				avoidHoles = true, canMoveVertically = false, enraged = false}			
+				avoidHoles = true, canMoveVertically = false, enraged = false
+			}			
+		},
+			
+	MainMap = {
+		slime = { totalHealth = 35, attack = 5, 
+		viewDist = 100, speed = 500, attackDist = 0, 
+		avoidHoles = false, canMoveVertically = true, enraged = false
+		}
 	}
 }
 

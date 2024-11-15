@@ -25,20 +25,8 @@
   :workflow {
     :recent-files [
       [
-        "/builtins/render/default.render"
-        :cljfx-form-view
-      ]
-      [
-        "/builtins/render/default.display_profiles"
-        :cljfx-form-view
-      ]
-      [
         "/default.render"
         :cljfx-form-view
-      ]
-      [
-        "/main/MainMap.collection"
-        :scene
       ]
       [
         "/main/Scripts/Modules/default.render_script"
@@ -89,10 +77,6 @@
         :code
       ]
       [
-        "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/PlayerPosition.lua"
         :code
       ]
@@ -109,10 +93,6 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/NPCProperties.lua"
-        :code
-      ]
-      [
         "/project.shared_editor_settings"
         :cljfx-form-view
       ]
@@ -122,14 +102,6 @@
       ]
       [
         "/main/Scripts/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
-        "/astar/api/astar.script_api"
-        :code
-      ]
-      [
-        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
       [
@@ -151,6 +123,34 @@
       [
         "/game.project"
         :cljfx-form-view
+      ]
+      [
+        "/astar/api/astar.script_api"
+        :code
+      ]
+      [
+        "/Assets/Images/TileMaps/MainMap.tilemap"
+        :scene
+      ]
+      [
+        "/main/Objects/Enemies/slimeMap.go"
+        :scene
+      ]
+      [
+        "/main/Scripts/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Enemies/Enemy.script"
+        :code
       ]
     ]
   }
