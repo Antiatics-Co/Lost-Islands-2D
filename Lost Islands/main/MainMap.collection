@@ -4,8 +4,8 @@ instances {
   prototype: "/main/Objects/PlayerMap/PlayerMap.go"
   children: "Operator"
   position {
-    x: 173.0
-    y: 124.0
+    x: 32.0
+    y: 32.0
     z: 1.0
   }
 }
@@ -17,16 +17,12 @@ instances {
   }
 }
 instances {
-  id: "slimeMap"
+  id: "slime"
   prototype: "/main/Objects/Enemies/slimeMap.go"
   position {
     x: 81.0
     y: 125.0
     z: 1.0
-  }
-  scale3 {
-    x: 0.15
-    y: 0.15
   }
 }
 scale_along_z: 0

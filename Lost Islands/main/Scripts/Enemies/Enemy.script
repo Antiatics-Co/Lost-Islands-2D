@@ -1,101 +1,98 @@
+local astar = require("main.Scripts.Modules.Pathfinder")
+local playerPosition = require("main.Scripts.Modules.PlayerPosition")
+local cellSize = 16
 
---[[ DEALS WITH PATHFINDING
-local npc = require("main.Scripts.Modules.NPCProperties")
-local window = require("main.Scripts.Modules.PlayerPosition")
-local col = require("main.Scripts.Modules.CollectionTracker")
-
-local enemy_id_key
-
-local grid = {
-	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-}
-
-local costs = {
-	[1] = 1,   -- Up
-	[2] = 1,   -- Down
-	[3] = 1,   -- Left
-	[4] = 1,   -- Right
-	[5] = 1.4, -- Up-left
-	[6] = 1.4, -- Up-right
-	[7] = 1.4, -- Down-left
-	[8] = 1.4  -- Down-right
-}
-
-local function extract_key(go_id)
-	local id_str = tostring(go_id)
-	enemy_id_key = id_str:match("%[/(%w+)%]")
-	return enemy_id_key
+local function size_cell()
+	return cellSize
 end
 
-local function init_enemy(self)
-	self.enemy_position = go.get_position()
-	astar.setup(16, 16, astar.DIRECTION_EIGHT, (16 * 16), 16, true, false, false)
-	astar.set_map(grid)
-	astar.set_costs(costs)
+local function set_grid()
+	return {
+		-- Grid for test main map
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+	}
 end
 
-local function setup_enemy_properties(self)
-	enemy_id_key = extract_key(go.get_id())
-	assert(enemy_id_key, "Extracted key is nil. Ensure the key extraction logic is correct.")
+local initChecker = false
+local atGoal = false
+local current_path = nil
+local current_target_index = 1
+local last_goal_pos = vmath.vector3()
+local last_position = vmath.vector3()
+
+local function enemy_init()
+	astar.setCellSize(size_cell())
+	astar.setgrid(set_grid())
+	initChecker = true
+	print("pathfinding initiated")
 end
 
-local function move_enemy_to_position(self, path)
-	if #path > 1 then
-		-- Set enemy's new position to the next step in the path
-		self.enemy_position = vmath.vector3(path[2].x, path[2].y, 0)
-		go.set_position(self.enemy_position)
+local function move_enemy(dt)
+	if not current_path or current_target_index > #current_path then
+		return
 	end
-end
 
-local function map_to_grid(x, y)
-	local tile_size = 16 -- Change this if your tiles are larger than 1 unit
-	local grid_x = math.floor(x / tile_size) + 1
-	local grid_y = math.floor(y / tile_size) + 1
-	return grid_x, grid_y
-end
+	local start_pos = go.get_world_position()
+	local target_node = current_path[current_target_index]
+	local target_pos = vmath.vector3(target_node.x * cellSize + cellSize / 2, target_node.y * cellSize + cellSize / 2, start_pos.z)
 
+	local direction = vmath.normalize(target_pos - start_pos)
+	local speed = 100  -- Speed of the enemy movement
+
+	if vmath.length(target_pos - start_pos) > speed * dt then
+		go.set_position(start_pos + direction * speed * dt)
+	else
+		go.set_position(target_pos)
+		current_target_index = current_target_index + 1
+		if current_target_index > #current_path then
+			atGoal = true
+			print("goal reached")
+		end
+	end
+
+	last_position = go.get_world_position()
+end
 
 function update(self, dt)
-	local start_x, start_y = map_to_grid(self.enemy_position.x, self.enemy_position.y)
-	local end_x, end_y = map_to_grid(window.getPosition().x, window.getPosition().y)
+	if initChecker then
+		local goal_pos = playerPosition.getPosition()
+		local current_pos = go.get_world_position()
 
-	local result, size, total_cost, path = astar.solve(start_x, start_y, end_x, end_y)
+		-- Check if the goal position has changed or the enemy has moved since the last path calculation
+		if not current_path or (goal_pos.x ~= last_goal_pos.x or goal_pos.y ~= last_goal_pos.y) or (current_pos.x ~= last_position.x or current_pos.y ~= last_position.y) then
+			print("Recalculating path")
+			current_path = astar.solve(go.get_world_position(), goal_pos)
+			last_goal_pos = goal_pos
 
-	if result == astar.SOLVED then
-		print("Path found!")
-		for i, node in ipairs(path) do
-			print("Step " .. i .. ": (" .. node.x .. ", " .. node.y .. ")")
+			if not current_path then
+				print("no path found")
+				atGoal = true
+			end
 		end
-		move_enemy_to_position(self, path)
-	elseif result == astar.NO_SOLUTION then
-		print("No path found.")
-	elseif result == astar.START_END_SAME then
-		print("Start and end positions are the same.")
+
+		if not atGoal then
+			move_enemy(dt)
+		end
 	end
 end
-
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("contact_point_response") and message.group == hash("player") then
-		print("Collided with player!")
-	elseif message_id == hash("init_enemy") then
-		init_enemy(self)
+	if message_id == hash("init_enemy") then
+		enemy_init()
 	end
 end
-]]

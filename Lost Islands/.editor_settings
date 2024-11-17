@@ -25,22 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Modules/default.render_script"
-        :code
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/Modules/Dungeons.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/items.lua"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/Inventory.gui_script"
         :code
       ]
@@ -89,15 +73,7 @@
         :code
       ]
       [
-        "/project.shared_editor_settings"
-        :cljfx-form-view
-      ]
-      [
         "/ReadMe.txt"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/CollectionTracker.lua"
         :code
       ]
       [
@@ -125,23 +101,11 @@
         :scene
       ]
       [
-        "/main/Objects/Enemies/slimeMap.go"
-        :scene
-      ]
-      [
         "/main/Scripts/Modules/NPCProperties.lua"
         :code
       ]
       [
-        "/main/MainMap.collection"
-        :scene
-      ]
-      [
         "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
       [
@@ -150,6 +114,42 @@
       ]
       [
         "/main/Scripts/Modules/A Pathfinder.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/project.shared_editor_settings"
+        :cljfx-form-view
+      ]
+      [
+        "/defsave/ext.manifest"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Pathfinder.lua"
+        :code
+      ]
+      [
+        "/main/Objects/Enemies/slimeMap.go"
+        :scene
+      ]
+      [
+        "/main/Objects/PlayerMap/PlayerMap.go"
+        :scene
+      ]
+      [
+        "/Assets/Game.atlas"
+        :scene
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
     ]

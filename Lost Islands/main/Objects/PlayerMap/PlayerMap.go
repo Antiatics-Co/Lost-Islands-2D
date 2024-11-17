@@ -23,8 +23,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 16.25\n"
-  "  data: 15.25\n"
+  "  data: 8.0\n"
+  "  data: 8.0\n"
   "  data: 0.5\n"
   "}\n"
   ""
@@ -39,10 +39,6 @@ embedded_components {
   "  texture: \"/Assets/Game.atlas\"\n"
   "}\n"
   ""
-  scale {
-    x: 1.016949
-    y: 0.953846
-  }
 }
 embedded_components {
   id: "factory"
