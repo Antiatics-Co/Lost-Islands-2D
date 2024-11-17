@@ -25,7 +25,9 @@ local function get_neighbors(node)
 	local neighbors = {}
 	local directions = {
 		{x = 1, y = 0}, {x = -1, y = 0}, 
-		{x = 0, y = 1}, {x = 0, y = -1}
+		{x = 0, y = 1}, {x = 0, y = -1},
+		{x = 1, y = 1}, {x = 1, y = -1}, 
+		{x = -1, y = 1}, {x = -1, y = -1}
 	}
 	for _, dir in ipairs(directions) do
 		local neighbor_x = node.x + dir.x
@@ -36,6 +38,7 @@ local function get_neighbors(node)
 	end
 	return neighbors
 end
+
 
 function astar.solve(start, goal)
 

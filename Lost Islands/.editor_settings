@@ -129,10 +129,6 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/Pathfinder.lua"
-        :code
-      ]
-      [
         "/main/Objects/Enemies/slimeMap.go"
         :scene
       ]
@@ -147,6 +143,10 @@
       [
         "/main/MainMap.collection"
         :scene
+      ]
+      [
+        "/main/Scripts/Modules/Pathfinder.lua"
+        :code
       ]
       [
         "/main/Scripts/Enemies/Enemy.script"

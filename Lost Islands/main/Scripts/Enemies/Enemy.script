@@ -52,7 +52,7 @@ local function move_enemy(dt)
 	local target_pos = vmath.vector3(target_node.x * cellSize + cellSize / 2, target_node.y * cellSize + cellSize / 2, start_pos.z)
 
 	local direction = vmath.normalize(target_pos - start_pos)
-	local speed = 100  -- Speed of the enemy movement
+	local speed = 100  -- Speed of the enemy movement --------------------------------------------------
 
 	if vmath.length(target_pos - start_pos) > speed * dt then
 		go.set_position(start_pos + direction * speed * dt)
@@ -78,7 +78,7 @@ function update(self, dt)
 			print("Recalculating path")
 			current_path = astar.solve(go.get_world_position(), goal_pos)
 			last_goal_pos = goal_pos
-
+			atGoal = false
 			if not current_path then
 				print("no path found")
 				atGoal = true
