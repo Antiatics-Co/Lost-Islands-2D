@@ -1,6 +1,6 @@
 --Author(s): Aidan Cox, Praneel Gandhi
 --Title: player input script
---Version: 1
+--Version: 3 11/22/2024
 --Desciption(24/3/2024): this program handlesplayer inputs to allow the player to move horixzontally
 --25/3/2024 - added gravity and collision simplified movement
 --26/3/2024 - jumping, new animate func

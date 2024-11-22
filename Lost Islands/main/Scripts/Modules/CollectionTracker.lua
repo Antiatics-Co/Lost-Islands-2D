@@ -1,5 +1,6 @@
 --@Author Aidan Cox
---@description - tracks all loaded collections
+--@description - tracks all loaded collections, prepares collection for location saving, 
+--and initializes enemy and player scripts when entering a new collection
 
 -- collection_tracker.lua
 
