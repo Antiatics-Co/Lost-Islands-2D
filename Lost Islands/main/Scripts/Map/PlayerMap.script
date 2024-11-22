@@ -9,8 +9,17 @@ local BASEVELOCITY = 150
 local recievingInputs = true
 
 local CONTACT_POINT_RESPONSE = hash("contact_point_response")
+local RECIEVINGINPUT = hash("recievingInput")
 local BORDER = hash("Border")
 local DUNGEON = hash("Dungeon")
+
+local UP = hash ("up")
+local DOWN = hash("down")
+local LEFT = hash("left")
+local RIGHT = hash("right")
+local TOUCH = hash("touch")
+local esc = hash("esc")
+
 local po = require("main.Scripts.Modules.PlayerPosition")
 
 function init(self)
@@ -103,7 +112,7 @@ function on_message(self, message_id, message, sender)
 		end
 	end
 
-	if message_id == hash("recievingInput") then
+	if message_id == RECIEVINGINPUT then
 		recievingInputs = not recievingInputs
 		print("inputs")
 	end
@@ -111,18 +120,18 @@ end
 
 function on_input(self, action_id, action)
 	if recievingInputs then
-		if action_id == hash("up") then
+		if action_id == UP then
 			self.vel.y = BASEVELOCITY -- Move up
-		elseif action_id == hash("down") then
+		elseif action_id == DOWN then
 			self.vel.y = -BASEVELOCITY -- Move down
-		elseif action_id == hash("left") then
+		elseif action_id == LEFT then
 			self.vel.x = -BASEVELOCITY -- Move left
-		elseif action_id == hash("right") then
+		elseif action_id == RIGHT then
 			self.vel.x = BASEVELOCITY -- Move right
-		elseif action_id == hash("touch") and action.pressed then
+		elseif action_id == TOUCH and action.pressed then
 			po.setMousePosition(vmath.vector3(action.x, action.y, 0))
 			factory.create("#factory")
-		elseif action_id == hash("esc") and action.released then
+		elseif action_id == ESC and action.released then
 			msg.post("main:/menu#PauseMenu", "enable")
 		end
 	end
