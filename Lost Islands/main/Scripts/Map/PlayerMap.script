@@ -18,9 +18,13 @@ local DOWN = hash("down")
 local LEFT = hash("left")
 local RIGHT = hash("right")
 local TOUCH = hash("touch")
-local esc = hash("esc")
+local ESC = hash("esc")
+local INITPLAYERTRACKING = hash("init_player")
 
 local po = require("main.Scripts.Modules.PlayerPosition")
+
+local trackingPlayer = false
+
 
 function init(self)
 	po.setPosition(go.get_position())
@@ -63,7 +67,9 @@ function update(self, dt)
 	self.vel.y = 0
 	--reset correction
 	self.correction = vmath.vector3()
-	po.setPosition(pos)
+	if trackingPlayer then
+		po.setPosition(pos)
+	end
 end
 
 local function handleLevelCollisions(self, normal, distance)
@@ -115,6 +121,13 @@ function on_message(self, message_id, message, sender)
 	if message_id == RECIEVINGINPUT then
 		recievingInputs = not recievingInputs
 		print("inputs")
+	end
+	
+	if message_id == INITPLAYERTRACKING then
+		trackingPlayer = true
+		if message.incrementer == 1 and po.getPosition() ~= nil
+			go.set_position(po.getPosition())
+		end
 	end
 end
 

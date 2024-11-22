@@ -21,6 +21,7 @@ local TOUCH = hash("touch")
 local RIGHT = hash("right")
 local LEFT = hash("left")
 local ESC = hash("esc")
+local INITPLAYERTRACKING = hash("init_player")
 
 -------------------------------------------------------------------
 
@@ -31,6 +32,7 @@ local GRAVITY = 1000
 local JUMPTAKEOFF = 500
 local FIREDELAY = 0.5
 local recievingInputs = true
+local trackPlayer = false
 
 
 local lastfired = -1
@@ -112,6 +114,10 @@ function fixed_update(self, dt)
 	self.groundContact = false
 	self.correction.x = 0
 	self.correction.y = 0
+	
+	if trackingPlayer then
+		po.setPosition(go.get_position())
+	end
 end
 
 function handleLevelCollisions(self, normal, distance)
@@ -179,6 +185,13 @@ function on_message(self, message_id, message, sender)
 		recievingInputs = not recievingInputs
 		--gravity = true
 		print("restarting inputs")
+	end
+	
+	if message_id == INITPLAYERTRACKING then
+		trackPlayer = true
+		if message.incrementer == 1 and po.getPosition() ~= nil
+			go.set_position(po.getPosition())
+		end
 	end
 end
 

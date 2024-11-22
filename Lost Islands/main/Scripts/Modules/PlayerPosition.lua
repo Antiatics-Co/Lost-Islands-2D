@@ -12,7 +12,7 @@
 
 local M = {}
 
-local position
+local position = nil
 local mousePos
 
 local window_height
