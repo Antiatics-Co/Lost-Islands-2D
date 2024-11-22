@@ -15,6 +15,12 @@ local STOPGRAVITY = hash("stopGravity")
 local CONTACTPOINTRESPONSE = hash("contact_point_response")
 local LEVELGROUP = hash("level")
 local STARTRECIEVINGINPUTS = hash("recievingInput")
+local UP = hash("up")
+local DOWN = hash("down")
+local TOUCH = hash("touch")
+local RIGHT = hash("right")
+local LEFT = hash("left")
+local ESC = hash("esc")
 
 -------------------------------------------------------------------
 
@@ -201,23 +207,23 @@ function on_input(self, action_id, action)
 	end]]--
 	
 	if recievingInputs == true then
-		if action_id == hash("up") and self.groundContact then
+		if action_id == UP and self.groundContact then
 			self.velocity.y = JUMPTAKEOFF
 			self.groundContact = false
 			particlefx.play("#dust")
 			--sound.play("#Jumping")
-		elseif action_id == hash("down") then
+		elseif action_id == DOWN then
 			return
-		elseif action_id == hash("touch") and action.pressed then --(lastfired == -1 or os.time(os.date("!*t")) - lastfired > FIREDELAY) then
+		elseif action_id == TOUCH and action.pressed then --(lastfired == -1 or os.time(os.date("!*t")) - lastfired > FIREDELAY) then
 			po.setMousePosition(vmath.vector3(action.x, action.y, 0))
 			factory.create("#factory")
 			--lastfired = os.time(os.date("!*t"))
 			
-		elseif action_id == hash("right") or action_id == hash("left") then
-			self.direction = (action_id == hash("right")) and DIRECTIONRIGHT or DIRECTIONLEFT
+		elseif action_id == RIGHT or action_id == LEFT then
+			self.direction = (action_id == RIGHT and DIRECTIONRIGHT or DIRECTIONLEFT
 			flip(self.direction)
 			walk(self)
-		elseif action_id == hash("esc") and action.released then
+		elseif action_id == ESC and action.released then
 			msg.post("main:/menu#PauseMenu", "enable")
 		end
 	end
