@@ -105,14 +105,15 @@ function on_message(self, message_id, message, sender)
 		save()
 	end
 
-	if message_id == hash(TOMAINMENU) then --NEEDS EDITTING***************************************
+	if message_id == TOMAINMENU then --NEEDS EDITTING***************************************
 		gui.set_enabled(gui.get_node("main"), true)
 		
-		msg.post("#Level", "disable")
-		msg.post("#Level", "unload")
+		local url = "#" .. collectionTracker.get_collection_key()
+		print("shutting down url: " .. url)
 		
-		msg.post("#MainMap", "disable")
-		msg.post("#MainMap", "unload")
+		msg.post(url, "disable")
+		msg.post(url, "unload")
+
 		inDungeon = false
 	end
 
