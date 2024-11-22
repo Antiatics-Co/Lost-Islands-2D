@@ -108,7 +108,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == TOMAINMENU then --NEEDS EDITTING***************************************
 		gui.set_enabled(gui.get_node("main"), true)
 		
-		local url = "#" .. collectionTracker.get_collection_key()
+		local url = msg.url("main","/".. main, "/" .. collectionTracker.get_collection_key())
 		print("shutting down url: " .. url)
 		
 		msg.post(url, "disable")
