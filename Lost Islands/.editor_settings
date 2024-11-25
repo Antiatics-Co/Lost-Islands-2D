@@ -25,14 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/GUI/pause.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Sensors/OutOfBounds.script"
-        :code
-      ]
-      [
         "/main/Scripts/Sensors/LevelComplete.script"
         :code
       ]
@@ -125,14 +117,6 @@
         :code
       ]
       [
-        "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/mainMenu.gui_script"
         :code
       ]
@@ -151,6 +135,22 @@
       [
         "/main/Objects/PlayerMap/PlayerMap.go"
         :scene
+      ]
+      [
+        "/main/Scripts/Modules/items.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Momentum.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
       ]
     ]
   }

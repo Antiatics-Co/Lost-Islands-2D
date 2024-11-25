@@ -22,6 +22,7 @@ local ESC = hash("esc")
 local INITPLAYERTRACKING = hash("init_player")
 
 local po = require("main.Scripts.Modules.PlayerPosition")
+local mo = require("main.Scripts.Modules.Momentum")
 
 local trackingPlayer = false
 

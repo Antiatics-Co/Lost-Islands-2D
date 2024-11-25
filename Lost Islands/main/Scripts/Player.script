@@ -8,7 +8,7 @@
 
 -------------------------------------------------------------------
 local po = require("main.Scripts.Modules.PlayerPosition")
-
+local mo = require("main.Scripts.Modules.Momentum")
 --PREHASHING-------------------------------------------------------
 
 local STOPGRAVITY = hash("stopGravity")
@@ -115,7 +115,7 @@ function fixed_update(self, dt)
 	self.correction.x = 0
 	self.correction.y = 0
 	
-	if trackingPlayer then
+	if trackPlayer then
 		po.setPosition(go.get_position())
 	end
 end
