@@ -189,7 +189,7 @@ function on_message(self, message_id, message, sender)
 	
 	if message_id == INITPLAYERTRACKING then
 		trackPlayer = true
-		if message.incrementer == 1 and po.getPosition() ~= nil
+		if message.incrementer == 1 and po.getPosition() ~= nil then
 			go.set_position(po.getPosition())
 		end
 	end
@@ -233,7 +233,7 @@ function on_input(self, action_id, action)
 			--lastfired = os.time(os.date("!*t"))
 			
 		elseif action_id == RIGHT or action_id == LEFT then
-			self.direction = (action_id == RIGHT and DIRECTIONRIGHT or DIRECTIONLEFT
+			self.direction = (action_id == RIGHT and DIRECTIONRIGHT or DIRECTIONLEFT)
 			flip(self.direction)
 			walk(self)
 		elseif action_id == ESC and action.released then

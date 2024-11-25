@@ -1,5 +1,5 @@
 components {
-  id: "PlayerMap"
+  id: "Player"
   component: "/main/Scripts/Map/PlayerMap.script"
 }
 embedded_components {

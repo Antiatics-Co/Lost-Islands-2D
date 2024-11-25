@@ -125,7 +125,7 @@ function on_message(self, message_id, message, sender)
 	
 	if message_id == INITPLAYERTRACKING then
 		trackingPlayer = true
-		if message.incrementer == 1 and po.getPosition() ~= nil
+		if message.incrementer == 1 and po.getPosition() ~= nil then
 			go.set_position(po.getPosition())
 		end
 	end

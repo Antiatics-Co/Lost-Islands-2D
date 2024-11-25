@@ -11,7 +11,8 @@ local i = 0
 -- CollectionTracker.lua
 
 -- List of game objects to initialize
-M.game_objects = { "slime", "player"}  -- Add all game object IDs here
+M.game_objects = { "slime" }  -- Add all game object IDs here
+M.player_objects = { "Player", "PlayerMap" }
 
 -- Function to send a message to all game objects in the list
 function M.init_all_enemies()
@@ -26,7 +27,7 @@ end
 function M.init_all_players()
 	i = i + 1
 	local collection_key = M.get_collection_key()
-	for _, id in ipairs(M.game_objects) do
+	for _, id in ipairs(M.player_objects) do
 		local url = msg.url(collection_key, "/"..id, "Player")
 		print("Sending 'init_player' to: ", url)
 		msg.post(url, "init_player", {incrementer = i})

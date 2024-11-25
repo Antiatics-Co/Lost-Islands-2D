@@ -25,15 +25,7 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/GUI/Inventory.gui_script"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/pause.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/mainMenu.gui_script"
         :code
       ]
       [
@@ -46,10 +38,6 @@
       ]
       [
         "/main/Scripts/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Player.script"
         :code
       ]
       [
@@ -105,19 +93,11 @@
         :code
       ]
       [
-        "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
         "/game.project"
         :cljfx-form-view
       ]
       [
         "/main/Scripts/Modules/A Pathfinder.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/CollectionTracker.lua"
         :code
       ]
       [
@@ -133,15 +113,7 @@
         :scene
       ]
       [
-        "/main/Objects/PlayerMap/PlayerMap.go"
-        :scene
-      ]
-      [
         "/Assets/Game.atlas"
-        :scene
-      ]
-      [
-        "/main/MainMap.collection"
         :scene
       ]
       [
@@ -151,6 +123,34 @@
       [
         "/main/Scripts/Enemies/Enemy.script"
         :code
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
+      ]
+      [
+        "/main/Objects/PlayerMap/PlayerMap.go"
+        :scene
       ]
     ]
   }
