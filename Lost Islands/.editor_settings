@@ -109,14 +109,6 @@
         :scene
       ]
       [
-        "/main/Scripts/Modules/Pathfinder.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Enemies/Enemy.script"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/mainMenu.gui_script"
         :code
       ]
@@ -129,11 +121,15 @@
         :scene
       ]
       [
-        "/main/MainMap.collection"
+        "/main/Objects/PlayerMap/PlayerMap.go"
         :scene
       ]
       [
-        "/main/Objects/PlayerMap/PlayerMap.go"
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/MainMap.collection"
         :scene
       ]
       [
@@ -141,15 +137,19 @@
         :code
       ]
       [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Pathfinder.lua"
+        :code
+      ]
+      [
         "/main/Scripts/Modules/Momentum.lua"
         :code
       ]
       [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Map/PlayerMap.script"
+        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
     ]

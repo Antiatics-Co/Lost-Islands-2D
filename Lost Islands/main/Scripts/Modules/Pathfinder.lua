@@ -24,9 +24,9 @@ end
 local function get_neighbors(node)
 	local neighbors = {}
 	local directions = {
-		{x = 1, y = 0}, {x = -1, y = 0}, 
+		{x = 1, y = 0}, {x = -1, y = 0},
 		{x = 0, y = 1}, {x = 0, y = -1},
-		{x = 1, y = 1}, {x = 1, y = -1}, 
+		{x = 1, y = 1}, {x = 1, y = -1},
 		{x = -1, y = 1}, {x = -1, y = -1}
 	}
 	for _, dir in ipairs(directions) do
@@ -39,9 +39,60 @@ local function get_neighbors(node)
 	return neighbors
 end
 
+local function distance(p1, p2)
+	return math.sqrt((p2.x - p1.x)^2 + (p2.y - p1.y)^2)
+end
+
+local function line_of_sight(grid, p1, p2)
+	local x0, y0 = p1.x, p1.y
+	local x1, y1 = p2.x, p2.y
+	local dx = math.abs(x1 - x0)
+	local dy = math.abs(y1 - y0)
+	local sx = x0 < x1 and 1 or -1
+	local sy = y0 < y1 and 1 or -1
+	local err = dx - dy
+
+	while true do
+		if grid[y0] == nil or grid[y0][x0] == nil or grid[y0][x0] ~= 0 then
+			return false
+		end
+		if x0 == x1 and y0 == y1 then
+			return true
+		end
+		local e2 = 2 * err
+		if e2 > -dy then
+			err = err - dy
+			x0 = x0 + sx
+		end
+		if e2 < dx then
+			err = err + dx
+			y0 = y0 + sy
+		end
+	end
+end
+
+local function smooth_path(grid, path)
+	local smooth_path = {}
+	local path_length = #path
+	if path_length < 2 then
+		return path
+	end
+
+	table.insert(smooth_path, path[1])
+	local new_path_index = 1
+
+	for i = 2, path_length - 1 do
+		if not line_of_sight(grid, smooth_path[new_path_index], path[i + 1]) then
+			table.insert(smooth_path, path[i])
+			new_path_index = #smooth_path
+		end
+	end
+
+	table.insert(smooth_path, path[path_length])
+	return smooth_path
+end
 
 function astar.solve(start, goal)
-
 	start.x, start.y = world_to_grid(start.x, start.y)
 	goal.x, goal.y = world_to_grid(goal.x, goal.y)
 	local open_list = {}
@@ -61,7 +112,7 @@ function astar.solve(start, goal)
 				table.insert(path, 1, {x = temp.x, y = temp.y})
 				temp = came_from[temp]
 			end
-			return path
+			return smooth_path(grid, path)
 		end
 
 		table.insert(closed_list, current)

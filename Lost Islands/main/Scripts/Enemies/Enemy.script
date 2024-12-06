@@ -74,16 +74,21 @@ function update(self, dt)
 		local current_pos = go.get_world_position()
 
 		-- Check if the goal position has changed or the enemy has moved since the last path calculation
-		if not current_path or (goal_pos.x ~= last_goal_pos.x or goal_pos.y ~= last_goal_pos.y) or (current_pos.x ~= last_position.x or current_pos.y ~= last_position.y) then
-			print("Recalculating path")
-			current_path = astar.solve(go.get_world_position(), goal_pos)
-			last_goal_pos = goal_pos
-			atGoal = false
-			if not current_path then
-				print("no path found")
-				atGoal = true
+	if current_pos ~= goal_pos then 
+		if goal_pos.x ~= nil and goal_pos.y ~= nil then
+			if not current_path or (goal_pos.x ~= last_goal_pos.x or goal_pos.y ~= last_goal_pos.y) 
+			or (current_pos.x ~= last_position.x or current_pos.y ~= last_position.y) then
+				print("Recalculating path")
+				current_path = astar.solve(go.get_world_position(), goal_pos)
+				last_goal_pos = goal_pos
+				atGoal = false
+				if not current_path then
+					print("no path found")
+					atGoal = true
+				end
 			end
 		end
+	end
 
 		if not atGoal then
 			move_enemy(dt)
