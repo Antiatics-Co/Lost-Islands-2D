@@ -42,7 +42,7 @@ function on_message(self, message_id, message)
 end
 
 function fixed_update(self, dt)
-	self.dir_to_mouse.z = 0 -- Ensure it's in 2D
+	self.dir_to_mouse.z = 0-- Ensure it's in 2D
 
 	-- Normalize direction vector
 	self.dir_to_mouse = normalize_vector(self.dir_to_mouse)

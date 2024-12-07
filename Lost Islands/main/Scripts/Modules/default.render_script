@@ -28,6 +28,7 @@ local DEFAULT_FAR =   1
 local DEFAULT_ZOOM =  1
 
 local pos = require("main.Scripts.Modules.PlayerPosition")
+local path = require("main.Scripts.Modules.Pathfinder")
 --
 -- projection that centers content with maintained aspect ratio and optional zoom
 --
@@ -152,6 +153,7 @@ function init(self)
     local camera_gui = create_camera(state, "camera_gui")
     init_camera(camera_gui, get_gui_projection)
     update_state(state)
+    --path.drawGridLines()
 end
 
 function update(self)
@@ -209,7 +211,10 @@ function update(self)
     render.disable_state(graphics.STATE_STENCIL_TEST)
     render.disable_state(graphics.STATE_BLEND)
 
-
+                                                                     -- **********************************
+    path.drawGridLines()                                             -- ******Draws Astar Grid lines******
+                                                                     -- **********************************
+    
     pos.setWindowHeight(render.get_height())
     pos.setWindowWidth(render.get_width())
 end

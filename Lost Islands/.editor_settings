@@ -25,19 +25,7 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Sensors/LevelComplete.script"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Elements/Fire/FireBall.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/PlayerPosition.lua"
         :code
       ]
       [
@@ -129,10 +117,6 @@
         :code
       ]
       [
-        "/main/MainMap.collection"
-        :scene
-      ]
-      [
         "/main/Scripts/Modules/items.lua"
         :code
       ]
@@ -141,7 +125,7 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/Pathfinder.lua"
+        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
       [
@@ -149,8 +133,24 @@
         :code
       ]
       [
-        "/main/Scripts/Enemies/Enemy.script"
+        "/main/Scripts/Elements/Fire/FireBall.script"
         :code
+      ]
+      [
+        "/main/Scripts/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/default.render_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Pathfinder.lua"
+        :code
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
       ]
     ]
   }
