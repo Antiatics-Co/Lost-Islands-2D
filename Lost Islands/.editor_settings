@@ -81,19 +81,11 @@
         :scene
       ]
       [
-        "/main/Scripts/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
         "/main/Objects/PlayerMap/PlayerMap.go"
         :scene
       ]
       [
         "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
       [
@@ -121,27 +113,11 @@
         :code
       ]
       [
-        "/main/main.collection"
-        :scene
-      ]
-      [
         "/main/Level.collection"
         :scene
       ]
       [
-        "/main/Scripts/Modules/ShopInventory.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/Pathfinder.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/MainMap.collection"
+        "/main/main.collection"
         :scene
       ]
       [
@@ -149,7 +125,31 @@
         :code
       ]
       [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
         "/main/Scripts/GUI/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ShopInventory.lua"
+        :code
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Enemies/Enemy.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Pathfinder.lua"
         :code
       ]
     ]

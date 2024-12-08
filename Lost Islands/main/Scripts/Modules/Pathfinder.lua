@@ -56,11 +56,7 @@ local function get_neighbors(node)
 	return neighbors
 end
 
-local function distance(p1, p2)
-	return math.sqrt((p2.x - p1.x)^2 + (p2.y - p1.y)^2)
-end
-
-local function line_of_sight(grid, p1, p2)
+local function line_of_sight(p1, p2)
 	local x0, y0 = p1.x, p1.y
 	local x1, y1 = p2.x, p2.y
 	local dx = math.abs(x1 - x0)
@@ -88,25 +84,25 @@ local function line_of_sight(grid, p1, p2)
 	end
 end
 
-local function smooth_path(grid, path)
-	local smooth_path = {}
+local function smooth_path(path)
+	local smoothPath = {}
 	local path_length = #path
 	if path_length < 2 then
 		return path
 	end
 
-	table.insert(smooth_path, path[1])
+	table.insert(smoothPath, path[1])
 	local new_path_index = 1
 
 	for i = 2, path_length - 1 do
-		if not line_of_sight(grid, smooth_path[new_path_index], path[i + 1]) then
-			table.insert(smooth_path, path[i])
-			new_path_index = #smooth_path
+		if not line_of_sight(smoothPath[new_path_index], path[i + 1]) then
+			table.insert(smoothPath, path[i])
+			new_path_index = #smoothPath
 		end
 	end
 
-	table.insert(smooth_path, path[path_length])
-	return smooth_path
+	table.insert(smoothPath, path[path_length])
+	return smoothPath
 end
 
 function astar.solve(start, goal)
@@ -129,7 +125,7 @@ function astar.solve(start, goal)
 				table.insert(path, 1, {x = temp.x, y = temp.y})
 				temp = came_from[temp]
 			end
-			return smooth_path(grid, path)
+			return smooth_path(path)
 		end
 
 		table.insert(closed_list, current)
