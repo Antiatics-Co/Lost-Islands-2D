@@ -116,4 +116,18 @@ function M.print_loaded_collections()
 	end
 end
 
+local function SetGrids()
+	local grid = 
+	{
+		Level = {
+
+		},
+
+		MainMap = {
+
+		}
+
+	}
+end
+
 return M
