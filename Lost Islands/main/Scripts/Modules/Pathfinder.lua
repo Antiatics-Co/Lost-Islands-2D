@@ -20,7 +20,7 @@ end
 
 
 function astar.drawGridLines() -- draws grid  -- using this function -- on update in render script to maintain it, instead of it just disapearing
-	if grid ~= nil then
+	--[[if grid ~= nil then
 		print("Drawing grid")
 		for x = 0, #grid[1] do
 			local x_pos = x * cellSize
@@ -31,7 +31,7 @@ function astar.drawGridLines() -- draws grid  -- using this function -- on updat
 			local y_pos = y * cellSize
 			msg.post("@render:", "draw_line", { start_point = vmath.vector3(0, y_pos, 0), end_point = vmath.vector3(#grid[1] * cellSize, y_pos, 0), color = vmath.vector4(1, 1, 1, 1) })
 		end
-	end
+	end]]
 end
 
 local function heuristic(node, goal)
