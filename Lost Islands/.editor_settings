@@ -19,7 +19,7 @@
   }
   :code {
     :find {
-      :term "reload"
+      :term "size_cell"
     }
   }
   :workflow {
@@ -113,10 +113,6 @@
         :code
       ]
       [
-        "/main/Scripts/Enemies/Enemy.script"
-        :code
-      ]
-      [
         "/main/MainMap.collection"
         :scene
       ]
@@ -137,20 +133,24 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/ShopInventory.lua"
         :code
       ]
       [
         "/main/Level.collection"
         :scene
+      ]
+      [
+        "/main/Scripts/Enemies/Enemy.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ShopInventory.lua"
+        :code
       ]
     ]
   }

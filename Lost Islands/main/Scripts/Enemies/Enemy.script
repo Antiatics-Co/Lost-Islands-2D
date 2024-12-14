@@ -1,33 +1,7 @@
 local astar = require("main.Scripts.Modules.Pathfinder")
 local playerPosition = require("main.Scripts.Modules.PlayerPosition")
+local col = require("main.Scripts.Modules.CollectionTracker")
 local cellSize = 16
-
-local function size_cell()
-	return cellSize
-end
-
-local function set_grid()
-	return {
-		-- Grid for test main map
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-	}
-end
-
 local initChecker = false
 local atGoal = false
 local current_path = nil
@@ -36,8 +10,11 @@ local last_goal_pos = vmath.vector3()
 local last_position = vmath.vector3()
 
 local function enemy_init()
-	astar.setCellSize(size_cell())
-	astar.setgrid(set_grid())
+	local get = col.setGrids()
+	cellSize = get["cellsize"]
+	
+	astar.setCellSize(cellSize)
+	astar.setgrid(get["grid"])
 	initChecker = true
 	print("pathfinding initiated")
 end
