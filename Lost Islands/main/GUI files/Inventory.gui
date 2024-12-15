@@ -25,7 +25,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  id: "org_Armour"
+  id: "org_armour"
   parent: "layer1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -39,7 +39,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "WOOD"
-  parent: "org_Armour"
+  parent: "org_armour"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -50,7 +50,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "STEEL"
-  parent: "org_Armour"
+  parent: "org_armour"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -61,7 +61,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "MAGICSHIELD"
-  parent: "org_Armour"
+  parent: "org_armour"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -72,7 +72,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "LIGHT"
-  parent: "org_Armour"
+  parent: "org_armour"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -83,7 +83,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "HEAVY"
-  parent: "org_Armour"
+  parent: "org_armour"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -94,7 +94,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "MAGIC"
-  parent: "org_Armour"
+  parent: "org_armour"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -168,7 +168,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  id: "org_Elements"
+  id: "org_elements"
   parent: "layer1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -187,7 +187,7 @@ nodes {
   type: TYPE_BOX
   texture: "Game/firebullet"
   id: "FIRE"
-  parent: "org_Elements"
+  parent: "org_elements"
   layer: "Elements"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -206,7 +206,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "WATER"
-  parent: "org_Elements"
+  parent: "org_elements"
   layer: "Elements"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -225,7 +225,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "STONE"
-  parent: "org_Elements"
+  parent: "org_elements"
   layer: "Elements"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -237,7 +237,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "LIGHTNING"
-  parent: "org_Elements"
+  parent: "org_elements"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -248,7 +248,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "ICE"
-  parent: "org_Elements"
+  parent: "org_elements"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -259,7 +259,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "RAINBOW"
-  parent: "org_Elements"
+  parent: "org_elements"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -270,7 +270,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "POISON"
-  parent: "org_Elements"
+  parent: "org_elements"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }

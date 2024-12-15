@@ -59,7 +59,7 @@ M.itemList = M.itemList or {  --attacks and speeds and combosnee to be redone
 	arrow = { itemNum = 33, max = 40, hasItem = false, holding = 0, node = ("ARROW") },
 	shells = { itemNum = 34, max = 5, hasItem = false, holding = 0, node = ("SHELLS") },
 	musketBalls = {itemNum = 35, max = 30, hasItem = false, holding = 0, node = ("MUSKETBALLS") },
-	pendal = { itemNum = 36, max = 99999, hasItem = false, holding = 99999, node = ("PENDAL") }
+	pendal = { itemNum = 36, max = 99999, hasItem = false, holding = 0, node = ("PENDAL") }
 }
 
 function M.set_itemList(item)

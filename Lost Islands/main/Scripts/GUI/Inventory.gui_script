@@ -110,7 +110,7 @@ local function addItem(itemNum) --itemNum = {name, num}
 
 		setupInventory()
 
-	elseif  items[itemNum.name].hasItem  == false then
+	elseif  items[itemNum.name].hasItem == false then
 		items[itemNum.name].hasItem = true
 
 		setupInventory()		
@@ -126,7 +126,7 @@ local function consumeItem(itemNum)
 
 		setupInventory()
 
-	elseif  items[itemNum.name].hasItem  == true then
+	elseif  items[itemNum.name].hasItem == true then
 		items[itemNum.name].hasItem = false
 		if items[itemNum.name].equipped then
 			items[itemNum.name].equipped = false
@@ -138,14 +138,6 @@ local function consumeItem(itemNum)
 	else
 		print("Doesn't have item")
 		return
-	end
-end
-
-local function unequipItem(ID)
-	if items[ID.name].equipped then
-		items[ID.name].equipped = false
-
-		--TODO aet item to be shown as unequipped in menu
 	end
 end
 
@@ -212,9 +204,25 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
+local button
+
+local function setupAuxMenu(buttons, action_id, action)
+	for _, name in ipairs(buttons) do
+		button = gui.get_node(name)
+
+		if gui.pick_node(button, action.x, action.y) then
+			print("Before toggle: " .. tostring(name) .. " equipped: " .. tostring(items[string.lower(name)].equipped))
+			items[string.lower(name)].equipped = not items[string.lower(name)].equipped
+			print("After toggle: " .. tostring(name) .. " equipped: " .. tostring(items[string.lower(name)].equipped))
+			setupInventory()
+		end
+	end
+end
+
 function on_input(self, action_id, action)
 	if action_id == TOUCH and invopen and action.released then
-		local button = gui.get_node("weapons")
+		button = gui.get_node("weapons")
+		local buttons
 
 		if gui.pick_node(button, action.x, action.y) then
 			inWeapons = not inWeapons
@@ -222,21 +230,39 @@ function on_input(self, action_id, action)
 		end
 
 		if inWeapons then
-			local weaponButtons = {"WOODSWORD", "BROADSWORD", "SPEAR", "BOW", "MUSKET", "SCYTHE", 
+			buttons = {"WOODSWORD", "BROADSWORD", "SPEAR", "BOW", "MUSKET", "SCYTHE", 
 													"SAI", "BATON", "ASSAULTRIFLE", "ROCKETLAUNCHER", "CROSSBOW", 
 													"BLUNDERBUSS", "GRENADE", "BIGHAMMER", "KNIFE", "ROCK" }
-
-			for _, weaponName in ipairs(weaponButtons) do
-				button = gui.get_node(weaponName)
-
-				if gui.pick_node(button, action.x, action.y) then
-					print("Before toggle: " .. tostring(weaponName) .. " equipped: " .. tostring(items[string.lower(weaponName)].equipped))
-					items[string.lower(weaponName)].equipped = not items[string.lower(weaponName)].equipped
-					print("After toggle: " .. tostring(weaponName) .. " equipped: " .. tostring(items[string.lower(weaponName)].equipped))
-					setupInventory()
-				end
-			end
+			setupAuxMenu(buttons, action_id, action)
 		end
+
+-------------
+		
+		button = gui.get_node("armour")
+
+		if gui.pick_node(button, action.x, action.y) then
+			inWeapons = not inArmour
+			gui.set_enabled(gui.get_node("org_armour"), inArmour)
+		end
+
+		if inArmour then
+			buttons = {}
+			setupAuxMenu(buttons, action_id, action)
+		end
+
+		button = gui.get_node("elements")
+
+		if gui.pick_node(button, action.x, action.y) then
+			inWeapons = not inElements
+			gui.set_enabled(gui.get_node("org_elements"), inElements)
+		end
+
+		if inElements then
+			buttons = {}
+			setupAuxMenu(buttons, action_id, action)
+		end
+
+		
 	elseif action_id == E and action.released and start then
 		invopen = not invopen
 		gui.set_enabled(gui.get_node("layer1"), invopen)

@@ -19,31 +19,11 @@
   }
   :code {
     :find {
-      :term "size_cell"
+      :term "unequip"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/astar/src/astar.cpp"
-        :code
-      ]
-      [
-        "/ReadMe.txt"
-        :code
-      ]
-      [
-        "/defsave/defsave.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/settings.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/IO.script"
-        :code
-      ]
       [
         "/astar/api/astar.script_api"
         :code
@@ -105,28 +85,12 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/items.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
         "/main/MainMap.collection"
         :scene
       ]
       [
         "/main/main.collection"
         :scene
-      ]
-      [
-        "/main/Scripts/GUI/Inventory.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/Pathfinder.lua"
-        :code
       ]
       [
         "/main/Scripts/Player.script"
@@ -149,8 +113,44 @@
         :code
       ]
       [
+        "/main/Scripts/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/main/GUI files/Inventory.gui"
+        :scene
+      ]
+      [
+        "/main/Scripts/Modules/items.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Pathfinder.lua"
+        :code
+      ]
+      [
         "/main/Scripts/Modules/ShopInventory.lua"
         :code
+      ]
+      [
+        "/main/Scripts/GUI/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/Assets/Images/building.tilesource"
+        :scene
+      ]
+      [
+        "/Assets/Images/Tilesource.tilesource"
+        :scene
+      ]
+      [
+        "/Assets/Images/TileMaps/TutorialTown.tilemap"
+        :scene
+      ]
+      [
+        "/Assets/Images/tileset.tilesource"
+        :scene
       ]
     ]
   }

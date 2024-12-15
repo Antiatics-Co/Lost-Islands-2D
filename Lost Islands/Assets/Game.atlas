@@ -1,7 +1,7 @@
 animations {
   id: "idle"
   images {
-    image: "/Assets/Images/Testplayer/PlayerPlatformer.png"
+    image: "/Assets/Images/TileMaps/Testplayer/PlayerPlatformer.png"
   }
   playback: PLAYBACK_NONE
   fps: 60
@@ -119,7 +119,7 @@ animations {
 animations {
   id: "IdleMap"
   images {
-    image: "/Assets/Images/Testplayer/player.png"
+    image: "/Assets/Images/TileMaps/Testplayer/player.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
 }

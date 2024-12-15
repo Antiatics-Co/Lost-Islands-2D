@@ -1,10 +1,10 @@
 local M = {}
+local itm = require("main.Scripts.Modules.ItemProperties")
+
 
 local shops = { 
 	shopKeeper1 = { 
 		amounts = {}
-
-
 	}
 }
 
