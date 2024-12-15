@@ -11,7 +11,9 @@ local recievingInputs = true
 local CONTACT_POINT_RESPONSE = hash("contact_point_response")
 local RECIEVINGINPUT = hash("recievingInput")
 local BORDER = hash("Border")
+
 local DUNGEON = hash("Dungeon")
+local TOWN = hash("Town")
 
 local UP = hash ("up")
 local DOWN = hash("down")
@@ -108,6 +110,7 @@ end
 function on_message(self, message_id, message, sender)
 	
 	if message_id == CONTACT_POINT_RESPONSE then
+		print("CPR")
 		if message.group == BORDER then
 			handleLevelCollisions(self, message.normal, message.distance)
 		end
@@ -117,6 +120,17 @@ function on_message(self, message_id, message, sender)
 			msg.post("main:/main#music", "stopAll")
 
 			msg.post("main:/main#MainMenu", "enterDungeon")
+		end
+
+		if message.group == TOWN then
+			msg.post("main:/menu#PauseMenu", "save")
+			msg.post("main:/main#music", "stopAll")
+
+			msg.post("Map#testTown", "load")
+			msg.post("Map#testTown", "enable")
+
+			msg.post("main:/main#MainMap", "disable")
+			msg.post("main:/main#MainMap", "unload")
 		end
 	end
 

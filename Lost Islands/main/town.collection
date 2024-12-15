@@ -4,8 +4,8 @@ instances {
   prototype: "/main/Objects/PlayerMap/PlayerMap.go"
   children: "OperatorMap"
   position {
-    x: 4114.0
-    y: 4223.0
+    x: 106.0
+    y: 120.0
     z: 1.0
   }
 }
@@ -26,12 +26,12 @@ embedded_instances {
   "}\n"
   "components {\n"
   "  id: \"TutorialTown\"\n"
-  "  component: \"/Assets/Images/TileMaps/TutorialTown.tilemap\"\n"
+  "  component: \"/Assets/main/Images/TileMaps/TutorialTown.tilemap\"\n"
   "}\n"
   "embedded_components {\n"
   "  id: \"collisionobject\"\n"
   "  type: \"collisionobject\"\n"
-  "  data: \"collision_shape: \\\"/Assets/Images/TileMaps/TutorialTown.tilemap\\\"\\n"
+  "  data: \"collision_shape: \\\"/Assets/main/Images/TileMaps/TutorialTown.tilemap\\\"\\n"
   "type: COLLISION_OBJECT_TYPE_STATIC\\n"
   "mass: 0.0\\n"
   "friction: 0.1\\n"
@@ -43,9 +43,5 @@ embedded_instances {
   ""
   position {
     y: 3.0
-  }
-  scale3 {
-    x: 26.450102
-    y: 27.36992
   }
 }

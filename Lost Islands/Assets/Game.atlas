@@ -1,7 +1,7 @@
 animations {
   id: "idle"
   images {
-    image: "/Assets/Images/TileMaps/Testplayer/PlayerPlatformer.png"
+    image: "/Assets/main/Images/TileMaps/Testplayer/PlayerPlatformer.png"
   }
   playback: PLAYBACK_NONE
   fps: 60
@@ -14,7 +14,7 @@ animations {
 animations {
   id: "firebullet"
   images {
-    image: "/Assets/Images/Elements/Fire/Fire Projectilee/FireBall.png"
+    image: "/Assets/main/Images/Elements/Fire/Fire Projectilee/FireBall.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 60
@@ -23,58 +23,58 @@ animations {
 animations {
   id: "button"
   images {
-    image: "/Assets/Images/Menu/Button-Pressed.png"
+    image: "/Assets/main/Images/Menu/Button-Pressed.png"
   }
   images {
-    image: "/Assets/Images/Menu/Button-Unpressed.png"
+    image: "/Assets/main/Images/Menu/Button-Unpressed.png"
   }
   fps: 60
 }
 animations {
   id: "plus"
   images {
-    image: "/Assets/Images/Menu/Plus.png"
+    image: "/Assets/main/Images/Menu/Plus.png"
   }
   images {
-    image: "/Assets/Images/Menu/PlusPressed.png"
+    image: "/Assets/main/Images/Menu/PlusPressed.png"
   }
   fps: 60
 }
 animations {
   id: "minus"
   images {
-    image: "/Assets/Images/Menu/Minus.png"
+    image: "/Assets/main/Images/Menu/Minus.png"
   }
   images {
-    image: "/Assets/Images/Menu/MinusPressed.png"
+    image: "/Assets/main/Images/Menu/MinusPressed.png"
   }
   fps: 60
 }
 animations {
   id: "healthBar"
   images {
-    image: "/Assets/Images/Menu/FullBar.png"
+    image: "/Assets/main/Images/Menu/FullBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/sixSeventhBar.png"
+    image: "/Assets/main/Images/Menu/sixSeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/fiveSeventhBar.png"
+    image: "/Assets/main/Images/Menu/fiveSeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/fourSeventhBar.png"
+    image: "/Assets/main/Images/Menu/fourSeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/threeSeventhBar.png"
+    image: "/Assets/main/Images/Menu/threeSeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/twoSeventhBar.png"
+    image: "/Assets/main/Images/Menu/twoSeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/oneSeventhBar.png"
+    image: "/Assets/main/Images/Menu/oneSeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/Bar.png"
+    image: "/Assets/main/Images/Menu/Bar.png"
   }
   playback: PLAYBACK_NONE
   fps: 60
@@ -82,28 +82,28 @@ animations {
 animations {
   id: "energyBar"
   images {
-    image: "/Assets/Images/Menu/FullEnergyBar.png"
+    image: "/Assets/main/Images/Menu/FullEnergyBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/sixSeventhEnergyBar.png"
+    image: "/Assets/main/Images/Menu/sixSeventhEnergyBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/fiveEnergySeventhBar.png"
+    image: "/Assets/main/Images/Menu/fiveEnergySeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/fourSeventhEnergyBar.png"
+    image: "/Assets/main/Images/Menu/fourSeventhEnergyBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/threeSeventhEnergyBar.png"
+    image: "/Assets/main/Images/Menu/threeSeventhEnergyBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/twoSeventhBar.png"
+    image: "/Assets/main/Images/Menu/twoSeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/oneSeventhBar.png"
+    image: "/Assets/main/Images/Menu/oneSeventhBar.png"
   }
   images {
-    image: "/Assets/Images/Menu/Bar.png"
+    image: "/Assets/main/Images/Menu/Bar.png"
   }
   playback: PLAYBACK_NONE
   fps: 60
@@ -111,7 +111,7 @@ animations {
 animations {
   id: "slime"
   images {
-    image: "/Assets/Images/EnemySprites/enemyTest.png"
+    image: "/Assets/main/Images/EnemySprites/enemyTest.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 60
@@ -119,21 +119,21 @@ animations {
 animations {
   id: "IdleMap"
   images {
-    image: "/Assets/Images/TileMaps/Testplayer/player.png"
+    image: "/Assets/main/Images/TileMaps/Testplayer/player.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
 }
 animations {
   id: "Title"
   images {
-    image: "/Assets/Images/Menu/Title.png"
+    image: "/Assets/main/Images/Menu/Title.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
 }
 animations {
   id: "Splash"
   images {
-    image: "/Assets/Images/SplashImage/Isaac Newton.png"
+    image: "/Assets/main/Images/SplashImage/Isaac Newton.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
 }

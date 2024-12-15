@@ -1,7 +1,7 @@
 animations {
   id: "Player"
   images {
-    image: "/Assets/Images/TileMaps/Testplayer/Sprite-0001.png"
+    image: "/Assets/main/Images/TileMaps/Testplayer/Sprite-0001.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 60
