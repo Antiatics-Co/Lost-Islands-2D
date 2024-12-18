@@ -126,11 +126,7 @@ function on_message(self, message_id, message, sender)
 			msg.post("main:/menu#PauseMenu", "save")
 			msg.post("main:/main#music", "stopAll")
 
-			msg.post("Map#testTown", "load")
-			msg.post("Map#testTown", "enable")
-
-			msg.post("main:/main#MainMap", "disable")
-			msg.post("main:/main#MainMap", "unload")
+			msg.post("main:/main#MainMenu", "testTown")
 		end
 	end
 

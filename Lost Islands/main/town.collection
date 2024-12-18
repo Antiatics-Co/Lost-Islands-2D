@@ -2,7 +2,7 @@ name: "TutorialTown"
 instances {
   id: "PlayerMap"
   prototype: "/main/Objects/PlayerMap/PlayerMap.go"
-  children: "OperatorMap"
+  children: "Operator"
   position {
     x: 106.0
     y: 120.0
@@ -10,11 +10,10 @@ instances {
   }
 }
 instances {
-  id: "OperatorMap"
+  id: "Operator"
   prototype: "/main/Objects/PlayerMap/OperatorMap.go"
   position {
-    x: 0.09375
-    z: 500.0
+    z: 1.0
   }
 }
 scale_along_z: 0

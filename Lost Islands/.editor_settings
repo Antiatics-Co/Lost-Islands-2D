@@ -19,19 +19,11 @@
   }
   :code {
     :find {
-      :term "unequip"
+      :term "inventory opened"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/defsave/ext.manifest"
-        :code
-      ]
-      [
-        "/main/Objects/Enemies/slimeMap.go"
-        :scene
-      ]
       [
         "/Assets/Game.atlas"
         :scene
@@ -57,10 +49,6 @@
         :code
       ]
       [
-        "/main/main.collection"
-        :scene
-      ]
-      [
         "/main/Scripts/Player.script"
         :code
       ]
@@ -73,31 +61,11 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
         "/main/GUI files/Inventory.gui"
         :scene
       ]
       [
-        "/main/Scripts/Modules/items.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/Pathfinder.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/ShopInventory.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/Inventory.gui_script"
         :code
       ]
       [
@@ -129,6 +97,50 @@
         :scene
       ]
       [
+        "/Assets/main/Images/tileset.tilesource"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/TileMaps/MainMap.tilemap"
+        :scene
+      ]
+      [
+        "/main/Scripts/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/items.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ShopInventory.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Map/map.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Map/TutorialTown/tutorial.script"
+        :code
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/MainMap.collection"
+        :scene
+      ]
+      [
         "/main/town.collection"
         :scene
       ]
@@ -137,20 +149,8 @@
         :code
       ]
       [
-        "/main/MainMap.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/GUI/mainMenu.gui_script"
+        "/main/Scripts/GUI/Inventory.gui_script"
         :code
-      ]
-      [
-        "/Assets/main/Images/tileset.tilesource"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/TileMaps/MainMap.tilemap"
-        :scene
       ]
     ]
   }

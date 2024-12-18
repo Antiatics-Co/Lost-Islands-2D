@@ -62,8 +62,20 @@ local function save() --Temporarily sending default values for testing purposes,
 	
 end
 
+local function disableMainMap()
+	msg.post("main:/main#MainMap", "disable")
+	msg.post("main:/main#MainMap", "unload")
+end
+
 function on_message(self, message_id, message, sender)
 	collectionTracker.on_message(self, message_id, message, sender)
+
+	if message_id == hash("testTown") then
+		msg.post("towns#testTown", "load")
+		msg.post("towns#testTown", "enable")
+
+		disableMainMap()
+end
 
 	if message_id == hash("enterDungeon") then
 		print("enable Level")
@@ -72,8 +84,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("main:/main#Level", "enable")
 		
 		print("disable map")
-		msg.post("main:/main#MainMap", "disable")
-		msg.post("main:/main#MainMap", "unload")
+		disableMainMap()
 	end
 			--Enter messages are tempory until a better solution can be made
 	if message_id == hash("enterMap") then

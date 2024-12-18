@@ -48,11 +48,5 @@ embedded_instances {
   "mask: \\\"playerMap\\\"\\n"
   "\"\n"
   "}\n"
-  "embedded_components {\n"
-  "  id: \"testTown\"\n"
-  "  type: \"collectionproxy\"\n"
-  "  data: \"collection: \\\"/main/town.collection\\\"\\n"
-  "\"\n"
-  "}\n"
   ""
 }

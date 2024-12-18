@@ -13,6 +13,7 @@ embedded_components {
   "mask: \"Border\"\n"
   "mask: \"Dungeon\"\n"
   "mask: \"Enemy\"\n"
+  "mask: \"Town\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
