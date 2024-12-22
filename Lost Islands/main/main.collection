@@ -45,7 +45,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"Level\"\n"
   "  type: \"collectionproxy\"\n"
-  "  data: \"collection: \\\"/main/Level.collection\\\"\\n"
+  "  data: \"collection: \\\"/main/hud/Level.collection\\\"\\n"
   "\"\n"
   "}\n"
   "embedded_components {\n"

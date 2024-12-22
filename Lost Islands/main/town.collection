@@ -1,21 +1,4 @@
 name: "TutorialTown"
-instances {
-  id: "PlayerMap"
-  prototype: "/main/Objects/PlayerMap/PlayerMap.go"
-  children: "Operator"
-  position {
-    x: 106.0
-    y: 120.0
-    z: 1.0
-  }
-}
-instances {
-  id: "Operator"
-  prototype: "/main/Objects/PlayerMap/OperatorMap.go"
-  position {
-    z: 1.0
-  }
-}
 scale_along_z: 0
 embedded_instances {
   id: "Town"
@@ -35,12 +18,9 @@ embedded_instances {
   "mass: 0.0\\n"
   "friction: 0.1\\n"
   "restitution: 0.5\\n"
-  "group: \\\"\\\"\\n"
-  "mask: \\\"playerMap\\\"\\n"
+  "group: \\\"default\\\"\\n"
+  "mask: \\\"default\\\"\\n"
   "\"\n"
   "}\n"
   ""
-  position {
-    y: 3.0
-  }
 }

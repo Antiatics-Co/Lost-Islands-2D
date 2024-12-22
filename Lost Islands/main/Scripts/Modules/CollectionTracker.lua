@@ -12,7 +12,7 @@ local i = 0
 
 -- List of game objects to initialize
 M.game_objects = { "slime" }  -- Add all game object IDs here
-M.player_objects = { "Player", "PlayerMap" }
+M.player_objects = { "PlayerMap", "Player" }
 
 -- Function to send a message to all game objects in the list
 function M.init_all_enemies()
@@ -54,6 +54,7 @@ function M.on_message(self, message_id, message, sender)
 		print("Collection loaded:", tostring(sender))
 		M.init_all_enemies()
 		M.init_all_players()
+		
 	end
 
 	M.print_loaded_collections()		

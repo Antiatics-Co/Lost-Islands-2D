@@ -93,20 +93,12 @@
         :scene
       ]
       [
-        "/Assets/main/Images/TileMaps/TutorialTown.tilemap"
-        :scene
-      ]
-      [
         "/Assets/main/Images/tileset.tilesource"
         :scene
       ]
       [
         "/Assets/main/Images/TileMaps/MainMap.tilemap"
         :scene
-      ]
-      [
-        "/main/Scripts/Modules/CollectionTracker.lua"
-        :code
       ]
       [
         "/main/Scripts/Modules/ItemProperties.lua"
@@ -121,7 +113,11 @@
         :code
       ]
       [
-        "/main/Scripts/GUI/mainMenu.gui_script"
+        "/main/Scripts/Map/TutorialTown/tutorial.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/Inventory.gui_script"
         :code
       ]
       [
@@ -129,8 +125,20 @@
         :code
       ]
       [
-        "/main/Scripts/Map/TutorialTown/tutorial.script"
+        "/main/Scripts/Modules/CollectionTracker.lua"
         :code
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Map/PlayerMap.script"
+        :code
+      ]
+      [
+        "/Assets/main/Images/TileMaps/TutorialTown.tilemap"
+        :scene
       ]
       [
         "/main/main.collection"
@@ -143,14 +151,6 @@
       [
         "/main/town.collection"
         :scene
-      ]
-      [
-        "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/Inventory.gui_script"
-        :code
       ]
     ]
   }

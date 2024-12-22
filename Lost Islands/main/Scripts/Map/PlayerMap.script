@@ -31,11 +31,12 @@ local trackingPlayer = false
 
 function init(self)
 	po.setPosition(go.get_position())
+	self.correction = vmath.vector3(0, 0, 0)
+	self.vel = vmath.vector3(0, 0, 0) -- Initialize velocity
+
 	msg.post("#","acquire_input_focus")
 	msg.post("@render:", "use_camera_projection")
 	camera.acquire_focus("Operator#camera")
-	self.correction = vmath.vector3(0, 0, 0)
-	self.vel = vmath.vector3(0, 0, 0) -- Initialize velocity
 end
 
 local function flip(direction)
@@ -110,7 +111,7 @@ end
 function on_message(self, message_id, message, sender)
 	
 	if message_id == CONTACT_POINT_RESPONSE then
-		print("CPR")
+
 		if message.group == BORDER then
 			handleLevelCollisions(self, message.normal, message.distance)
 		end
@@ -137,6 +138,9 @@ function on_message(self, message_id, message, sender)
 	
 	if message_id == INITPLAYERTRACKING then
 		trackingPlayer = true
+
+		
+		
 		if message.incrementer == 1 and po.getPosition() ~= nil then
 			go.set_position(po.getPosition())
 		end
