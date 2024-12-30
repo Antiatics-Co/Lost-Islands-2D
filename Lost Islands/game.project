@@ -20,8 +20,7 @@ title = Lost Islands
 publisher = The Antiatics Company
 developer = The Antiatics Company
 version = 0.0.2.0
-dependencies#0 = https://github.com/britzl/monarch/archive/refs/tags/5.1.1.zip
-dependencies#1 = https://github.com/subsoap/defsave/archive/master.zip
+dependencies#0 = https://github.com/subsoap/defsave/archive/master.zip
 
 [html5]
 splash_image = /Assets/main/Images/SplashImage/Isaac Newton.png
