@@ -70,3 +70,7 @@ embedded_instances {
   id: "hud"
   data: ""
 }
+embedded_instances {
+  id: "character"
+  data: ""
+}

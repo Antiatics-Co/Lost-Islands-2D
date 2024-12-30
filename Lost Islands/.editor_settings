@@ -25,34 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/Assets/main/Images/TileMaps/TutorialTown.tilemap"
-        :scene
-      ]
-      [
-        "/main/town.collection"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/tileset.tilesource"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/Tilesource.tilesource"
-        :scene
-      ]
-      [
-        "/main/Scripts/Modules/default.render_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/Dungeons.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/Momentum.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/items.lua"
         :code
       ]
@@ -133,10 +105,6 @@
         :code
       ]
       [
-        "/main/GUI files/MainMenu.gui"
-        :scene
-      ]
-      [
         "/game.project"
         :cljfx-form-view
       ]
@@ -149,7 +117,39 @@
         :code
       ]
       [
+        "/main/GUI files/MainMenu.gui"
+        :scene
+      ]
+      [
+        "/main/GUI files/io.gui"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/TileMaps/MainMap.tilemap"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/Tilesource.tilesource"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/TileMaps/Test.tilemap"
+        :scene
+      ]
+      [
+        "/main/GUI files/Death.gui"
+        :scene
+      ]
+      [
         "/main/main.collection"
+        :scene
+      ]
+      [
+        "/Assets/mockups.atlas"
+        :scene
+      ]
+      [
+        "/main/GUI files/CharacterCreator.gui"
         :scene
       ]
     ]
