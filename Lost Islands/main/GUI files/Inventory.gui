@@ -8,9 +8,12 @@ textures {
   texture: "/Assets/Game.atlas"
 }
 nodes {
+  position {
+    y: -150.0
+  }
   size {
-    x: 200.0
-    y: 100.0
+    x: 640.0
+    y: 360.0
   }
   type: TYPE_BOX
   id: "layer1"

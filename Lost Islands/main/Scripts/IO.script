@@ -45,12 +45,13 @@ local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion =
 -------------------------------------Location, Energy, and Health Data
 
 local location = "default"
+local visited_location = {}
 local position = vmath.vector3(0, 0, 0)
 local energy = 100
 local health = 100
 
 
-local easyTable = { location, position, energy, health, character = {}, npcStatus = {}, version = 1 }
+local easyTable = { location, visited_location, position, energy, health, character = {}, npcStatus = {}, version = 1 }
 
 ----------------------------------------------Config
 
@@ -126,7 +127,7 @@ local function loadSave()
 
 	if itemList["woodsword"] then
 		if itemList["woodsword"].equipped then
-			print("woodsword equipped? " .. tostring(itemList["woodsword"].equipped))
+			print("woodsword equipped? " .. tostring(itemList["woodsword"].equipped)) --for testing?
 		end
 	else
 		print("woodsword not found in item list")
@@ -134,8 +135,8 @@ local function loadSave()
 
 	if easyTable ~= nil then
 		pos.setPosition(easyTable.position)
-		loc.key = easyTable.location
-		print("loaded Collection: " .. easyTable.location)
+		loc.set_location(easyTable.location)
+		loc.visited_locations =  easyTable.visited_locations
 		eh.setHealth(easyTable.health)
 		eh.setEnergy(easyTable.energy)
 		char.sprite = easyTable.character
@@ -725,7 +726,7 @@ function on_message(self, message_id, message, sender)
 		--print("Dungeon data:", table_to_string(message.dungeonData))
 		--print("Item data:", table_to_string(itm.get_itemList()))
 		
-		local table = {location = loc.get_collection_key(),
+		local table = {location = loc.get_location(), loc.visited_locations,
 		position = pos.getPosition(),
 		health = eh.getHealth(),
 		energy = eh.getEnergy(),

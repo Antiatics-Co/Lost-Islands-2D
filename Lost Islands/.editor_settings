@@ -19,77 +19,17 @@
   }
   :code {
     :find {
-      :term "inventory opened"
+      :term "loadSave"
     }
   }
   :workflow {
     :recent-files [
       [
-        "/Assets/Game.atlas"
+        "/Assets/main/Images/TileMaps/TutorialTown.tilemap"
         :scene
       ]
       [
-        "/main/Objects/PlayerMap/PlayerMap.go"
-        :scene
-      ]
-      [
-        "/main/Scripts/Modules/Momentum.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Elements/Fire/FireBall.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/PlayerPosition.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/default.render_script"
-        :code
-      ]
-      [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
-        "/main/Level.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/Enemies/Enemy.script"
-        :code
-      ]
-      [
-        "/main/GUI files/Inventory.gui"
-        :scene
-      ]
-      [
-        "/main/Scripts/Modules/Pathfinder.lua"
-        :code
-      ]
-      [
-        "/Assets/Images/building.tilesource"
-        :scene
-      ]
-      [
-        "/Assets/Images/Tilesource.tilesource"
-        :scene
-      ]
-      [
-        "/Assets/Images/TileMaps/TutorialTown.tilemap"
-        :scene
-      ]
-      [
-        "/Assets/Images/tileset.tilesource"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/test.texture_profiles"
-        :cljfx-form-view
-      ]
-      [
-        "/Assets/main/Images/TestTown.tilesource"
+        "/main/town.collection"
         :scene
       ]
       [
@@ -97,11 +37,19 @@
         :scene
       ]
       [
-        "/Assets/main/Images/TileMaps/MainMap.tilemap"
+        "/Assets/main/Images/Tilesource.tilesource"
         :scene
       ]
       [
-        "/main/Scripts/Modules/ItemProperties.lua"
+        "/main/Scripts/Modules/default.render_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Dungeons.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/Momentum.lua"
         :code
       ]
       [
@@ -109,19 +57,51 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/ShopInventory.lua"
+        "/main/Scripts/Modules/ItemProperties.lua"
         :code
       ]
       [
-        "/main/Scripts/Map/TutorialTown/tutorial.script"
+        "/main/Scripts/Modules/CharacterSprites.lua"
         :code
       ]
       [
-        "/main/Scripts/GUI/Inventory.gui_script"
+        "/main/GUI files/LevelComplete.gui"
+        :scene
+      ]
+      [
+        "/main/GUI files/PauseMenu.gui"
+        :scene
+      ]
+      [
+        "/main/GUI files/splash.gui"
+        :scene
+      ]
+      [
+        "/main/GUI files/Settings.gui"
+        :scene
+      ]
+      [
+        "/main/Objects/Inventory.go"
+        :scene
+      ]
+      [
+        "/main/Objects/Player/playercollision.collisionobject"
+        :scene
+      ]
+      [
+        "/main/Objects/Player/Operator.go"
+        :scene
+      ]
+      [
+        "/main/Level.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Modules/NPCProperties.lua"
         :code
       ]
       [
-        "/main/Scripts/Map/map.script"
+        "/main/Scripts/Modules/Pathfinder.lua"
         :code
       ]
       [
@@ -129,27 +109,47 @@
         :code
       ]
       [
-        "/main/Scripts/GUI/mainMenu.gui_script"
+        "/main/Scripts/GUI/Inventory.gui_script"
         :code
-      ]
-      [
-        "/main/Scripts/Map/PlayerMap.script"
-        :code
-      ]
-      [
-        "/Assets/main/Images/TileMaps/TutorialTown.tilemap"
-        :scene
-      ]
-      [
-        "/main/main.collection"
-        :scene
       ]
       [
         "/main/MainMap.collection"
         :scene
       ]
       [
-        "/main/town.collection"
+        "/main/Scripts/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/Modules/ShopInventory.lua"
+        :code
+      ]
+      [
+        "/main/Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/GUI files/MainMenu.gui"
+        :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/main/Scripts/GUI/pause.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/main.collection"
         :scene
       ]
     ]

@@ -13,7 +13,7 @@ instances {
 }
 instances {
   id: "LevelComplete"
-  prototype: "/main/Objects/Sensors/LevelComplete.go"
+  prototype: "/main/Objects/Player/Sensors/LevelComplete.go"
   position {
     x: 4407.0
     y: 1177.0
@@ -26,7 +26,7 @@ instances {
 }
 instances {
   id: "OutOfBounds"
-  prototype: "/main/Objects/Sensors/OutOfBounds.go"
+  prototype: "/main/Objects/Player/Sensors/OutOfBounds.go"
   position {
     x: 2958.0
     y: -4821.0
@@ -37,7 +37,7 @@ instances {
 }
 instances {
   id: "OutOfBounds1"
-  prototype: "/main/Objects/Sensors/OutOfBounds.go"
+  prototype: "/main/Objects/Player/Sensors/OutOfBounds.go"
   position {
     x: -2785.0
   }

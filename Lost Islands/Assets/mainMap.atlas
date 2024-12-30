@@ -1,9 +1,0 @@
-animations {
-  id: "Player"
-  images {
-    image: "/Assets/main/Images/TileMaps/Testplayer/Sprite-0001.png"
-  }
-  playback: PLAYBACK_LOOP_FORWARD
-  fps: 60
-}
-extrude_borders: 2

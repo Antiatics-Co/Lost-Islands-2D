@@ -269,23 +269,11 @@ function on_input(self, action_id, action)
 		print("inventory opened")
 
 		if invopen then  -- update to be mroe dynamic
-			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-				msg.post("Level:/Player#Player", "RecievingInput")
-				msg.post("main#Level", "set_time_step", { factor = 0, mode = 0 })
-
-			elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
-				msg.post("main#MainMap", "set_time_step", { factor = 0, mode = 0 })
-				msg.post("MainMap:/PlayerMap#Player", "recievingInput")
-			end
+			msg.post("main#Map", "set_time_step", { factor = 0, mode = 0 })
+			msg.post("map:/Player#Player", "recievingInput")
 		else
-			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-				msg.post("Level:/Player#Player", "RecievingInput")
-				msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
-
-			elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
-				msg.post("main#MainMap", "set_time_step", { factor = 1, mode = 1 })
-				msg.post("MainMap:/PlayerMap#Player", "recievingInput")
-			end
+			msg.post("main#Map", "set_time_step", { factor = 1, mode = 1 })
+			msg.post("map:/Player#Player", "recievingInput")
 		end
 	end
 end

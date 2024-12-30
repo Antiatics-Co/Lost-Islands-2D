@@ -4,20 +4,14 @@ fonts {
   font: "/builtins/fonts/default.font"
 }
 nodes {
-  position {
-    x: 474.0
-    y: 318.0
-  }
-  scale {
-    x: 5.114262
-    y: 7.081202
-  }
   size {
-    x: 200.0
-    y: 100.0
+    x: 640.0
+    y: 360.0
   }
   type: TYPE_BOX
   id: "death"
+  pivot: PIVOT_SW
+  adjust_mode: ADJUST_MODE_ZOOM
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
   enabled: false

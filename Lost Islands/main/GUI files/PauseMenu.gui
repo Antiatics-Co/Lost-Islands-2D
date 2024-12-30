@@ -9,16 +9,12 @@ textures {
 }
 nodes {
   position {
-    x: 480.0
-    y: 319.0
-  }
-  scale {
-    x: 4.815816
-    y: 6.476295
+    x: 320.0
+    y: 180.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 640.0
+    y: 360.0
   }
   color {
     x: 0.6
@@ -27,6 +23,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "pausemenu"
+  adjust_mode: ADJUST_MODE_ZOOM
   inherit_alpha: true
   alpha: 0.72
   size_mode: SIZE_MODE_AUTO
@@ -35,10 +32,10 @@ nodes {
 nodes {
   position {
     x: -0.622947
+    y: 1.0
   }
   scale {
-    x: 0.774195
-    y: 0.330635
+    x: 2.0
     z: 1.06
   }
   size {
@@ -82,11 +79,10 @@ nodes {
 }
 nodes {
   position {
-    y: -15.904155
+    y: -32.904156
   }
   scale {
-    x: 0.754734
-    y: 0.313346
+    x: 2.0
   }
   type: TYPE_BOX
   texture: "Game/button"
@@ -128,11 +124,10 @@ nodes {
 }
 nodes {
   position {
-    y: -32.11713
+    y: -68.11713
   }
   scale {
-    x: 0.738834
-    y: 0.401357
+    x: 2.0
   }
   type: TYPE_BOX
   texture: "Game/button"
@@ -174,11 +169,10 @@ nodes {
 nodes {
   position {
     x: -0.622947
-    y: 16.367382
+    y: 36.367382
   }
   scale {
-    x: 0.774195
-    y: 0.330635
+    x: 2.0
     z: 1.06
   }
   type: TYPE_BOX
@@ -220,7 +214,11 @@ nodes {
 nodes {
   position {
     x: 0.415298
-    y: 37.67586
+    y: 74.67586
+  }
+  scale {
+    x: 2.0
+    y: 1.5
   }
   size {
     x: 200.0

@@ -62,55 +62,19 @@ local function save() --Temporarily sending default values for testing purposes,
 	
 end
 
-local function disableMainMap()
-	msg.post("main:/main#MainMap", "disable")
-	msg.post("main:/main#MainMap", "unload")
-end
-
 function on_message(self, message_id, message, sender)
-	collectionTracker.on_message(self, message_id, message, sender)
-
-	if message_id == hash("testTown") then
-		msg.post("towns#testTown", "load")
-		msg.post("towns#testTown", "enable")
-
-		disableMainMap()
-end
-
-	if message_id == hash("enterDungeon") then
-		print("enable Level")
-
-		msg.post("main:/main#Level", "load")
-		msg.post("main:/main#Level", "enable")
-		
-		print("disable map")
-		disableMainMap()
-	end
-			--Enter messages are tempory until a better solution can be made
-	if message_id == hash("enterMap") then
-		print("enable map")
-		msg.post("main:/main#MainMap", "load")
-		msg.post("main:/main#MainMap", "enable")
-		
-		print("disable level")
-
-		msg.post("main:/main#Level", "disable")
-		msg.post("main:/main#Level", "unload")
-	end 
 	
 	if message_id == FILESAVE then
 		print("fileSave MainMenu")
 		save()
 	end
 
-	if message_id == TOMAINMENU then --NEEDS EDITTING***************************************
+	if message_id == TOMAINMENU then
 		gui.set_enabled(gui.get_node("main"), true)
 		
-		local url = msg.url("main","/main", collectionTracker.get_collection_key())
-		print("shutting down url: " .. url)
 		msg.post("Inventory#Inventory", "start")
-		msg.post(url, "disable")
-		msg.post(url, "unload")
+		msg.post("#Map", "disable")
+		msg.post("#Map", "unload")
 
 		inDungeon = false
 	end
@@ -141,23 +105,12 @@ function on_input(self, action_id, action)
 			animation(start, "button") -- TO DO: Extend time on animation
 			inDungeon = true
 			gui.set_enabled(gui.get_node("main"), false)
-			--msg.post("Inventory#Inventory", "openInv")
+
 			msg.post("menu#PauseMenu", "start")
 			msg.post("Inventory#Inventory", "start")
-			if collectionTracker.key ~= nil then
-				msg.post("#".. collectionTracker.key, "load")
-				msg.post("#".. collectionTracker.key, "enable")
-			else
-				print("Collection Key nil")
-				msg.post("#MainMap", "load")
-				msg.post("#MainMap", "enable")
-			end
 			
-			--[[
-			
-			msg.post("#Level", "load")
-			msg.post("#Level", "enable")
-			]]
+			msg.post("#Map", "load")
+			msg.post("#Map", "enable")
 			
 			msg.post("#music", "stopAll")
 		end

@@ -9,6 +9,7 @@
 -------------------------------------------------------------------
 local po = require("main.Scripts.Modules.PlayerPosition")
 local mo = require("main.Scripts.Modules.Momentum")
+
 --PREHASHING-------------------------------------------------------
 
 local STOPGRAVITY = hash("stopGravity")
@@ -21,7 +22,6 @@ local TOUCH = hash("touch")
 local RIGHT = hash("right")
 local LEFT = hash("left")
 local ESC = hash("esc")
-local INITPLAYERTRACKING = hash("init_player")
 
 -------------------------------------------------------------------
 
@@ -46,24 +46,26 @@ function init(self) --constructor
 	self.groundContact = false
 	self.previousGroundContact = false
 	self.correction = vmath.vector3(0, 0, 0)
+
+	trackPlayer = true
 end
 
-function walk(self) -- custom func to handle hori movement
+local function walk(self) -- custom func to handle hori movement
 	self.velocity.x = BASEVELOCITY * self.direction
 end
 
-function flip(direction)
+local function flip(direction)
 	sprite.set_hflip("#sprite", direction < 0) --flips sprite horizontally, first file, 2nd true false if they Should be flipped
 end
 
-function play_animation(self, newAnimation)
+local function play_animation(self, newAnimation)
 	if self.animation ~= newAnimation then
 		sprite.play_flipbook("#sprite", newAnimation) --first is file that controls it, second is name of animation
 		self.animation = newAnimation
 	end
 end
 
-function animate(self)
+local function animate(self)
 	if self.groundContact then
 		if self.velocity.x == 0 then
 			play_animation(self, "idle")
@@ -120,7 +122,7 @@ function fixed_update(self, dt)
 	end
 end
 
-function handleLevelCollisions(self, normal, distance)
+local function handleLevelCollisions(self, normal, distance)
 
 	print("Collision Normal:", normal)
 	
@@ -162,8 +164,6 @@ function handleLevelCollisions(self, normal, distance)
 	end
 end
 
-
-
 function on_message(self, message_id, message, sender)
 	if message_id == STOPGRAVITY then
 		GRAVITY = 0
@@ -186,38 +186,10 @@ function on_message(self, message_id, message, sender)
 		--gravity = true
 		print("restarting inputs")
 	end
-	
-	if message_id == INITPLAYERTRACKING then
-		trackPlayer = true
-		if message.incrementer == 1 and po.getPosition() ~= nil then
-			go.set_position(po.getPosition())
-		end
-	end
 end
 
 
 function on_input(self, action_id, action)
-
-	--[[if action_id ~= hash("up") then
-		if action_id ~= hash("down") then
-			if action_id ~= hash("touch") then
-				self.direction = (action_id == hash("right")) and DIRECTIONRIGHT or DIRECTIONLEFT
-				flip(self.direction)
-				walk(self)
-			else
-				timer.delay(1, true, function()
-					factory.create("#factory")
-				end)
-			end
-		else
-		end
-			
-	elseif action.pressed and self.groundContact then
-		self.velocity.y = JUMPTAKEOFF
-		self.groundContact = false
-		particlefx.play("#dust")
-		--sound.play("#Jumping")
-	end]]--
 	
 	if recievingInputs == true then
 		if action_id == UP and self.groundContact then

@@ -18,8 +18,6 @@ local ITEMSREADY = hash("itemsReady")
 local SAVE = hash("save")
 -----------------------------------------------------------------
 
-
-local location = { "" , "", "" } --first set like an adress ex. { "MAP" , "TOWNPLACE", "INN" } or for a dungeon { "dungeon", "level", "bossrm" }
 local position = vmath.vector3(0, 0, 0)
 local items = { 0, 0 } --First Zero is item number and second is the number of that item
 local elements = 1
@@ -61,6 +59,8 @@ end
 
 function on_message(self, message_id, message)
 	if message_id == SAVE then
+		msg.post("Inventory#Inventory", "fileSave")
+		msg.post( "main#MainMenu", "fileSave")
 		save()
 	end
 	
@@ -87,7 +87,6 @@ function on_message(self, message_id, message)
 		print("pauseOpen: " .. tostring(pauseOpen)) -- Check toggle
 		gui.set_enabled(gui.get_node("pausemenu"), pauseOpen)
 		print("Pause menu set to: " .. tostring(pauseOpen))
-		--collectionTracker.print_loaded_collections()
 	end
 	
 	
@@ -100,37 +99,13 @@ function on_input(self, action_id, action)
 
 	if action_id == hash("esc") and MainMenu == false and action.released then
 		pauseOpen = not pauseOpen
-		print("pauseOpen: " .. tostring(pauseOpen))
-		gui.set_enabled(gui.get_node("pausemenu"), pauseOpen)
-		print("Is pausemenu enabled? " .. tostring(gui.is_enabled(gui.get_node("pausemenu"))))
-
-		local isLoaded = collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap"))
-		print("Is MainMap loaded? " .. tostring(isLoaded))
-
-		print("printing loaded collections in esc")
-		collectionTracker.print_loaded_collections()
 
 		if pauseOpen then
-			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-				msg.post("Level:/Player#Player", "recievingInput")
-				msg.post("main#Level", "set_time_step", { factor = 0, mode = 0 })
-				print("turning off inputs")
-				
-			elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
-				msg.post("main#MainMap", "set_time_step", { factor = 0, mode = 0 })
-				msg.post("MainMap:/PlayerMap#PlayerMap", "recievingInput")
-				
-				print("turning off inputs")
-			end
+				msg.post("Map:/Player#Player", "recievingInput")
+				msg.post("main#Map", "set_time_step", { factor = 0, mode = 0 })
 		else
-			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-				msg.post("Level:/Player#Player", "recievingInput")
-				msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
-
-			elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
-				msg.post("main#MainMap", "set_time_step", { factor = 1, mode = 1 })
-				msg.post("MainMap:/PlayerMap#PlayerMap", "recievingInput")
-			end
+				msg.post("Map:/Player#Player", "recievingInput")
+				msg.post("main#Map", "set_time_step", { factor = 1, mode = 1 })
 		end
 	end 
 
@@ -141,14 +116,10 @@ function on_input(self, action_id, action)
 			
 			animation(resume, "button") -- TO DO: Extend time on animation
 			
-			if collectionTracker.is_collection_loaded(msg.url("main:/main#Level")) then
-				msg.post("main#Level", "set_time_step", { factor = 1, mode = 1 })
-				msg.post("Level:/Player#Player", "RecievingInput")
+			
+			msg.post("main#Map", "set_time_step", { factor = 1, mode = 1 })
+			msg.post("Map:/Player#Player", "RecievingInput")
 				
-			elseif collectionTracker.is_collection_loaded(msg.url("main:/main#MainMap")) then
-				msg.post("main#MainMap", "set_time_step", { factor = 1, mode = 1 })
-				msg.post("MainMap:/PlayerMap#PlayerMap", "recievingInput")
-		end
 			gui.set_enabled(gui.get_node("pausemenu"), false)
 			pauseOpen = not pauseOpen
 		end
@@ -175,7 +146,6 @@ function on_input(self, action_id, action)
 		if gui.pick_node(sav, action.x, action.y) then
 			msg.post("Inventory#Inventory", "fileSave")
 			msg.post( "main#MainMenu", "fileSave")
-			
 		end
 	end
 end

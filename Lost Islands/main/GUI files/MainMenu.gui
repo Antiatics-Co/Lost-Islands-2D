@@ -9,38 +9,41 @@ textures {
 }
 nodes {
   position {
-    x: 495.0
-    y: 335.0
-  }
-  scale {
-    x: 4.906924
-    y: 6.669923
+    x: 320.0
+    y: 180.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 640.0
+    y: 360.0
   }
   type: TYPE_BOX
   id: "main"
+  adjust_mode: ADJUST_MODE_STRETCH
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: -1.0
+    y: -11.0
+  }
   scale {
-    x: 0.46034
-    y: 0.173664
+    x: 2.0
   }
   type: TYPE_BOX
   texture: "Game/button"
   id: "start"
+  adjust_mode: ADJUST_MODE_ZOOM
   parent: "main"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: -1.0
+  }
   scale {
-    x: 0.859515
-    y: 1.400211
+    x: 0.5
   }
   size {
     x: 200.0
@@ -71,23 +74,27 @@ nodes {
 }
 nodes {
   position {
-    y: -7.0
+    x: -1.0
+    y: -50.0
   }
   scale {
-    x: 0.46034
-    y: 0.173664
+    x: 2.0
   }
   type: TYPE_BOX
   texture: "Game/button"
   id: "settingsButton"
+  adjust_mode: ADJUST_MODE_ZOOM
   parent: "main"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: -1.0
+    y: -1.0
+  }
   scale {
-    x: 0.859515
-    y: 1.400211
+    x: 0.5
   }
   size {
     x: 200.0
@@ -118,23 +125,26 @@ nodes {
 }
 nodes {
   position {
-    y: -14.692824
+    x: -1.0
+    y: -88.692825
   }
   scale {
-    x: 0.46034
-    y: 0.173664
+    x: 2.0
   }
   type: TYPE_BOX
   texture: "Game/button"
   id: "quitGame"
+  adjust_mode: ADJUST_MODE_ZOOM
   parent: "main"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: -1.0
+  }
   scale {
-    x: 0.723025
-    y: 1.400211
+    x: 0.5
   }
   size {
     x: 200.0
@@ -165,34 +175,29 @@ nodes {
 }
 nodes {
   position {
-    y: 30.585058
-  }
-  scale {
-    x: 0.364559
-    y: 0.202427
+    x: -1.0
+    y: 100.58506
   }
   type: TYPE_BOX
   texture: "Game/Title"
   id: "Title"
+  adjust_mode: ADJUST_MODE_ZOOM
   parent: "main"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 495.0
-    y: 313.0
-  }
-  scale {
-    x: 3.523665
-    y: 5.633076
+    x: 319.0
+    y: 180.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 640.0
+    y: 360.0
   }
   type: TYPE_BOX
   id: "corruptFile"
+  adjust_mode: ADJUST_MODE_STRETCH
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
   enabled: false
