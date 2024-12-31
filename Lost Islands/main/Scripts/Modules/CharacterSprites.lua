@@ -16,5 +16,6 @@ M.sprite = {
 	shoes = 0,
 	skinTone = 0
 }
+
 return(M)
 
