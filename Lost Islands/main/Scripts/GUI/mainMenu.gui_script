@@ -106,11 +106,7 @@ function on_input(self, action_id, action)
 			inDungeon = true
 			gui.set_enabled(gui.get_node("main"), false)
 
-			msg.post("menu#PauseMenu", "start")
-			msg.post("Inventory#Inventory", "start")
-			
-			msg.post("#Map", "load")
-			msg.post("#Map", "enable")
+			msg.post("character#CharacterCreator", "toggle")
 			
 			msg.post("#music", "stopAll")
 		end

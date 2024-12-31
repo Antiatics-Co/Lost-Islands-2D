@@ -1,3 +1,4 @@
+script: "/main/Scripts/GUI/characterCreator.gui_script"
 textures {
   name: "mockups"
   texture: "/Assets/mockups.atlas"
@@ -14,6 +15,7 @@ nodes {
   inherit_alpha: true
   alpha: 0.6
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
@@ -35,6 +37,7 @@ nodes {
   inherit_alpha: true
   clipping_visible: false
   size_mode: SIZE_MODE_AUTO
+  enabled: false
   visible: false
 }
 nodes {

@@ -25,18 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Modules/items.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/CharacterSprites.lua"
-        :code
-      ]
-      [
         "/main/GUI files/LevelComplete.gui"
         :scene
       ]
@@ -109,10 +97,6 @@
         :code
       ]
       [
-        "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
         "/main/GUI files/MainMenu.gui"
         :scene
       ]
@@ -137,20 +121,36 @@
         :scene
       ]
       [
+        "/Assets/mockups.atlas"
+        :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/main/GUI files/CharacterCreation.gui"
+        :scene
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
         "/main/main.collection"
         :scene
       ]
       [
-        "/Assets/mockups.atlas"
-        :scene
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
       ]
       [
         "/main/GUI files/CharacterCreator.gui"
         :scene
       ]
       [
-        "/game.project"
-        :cljfx-form-view
+        "/main/Scripts/GUI/characterCreation.gui_script"
+        :code
       ]
     ]
   }

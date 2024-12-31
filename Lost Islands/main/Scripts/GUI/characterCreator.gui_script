@@ -1,0 +1,63 @@
+--@Author Aidan Cox
+--@Title Character Creration Menu
+--@Description
+--	Handles character creation menu
+--@Version 1
+
+local char = require("main.Scripts.Modules.CharacterSprites")
+local eyes
+local mouth
+local hair
+local shoes
+local trousers
+local skinTone
+local shirt
+
+local tog = false
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+end
+
+function update(self, dt)
+	
+end
+
+local function toggle()
+	tog = not tog
+	gui.set_enabled(gui.get_node("root"), tog)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("toggle") then
+		toggle()
+	end
+end
+
+function on_input(self, action_id, action)
+	local node
+	
+	if action_id == hash("touch") and tog then
+		node = "attribute_shoes"
+
+		
+	end
+end
+
+function final(self)
+	char.setEyes(eyes)
+	char.setHair(hair)
+	char.setMouth(mouth)
+	char.setShirt(shirt)
+	char.setShoes(shoes)
+	char.setSkinTone(skinTone)
+	char.setTrousers(trousers)
+
+	msg.post("menu#PauseMenu", "start")
+	msg.post("Inventory#Inventory", "start")
+
+	toggle()
+
+	msg.post("#Map", "load")
+	msg.post("#Map", "enable")
+end
