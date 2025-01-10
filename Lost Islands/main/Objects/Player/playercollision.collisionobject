@@ -3,7 +3,8 @@ mass: 0.0
 friction: 0.1
 restitution: 0.5
 group: "player"
-mask: "level"
+mask: "ground"
+mask: "wall"
 embedded_collision_shape {
   shapes {
     shape_type: TYPE_BOX

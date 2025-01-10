@@ -29,7 +29,7 @@ embedded_instances {
   "mass: 0.0\\n"
   "friction: 0.1\\n"
   "restitution: 0.5\\n"
-  "group: \\\"level\\\"\\n"
+  "group: \\\"ground, wall\\\"\\n"
   "mask: \\\"player\\\"\\n"
   "\"\n"
   "}\n"

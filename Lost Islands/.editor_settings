@@ -25,22 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/GUI files/splash.gui"
-        :scene
-      ]
-      [
-        "/main/GUI files/Settings.gui"
-        :scene
-      ]
-      [
-        "/main/Objects/Inventory.go"
-        :scene
-      ]
-      [
-        "/main/Objects/Player/playercollision.collisionobject"
-        :scene
-      ]
-      [
         "/main/Objects/Player/Operator.go"
         :scene
       ]
@@ -81,10 +65,6 @@
         :code
       ]
       [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/pause.gui_script"
         :code
       ]
@@ -101,14 +81,6 @@
         :scene
       ]
       [
-        "/Assets/main/Images/Tilesource.tilesource"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/TileMaps/Test.tilemap"
-        :scene
-      ]
-      [
         "/main/GUI files/Death.gui"
         :scene
       ]
@@ -117,27 +89,7 @@
         :scene
       ]
       [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
         "/main/GUI files/CharacterCreation.gui"
-        :scene
-      ]
-      [
-        "/main/map.collection"
-        :scene
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/GUI files/CharacterCreator.gui"
         :scene
       ]
       [
@@ -149,7 +101,55 @@
         :code
       ]
       [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/main/Scripts/map.script"
+        :code
+      ]
+      [
+        "/main/GUI files/CharacterCreator.gui"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/Modules/default.render_script"
+        :code
+      ]
+      [
+        "/main/Objects/Player/Player.go"
+        :scene
+      ]
+      [
         "/main/Scripts/GUI/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/main/Objects/Player/playercollision.collisionobject"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/TileMaps/Test.tilemap"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/Tilesource.tilesource"
+        :scene
+      ]
+      [
+        "/main/Scripts/GUI/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Player.script"
         :code
       ]
     ]

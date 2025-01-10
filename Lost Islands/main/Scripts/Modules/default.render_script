@@ -146,12 +146,14 @@ function init(self)
     -- msg.post("@render:", "use_fixed_projection", { near = -1, far = 1, zoom = 2 })
     -- msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
 
+    
     local state = create_state()
     self.state = state
     local camera_world = create_camera(state, "camera_world", true)
     init_camera(camera_world, get_stretch_projection)
     local camera_gui = create_camera(state, "camera_gui")
     init_camera(camera_gui, get_gui_projection)
+    --render.set_camera("map:/Player/Operator#camera", { use_frustum = true }) for some reson it can't find the camera
     update_state(state)
     --path.drawGridLines()
 end
