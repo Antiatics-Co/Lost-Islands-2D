@@ -25,18 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Objects/Player/Operator.go"
-        :scene
-      ]
-      [
-        "/main/Level.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/Modules/NPCProperties.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/Pathfinder.lua"
         :code
       ]
@@ -69,10 +57,6 @@
         :code
       ]
       [
-        "/main/GUI files/MainMenu.gui"
-        :scene
-      ]
-      [
         "/main/GUI files/io.gui"
         :scene
       ]
@@ -97,24 +81,8 @@
         :code
       ]
       [
-        "/main/Scripts/Modules/CharacterSprites.lua"
-        :code
-      ]
-      [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
         "/main/Scripts/map.script"
         :code
-      ]
-      [
-        "/main/GUI files/CharacterCreator.gui"
-        :scene
-      ]
-      [
-        "/main/main.collection"
-        :scene
       ]
       [
         "/main/Scripts/Modules/default.render_script"
@@ -123,10 +91,6 @@
       [
         "/main/Objects/Player/Player.go"
         :scene
-      ]
-      [
-        "/main/Scripts/GUI/characterCreator.gui_script"
-        :code
       ]
       [
         "/main/map.collection"
@@ -145,12 +109,48 @@
         :scene
       ]
       [
+        "/main/Scripts/Player.script"
+        :code
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/Scripts/music.script"
+        :code
+      ]
+      [
+        "/Assets/skins.atlas"
+        :scene
+      ]
+      [
+        "/Assets/Game.atlas"
+        :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
         "/main/Scripts/GUI/mainMenu.gui_script"
         :code
       ]
       [
-        "/main/Scripts/Player.script"
+        "/main/GUI files/MainMenu.gui"
+        :scene
+      ]
+      [
+        "/main/Scripts/Modules/CharacterSprites.lua"
         :code
+      ]
+      [
+        "/main/Scripts/GUI/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI files/CharacterCreator.gui"
+        :scene
       ]
     ]
   }

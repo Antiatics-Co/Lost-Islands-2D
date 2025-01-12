@@ -1,7 +1,7 @@
 animations {
   id: "character creator"
   images {
-    image: "/Assets/main/Images/mockups/character  creation.png"
+    image: "/main/mockups/character  creation.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
 }

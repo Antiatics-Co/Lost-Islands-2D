@@ -3,6 +3,10 @@ textures {
   name: "mockups"
   texture: "/Assets/mockups.atlas"
 }
+textures {
+  name: "skins"
+  texture: "/Assets/skins.atlas"
+}
 nodes {
   position {
     x: 320.0
@@ -112,9 +116,18 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: -11.0
+    y: -151.0
+  }
   size {
-    x: 200.0
-    y: 100.0
+    x: 191.0
+    y: 50.0
+  }
+  color {
+    x: 0.2
+    y: 0.0
+    z: 0.2
   }
   type: TYPE_BOX
   id: "done"

@@ -3,6 +3,7 @@
 local STOPALL = hash("stopAll")
 local MAINMENUTHEME = hash("enterMain")
 local TUTORIALDUNGEONTHEME = hash("level1")
+local CHARACTERCREATOR = hash("character")
 
 
 
@@ -34,16 +35,21 @@ end
 function on_message(self, message_id, message, sender)
 
 	if message_id == STOPALL then
-		print("Stopping all sounds")
 		sound.stop(".")
+	
+	
+	elseif message_id == MAINMENUTHEME then
+		sound.play("#MainMenuTheme")
+
+
+	elseif message_id == TUTORIALDUNGEONTHEME then
+		sound.play("#Theme1")
+
 	end
 	
-	if message_id == MAINMENUTHEME then
-		sound.play("#MainMenuTheme")
-	end
-
-	if message_id ==  TUTORIALDUNGEONTHEME then
-		sound.play("#Theme1")
+	if message_id == CHARACTERCREATOR then
+		print("character sounds")
+		sound.play("#creator")
 	end
 
 end

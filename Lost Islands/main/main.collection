@@ -48,6 +48,13 @@ embedded_instances {
   "  data: \"collection: \\\"/main/map.collection\\\"\\n"
   "\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"creator\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/Assets/Sounds/A Flock of Seagulls - I Ran (So Far Away).ogg\\\"\\n"
+  "looping: 1\\n"
+  "\"\n"
+  "}\n"
   ""
 }
 embedded_instances {
