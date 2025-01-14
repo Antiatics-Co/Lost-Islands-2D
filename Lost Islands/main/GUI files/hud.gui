@@ -4,43 +4,19 @@ fonts {
   font: "/builtins/fonts/default.font"
 }
 textures {
-  name: "Game"
-  texture: "/Assets/Game.atlas"
+  name: "mockups"
+  texture: "/Assets/mockups.atlas"
 }
 nodes {
   position {
-    x: 150.0
-    y: 607.0
-  }
-  scale {
-    x: 1.16428
-    y: 0.938359
+    x: 511.0
+    y: 327.0
   }
   type: TYPE_BOX
-  texture: "Game/healthBar"
-  id: "healthBar"
-  xanchor: XANCHOR_LEFT
-  yanchor: YANCHOR_TOP
+  texture: "mockups/hud"
+  id: "mockup"
   inherit_alpha: true
-  alpha: 0.84
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 150.0
-    y: 561.0
-  }
-  scale {
-    x: 1.16428
-    y: 0.938359
-  }
-  type: TYPE_BOX
-  texture: "Game/energyBar"
-  id: "energyBar"
-  xanchor: XANCHOR_LEFT
-  yanchor: YANCHOR_TOP
-  inherit_alpha: true
-  alpha: 0.84
+  alpha: 0.83
   size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"

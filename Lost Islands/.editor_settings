@@ -25,10 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Modules/Pathfinder.lua"
-        :code
-      ]
-      [
         "/main/Scripts/Modules/CollectionTracker.lua"
         :code
       ]
@@ -66,10 +62,6 @@
       ]
       [
         "/main/GUI files/Death.gui"
-        :scene
-      ]
-      [
-        "/Assets/mockups.atlas"
         :scene
       ]
       [
@@ -125,10 +117,6 @@
         :scene
       ]
       [
-        "/Assets/Game.atlas"
-        :scene
-      ]
-      [
         "/game.project"
         :cljfx-form-view
       ]
@@ -150,6 +138,18 @@
       ]
       [
         "/main/GUI files/CharacterCreator.gui"
+        :scene
+      ]
+      [
+        "/Assets/mockups.atlas"
+        :scene
+      ]
+      [
+        "/Assets/Game.atlas"
+        :scene
+      ]
+      [
+        "/main/GUI files/hud.gui"
         :scene
       ]
     ]

@@ -51,64 +51,6 @@ animations {
   fps: 60
 }
 animations {
-  id: "healthBar"
-  images {
-    image: "/Assets/main/Images/Menu/FullBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/sixSeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/fiveSeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/fourSeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/threeSeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/twoSeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/oneSeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/Bar.png"
-  }
-  playback: PLAYBACK_NONE
-  fps: 60
-}
-animations {
-  id: "energyBar"
-  images {
-    image: "/Assets/main/Images/Menu/FullEnergyBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/sixSeventhEnergyBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/fiveEnergySeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/fourSeventhEnergyBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/threeSeventhEnergyBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/twoSeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/oneSeventhBar.png"
-  }
-  images {
-    image: "/Assets/main/Images/Menu/Bar.png"
-  }
-  playback: PLAYBACK_NONE
-  fps: 60
-}
-animations {
   id: "slime"
   images {
     image: "/Assets/main/Images/EnemySprites/enemyTest.png"
