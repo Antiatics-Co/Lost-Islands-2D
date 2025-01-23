@@ -1,7 +1,7 @@
 name: "MainMap"
 instances {
   id: "Player"
-  prototype: "/main/Objects/Player/Player.go"
+  prototype: "/main/Player/Player.go"
   children: "Operator"
   position {
     y: 56.0
@@ -9,7 +9,7 @@ instances {
 }
 instances {
   id: "Operator"
-  prototype: "/main/Objects/Player/Operator.go"
+  prototype: "/main/Player/Operator.go"
   position {
     z: 1.0
   }

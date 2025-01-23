@@ -1,22 +1,22 @@
 name: "main"
 instances {
   id: "IO"
-  prototype: "/main/Objects/IO.go"
+  prototype: "/main/Misc Objects/IO.go"
 }
 instances {
   id: "Inventory"
-  prototype: "/main/Objects/Inventory.go"
+  prototype: "/main/Misc Objects/Inventory.go"
 }
 scale_along_z: 0
 embedded_instances {
   id: "main"
   data: "components {\n"
   "  id: \"MainMenu\"\n"
-  "  component: \"/main/GUI files/MainMenu.gui\"\n"
+  "  component: \"/main/GUI/menus/MainMenu.gui\"\n"
   "}\n"
   "components {\n"
   "  id: \"Settings\"\n"
-  "  component: \"/main/GUI files/Settings.gui\"\n"
+  "  component: \"/main/GUI/menus/Settings.gui\"\n"
   "}\n"
   "components {\n"
   "  id: \"MainMenuTheme\"\n"
@@ -36,11 +36,11 @@ embedded_instances {
   "}\n"
   "components {\n"
   "  id: \"music\"\n"
-  "  component: \"/main/Scripts/music.script\"\n"
+  "  component: \"/main/Utility Scripts/music.script\"\n"
   "}\n"
   "components {\n"
   "  id: \"splash\"\n"
-  "  component: \"/main/GUI files/splash.gui\"\n"
+  "  component: \"/main/GUI/splash.gui\"\n"
   "}\n"
   "embedded_components {\n"
   "  id: \"Map\"\n"
@@ -60,16 +60,8 @@ embedded_instances {
 embedded_instances {
   id: "menu"
   data: "components {\n"
-  "  id: \"Death\"\n"
-  "  component: \"/main/GUI files/Death.gui\"\n"
-  "}\n"
-  "components {\n"
-  "  id: \"LevelComplete\"\n"
-  "  component: \"/main/GUI files/LevelComplete.gui\"\n"
-  "}\n"
-  "components {\n"
   "  id: \"PauseMenu\"\n"
-  "  component: \"/main/GUI files/PauseMenu.gui\"\n"
+  "  component: \"/main/GUI/menus/PauseMenu.gui\"\n"
   "}\n"
   ""
 }
@@ -81,7 +73,7 @@ embedded_instances {
   id: "character"
   data: "components {\n"
   "  id: \"CharacterCreator\"\n"
-  "  component: \"/main/GUI files/CharacterCreator.gui\"\n"
+  "  component: \"/main/GUI/menus/CharacterCreator.gui\"\n"
   "}\n"
   ""
 }

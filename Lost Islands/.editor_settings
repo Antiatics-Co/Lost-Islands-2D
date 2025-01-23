@@ -25,27 +25,51 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Modules/CollectionTracker.lua"
+        "/main/Scripts/Modules/CharacterSprites.lua"
         :code
       ]
       [
-        "/main/Scripts/GUI/Inventory.gui_script"
+        "/main/Scripts/Player.script"
         :code
       ]
       [
-        "/main/MainMap.collection"
+        "/main/Scripts/music.script"
+        :code
+      ]
+      [
+        "/main/Scripts/hud.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Level/Level1.script"
+        :code
+      ]
+      [
+        "/main/Level.collection"
         :scene
       ]
       [
-        "/main/Scripts/Modules/PlayerPosition.lua"
+        "/main/Scripts/Enemies/Enemy.script"
         :code
       ]
       [
-        "/main/Scripts/Modules/ShopInventory.lua"
+        "/main/Scripts/Enemies/firstMap/slimeMap.script"
         :code
       ]
       [
-        "/main/Scripts/IO.script"
+        "/main/Scripts/GUI/splash.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/IO.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/settings.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Elements/Fire/FireBall.script"
         :code
       ]
       [
@@ -53,83 +77,11 @@
         :code
       ]
       [
-        "/main/GUI files/io.gui"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/TileMaps/MainMap.tilemap"
-        :scene
-      ]
-      [
-        "/main/GUI files/Death.gui"
-        :scene
-      ]
-      [
-        "/main/GUI files/CharacterCreation.gui"
-        :scene
-      ]
-      [
-        "/main/Scripts/GUI/characterCreation.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/map.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Modules/default.render_script"
-        :code
-      ]
-      [
-        "/main/Objects/Player/Player.go"
-        :scene
-      ]
-      [
-        "/main/map.collection"
-        :scene
-      ]
-      [
-        "/main/Objects/Player/playercollision.collisionobject"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/TileMaps/Test.tilemap"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/Tilesource.tilesource"
-        :scene
-      ]
-      [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/music.script"
-        :code
-      ]
-      [
-        "/Assets/skins.atlas"
-        :scene
-      ]
-      [
-        "/game.project"
-        :cljfx-form-view
-      ]
-      [
         "/main/Scripts/GUI/mainMenu.gui_script"
         :code
       ]
       [
-        "/main/GUI files/MainMenu.gui"
-        :scene
-      ]
-      [
-        "/main/Scripts/Modules/CharacterSprites.lua"
+        "/main/Scripts/GUI/Inventory.gui_script"
         :code
       ]
       [
@@ -137,20 +89,68 @@
         :code
       ]
       [
-        "/main/GUI files/CharacterCreator.gui"
+        "/main/Scripts/GUI/LevelComplete.gui_script"
+        :code
+      ]
+      [
+        "/main/Scripts/Sensors/OutOfBounds.script"
+        :code
+      ]
+      [
+        "/main/Scripts/Sensors/LevelComplete.script"
+        :code
+      ]
+      [
+        "/main/Scripts/GUI/Death.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI files/io.gui"
         :scene
       ]
       [
-        "/Assets/mockups.atlas"
+        "/main/Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/Objects/Inventory.go"
         :scene
       ]
       [
-        "/Assets/Game.atlas"
+        "/main/Objects/IO.go"
         :scene
       ]
       [
-        "/main/GUI files/hud.gui"
+        "/main/Utility Scripts/Enemies/firstMap/slimeMap.script"
+        :code
+      ]
+      [
+        "/main/Equipment/woodsword.go"
         :scene
+      ]
+      [
+        "/main/Elements/Fire/FireBullet.go"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
+        "/Modules/default.render_script"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
+        :code
       ]
     ]
   }

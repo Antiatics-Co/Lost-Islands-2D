@@ -1,0 +1,201 @@
+script: "/main/GUI/menus/Menu Scripts/settings.gui_script"
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+textures {
+  name: "Game"
+  texture: "/Assets/Game.atlas"
+}
+nodes {
+  position {
+    x: 320.0
+    y: 178.0
+  }
+  size {
+    x: 640.0
+    y: 360.0
+  }
+  type: TYPE_BOX
+  id: "settings"
+  adjust_mode: ADJUST_MODE_STRETCH
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  position {
+    x: -1.857255
+    y: 20.162258
+  }
+  scale {
+    y: 0.350361
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "volume"
+  parent: "settings"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 102.75117
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "VolumeText"
+  parent: "volume"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    y: 2.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Volume\n"
+  "\n"
+  ""
+  font: "default"
+  id: "text"
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+  parent: "VolumeText"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -36.72062
+  }
+  scale {
+    y: 2.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "50\n"
+  "\n"
+  ""
+  font: "default"
+  id: "SetVolume"
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+  parent: "VolumeText"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 142.8486
+    y: -32.0
+  }
+  scale {
+    y: 1.5
+  }
+  type: TYPE_BOX
+  texture: "Game/plus"
+  id: "plus"
+  parent: "volume"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -121.32156
+    y: -38.33632
+  }
+  scale {
+    y: 1.5
+  }
+  type: TYPE_BOX
+  texture: "Game/minus"
+  id: "minus"
+  parent: "volume"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -75.387115
+  }
+  scale {
+    x: 2.0
+  }
+  type: TYPE_BOX
+  texture: "Game/button"
+  id: "back"
+  parent: "settings"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Return"
+  font: "default"
+  id: "backText"
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+  parent: "back"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
