@@ -2,6 +2,7 @@ name: "MainMap"
 instances {
   id: "Player"
   prototype: "/main/Player/Player.go"
+  children: "Equipment"
   children: "Operator"
   position {
     y: 56.0
@@ -13,6 +14,10 @@ instances {
   position {
     z: 1.0
   }
+}
+instances {
+  id: "Equipment"
+  prototype: "/main/Player/Equipment.go"
 }
 scale_along_z: 0
 embedded_instances {
