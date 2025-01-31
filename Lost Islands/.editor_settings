@@ -25,22 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Modules/CharacterSprites.lua"
-        :code
-      ]
-      [
-        "/main/Scripts/Player.script"
-        :code
-      ]
-      [
-        "/main/Scripts/music.script"
-        :code
-      ]
-      [
-        "/main/Scripts/hud.gui_script"
-        :code
-      ]
-      [
         "/main/Scripts/Level/Level1.script"
         :code
       ]
@@ -125,24 +109,8 @@
         :code
       ]
       [
-        "/main/Equipment/woodsword.go"
-        :scene
-      ]
-      [
         "/main/Elements/Fire/FireBullet.go"
         :scene
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
-        "/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
-        "/Modules/NPCProperties.lua"
-        :code
       ]
       [
         "/Modules/default.render_script"
@@ -151,6 +119,38 @@
       [
         "/main/Utility Scripts/IO.script"
         :code
+      ]
+      [
+        "/Modules/items.lua"
+        :code
+      ]
+      [
+        "/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
+        "/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/main/Equipment/woodsword.go"
+        :scene
+      ]
+      [
+        "/main/Player/Equipment.go"
+        :scene
+      ]
+      [
+        "/main/Player/Player.go"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/map.collection"
+        :scene
       ]
     ]
   }

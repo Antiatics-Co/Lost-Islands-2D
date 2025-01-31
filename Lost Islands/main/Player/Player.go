@@ -29,12 +29,6 @@ components {
   component: "/main/Player/playercollision.collisionobject"
 }
 embedded_components {
-  id: "factory"
-  type: "factory"
-  data: "prototype: \"/main/Elements/Fire/FireBullet.go\"\n"
-  ""
-}
-embedded_components {
   id: "sprite"
   type: "sprite"
   data: "default_animation: \"idle\"\n"
