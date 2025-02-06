@@ -2,12 +2,17 @@
 --Aidan Cox
 --enables equipment factories
 
-local function init(self)
-	
+local load
+
+function init(self)
+	msg.post("main:/IO#IO", "load")
+	msg.post("Inventory#Inventory", "loadItemData")
 end
 
+function fixed_update(self, dt)
+end
 
-local function on_message(self, message_id, message)
+function on_message(self, message_id, message)
 	if message_id == hash("EquipEnable") then
 		factory.create("#" .. message.name)
 	end

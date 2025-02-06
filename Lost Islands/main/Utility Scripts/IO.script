@@ -142,8 +142,6 @@ local function loadSave()
 		char.sprite = easyTable.character
 		mob.npc = easyTable.npcStatus
 	end
-
-	msg.post("Inventory#Inventory", "loadItemData")
 end
 
 

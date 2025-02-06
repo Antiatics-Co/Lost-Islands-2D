@@ -56,6 +56,7 @@ local function InvItemStatus(ID)
 	if items[ID.name].equipped then
 		print("Item Equipped:", ID.name)
 		gui.set_color(node, vmath.vector4(0, 1, 0, 1)) -- Change color to green
+		msg.post("Player/Equipment#equipment", "EquipEnable")
 	else
 		print("Item Unequipped:", ID.name)
 		gui.set_color(node, vmath.vector4(1, 1, 1, 1)) -- Change color to white
@@ -164,6 +165,7 @@ function init(self)
 	print("Script initialized")
 	disableLayer("org_")
 	--setupInventory()
+	start = not start
 end
 
 function on_message(self, message_id, message, sender)
@@ -196,10 +198,6 @@ function on_message(self, message_id, message, sender)
 			gui.set_enabled(gui.get_node("layer1"), invopen)
 			print("inventory opened")
 		end
-	end
-
-	if message_id == START then
-		start = not start
 	end
 end
 

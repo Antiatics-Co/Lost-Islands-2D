@@ -3,10 +3,6 @@ instances {
   id: "IO"
   prototype: "/main/Misc Objects/IO.go"
 }
-instances {
-  id: "Inventory"
-  prototype: "/main/Misc Objects/Inventory.go"
-}
 scale_along_z: 0
 embedded_instances {
   id: "main"

@@ -19,39 +19,11 @@
   }
   :code {
     :find {
-      :term "loadSave"
+      :term ""
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Scripts/Level/Level1.script"
-        :code
-      ]
-      [
-        "/main/Level.collection"
-        :scene
-      ]
-      [
-        "/main/Scripts/Enemies/Enemy.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Enemies/firstMap/slimeMap.script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/splash.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/IO.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/settings.gui_script"
-        :code
-      ]
       [
         "/main/Scripts/Elements/Fire/FireBall.script"
         :code
@@ -117,20 +89,20 @@
         :code
       ]
       [
-        "/main/Utility Scripts/IO.script"
-        :code
-      ]
-      [
-        "/Modules/items.lua"
-        :code
-      ]
-      [
         "/Modules/NPCProperties.lua"
         :code
       ]
       [
         "/Modules/ItemProperties.lua"
         :code
+      ]
+      [
+        "/main/Player/Player.go"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/MainMenu.gui"
+        :scene
       ]
       [
         "/main/Equipment/woodsword.go"
@@ -141,7 +113,11 @@
         :scene
       ]
       [
-        "/main/Player/Player.go"
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/CharacterCreator.gui"
         :scene
       ]
       [
@@ -149,8 +125,32 @@
         :scene
       ]
       [
-        "/main/map.collection"
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Inventory.gui"
         :scene
+      ]
+      [
+        "/main/Equipment/equScripts/equipment.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/Modules/items.lua"
+        :code
       ]
     ]
   }

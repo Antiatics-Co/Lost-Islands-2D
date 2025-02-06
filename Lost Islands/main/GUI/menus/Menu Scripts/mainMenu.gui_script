@@ -25,7 +25,6 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	msg.post("IO#IO", "load")
 	delaySplash()
 	gui.set_enabled(gui.get_node("main"), true)
 end

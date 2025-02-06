@@ -6,7 +6,7 @@
 local M = {}
 
 M.itemList = M.itemList or {  --attacks and speeds and combosnee to be redone
-	woodsword = { itemNum = 1, hasItem = true, equipped = false, node = "WOODSWORD", type = "main", attack = 10, speed = 0 },
+	woodsword = { itemNum = 1, hasItem = true, equipped = true, node = "WOODSWORD", type = "main", attack = 10, speed = 0 },
 	broadsword = { itemNum = 2,  hasItem = false, equipped = false, node = "BROADSWORD", type = "main", attack = 10, speed = 0   },
 	spear = { itemNum = 3, hasItem = false, equipped = false, node = "SPEAR", type = "main", attack = 10, speed = 0   },
 	bow = { itemNum = 4, hasItem = false, equipped = false, node = "BOW", type = "range", attack = 10, speed = 0   },
