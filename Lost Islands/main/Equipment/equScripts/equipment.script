@@ -1,0 +1,19 @@
+--02/05/2025
+--Aidan Cox
+--enables equipment factories
+
+local function init(self)
+	
+end
+
+
+local function on_message(self, message_id, message)
+	if message_id == hash("EquipEnable") then
+		factory.create("#" .. message.name)
+	end
+
+	if message_id == hash("start") then
+		print("start recieved")
+		
+	end
+end

@@ -1,0 +1,8 @@
+animations {
+  id: "woodsword"
+  images {
+    image: "/Assets/main/Images/Items/TestSword.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+extrude_borders: 2
