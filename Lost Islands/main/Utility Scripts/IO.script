@@ -161,9 +161,6 @@ local function file_exists(filename)
 	end
 end
 
-
-
-
 function value_to_string(value)
 	if type(value) == "table" then
 		return table_to_string(value)

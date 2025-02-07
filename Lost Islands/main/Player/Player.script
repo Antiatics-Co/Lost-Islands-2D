@@ -108,7 +108,7 @@ function fixed_update(self, dt)
 	po.setPosition(position)
 	animate(self)
 
-	print("Velocity Y:", self.velocity.y, "Ground Contact:", self.groundContact)
+	--print("Velocity Y:", self.velocity.y, "Ground Contact:", self.groundContact)
 	
 	-- Reset horizontal velocity after applying movement
 	self.velocity.x = 0
@@ -147,7 +147,7 @@ end
 
 local function handleLevelCollisions(self, normal, distance)
 
-	print("Collision Normal:", normal)
+	--print("Collision Normal:", normal)
 	
 	collisionX(self, normal, distance)
 

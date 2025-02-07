@@ -2,8 +2,6 @@
 --Aidan Cox
 --enables equipment factories
 
-local load
-
 function init(self)
 	msg.post("main:/IO#IO", "load")
 	msg.post("Inventory#Inventory", "loadItemData")
@@ -17,8 +15,7 @@ function on_message(self, message_id, message)
 		factory.create("#" .. message.name)
 	end
 
-	if message_id == hash("start") then
-		print("start recieved")
-		
+	if message_id == hash("unequip") then
+		go.delete("#" .. message.name)
 	end
 end

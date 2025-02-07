@@ -25,26 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Elements/Fire/FireBall.script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/pause.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/Inventory.gui_script"
-        :code
-      ]
-      [
-        "/main/Scripts/GUI/characterCreator.gui_script"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/LevelComplete.gui_script"
         :code
       ]
@@ -97,15 +77,7 @@
         :code
       ]
       [
-        "/main/Player/Player.go"
-        :scene
-      ]
-      [
         "/main/GUI/menus/MainMenu.gui"
-        :scene
-      ]
-      [
-        "/main/Equipment/woodsword.go"
         :scene
       ]
       [
@@ -113,15 +85,7 @@
         :scene
       ]
       [
-        "/main/map.collection"
-        :scene
-      ]
-      [
         "/main/GUI/menus/CharacterCreator.gui"
-        :scene
-      ]
-      [
-        "/main/main.collection"
         :scene
       ]
       [
@@ -129,19 +93,11 @@
         :code
       ]
       [
-        "/main/GUI/menus/Inventory.gui"
-        :scene
-      ]
-      [
-        "/main/Equipment/equScripts/equipment.script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/Modules/items.lua"
         :code
       ]
       [
@@ -149,7 +105,51 @@
         :code
       ]
       [
-        "/Modules/items.lua"
+        "/main/Misc Objects/IO.go"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/Player/Player.go"
+        :scene
+      ]
+      [
+        "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/main/Misc Objects/Inventory.go"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Inventory.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/PauseMenu.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/pause.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/Equipment/woodsword.go"
+        :scene
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/main/Equipment/equScripts/equipment.script"
         :code
       ]
     ]

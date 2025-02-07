@@ -55,7 +55,7 @@ nodes {
     z: 0.0
   }
   type: TYPE_TEXT
-  text: "New Game\n"
+  text: "Start\n"
   ""
   font: "default"
   id: "text"
