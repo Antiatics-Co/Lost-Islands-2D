@@ -25,10 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/GUI/LevelComplete.gui_script"
-        :code
-      ]
-      [
         "/main/Scripts/Sensors/OutOfBounds.script"
         :code
       ]
@@ -101,15 +97,7 @@
         :code
       ]
       [
-        "/main/Utility Scripts/IO.script"
-        :code
-      ]
-      [
         "/main/Misc Objects/IO.go"
-        :scene
-      ]
-      [
-        "/main/main.collection"
         :scene
       ]
       [
@@ -141,15 +129,27 @@
         :code
       ]
       [
+        "/main/Equipment/equScripts/equipment.script"
+        :code
+      ]
+      [
         "/main/Equipment/woodsword.go"
         :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
       ]
       [
         "/main/map.collection"
         :scene
       ]
       [
-        "/main/Equipment/equScripts/equipment.script"
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
         :code
       ]
     ]
