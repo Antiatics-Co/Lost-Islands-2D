@@ -25,14 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/Sensors/OutOfBounds.script"
-        :code
-      ]
-      [
-        "/main/Scripts/Sensors/LevelComplete.script"
-        :code
-      ]
-      [
         "/main/Scripts/GUI/Death.gui_script"
         :code
       ]
@@ -147,6 +139,14 @@
       [
         "/main/main.collection"
         :scene
+      ]
+      [
+        "/defsave/api/defsave_ext.script_api"
+        :code
+      ]
+      [
+        "/defsave/src/defsave.cpp"
+        :code
       ]
       [
         "/main/Utility Scripts/IO.script"

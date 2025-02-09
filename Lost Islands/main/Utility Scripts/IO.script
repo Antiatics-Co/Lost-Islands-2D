@@ -62,7 +62,7 @@ local config = { volume, resolution, configVersion = 1 }
 
 ---------------------------------------------------------------------------
 
-
+--[[
 local function save_readable_file(name, data)
 	-- Specify the full path
 	local path = "C:\\Users\\aidco\\AppData\\Roaming\\LostIslands\\" .. name
@@ -75,7 +75,9 @@ local function save_readable_file(name, data)
 	else
 		print("Error opening file for writing")
 	end
-end
+end]]
+
+----------------------------------------------------------------------------
 
 local function string_to_table(str)
 	local func, err = load("return " .. str)
@@ -118,8 +120,6 @@ local function loadSave()
 
 	local loadedChecksum = defsave.get(filename, "checksum")
 	print("Loaded Checksum: ", loadedChecksum)
-
-	defsave.save()
 
 	-- Debug: Print the entire item list
 	local itemList = itm.get_itemList()
@@ -247,8 +247,6 @@ local function reloadConfigDefaults()
 		defsave.set(configName, "checksum", checksum)
 		defsave.save(configName)
 	end
-
-	defsave.save(configName)
 end
 
 local function reloadSaveDefaults()
@@ -433,7 +431,7 @@ function init(self)
 	end
 
 	if file_exists(filename) then
-		verify_save_data(filename)
+		verify_save_data()
 	else
 		print("No save file found.")
 		setup_default_save()
@@ -441,8 +439,6 @@ function init(self)
 
 	-- Always check and load config
 	loadConfig()
-
-	defsave.save(filename)
 	print("Save file verified and config loaded.")
 end
 
@@ -454,9 +450,10 @@ function setup_default_save()
 	defsave.set(filename, "checksumDungeons", generate_checksum(table_to_string(dungeonStatus)))
 	defsave.set(filename, "item", items)
 	defsave.set(filename, "checksumItems", generate_checksum(table_to_string(items)))
+	defsave.save(filename)
 end
 
-function verify_save_data(filename)
+function verify_save_data()
 	-- Verification for Player Data
 	local loadedChecksum = defsave.get(filename, "checksumPlayer")
 	local loadedData = defsave.get(filename, "default")
@@ -479,8 +476,8 @@ function verify_save_data(filename)
 	end
 
 	-- Verification for Dungeon Data
-	local loadedChecksum = defsave.get(filename, "checksumDungeons")
-	local loadedData = defsave.get(filename, "dungeon")
+	loadedChecksum = defsave.get(filename, "checksumDungeons")
+	loadedData = defsave.get(filename, "dungeon")
 	if loadedData then
 		local current_checksum = generate_checksum(table_to_string(loadedData))
 		if current_checksum ~= loadedChecksum then
@@ -500,8 +497,8 @@ function verify_save_data(filename)
 	end
 
 	-- Verification for Item Data
-	local loadedChecksum = defsave.get(filename, "checksumItems")
-	local loadedData = defsave.get(filename, "item")
+	loadedChecksum = defsave.get(filename, "checksumItems")
+	loadedData = defsave.get(filename, "item")
 	if loadedData then
 		local current_checksum = generate_checksum(table_to_string(loadedData))
 		if current_checksum ~= loadedChecksum then
@@ -560,8 +557,6 @@ function loadConfig()
 		print("No config file found.")
 		setup_default_config()
 	end
-
-	defsave.save(configName)
 end
 
 function setup_default_config()
@@ -569,6 +564,7 @@ function setup_default_config()
 	local checksum = generate_checksum(table_to_string(config))
 	defsave.set(configName, "data", config)
 	defsave.set(configName, "checksum", checksum)
+	defsave.save();
 end
 
 
