@@ -95,7 +95,7 @@ local function save()
 	-- Check if items is defined and not nil
 
 	if items then
-		itm.set_itemList(items)
+		--itm.set_itemList(items)
 		print("Set Item List")
 		msg.post("menu#PauseMenu", "itemsReady")
 		print("Save Data Posted From Inventory")
@@ -130,8 +130,6 @@ local function consumeItem(itemNum)
 		items[itemNum.name].hasItem = false
 		if items[itemNum.name].equipped then
 			items[itemNum.name].equipped = false
-			
-			
 		end
 
 		setupInventory()		

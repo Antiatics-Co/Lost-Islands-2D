@@ -443,7 +443,7 @@ function init(self)
 end
 
 function setup_default_save()
-	-- Your logic for setting up default save values
+	--setting up default save values
 	defsave.set(filename, "default", easyTable)
 	defsave.set(filename, "checksumPlayer", generate_checksum(table_to_string(easyTable)))
 	defsave.set(filename, "dungeon", dungeonStatus)
