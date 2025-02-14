@@ -9,13 +9,11 @@ local START = hash("start")
 local ENABLE = hash("enable")
 local DUNGEONSREADY = hash("dungeonsReady")
 local PLAYERREADY = hash("playerReady")
-local ITEMSREADY = hash("itemsReady")
 local SAVE = hash("save")
 -----------------------------------------------------------------
 
 local dataReadyDungeons = false
 local dataReadyPlayer = false
-local dataReadyItems = false
 
 local  pauseOpen = false --sets if you are in pause  menu
 local MainMenu = true
@@ -23,7 +21,7 @@ local MainMenu = true
 local saveTable = { dataTEMP = nil , dungeonDataTEMP = nil }
 
 local function save()
-	if dataReadyItems == true and dataReadyPlayer == true and dataReadyDungeons == true then
+	if dataReadyPlayer == true and dataReadyDungeons == true then
 		print("Saving player data")
 		local data = saveTable.dataTEMP
 		msg.post("IO#IO", "save", {data = data})
@@ -48,14 +46,8 @@ end
 
 function on_message(self, message_id, message)
 	if message_id == SAVE then
-		msg.post("map:/Inventory#Inventory", "fileSave")
 		msg.post( "main#MainMenu", "fileSave")
 		save()
-	end
-	
-	if message_id == ITEMSREADY then
-		print("ItemsReady")
-		dataReadyItems = true
 	end
 
 	if message_id == PLAYERREADY then

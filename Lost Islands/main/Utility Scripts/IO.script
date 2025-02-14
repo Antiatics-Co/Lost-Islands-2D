@@ -9,7 +9,7 @@
 local itm = require("Modules.items")
 local eh = require("Modules.ItemProperties")
 local pos = require("Modules.PlayerPosition")
-local loc = require("Modules.CollectionTracker")
+local loc = require("Modules.CollectionTracker") --unneeded getting rid of location tracking
 local char = require("Modules.CharacterSprites")
 local mob = require("Modules.NPCProperties")
 local dun = require("Modules.Dungeons")
@@ -36,7 +36,7 @@ local configName = "config.dat"
 
 ------------------------------------Dungeons
 
-local fireDungeon = { doors = { 0 }, chestsOpened = {  0 }, bossBeaten = false }
+local fireDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
 local waterDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
 local stoneDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
 
@@ -44,14 +44,13 @@ local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion =
 
 -------------------------------------Location, Energy, and Health Data
 
-local location = "default"
 local visited_location = {}
 local position = vmath.vector3(0, 0, 0)
 local energy = 100
 local health = 100
 
 
-local easyTable = { location, visited_location, position, energy, health, character = {}, npcStatus = {}, version = 1 }
+local easyTable = { position, energy, health, character = {}, npcStatus = {}, version = 1 }
 
 ----------------------------------------------Config
 
@@ -125,18 +124,16 @@ local function loadSave()
 	local itemList = itm.get_itemList()
 	--print("Item List: ", table_to_string(itemList))
 
-	if itemList["woodsword"] then
+	--[[if itemList["woodsword"] then
 		if itemList["woodsword"].equipped then
 			print("woodsword equipped? " .. tostring(itemList["woodsword"].equipped)) --for testing?
 		end
 	else
 		print("woodsword not found in item list")
-	end
+	end]]
 
 	if easyTable ~= nil then
 		pos.setPosition(easyTable.position)
-		loc.set_location(easyTable.location)
-		loc.visited_locations =  easyTable.visited_locations
 		eh.setHealth(easyTable.health)
 		eh.setEnergy(easyTable.energy)
 		char.sprite = easyTable.character
@@ -181,240 +178,6 @@ local function delete_file(name)
 		print("Error deleting file:", err)
 	end
 end
-
-local function reloadConfigDefaults()
-	-------------------------------verifcation config-----------------------------------------------
-
-
-	local status, err = pcall(function()
-		defsave.load(configName)
-	end)
-
-	if not status then
-		print("Error loading save file:", err)
-		-- Handle the error, e.g., reset to default values
-		defsave.set(configName, "data", config)
-		defsave.set(configName, "checksum", generate_checksum(table_to_string(config)))
-	end
-
-	if file_exists(configName) then
-		local loadedChecksum = defsave.get(configName, "checksum")
-		local loadedData = defsave.get(configName, "data")
-		print("Loaded Data: ", loadedData)
-		print("Loaded Checksum: ", loadedChecksum)
-
-		-- Verify the checksum
-		if loadedData then
-			local loadedDataString = table_to_string(loadedData)
-			local current_checksum = generate_checksum(loadedDataString)
-			print("Current Checksum: ", current_checksum)
-			print("Loaded Data String: ", loadedDataString)
-
-			if current_checksum == loadedChecksum then
-				print("Data integrity verified.")
-				config = loadedData
-			else
-				print("Data integrity check failed.")
-				print("Expected Checksum: ", loadedChecksum)
-				print("Actual Checksum: ", current_checksum)
-				print("Loaded Data Version", loadedData.configVersion)
-				print("loaded Config Version", config.configVersion)
-				if loadedData.configVersion and loadedData.configVersion > (config.configVersion or 0) then
-					print("Data appears to be intentionally updated.")
-					config = loadedData
-				else
-					print("Data corruption detected.")
-					local checksum = generate_checksum(table_to_string(config))
-					delete_file(configName)  -- Delete the corrupted file
-					defsave.set(configName, "data", config)
-					defsave.set(configName, "checksum", checksum)
-					defsave.save(configName)
-				end
-			end
-		else
-			print("No saved data found.")
-			local checksum = generate_checksum(table_to_string(config))
-			defsave.set(configName, "data", config)
-			defsave.set(configName, "checksum", checksum)
-			defsave.save(configName)
-		end
-	else
-		print("No save file found.")
-		local checksum = generate_checksum(table_to_string(config))
-		print("Initial Checksum: ", checksum)
-
-		defsave.set(configName, "data", config)
-		defsave.set(configName, "checksum", checksum)
-		defsave.save(configName)
-	end
-end
-
-local function reloadSaveDefaults()
-		defsave.appname = "LostIslands"
-		print("Type of vmath.vector3:", type(vmath.vector3))
-
-		---------------------------playerdata------------------------------------------
-
-		local status, err = pcall(function()
-			defsave.load(filename)
-		end)
-
-		if not status then
-			print("Error loading save file:", err)
-			-- Handle the error, e.g., reset to default values
-			defsave.set(filename, "default", easyTable)
-			defsave.set(filename, "checksumPlayer", generate_checksum(table_to_string(easyTable)))
-
-			defsave.set(filename, "dungeon", dungeonStatus)
-			defsave.set(filename, "checksumDungeons", generate_checksum(table_to_string(dungeonStatus)))
-
-			defsave.set(filename, "item", items)
-			defsave.set(filename, "checksumItems", generate_checksum(table_to_string(items)))
-		end
-
-		if file_exists(filename) then
-			local loadedChecksum = defsave.get(filename, "checksumPlayer")
-			local loadedData = defsave.get(filename, "default")
-			print("Loaded Data: ", loadedData)
-			print("Loaded checksumPlayer: ", loadedChecksum)
-
-			-- Verify the checksum
-			if loadedData then
-				local current_checksum = generate_checksum(table_to_string(loadedData))
-				print("Current Checksum: ", current_checksum)
-
-				if current_checksum == loadedChecksum then
-
-					print("Data integrity verified.")
-					print("easyTable version:", easyTable.version)
-					easyTable = loadedData
-				else
-
-					print("Loaded Data Version", loadedData.version)
-					print("loaded easytable Version", easyTable.version)
-					print("Data integrity check failed.")
-					print("Expected Checksum: ", loadedChecksum)
-					print("Actual Checksum: ", current_checksum)
-
-					if loadedData.version and loadedData.version > (easyTable.version or 0) then
-						print("Data appears to be intentionally updated.")
-						easyTable = loadedData
-					else
-						print("Data corruption detected.")
-						msg.post("main#MainMenu", "fileCorruption")
-					end
-				end
-			else
-				print("No saved data found.")
-				msg.post("main#MainMenu", "fileCorruption")
-			end
-		else
-			print("No save file found.")
-			local checksum = generate_checksum(table_to_string(easyTable))
-			print("Initial Checksum: ", checksum)
-
-			defsave.set(filename, "default", easyTable)
-			defsave.set(filename, "checksumPlayer", checksum)
-		end
-
-		-------------------------------Verification Dungeons--------------------------------------------
-
-		if file_exists(filename) then
-			local loadedChecksum = defsave.get(filename, "checksumDungeons")
-			local loadedData = defsave.get(filename, "dungeon")
-			print("Loaded Data: ", loadedData)
-			print("Loaded checksumDungeons: ", loadedChecksum)
-
-			-- Verify the checksum
-			if loadedData then
-				local current_checksum = generate_checksum(table_to_string(loadedData))
-				print("Current Checksum: ", current_checksum)
-
-				if current_checksum == loadedChecksum then
-
-					print("Data integrity verified.")
-					print("dungeonStatus version:", dungeonStatus.statusVersion)
-					dungeonStatus = loadedData
-				else
-
-					print("Loaded Data Version", loadedData.statusVersion)
-					print("loaded dungeonStatus Version", dungeonStatus.statusVersion)
-					print("Data integrity check failed.")
-					print("Expected Checksum: ", loadedChecksum)
-					print("Actual Checksum: ", current_checksum)
-
-					if loadedData.statusVersion and loadedData.statusVersion > (dungeonStatus.statusVersion or 0) then
-						print("Data appears to be intentionally updated.")
-						dungeonStatus = loadedData
-					else
-						print("Data corruption detected.")
-						msg.post("main#MainMenu", "fileCorruption")
-					end
-				end
-			else
-				print("No saved data found.")
-				msg.post("main#MainMenu", "fileCorruption")
-			end
-		else
-			print("No save file found.")
-			local checksum = generate_checksum(table_to_string(dungeonStatus))
-			print("Initial Checksum: ", checksum)
-
-			defsave.set(filename, "dungeon", dungeonStatus)
-			defsave.set(filename, "checksumDungeons", checksum)
-		end
-
-		-------------------------------Verification Items-----------------------------------------------
-
-		if file_exists(filename) then
-			local loadedChecksum = defsave.get(filename, "checksumItems")
-			local loadedData = defsave.get(filename, "item")
-			print("Loaded Data: ", loadedData)
-			print("Loaded checksumItems: ", loadedChecksum)
-
-			-- Verify the checksum
-			if loadedData then
-				local current_checksum = generate_checksum(table_to_string(loadedData))
-				print("Current Checksum: ", current_checksum)
-
-				if current_checksum == loadedChecksum then
-
-					print("Data integrity verified.")
-					print("items version:", items.itemVersion)
-					items = loadedData
-				else
-
-					print("Loaded Data Version", loadedData.itemVersion)
-					print("loaded items Version", items.itemVersion)
-					print("Data integrity check failed.")
-					print("Expected Checksum: ", loadedChecksum)
-					print("Actual Checksum: ", current_checksum)
-
-					if loadedData.itemVersion and loadedData.itemVersion > (items.itemVersion or 0) then
-						print("Data appears to be intentionally updated.")
-						items = loadedData
-					else
-						print("Data corruption detected.")
-						msg.post("main#MainMenu", "fileCorruption")
-					end
-				end
-			else
-				print("No saved data found.")
-				msg.post("main#MainMenu", "fileCorruption")
-			end
-		else
-			print("No save file found.")
-			local checksum = generate_checksum(table_to_string(items))
-			print("Initial Checksum: ", checksum)
-
-			defsave.set(filename, "item", items)
-			defsave.set(filename, "checksumItems", checksum)
-		end
-
-		defsave.save(filename)
-
-		print("defaults saved")
-	end
 
 function init(self)
 	defsave.appname = "LostIslands"
@@ -520,13 +283,14 @@ end
 
 function loadConfig()
 
-	local status, err = pcall(function()
+	local status, err = pcall(function() --these pcall things may not need to exist test, 
+										 --or a new fill exist function should be made with them
 		defsave.load(configName)
 	end)
 
 	if not status then
 		print("Error loading config file:", err)
-		reloadConfigDefaults()
+		setup_default_config()
 	end
 
 	if file_exists(configName) then
@@ -560,7 +324,7 @@ function loadConfig()
 end
 
 function setup_default_config()
-	-- Your logic for setting up default configuration values
+	-- logic for setting up default configuration values
 	local checksum = generate_checksum(table_to_string(config))
 	defsave.set(configName, "data", config)
 	defsave.set(configName, "checksum", checksum)
@@ -703,7 +467,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == RESET then
 		local checksum = generate_checksum(table_to_string(easyTable))
 		delete_file(filename)  -- Delete the corrupted file
-		reloadSaveDefaults()
+		setup_default_save()
 	end
 
 	if message_id == CONFIGSAVE then

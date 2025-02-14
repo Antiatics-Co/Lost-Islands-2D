@@ -1,6 +1,6 @@
 --@Author Aidan Cox
 --@description -  prepares for location saving, keeps track of current locations, and visited locations
--- sets the grids a necessary
+-- sets the grids as necessary
 
 -- collection_tracker.lua
 
