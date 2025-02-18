@@ -25,10 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Scripts/GUI/Death.gui_script"
-        :code
-      ]
-      [
         "/main/GUI files/io.gui"
         :scene
       ]
@@ -137,15 +133,19 @@
         :code
       ]
       [
+        "/main/GUI/menus/Menu Scripts/pause.gui_script"
+        :code
+      ]
+      [
+        "/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
         "/Modules/ItemProperties.lua"
         :code
       ]
       [
         "/Modules/items.lua"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
       ]
       [

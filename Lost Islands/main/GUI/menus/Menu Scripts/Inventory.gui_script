@@ -8,7 +8,6 @@
 ---PREHASHING-------------------------------------------------
 
 local itm = require("Modules.items")
-local prop = require("Modules.ItemProperties")
 
 local LOADITEMDATA =  hash("loadItemData")
 local FILESAVE = hash("fileSave")
@@ -36,9 +35,7 @@ local layers = {
 	"_org"
 }
 
-
 print("Items defined:", items)
-
 
 local function InvItemStatus(ID)
 	local node_name = items[ID.name].node
@@ -74,7 +71,7 @@ local function setupInventory()
 		if type(item) == "table" and item.hasItem ~= nil then
 			if item.hasItem then
 				if item.equipped then
-					prop.equip({ name = name, type = item.type, attack = item.attack, combo = item.combo, speed = item.speed })
+					itm.equip({ name = name, type = item.type, attack = item.attack, combo = item.combo, speed = item.speed })
 				end
 			end
 			InvItemStatus({ name = name }) -- Ensure it gets called for all items
