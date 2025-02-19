@@ -7,14 +7,13 @@
 
 
 local itm = require("Modules.items")
-local eh = require("Modules.ItemProperties")
 local pos = require("Modules.PlayerPosition")
 local loc = require("Modules.CollectionTracker") --unneeded getting rid of location tracking
 local char = require("Modules.CharacterSprites")
 local mob = require("Modules.NPCProperties")
 local dun = require("Modules.Dungeons")
 
-local items = {itm.get_itemList(), itemVersion = 1 }
+local items = { itm.get_itemList() }
 
 -----------------PREHASHES
 
@@ -36,28 +35,27 @@ local configName = "config.dat"
 
 ------------------------------------Dungeons
 
-local fireDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
-local waterDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
-local stoneDungeon = { doors = { 0 }, chestsOpened = { 0 }, bossBeaten = false }
+local fireDungeon = { doors = {  }, chestsOpened = {  }, bossBeaten = false }
+local waterDungeon = { doors = {  }, chestsOpened = {  }, bossBeaten = false }
+local stoneDungeon = { doors = {  }, chestsOpened = {  }, bossBeaten = false }
 
-local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion = 1 }
+local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon }
 
 -------------------------------------Location, Energy, and Health Data
 
-local visited_location = {}
 local position = vmath.vector3(0, 0, 0)
 local energy = 100
 local health = 100
 
 
-local easyTable = { position, energy, health, character = {}, npcStatus = {}, version = 1 }
+local easyTable = { position, energy, health, character = {}, npcStatus = {} }
 
 ----------------------------------------------Config
 
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
 local volume = 50
 
-local config = { volume, resolution, configVersion = 1 }
+local config = { volume, resolution }
 
 ---------------------------------------------------------------------------
 
@@ -134,8 +132,8 @@ local function loadSave()
 
 	if easyTable ~= nil then
 		pos.setPosition(easyTable.position)
-		eh.setHealth(easyTable.health)
-		eh.setEnergy(easyTable.energy)
+		itm.setHealth(easyTable.health)
+		itm.setEnergy(easyTable.energy)
 		char.sprite = easyTable.character
 		mob.npc = easyTable.npcStatus
 	end
@@ -220,18 +218,17 @@ function verify_save_data()
 	-- Verification for Player Data
 	local loadedChecksum = defsave.get(filename, "checksumPlayer")
 	local loadedData = defsave.get(filename, "default")
+	
 	if loadedData then
 		local current_checksum = generate_checksum(table_to_string(loadedData))
 		if current_checksum ~= loadedChecksum then
-			print("Loaded Data Version", loadedData.version)
+			print("Loaded Data Version", loadedData)
 			print("Data integrity check failed.")
-			if loadedData.version and loadedData.version > (easyTable.version or 0) then
-				print("Data appears to be intentionally updated.")
-				easyTable = loadedData
-			else
-				print("Data corruption detected for player data.")
-				msg.post("main#MainMenu", "fileCorruption")
-			end
+			print("Data corruption detected for player data.")
+			msg.post("main#MainMenu", "fileCorruption")
+		else
+			print("checksums match")
+			easyTable = loadedData
 		end
 	else
 		print("No saved data found.")
@@ -244,15 +241,13 @@ function verify_save_data()
 	if loadedData then
 		local current_checksum = generate_checksum(table_to_string(loadedData))
 		if current_checksum ~= loadedChecksum then
-			print("Loaded Data Version", loadedData.statusVersion)
+			print("Loaded Data Version", loadedData)
 			print("Data integrity check failed.")
-			if loadedData.statusVersion and loadedData.statusVersion > (dungeonStatus.statusVersion or 0) then
-				print("Data appears to be intentionally updated.")
-				dungeonStatus = loadedData
-			else
-				print("Data corruption detected for dungeon data.")
-				msg.post("main#MainMenu", "fileCorruption")
-			end
+			print("Data corruption detected for player data.")
+			msg.post("main#MainMenu", "fileCorruption")
+		else
+			print("checksums match")
+			dungeonStatus = loadedData
 		end
 	else
 		print("No saved data found.")
@@ -264,16 +259,18 @@ function verify_save_data()
 	loadedData = defsave.get(filename, "item")
 	if loadedData then
 		local current_checksum = generate_checksum(table_to_string(loadedData))
+
+		print("loadedChecksum: " .. loadedChecksum)
+		print("CurrentChecksum: " .. current_checksum)
+		
 		if current_checksum ~= loadedChecksum then
-			print("Loaded Data Version", loadedData.itemVersion)
+			print("Loaded Data Version", loadedData)
 			print("Data integrity check failed.")
-			if loadedData.itemVersion and loadedData.itemVersion > (items.itemVersion or 0) then
-				print("Data appears to be intentionally updated.")
-				items = loadedData
-			else
-				print("Data corruption detected for item data.")
-				msg.post("main#MainMenu", "fileCorruption")
-			end
+			print("Data corruption detected for player data.")
+			msg.post("main#MainMenu", "fileCorruption")
+		else
+			print("checksums match")
+			items = loadedData
 		end
 	else
 		print("No saved data found.")
@@ -351,18 +348,6 @@ local function save(data, dungeonData, itemData)
 	
 	itemData = itm.get_itemList()
 	
-	if data.version == nil then
-		data.version = 1
-	end
-	
-	if dungeonData.statusVersion == nil then
-		dungeonData.statusVersion = 1
-	end
-
-	if itemData.itemVersion == nil then
-		itemData.itemVersion = 1 
-	end
-	
 	--sanitize_table_keys(data)
 	--sanitize_table_keys(dungeonData)
 	--sanitize_table_keys(itemData)
@@ -376,17 +361,12 @@ local function save(data, dungeonData, itemData)
 
 		print("data table", table_to_string(data))
 
-		data.version = (data.version or 0) + 1  -- Increment version
-		print("Incremented data Version in Save: ", data.version)
-
 		--print("Easy Table", data)
 
 		local data_checksum = generate_checksum(table_to_string(data))
 		print("New Checksum: ", data_checksum)
-		print("Before saving, version:", data.version - 1)
 		defsave.set(filename, "default", data)
 		defsave.set(filename, "checksum", data_checksum)
-		print("After saving, version:", data.version)
 
 		---------------------------------Save Dungeons----------------------------
 		-- dungeonData = {1, statusVersion = 1}  --FOR TESTING USE ONLY
@@ -400,17 +380,17 @@ local function save(data, dungeonData, itemData)
 
 		print("dungeonData table", table_to_string(dungeonData))
 
-		dungeonData.statusVersion = (dungeonData.statusVersion or 0) + 1  -- Increment statusVersion
-		print("Incremented dungeonData Version in Save: ", dungeonData.statusVersion)
+
+
 
 		--print("Dungeon ", dungeonData)
 
 		local dungeon_checksum = generate_checksum(table_to_string(dungeonData))
 		print("New Checksum: ", dungeon_checksum)
-		print("Before saving, statusVersion:", dungeonData.statusVersion - 1)
+
 		defsave.set(filename, "dungeon", dungeonData)
 		defsave.set(filename, "checksum", dungeon_checksum)
-		print("After saving, statusVersion:", dungeonData.statusVersion)    
+  
 
 		---------------------------------Save Items----------------------------
 
@@ -421,17 +401,17 @@ local function save(data, dungeonData, itemData)
 
 		print("itemData table", table_to_string(itemData))
 
-		itemData.itemVersion = (itemData.itemVersion or 0) + 1  -- Increment itemVersion
-		print("Incremented itemData Version in Save: ", itemData.itemVersion)
+
+
 
 		--print("Items ", itemData)
 
 		local item_checksum = generate_checksum(table_to_string(itemData))
 		print("New Checksum: ", item_checksum)
-		print("Before saving, itemVersion:", itemData.itemVersion - 1)
+
 		defsave.set(filename, "item", itemData)
 		defsave.set(filename, "checksum", item_checksum)
-		print("After saving, itemVersion:", itemData.itemVersion)
+
 
 		------------------------------------------------------------------
 
@@ -481,12 +461,12 @@ function on_message(self, message_id, message, sender)
 		--print("Dungeon data:", table_to_string(message.dungeonData))
 		--print("Item data:", table_to_string(itm.get_itemList()))
 		
-		local table = {location = loc.get_location(), loc.visited_locations,
+		local table = {
 		position = pos.getPosition(),
-		health = eh.getHealth(),
-		energy = eh.getEnergy(),
+		health = itm.getHealth(),
+		energy = itm.getEnergy(),
 		character = char.sprite,
-		npcStatus = mob.npc}
+		npcStatus = mob.npc }
 
 
 		
