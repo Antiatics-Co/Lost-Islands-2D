@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term "loc"
+      :term "default"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/GUI files/io.gui"
-        :scene
-      ]
       [
         "/main/Scripts/IO.script"
         :code
@@ -145,11 +141,15 @@
         :code
       ]
       [
-        "/Modules/items.lua"
+        "/Modules/Dungeons.lua"
         :code
       ]
       [
         "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/Modules/items.lua"
         :code
       ]
     ]
