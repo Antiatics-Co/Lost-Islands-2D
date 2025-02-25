@@ -130,13 +130,12 @@ local function loadSave()
 		print("woodsword not found in item list")
 	end]]
 
-	if easyTable ~= nil then
-		pos.setPosition(easyTable.position)
-		itm.setHealth(easyTable.health)
-		itm.setEnergy(easyTable.energy)
-		char.sprite = easyTable.character
-		mob.npc = easyTable.npcStatus
-	end
+	pos.setPosition(easyTable.position)
+	itm.setHealth(easyTable.health)
+	itm.setEnergy(easyTable.energy)
+	char.sprite = easyTable.character
+	mob.npc = easyTable.npcStatus
+	msg.post("map:/Player#Player", "Loaded")
 end
 
 
@@ -181,8 +180,11 @@ function init(self)
 	defsave.appname = "LostIslands"
 	filename = filename .. ".dat"
 
-	-- Verify save data without loading
-	verify_save_data()
+	if file_exists(filename) then
+		verify_save_data()
+	else
+		setup_default_save()
+	end
 
 	-- Always check and load config
 	loadConfig()
@@ -190,6 +192,10 @@ function init(self)
 end
 
 function setup_default_save()
+
+	local status, err = pcall(function()
+		defsave.load(filename)
+	end)
 	--setting up default save values
 	defsave.set(filename, "player", easyTable)
 	defsave.set(filename, "checksumPlayer", generate_checksum(table_to_string(easyTable)))

@@ -109,10 +109,6 @@
         :code
       ]
       [
-        "/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
         "/main/main.collection"
         :scene
       ]
@@ -129,19 +125,7 @@
         :code
       ]
       [
-        "/main/Player/Player.script"
-        :code
-      ]
-      [
-        "/Modules/items.lua"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
-        :code
-      ]
-      [
-        "/Modules/Dungeons.lua"
         :code
       ]
       [
@@ -149,7 +133,23 @@
         :code
       ]
       [
+        "/Modules/items.lua"
+        :code
+      ]
+      [
+        "/Modules/Dungeons.lua"
+        :code
+      ]
+      [
+        "/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
         "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/Player/Player.script"
         :code
       ]
     ]

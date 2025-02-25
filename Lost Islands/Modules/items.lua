@@ -23,7 +23,6 @@ M.itemList = M.itemList or {  --attacks and speeds and combosnee to be redone
 	knife = { itemNum = 15, hasItem = false, equipped = false, node = ("KNIFE"), type = "side", combo = 10, attack = 10, speed = 0   }, --has combo
 	rock = { itemNum = 16, hasItem = false, equipped = false, node = ("ROCK"), type = "main", attack = 10, speed = 0   },
 
-
 --shields
 
 -- Item Slot, damage, energy usage

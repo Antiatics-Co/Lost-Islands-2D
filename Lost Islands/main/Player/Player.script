@@ -31,7 +31,7 @@ local GRAVITY = 900
 local JUMPTAKEOFF = 250
 local FIREDELAY = 0.5
 local recievingInputs = true
---local trackPlayer = false
+local trackPlayer = false
 
 
 local lastfired = -1
@@ -45,12 +45,6 @@ function init(self) --constructor
 	self.groundContact = false
 	self.previousGroundContact = false
 	self.correction = vmath.vector3(0, 0, 0)
-
-	if po.getPosition() ~= nil then
-		go.set_position(po.getPosition())
-	end
-
-	trackPlayer = true
 end
 
 local function walk(self) -- custom func to handle hori movement
@@ -109,7 +103,10 @@ function fixed_update(self, dt)
 	local position = go.get_position()
 	position = position + self.velocity * dt
 	go.set_position(position)
-	po.setPosition(position)
+
+	if  trackPlayer then
+		po.setPosition(position)
+	end
 	animate(self)
 
 	--print("Velocity Y:", self.velocity.y, "Ground Contact:", self.groundContact)
@@ -170,6 +167,14 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == STOPGRAVITY then
 		GRAVITY = 0
+	end
+
+	if message_id == hash("Loaded") then
+		if po.getPosition() ~= nil then
+			go.set_position(po.getPosition())
+		end
+
+		trackPlayer = true
 	end
 	
 	if message_id == CONTACTPOINTRESPONSE then
