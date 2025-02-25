@@ -53,20 +53,12 @@
         :code
       ]
       [
-        "/main/GUI/menus/MainMenu.gui"
-        :scene
-      ]
-      [
         "/main/Player/Equipment.go"
         :scene
       ]
       [
         "/main/GUI/menus/CharacterCreator.gui"
         :scene
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
-        :code
       ]
       [
         "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
@@ -81,19 +73,11 @@
         :scene
       ]
       [
-        "/main/Player/Player.script"
-        :code
-      ]
-      [
         "/main/Misc Objects/Inventory.go"
         :scene
       ]
       [
         "/main/GUI/menus/Inventory.gui"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/PauseMenu.gui"
         :scene
       ]
       [
@@ -113,19 +97,11 @@
         :scene
       ]
       [
-        "/main/main.collection"
-        :scene
-      ]
-      [
         "/defsave/api/defsave_ext.script_api"
         :code
       ]
       [
         "/defsave/src/defsave.cpp"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
       ]
       [
@@ -137,6 +113,30 @@
         :code
       ]
       [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/PauseMenu.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/MainMenu.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/Modules/items.lua"
+        :code
+      ]
+      [
         "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
         :code
       ]
@@ -145,11 +145,11 @@
         :code
       ]
       [
-        "/main/Utility Scripts/IO.script"
+        "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
       ]
       [
-        "/Modules/items.lua"
+        "/main/Utility Scripts/IO.script"
         :code
       ]
     ]

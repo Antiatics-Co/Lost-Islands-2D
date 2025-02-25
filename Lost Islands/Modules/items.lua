@@ -84,7 +84,9 @@ local equippedMelee = { main = nil, side = nil }
 ---------------------------------------------------------------------------------
 
 function M.set_itemList(name)
-	M.itemList[name]["equipped"] = true
+	if M.itemList[name]["equipped"] ~= nil then
+		M.itemList[name]["equipped"] = true
+	end
 end
 
 ---------------------------------------------------------------------------------

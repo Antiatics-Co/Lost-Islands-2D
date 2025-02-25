@@ -109,17 +109,17 @@ local function table_to_string(tbl)
 end
 
 local function loadSave()
-	defsave.load(filename)
+	--defsave.load(filename)
 	easyTable = defsave.get(filename, "player")
 	dun.dungeons = defsave.get(filename, "dungeons")
-	itm.set_itemList(defsave.get(filename, "items"))
+	itm.itemList = defsave.get(filename, "items")
 	print("Set Item List")
 
-	local loadedChecksum = defsave.get(filename, "checksum")
-	print("Loaded Checksum: ", loadedChecksum)
+	--local loadedChecksum = defsave.get(filename, "checksum")
+	--print("Loaded Checksum: ", loadedChecksum)
 
 	-- Debug: Print the entire item list
-	local itemList = itm.get_itemList()
+	--local itemList = itm.get_itemList()
 	--print("Item List: ", table_to_string(itemList))
 
 	--[[if itemList["woodsword"] then
@@ -241,7 +241,7 @@ function verify_save_data()
 		easyTable = verify_data("Player")
 		dungeonStatus = verify_data("Dungeons")
 		items = verify_data("Items")
-	end
+	end	
 end
 
 
@@ -298,13 +298,20 @@ end
 
 local i = 0
 
-local function save(data, dungeonData, itemData)
+local function save()
 
 	-----------------------Save easyTable---------------------------------
 	
-	itemData = itm.get_itemList()
-	dungeonData = { "placeholder" } --for some reason this is nil
+	local itemData = itm.get_itemList()
 	
+	local data = {
+		position = pos.getPosition(),
+		health = itm.getHealth(),
+		energy = itm.getEnergy(),
+		character = char.sprite,
+		npcStatus = mob.npc }
+		
+		local dungeonData = dun.dungeons
 	
 	if i < 1 then
 		i = i + 1
@@ -407,20 +414,8 @@ function on_message(self, message_id, message, sender)
 	if message_id == SAVE then
 		print("I "..i)
 		print("Received save message, now saving")
-		--print("Player data:", table_to_string(message.data))
-		--print("Dungeon data:", table_to_string(message.dungeonData))
-		--print("Item data:", table_to_string(itm.get_itemList()))
-		
-		local table = {
-		position = pos.getPosition(),
-		health = itm.getHealth(),
-		energy = itm.getEnergy(),
-		character = char.sprite,
-		npcStatus = mob.npc }
-
-
-		
-		save(table, dun.dungeons, itm.get_itemList())
+	
+		save()
 	end
 
 	if message_id == LOAD then

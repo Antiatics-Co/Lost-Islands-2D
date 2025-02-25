@@ -7,33 +7,10 @@
 
 local START = hash("start")
 local ENABLE = hash("enable")
-local DUNGEONSREADY = hash("dungeonsReady")
-local PLAYERREADY = hash("playerReady")
-local SAVE = hash("save")
 -----------------------------------------------------------------
-
-local dataReadyDungeons = false
-local dataReadyPlayer = false
 
 local  pauseOpen = false --sets if you are in pause  menu
 local MainMenu = true
-
-local saveTable = { dataTEMP = nil , dungeonDataTEMP = nil }
-
-local function save()
-	if dataReadyPlayer == true and dataReadyDungeons == true then
-		print("Saving player data")
-		local data = saveTable.dataTEMP
-		msg.post("IO#IO", "save", {data = data})
-
-		print("Saving dungeon data")
-		local dungeon = saveTable.dungeonDataTEMP
-		msg.post("IO#IO", "save", {dungeonData = dungeon})
-
-		print("Saving item data - last")
-	end
-end
-
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -45,24 +22,6 @@ local function animation(node, newAnimation)
 end
 
 function on_message(self, message_id, message)
-	if message_id == SAVE then
-		msg.post( "main#MainMenu", "fileSave")
-		save()
-	end
-
-	if message_id == PLAYERREADY then
-		print("PlayerReady")
-		saveTable.dataTEMP = message.playerData
-		dataReadyPlayer = true
-	end
-
-	if message_id == DUNGEONSREADY then
-		print("DungeonsReady")
-		saveTable.dungeonDataTEMP = message.dungeonsData
-		dataReadyDungeons = true
-		save()
-	end
-	
 	if message_id == ENABLE then
 		pauseOpen = true
 		print("pauseOpen: " .. tostring(pauseOpen)) -- Check toggle
@@ -125,8 +84,7 @@ function on_input(self, action_id, action)
 
 		local sav = gui.get_node("save")
 		if gui.pick_node(sav, action.x, action.y) then
-			msg.post("map:/Inventory#Inventory", "fileSave")
-			msg.post( "main#MainMenu", "fileSave")
+			msg.post("IO#IO", "save")
 		end
 	end
 end

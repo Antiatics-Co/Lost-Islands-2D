@@ -3,7 +3,6 @@
 --PreHashing for better preformance
 local FILECORRUPTION = hash("fileCorruption")
 local TOMAINMENU = hash( "ToMain")
-local FILESAVE = hash("fileSave")
 local HEALTH = hash("health")
 local ENABLE = hash("enable")
 ----------------------------------------------------
@@ -29,42 +28,7 @@ function init(self)
 	gui.set_enabled(gui.get_node("main"), true)
 end
 
-local function save() --Temporarily sending default values for testing purposes, change to be correct when implementing complete load
-
-	----------------------------Setting defaults for testing --------------------------------
-	
-	------------------------------------Dungeons
-
-	local fireDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
-	local waterDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
-	local stoneDungeon = { doors = { 0 }, chestsOpened = {}, bossBeaten = false }
-
-	local dungeonStatus = { fireDungeon, waterDungeon, stoneDungeon, statusVersion = 1 }
-
-	-------------------------------------Location, Energy, and Health Data
-
-	local location = "Default"
-	local position = vmath.vector3(0, 0, 0)
-	local energy = 100
-
-
-	easyTable = { location, position, energy, health, version = 1 }
-
-	-----------------------------------------------------------------------------
-	
-	msg.post("menu#PauseMenu", "playerReady", { playerData =  easyTable})
-	msg.post("menu#PauseMenu", "dungeonsReady", { dungeonsData =  dungeonStatus})
-
-	print("Save Data Posted From Main")
-	
-end
-
 function on_message(self, message_id, message, sender)
-	
-	if message_id == FILESAVE then
-		print("fileSave MainMenu")
-		save()
-	end
 
 	if message_id == TOMAINMENU then
 		gui.set_enabled(gui.get_node("main"), true)

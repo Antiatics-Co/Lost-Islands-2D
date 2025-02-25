@@ -10,7 +10,6 @@
 local itm = require("Modules.items")
 
 local LOADITEMDATA =  hash("loadItemData")
-local FILESAVE = hash("fileSave")
 local ADDITEM = hash("addItem")
 local CONSUMEITEM = hash("consumeItem")
 local TOUCH = hash("touch")
@@ -87,20 +86,6 @@ local function load()
 	setupInventory()
 end
 
-local function save()
-	print("Entered save function")
-	-- Check if items is defined and not nil
-
-	if items then
-		--itm.set_itemList(items)
-		print("Set Item List")
-		msg.post("menu#PauseMenu", "itemsReady")
-		print("Save Data Posted From Inventory")
-	else
-		print("Error: items is nil or not defined")
-	end
-end
-
 local function addItem(itemNum) --itemNum = {name, num} 
 	if itemNum.num > 29 and (items[itemNum.name].holding + itemNum.addNum) < items[itemNum.name].max then
 		items[itemNum.name].holding = items[itemNum.name].holding + itemNum.addNum
@@ -165,11 +150,6 @@ end
 
 function on_message(self, message_id, message, sender)
 	print("Received message:", message_id)
-	
-	if message_id == FILESAVE then
-		print("fileSave Inventory")
-		save()
-	end
 
 	if message_id == LOADITEMDATA then
 		load()

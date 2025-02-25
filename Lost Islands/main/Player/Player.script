@@ -31,7 +31,7 @@ local GRAVITY = 900
 local JUMPTAKEOFF = 250
 local FIREDELAY = 0.5
 local recievingInputs = true
-local trackPlayer = false
+--local trackPlayer = false
 
 
 local lastfired = -1
@@ -45,6 +45,10 @@ function init(self) --constructor
 	self.groundContact = false
 	self.previousGroundContact = false
 	self.correction = vmath.vector3(0, 0, 0)
+
+	if po.getPosition() ~= nil then
+		go.set_position(po.getPosition())
+	end
 
 	trackPlayer = true
 end
@@ -115,10 +119,6 @@ function fixed_update(self, dt)
 	self.groundContact = false
 	self.correction.x = 0
 	self.correction.y = 0
-	
-	if trackPlayer then
-		po.setPosition(go.get_position())
-	end
 end
 
 local function collisionX(self, normal, distance)
