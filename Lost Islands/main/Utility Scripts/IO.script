@@ -115,21 +115,6 @@ local function loadSave()
 	itm.itemList = defsave.get(filename, "items")
 	print("Set Item List")
 
-	--local loadedChecksum = defsave.get(filename, "checksum")
-	--print("Loaded Checksum: ", loadedChecksum)
-
-	-- Debug: Print the entire item list
-	--local itemList = itm.get_itemList()
-	--print("Item List: ", table_to_string(itemList))
-
-	--[[if itemList["woodsword"] then
-		if itemList["woodsword"].equipped then
-			print("woodsword equipped? " .. tostring(itemList["woodsword"].equipped)) --for testing?
-		end
-	else
-		print("woodsword not found in item list")
-	end]]
-
 	pos.setPosition(easyTable.position)
 	itm.setHealth(easyTable.health)
 	itm.setEnergy(easyTable.energy)
@@ -137,8 +122,6 @@ local function loadSave()
 	mob.npc = easyTable.npcStatus
 	msg.post("map:/Player#Player", "Loaded")
 end
-
-
 
 local function generate_checksum(data)
 	return md5.sumhexa(data)
@@ -192,7 +175,7 @@ function init(self)
 end
 
 function setup_default_save()
-
+	msg.post("main:/main#MainMenu", "noFile")
 	local status, err = pcall(function()
 		defsave.load(filename)
 	end)
@@ -250,7 +233,6 @@ function verify_save_data()
 	end	
 end
 
-
 function loadConfig()
 
 	local status, err = pcall(function() --these pcall things may not need to exist test, 
@@ -301,9 +283,6 @@ function setup_default_config()
 	defsave.save();
 end
 
-
-local i = 0
-
 local function save()
 
 	-----------------------Save easyTable---------------------------------
@@ -317,72 +296,64 @@ local function save()
 		character = char.sprite,
 		npcStatus = mob.npc }
 		
-		local dungeonData = dun.dungeons
+	local dungeonData = dun.dungeons
+
+
+	if data == nil then
+		print("Error: data is nil")
+		return
+	end
+
+	print("data table", table_to_string(data))
+
+	--print("Easy Table", data)
+
+	local data_checksum = generate_checksum(table_to_string(data))
+	print("New Checksum: ", data_checksum)
+	defsave.set(filename, "player", data)
+	defsave.set(filename, "checksumPlayer", data_checksum)
+
+	---------------------------------Save Dungeons----------------------------
+
+	if dungeonData == nil then
+		print("Error: dungeonData is nil")
+		os.exit()
+	end
 	
-	if i < 1 then
-		i = i + 1
-		if data == nil then
-			print("Error: data is nil")
-			return
-		end
+	print("dungeonData table", table_to_string(dungeonData))
 
-		print("data table", table_to_string(data))
+	--print("Dungeon ", dungeonData)
 
-		--print("Easy Table", data)
+	local dungeon_checksum = generate_checksum(table_to_string(dungeonData))
+	print("New Checksum: ", dungeon_checksum)
 
-		local data_checksum = generate_checksum(table_to_string(data))
-		print("New Checksum: ", data_checksum)
-		defsave.set(filename, "player", data)
-		defsave.set(filename, "checksumPlayer", data_checksum)
-
-		---------------------------------Save Dungeons----------------------------
-
-		if dungeonData == nil then
-			print("Error: dungeonData is nil")
-			os.exit()
-		end
-
-
-
-		print("dungeonData table", table_to_string(dungeonData))
-
-		--print("Dungeon ", dungeonData)
-
-		local dungeon_checksum = generate_checksum(table_to_string(dungeonData))
-		print("New Checksum: ", dungeon_checksum)
-
-		defsave.set(filename, "dungeons", dungeonData)
-		defsave.set(filename, "checksumDungeons", dungeon_checksum)
+	defsave.set(filename, "dungeons", dungeonData)
+	defsave.set(filename, "checksumDungeons", dungeon_checksum)
   
 
-		---------------------------------Save Items----------------------------
+	---------------------------------Save Items----------------------------
 
-		if itemData == nil then
-			print("Error: itemData is nil")
-			return
-		end
-
-		print("itemData table", table_to_string(itemData))
-
-
-
-
-		--print("Items ", itemData)
-
-		local item_checksum = generate_checksum(table_to_string(itemData))
-		print("New Checksum: ", item_checksum)
-
-		defsave.set(filename, "items", itemData)
-		defsave.set(filename, "checksumItems", item_checksum)
-
-
-		------------------------------------------------------------------
-
-		defsave.save(filename)
-		print("Data saved successfully.")
+	if itemData == nil then
+		print("Error: itemData is nil")
+		return
 	end
-end
 
+	print("itemData table", table_to_string(itemData))
+	--print("Items ", itemData)
+
+	local item_checksum = generate_checksum(table_to_string(itemData))
+	print("New Checksum: ", item_checksum)
+
+	defsave.set(filename, "items", itemData)
+	defsave.set(filename, "checksumItems", item_checksum)
+
+
+	------------------------------------------------------------------
+
+	defsave.save(filename)
+	msg.post("main#MainMenu", "file")
+	print("Data saved successfully.")
+end
 
 function configSave(configData)
 	if configData == nil then
@@ -404,7 +375,6 @@ function configSave(configData)
 	print("Config saved successfully.")
 end
 
-
 function on_message(self, message_id, message, sender)
 
 	if message_id == RESET then
@@ -418,7 +388,6 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == SAVE then
-		print("I "..i)
 		print("Received save message, now saving")
 	
 		save()

@@ -33,11 +33,10 @@ local FIREDELAY = 0.5
 local recievingInputs = true
 local trackPlayer = false
 
-
 local lastfired = -1
 
 function init(self) --constructor
-	msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." dor object
+	msg.post("#", "acquire_input_focus")  --tell the script to aquie input focus, "#" = this componet / this script, use "." for object
 	msg.post("@render:", "use_camera_projection")
 	camera.acquire_focus("Operator#camera")
 	
@@ -108,8 +107,6 @@ function fixed_update(self, dt)
 		po.setPosition(position)
 	end
 	animate(self)
-
-	--print("Velocity Y:", self.velocity.y, "Ground Contact:", self.groundContact)
 	
 	-- Reset horizontal velocity after applying movement
 	self.velocity.x = 0

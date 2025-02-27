@@ -117,18 +117,6 @@
         :scene
       ]
       [
-        "/main/GUI/menus/MainMenu.gui"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
       ]
@@ -145,11 +133,23 @@
         :code
       ]
       [
-        "/main/Utility Scripts/IO.script"
+        "/main/Player/Player.script"
         :code
       ]
       [
-        "/main/Player/Player.script"
+        "/main/GUI/menus/MainMenu.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
         :code
       ]
     ]
