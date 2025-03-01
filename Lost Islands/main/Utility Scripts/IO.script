@@ -55,7 +55,7 @@ local easyTable = { position, energy, health, character = {}, npcStatus = {} }
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
 local volume = 50
 
-local config = { volume, resolution }
+local config = { volume, resolution, boot = 0 }
 
 ---------------------------------------------------------------------------
 
@@ -362,10 +362,6 @@ function configSave(configData)
 	end
 
 	print("data table", table_to_string(configData))
-	
-
-	configData.configVersion = (configData.configVersion or 0) + 1  -- Increment version
-	print("Incremented Config Version in configSave: ", configData.configVersion)
 
 	local new_checksum = generate_checksum(table_to_string(configData))
 	print("New Checksum: ", new_checksum)
@@ -398,10 +394,10 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == CONFIGLOAD then
-		config = defsave.get(configName, "data")
+		--config = defsave.get(configName, "data")
 
-		local loadedChecksum = defsave.get(configName, "checksum")
-		print("Loaded Checksum: ", loadedChecksum)
+		--local loadedChecksum = defsave.get(configName, "checksum")
+		--print("Loaded Checksum: ", loadedChecksum)
 		msg.post("main#Settings", "loadedConfig", {data = config})
 	end
 end

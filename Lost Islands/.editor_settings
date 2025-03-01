@@ -105,10 +105,6 @@
         :code
       ]
       [
-        "/Modules/PlayerPosition.lua"
-        :code
-      ]
-      [
         "/main/main.collection"
         :scene
       ]
@@ -146,6 +142,10 @@
       ]
       [
         "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/Modules/PlayerPosition.lua"
         :code
       ]
       [
