@@ -392,6 +392,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == LOAD then
+		print("us loader: " .. sender)
 		loadSave()
 	end
 

@@ -6,6 +6,8 @@
 
 local M = {}
 
+M.resume = false
+
 local getter
 local location
 

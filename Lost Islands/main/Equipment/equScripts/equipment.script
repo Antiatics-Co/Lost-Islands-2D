@@ -2,15 +2,21 @@
 --Aidan Cox
 --enables equipment factories
 
+local co = require("Modules.CollectionTracker")
+
 function init(self)
-	msg.post("main:/IO#IO", "load")
-	msg.post("Inventory#Inventory", "loadItemData")
+	if co.resume then
+		msg.post("main:/IO#IO", "load")
+		msg.post("Inventory#Inventory", "loadItemData")
+	end
 end
 
 function fixed_update(self, dt)
+	
 end
 
 function on_message(self, message_id, message)
+	
 	if message_id == hash("EquipEnable") then
 		factory.create("#" .. message.name)
 	end

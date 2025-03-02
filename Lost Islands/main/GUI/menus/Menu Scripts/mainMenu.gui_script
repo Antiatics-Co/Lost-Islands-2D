@@ -7,6 +7,9 @@ local HEALTH = hash("health")
 local ENABLE = hash("enable")
 ----------------------------------------------------
 
+local col = require("Modules.CollectionTracker")
+
+
 local inDungeon = false
 local easyTable = {}
 local fileExists = true
@@ -69,6 +72,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == ENABLE then
 		gui.set_enabled(gui.get_node("main"), true)
+		col.resume = false
 		inDungeon = false
 	end
 end
@@ -110,7 +114,11 @@ function on_input(self, action_id, action)
 			gui.set_enabled(gui.get_node("main"), false)
 																--todo
 			msg.post("#music", "stopAll")
-			msg.post("character#CharacterCreator", "toggle")
+
+			col.resume = true
+			
+			msg.post("main#Map", "load")
+			msg.post("main#Map", "enable")
 		end
 
 		node = gui.get_node("settingsButton")

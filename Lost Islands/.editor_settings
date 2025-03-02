@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term "config"
+      :term "load"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Objects/IO.go"
-        :scene
-      ]
       [
         "/main/Utility Scripts/Enemies/firstMap/slimeMap.script"
         :code
@@ -61,10 +57,6 @@
         :scene
       ]
       [
-        "/main/Equipment/equScripts/equipment.script"
-        :code
-      ]
-      [
         "/main/Equipment/woodsword.go"
         :scene
       ]
@@ -73,20 +65,12 @@
         :cljfx-form-view
       ]
       [
-        "/main/map.collection"
-        :scene
-      ]
-      [
         "/defsave/api/defsave_ext.script_api"
         :code
       ]
       [
         "/defsave/src/defsave.cpp"
         :code
-      ]
-      [
-        "/main/main.collection"
-        :scene
       ]
       [
         "/main/GUI/menus/PauseMenu.gui"
@@ -113,19 +97,47 @@
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
-        :code
-      ]
-      [
         "/main/Utility Scripts/music.script"
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
         :code
       ]
       [
+        "/main/GUI/menus/Inventory.gui"
+        :scene
+      ]
+      [
         "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/CharacterCreator.gui"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Equipment/equScripts/equipment.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
         :code
       ]
       [
@@ -139,18 +151,6 @@
       [
         "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Inventory.gui"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/CharacterCreator.gui"
-        :scene
       ]
     ]
   }
