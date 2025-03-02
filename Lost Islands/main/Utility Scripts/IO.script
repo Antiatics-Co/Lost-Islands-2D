@@ -55,7 +55,7 @@ local easyTable = { position, energy, health, character = {}, npcStatus = {} }
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
 local volume = 50
 
-local config = { volume, resolution, boot = 0 }
+local config = { volume, resolution }
 
 ---------------------------------------------------------------------------
 
@@ -272,6 +272,7 @@ function loadConfig()
 	else
 		print("No config file found.")
 		setup_default_config()
+		msg.post("main#MainMenu", "boot")
 	end
 end
 
@@ -280,7 +281,8 @@ function setup_default_config()
 	local checksum = generate_checksum(table_to_string(config))
 	defsave.set(configName, "data", config)
 	defsave.set(configName, "checksum", checksum)
-	defsave.save();
+	defsave.save(configName);
+	print("Setup Defauklt config")
 end
 
 local function save()

@@ -19,19 +19,11 @@
   }
   :code {
     :find {
-      :term "default"
+      :term "config"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Scripts/IO.script"
-        :code
-      ]
-      [
-        "/main/Objects/Inventory.go"
-        :scene
-      ]
       [
         "/main/Objects/IO.go"
         :scene
@@ -57,14 +49,6 @@
         :scene
       ]
       [
-        "/main/GUI/menus/CharacterCreator.gui"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
-        :code
-      ]
-      [
         "/main/Misc Objects/IO.go"
         :scene
       ]
@@ -74,10 +58,6 @@
       ]
       [
         "/main/Misc Objects/Inventory.go"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Inventory.gui"
         :scene
       ]
       [
@@ -113,10 +93,6 @@
         :scene
       ]
       [
-        "/main/GUI/menus/Menu Scripts/pause.gui_script"
-        :code
-      ]
-      [
         "/Modules/items.lua"
         :code
       ]
@@ -129,15 +105,19 @@
         :code
       ]
       [
-        "/main/Player/Player.script"
-        :code
-      ]
-      [
         "/main/GUI/menus/MainMenu.gui"
         :scene
       ]
       [
-        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        "/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/music.script"
         :code
       ]
       [
@@ -145,12 +125,32 @@
         :code
       ]
       [
-        "/Modules/PlayerPosition.lua"
+        "/main/Utility Scripts/IO.script"
         :code
       ]
       [
-        "/main/Utility Scripts/IO.script"
+        "/main/GUI/menus/Menu Scripts/settings.gui_script"
         :code
+      ]
+      [
+        "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/pause.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Inventory.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/CharacterCreator.gui"
+        :scene
       ]
     ]
   }

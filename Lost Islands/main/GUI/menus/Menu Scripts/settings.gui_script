@@ -6,7 +6,7 @@
 local leave = ""
 local volume = 50
 local resolution = 1
-local config = { volume = volume, resolution = resolution, configVersion = 1 }
+local config = { volume = volume, resolution = resolution }
 local transitioning = false  -- Flag to prevent multiple transitions
 local settingsOpen = false
 local timerId = nil
@@ -25,16 +25,12 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("loadedConfig") then
 		local newConfig = message.data
-		if newConfig.configVersion and newConfig.configVersion > config.configVersion then
 			config = newConfig
 			volume = config.volume or volume
 			resolution = config.resolution or resolution
 			gui.set_text(gui.get_node("SetVolume"), volume)
 			sound.set_group_gain("master", (volume / 100))
 			print("Configuration updated from message")
-		else
-			print("Received configuration version is not newer. No update performed.")
-		end
 	end
 
 	if message_id == hash("enable") then
@@ -83,7 +79,6 @@ function on_input(self, action_id, action)
 				animation(plus, "plus")
 				press_start_time = socket.gettime()
 				timerId = timer.delay(hold_duration, false, function()
-
 					changeVolume(1)
 			end)
 			elseif action.released then
@@ -112,7 +107,6 @@ function on_input(self, action_id, action)
 			if action.pressed then
 				press_start_time = socket.gettime()
 				timerId = timer.delay(hold_duration, false, function()
-					
 					changeVolume(-1)
 				end)
 			elseif action.released then
