@@ -6,6 +6,8 @@
 --Message Prehashes
 
 local ENABLE = hash("enable")
+local ESC = hash("esc")
+local TOUCH = hash("touch")
 
 -----------------------------------------------------------------
 
@@ -13,7 +15,7 @@ local  pauseOpen = false --sets if you are in pause  menu
 
 function init(self)
 	gui.set_enabled(gui.get_node("pausemenu"), false)
-	msg.post(".", "acquire_input_focus") 
+	msg.post("#", "acquire_input_focus") 
 end
 
 local function animation(node, newAnimation)
@@ -37,39 +39,40 @@ local function leaveMenu()
 end
 
 function on_input(self, action_id, action)
-
-	if action_id == hash("esc") and pauseOpen and action.released then
-		leaveMenu()
-	end 
-
-	if action_id == hash("touch") and action.released and pauseOpen then
-	
-		local resume = gui.get_node("resume")
-		if gui.pick_node(resume, action.x, action.y) then
-			animation(resume, "button") -- TO DO: Extend time on animation
+	if pauseOpen and action.released then
+		if action_id == ESC then
 			leaveMenu()
-		end
-		
-		local leave = gui.get_node("leave")
-		if gui.pick_node(leave, action.x, action.y) then
-			gui.set_enabled(gui.get_node("pausemenu"), false)
-			msg.post("/main#music", "stopAll")
-			msg.post("/main#music", "enterMain")
-			pauseOpen = not pauseOpen
-			msg.post("/main#MainMenu", "ToMain") --enables main menu and uns level
-		end
-		
-		local settings = gui.get_node("settings")
-		if gui.pick_node(settings, action.x, action.y) then
-			gui.set_enabled(gui.get_node("pausemenu"), false)
-			pauseOpen = not pauseOpen
-			msg.post("main#Settings", "fromPause")
-			msg.post("main#Settings","enable")
-		end
+		end 
 
-		local sav = gui.get_node("save")
-		if gui.pick_node(sav, action.x, action.y) then
-			msg.post("IO#IO", "save")
+		if action_id == TOUCH then
+		
+			local resume = gui.get_node("resume")
+			if gui.pick_node(resume, action.x, action.y) then
+				animation(resume, "button") -- TO DO: Extend time on animation
+				leaveMenu()
+			end
+			
+			local leave = gui.get_node("leave")
+			if gui.pick_node(leave, action.x, action.y) then
+				gui.set_enabled(gui.get_node("pausemenu"), false)
+				msg.post("/main#music", "stopAll")
+				msg.post("/main#music", "enterMain")
+				pauseOpen = not pauseOpen
+				msg.post("/main#MainMenu", "ToMain") --enables main menu and uns level
+			end
+			
+			local settings = gui.get_node("settings")
+			if gui.pick_node(settings, action.x, action.y) then
+				gui.set_enabled(gui.get_node("pausemenu"), false)
+				pauseOpen = not pauseOpen
+				msg.post("main#Settings", "fromPause")
+				msg.post("main#Settings","enable")
+			end
+
+			local sav = gui.get_node("save")
+			if gui.pick_node(sav, action.x, action.y) then
+				msg.post("IO#IO", "save")
+			end
 		end
 	end
 end
