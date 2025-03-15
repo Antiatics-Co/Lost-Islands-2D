@@ -70,7 +70,7 @@ local function animate(self)
 			play_animation(self, "idle") --idle is stand in for movement animation
 		end
 	else
-		play_animation(self, "Jump") -- idle is stand in for jumping animation
+		play_animation(self, "Jump")
 	end
 end
 
