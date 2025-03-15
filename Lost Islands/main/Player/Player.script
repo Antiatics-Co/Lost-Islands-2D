@@ -11,7 +11,6 @@ local po = require("Modules.PlayerPosition")
 
 --PREHASHING-------------------------------------------------------
 
-local STOPGRAVITY = hash("stopGravity")
 local CONTACTPOINTRESPONSE = hash("contact_point_response")
 local LEVELGROUP = hash("ground")
 local STARTRECIEVINGINPUTS = hash("recievingInput")
@@ -33,6 +32,7 @@ local FIREDELAY = 0.5
 local recievingInputs = true
 local trackPlayer = false
 
+
 local lastfired = -1
 
 function init(self) --constructor
@@ -43,10 +43,11 @@ function init(self) --constructor
 	self.velocity = vmath.vector3(0, 0, 0)
 	self.groundContact = false
 	self.previousGroundContact = false
+	self.prevPos = nil
 	self.correction = vmath.vector3(0, 0, 0)
 end
 
-local function walk(self) -- custom func to handle hori movement
+local function walk(self) -- handles hori movement
 	self.velocity.x = BASEVELOCITY * self.direction
 end
 
@@ -69,7 +70,7 @@ local function animate(self)
 			play_animation(self, "idle") --idle is stand in for movement animation
 		end
 	else
-		play_animation(self, "idle") -- idle is stand in for jumping animation
+		play_animation(self, "Jump") -- idle is stand in for jumping animation
 	end
 end
 
@@ -153,6 +154,7 @@ local function handleLevelCollisions(self, normal, distance)
 		end
 		self.groundContact = true
 		self.velocity.y = 0
+		pprint(normal)
 	end
 
 	--hit the ceiling
@@ -162,9 +164,6 @@ local function handleLevelCollisions(self, normal, distance)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == STOPGRAVITY then
-		GRAVITY = 0
-	end
 
 	if message_id == hash("Loaded") then
 		if po.getPosition() ~= nil then
@@ -174,16 +173,15 @@ function on_message(self, message_id, message, sender)
 		trackPlayer = true
 	end
 	
-	if message_id == CONTACTPOINTRESPONSE then
+	if message_id == CONTACTPOINTRESPONSE and go.get_position() ~= self.prevPos then
 		if message.other_group == LEVELGROUP then
 			handleLevelCollisions(self, message.normal, message.distance)
 		elseif message.group == hash("wall") then
 			collisionX(self, message.normal, message.distance)
 		end
-		
 	end
 
-	if message_id == hash("reset") then --Temporary, need a more robust resset system
+	if message_id == hash("reset") then --Temporary, need a more robust reset system
 		local pos = go.get_position()
 		pos.x = 8
 		pos.y = 300

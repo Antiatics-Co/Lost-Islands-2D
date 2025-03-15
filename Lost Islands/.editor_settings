@@ -25,22 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Utility Scripts/Enemies/firstMap/slimeMap.script"
-        :code
-      ]
-      [
-        "/main/Elements/Fire/FireBullet.go"
-        :scene
-      ]
-      [
-        "/Modules/default.render_script"
-        :code
-      ]
-      [
-        "/Modules/NPCProperties.lua"
-        :code
-      ]
-      [
         "/main/Player/Equipment.go"
         :scene
       ]
@@ -147,6 +131,22 @@
       [
         "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
+      ]
+      [
+        "/Assets/main/Images/TileMaps/MainMap.tilemap"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/TileMaps/TutorialTown.tilemap"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/TileMaps/Test.tilemap"
+        :scene
+      ]
+      [
+        "/Assets/Game.atlas"
+        :scene
       ]
       [
         "/main/Player/Player.script"

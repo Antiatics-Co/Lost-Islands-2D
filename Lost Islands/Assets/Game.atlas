@@ -1,7 +1,7 @@
 animations {
   id: "idle"
   images {
-    image: "/Assets/main/Images/TileMaps/Testplayer/PlayerPlatformer.png"
+    image: "/Assets/main/Images/Testplayer/PlayerPlatformer.png"
   }
   playback: PLAYBACK_NONE
   fps: 60
@@ -59,13 +59,6 @@ animations {
   fps: 60
 }
 animations {
-  id: "IdleMap"
-  images {
-    image: "/Assets/main/Images/TileMaps/Testplayer/player.png"
-  }
-  playback: PLAYBACK_LOOP_FORWARD
-}
-animations {
   id: "Title"
   images {
     image: "/Assets/main/Images/Menu/Title.png"
@@ -76,6 +69,13 @@ animations {
   id: "Splash"
   images {
     image: "/Assets/main/Images/SplashImage/Isaac Newton.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+animations {
+  id: "Jump"
+  images {
+    image: "/Assets/main/Images/Testplayer/PlayerJump.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
 }
