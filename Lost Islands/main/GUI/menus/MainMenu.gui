@@ -25,7 +25,7 @@ nodes {
 nodes {
   position {
     x: -1.0
-    y: -13.0
+    y: -14.0
   }
   scale {
     x: 2.0
@@ -75,7 +75,7 @@ nodes {
 nodes {
   position {
     x: -1.0
-    y: -50.0
+    y: -83.0
   }
   scale {
     x: 2.0
@@ -126,7 +126,7 @@ nodes {
 nodes {
   position {
     x: -1.0
-    y: -88.692825
+    y: -117.692825
   }
   scale {
     x: 2.0
@@ -189,7 +189,7 @@ nodes {
 nodes {
   position {
     x: -1.0
-    y: 24.0
+    y: 21.0
   }
   scale {
     x: 2.0
@@ -234,6 +234,55 @@ nodes {
     z: 1.0
   }
   parent: "start"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -1.0
+    y: -49.0
+  }
+  scale {
+    x: 2.0
+  }
+  type: TYPE_BOX
+  texture: "Game/button"
+  id: "load"
+  adjust_mode: ADJUST_MODE_ZOOM
+  parent: "main"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -1.0
+  }
+  scale {
+    x: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Load"
+  font: "default"
+  id: "text10"
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+  parent: "load"
   inherit_alpha: true
 }
 nodes {
@@ -338,8 +387,8 @@ nodes {
 }
 nodes {
   position {
-    x: 316.0
-    y: 156.0
+    x: 319.0
+    y: 180.0
   }
   size {
     x: 200.0
@@ -452,6 +501,97 @@ nodes {
   font: "default"
   id: "text7"
   parent: "newGameAlert"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 319.0
+    y: 180.0
+  }
+  size {
+    x: 640.0
+    y: 360.0
+  }
+  type: TYPE_BOX
+  id: "loadMenu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  size {
+    x: 200.0
+    y: 50.0
+  }
+  color {
+    x: 0.0
+    y: 0.2
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "save1"
+  parent: "loadMenu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -57.0
+  }
+  size {
+    x: 200.0
+    y: 50.0
+  }
+  color {
+    x: 0.0
+    y: 0.2
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "save2"
+  parent: "loadMenu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -121.0
+  }
+  size {
+    x: 200.0
+    y: 50.0
+  }
+  color {
+    x: 0.0
+    y: 0.2
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "save3"
+  parent: "loadMenu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 97.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Save States"
+  font: "default"
+  id: "text11"
+  parent: "loadMenu"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

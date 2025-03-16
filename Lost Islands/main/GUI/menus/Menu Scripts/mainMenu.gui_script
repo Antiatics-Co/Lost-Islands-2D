@@ -50,7 +50,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("file") then
 		fileExists = true
-		gui.set_texture(gui.get_node("resume"), "Game", { key = "" })
+		gui.set_texture(gui.get_node("resume"), "Game", { key = "button" })
 	end
 
 	if message_id == hash("boot") then

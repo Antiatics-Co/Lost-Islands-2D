@@ -19,7 +19,7 @@
   }
   :code {
     :find {
-      :term ""
+      :term "fileExists"
     }
   }
   :workflow {
@@ -141,16 +141,16 @@
         :scene
       ]
       [
-        "/main/main.collection"
-        :scene
-      ]
-      [
         "/main/Utility Scripts/IO.script"
         :code
       ]
       [
         "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
         :code
+      ]
+      [
+        "/main/main.collection"
+        :scene
       ]
     ]
   }
