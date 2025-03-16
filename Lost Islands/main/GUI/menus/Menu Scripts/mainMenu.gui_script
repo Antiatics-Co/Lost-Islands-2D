@@ -5,6 +5,7 @@ local FILECORRUPTION = hash("fileCorruption")
 local TOMAINMENU = hash( "ToMain")
 local HEALTH = hash("health")
 local ENABLE = hash("enable")
+
 ----------------------------------------------------
 
 local col = require("Modules.CollectionTracker")
@@ -14,7 +15,7 @@ local inDungeon = false
 local easyTable = {}
 local fileExists = true
 local menuMusic = true
-
+local alert = false
 
 local function delaySplash()
 	local minTime = 2
@@ -49,7 +50,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("file") then
 		fileExists = true
-		gui.set_color(gui.get_node("resume"), vmath.vector4(0, 0, 0, 1))
+		gui.set_texture(gui.get_node("resume"), "Game", { key = "" })
 	end
 
 	if message_id == hash("boot") then
@@ -94,57 +95,96 @@ function boot()
 	msg.post("character#CharacterCreator", "toggle")
 end
 
+local function newGame()
+	inDungeon = true
+	gui.set_enabled(gui.get_node("main"), false)
+	msg.post("#music", "stopAll")
+	msg.post("IO#IO", "reset")
+	msg.post("character#CharacterCreator", "toggle")
+end
+
+local function newGameSwitch(ans)
+	if ans then
+		gui.set_enabled(gui.get_node("newGameAlert"), false)
+		alert = false
+		newGame()
+	else
+		gui.set_enabled(gui.get_node("newGameAlert"), false)
+		alert = false
+	end
+end
+
 function on_input(self, action_id, action)
-	if action_id == hash("touch") and action.released and inDungeon == false then
-		local node = gui.get_node("start")
-
-		if gui.pick_node(node, action.x, action.y) then
-			animation(node, "button") -- TO DO: Extend time on animation
-			inDungeon = true
-			gui.set_enabled(gui.get_node("main"), false)
-
-			msg.post("#music", "stopAll")
-			msg.post("character#CharacterCreator", "toggle")
-		end
-
-		node = gui.get_node("resume")
-		if gui.pick_node(node, action.x, action.y) and fileExists then
-			animation(node, "button") -- TO DO: Extend time on animation
-			inDungeon = true
-			gui.set_enabled(gui.get_node("main"), false)
-																--todo
-			msg.post("#music", "stopAll")
-
-			col.resume = true
+	local node
+	if inDungeon == false then
+		if action_id == hash("touch") and action.released then
 			
-			msg.post("main#Map", "load")
-			msg.post("main#Map", "enable")
+			node = gui.get_node("start")
+
+			if gui.pick_node(node, action.x, action.y) then
+				animation(node, "button") -- TO DO: Extend time on animation
+
+				if fileExists then
+					gui.set_enabled(gui.get_node("newGameAlert"), true)
+					alert = true
+				else
+					newGame()
+				end
+			end
+
+			node = gui.get_node("resume")
+			if gui.pick_node(node, action.x, action.y) and fileExists then
+				animation(node, "button") -- TO DO: Extend time on animation
+				inDungeon = true
+				gui.set_enabled(gui.get_node("main"), false)
+																	--todo
+				msg.post("#music", "stopAll")
+
+				col.resume = true
+				
+				msg.post("main#Map", "load")
+				msg.post("main#Map", "enable")
+			end
+
+			node = gui.get_node("settingsButton")
+			if gui.pick_node(node, action.x, action.y) then
+				animation(node, "button")
+				msg.post("#Settings", "enable")
+				msg.post("#Settings", "fromMain")
+				gui.set_enabled(gui.get_node("main"), false)
+				inDungeon = true
+			end
+
+			node = gui.get_node("quitGame")
+			if gui.pick_node(node, action.x, action.y) then
+				os.exit()
+			end
+
+			node = gui.get_node("reset")
+			if gui.pick_node(node, action.x, action.y) and inDungeon == false then
+				msg.post("IO#IO", "reset")
+				print("reset posted")
+				gui.set_enabled(gui.get_node("corruptFile"), false)
+			end
+			
+			node = gui.get_node("keep")
+			if gui.pick_node(node, action.x, action.y) then
+				os.exit()
+			end
+		end
+	end
+
+
+	if action_id == hash("touch") and action.released and alert then
+		node = gui.get_node("yes")
+
+		if gui.pick_node(node, action.x, action.y) then
+			newGameSwitch(true)
 		end
 
-		node = gui.get_node("settingsButton")
-		if gui.pick_node(node, action.x, action.y) then
-			animation(node, "button")
-			msg.post("#Settings", "enable")
-			msg.post("#Settings", "fromMain")
-			gui.set_enabled(gui.get_node("main"), false)
-			inDungeon = true
-		end
-
-		node = gui.get_node("quitGame")
-		if gui.pick_node(node, action.x, action.y) then
-			os.exit()
-		end
-
-		node = gui.get_node("reset")
-		if gui.pick_node(node, action.x, action.y) then
-			msg.post("IO#IO", "reset")
-			print("reset posted")
-			gui.set_enabled(gui.get_node("corruptFile"), false)
-		end
-		
-		node = gui.get_node("keep")
-		if gui.pick_node(node, action.x, action.y) then
-			os.exit()
+		node = gui.get_node("no")
+		if gui.pick_node(node, action.x, action.y)then
+			newGameSwitch(false)
 		end
 	end
 end

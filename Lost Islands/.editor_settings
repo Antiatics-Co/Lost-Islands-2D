@@ -19,19 +19,11 @@
   }
   :code {
     :find {
-      :term "load"
+      :term ""
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Player/Equipment.go"
-        :scene
-      ]
-      [
-        "/main/Misc Objects/IO.go"
-        :scene
-      ]
       [
         "/main/Player/Player.go"
         :scene
@@ -43,10 +35,6 @@
       [
         "/main/Equipment/woodsword.go"
         :scene
-      ]
-      [
-        "/game.project"
-        :cljfx-form-view
       ]
       [
         "/defsave/api/defsave_ext.script_api"
@@ -93,23 +81,7 @@
         :scene
       ]
       [
-        "/main/Utility Scripts/IO.script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
-        :code
-      ]
-      [
         "/main/GUI/menus/CharacterCreator.gui"
-        :scene
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
-        "/main/map.collection"
         :scene
       ]
       [
@@ -118,10 +90,6 @@
       ]
       [
         "/main/Equipment/equScripts/equipment.script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
         :code
       ]
       [
@@ -149,7 +117,39 @@
         :scene
       ]
       [
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/newgamealert.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/NewGameAlert.gui"
+        :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
         "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
         :code
       ]
     ]

@@ -217,20 +217,10 @@ function verify_data(dataType)
 end
 
 function verify_save_data()
-	local status, err = pcall(function()
 		defsave.load(filename)
-	end)
-
-	if not status then
-		print("Error loading save file:", err)
-		setup_default_save()
-	end
-
-	if file_exists(filename) then
-		easyTable = verify_data("Player")
-		dungeonStatus = verify_data("Dungeons")
-		items = verify_data("Items")
-	end	
+		verify_data("Player")
+		verify_data("Dungeons")
+		verify_data("Items")
 end
 
 function loadConfig()
