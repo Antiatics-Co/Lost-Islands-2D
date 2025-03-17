@@ -19,7 +19,7 @@
   }
   :code {
     :find {
-      :term "fileExists"
+      :term "\"noFile\""
     }
   }
   :workflow {
@@ -59,10 +59,6 @@
       [
         "/Modules/ItemProperties.lua"
         :code
-      ]
-      [
-        "/main/GUI/menus/MainMenu.gui"
-        :scene
       ]
       [
         "/Modules/PlayerPosition.lua"
@@ -141,16 +137,20 @@
         :scene
       ]
       [
+        "/main/main.collection"
+        :scene
+      ]
+      [
         "/main/Utility Scripts/IO.script"
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
-        :code
+        "/main/GUI/menus/MainMenu.gui"
+        :scene
       ]
       [
-        "/main/main.collection"
-        :scene
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
       ]
     ]
   }

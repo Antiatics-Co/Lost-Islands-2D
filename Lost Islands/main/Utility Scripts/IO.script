@@ -32,6 +32,7 @@ local md5 = require("Modules.md5")
 
 local filename = "save"
 local configName = "config.dat"
+local file = {false, false, false}
 
 ------------------------------------Dungeons
 
@@ -161,13 +162,18 @@ end
 
 function init(self)
 	defsave.appname = "LostIslands"
-	filename = filename .. ".dat"
-
-	if file_exists(filename) then
-		verify_save_data()
-	else
-		setup_default_save()
+	
+	for i = 1, 3, 1 do
+		if file_exists(filename..i..".dat") then
+			verify_save_data(filename..i..".dat")
+		else
+			msg.post("main:/main#MainMenu", "noFile", {file = i})
+		end
 	end
+
+	filename = filename .. ".dat"  --need to move this to a create file thingy so that the right file is created
+	
+end
 
 	-- Always check and load config
 	loadConfig()
@@ -175,7 +181,6 @@ function init(self)
 end
 
 function setup_default_save()
-	msg.post("main:/main#MainMenu", "noFile")
 	local status, err = pcall(function()
 		defsave.load(filename)
 	end)
@@ -216,7 +221,7 @@ function verify_data(dataType)
 	return nil
 end
 
-function verify_save_data()
+function verify_save_data(filename)
 		defsave.load(filename)
 		verify_data("Player")
 		verify_data("Dungeons")

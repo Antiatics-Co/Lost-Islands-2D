@@ -516,6 +516,7 @@ nodes {
   id: "loadMenu"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
@@ -537,6 +538,18 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "New Save"
+  font: "default"
+  id: "saveText1"
+  parent: "save1"
+  inherit_alpha: true
+}
+nodes {
   position {
     y: -57.0
   }
@@ -556,6 +569,18 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "New Save"
+  font: "default"
+  id: "saveText2"
+  parent: "save2"
+  inherit_alpha: true
+}
+nodes {
   position {
     y: -121.0
   }
@@ -573,6 +598,18 @@ nodes {
   parent: "loadMenu"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "New Save"
+  font: "default"
+  id: "saveText3"
+  parent: "save3"
+  inherit_alpha: true
 }
 nodes {
   position {
