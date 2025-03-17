@@ -181,7 +181,7 @@ function on_input(self, action_id, action)
 		end
 	end
 
---doing this --Planning --add comments as you go to remember how it works
+--doing this --Planning for save slots menu --add comments as you go to remember how it works
 -- (1) IO checks if a save file of a certain name exists 
 -- (2) Updates the filename so it knows what it should be saving to 
 -- (3) When saving, add filename as value to config so that it can load and be 
