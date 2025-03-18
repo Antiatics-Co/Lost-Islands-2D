@@ -32,7 +32,6 @@ local md5 = require("Modules.md5")
 
 local filename = "save"
 local configName = "config.dat"
-local file = {false, false, false}
 
 ------------------------------------Dungeons
 
@@ -56,7 +55,7 @@ local easyTable = { position, energy, health, character = {}, npcStatus = {} }
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
 local volume = 50
 
-local config = { volume, resolution }
+local config = { volume, resolution, prevsave = nil }
 
 ---------------------------------------------------------------------------
 
@@ -167,13 +166,11 @@ function init(self)
 		if file_exists(filename..i..".dat") then
 			verify_save_data(filename..i..".dat")
 		else
-			msg.post("main:/main#MainMenu", "noFile", {file = i})
+			msg.post("main:/main#MainMenu", "noFile", { file = i })
 		end
 	end
 
 	filename = filename .. ".dat"  --need to move this to a create file thingy so that the right file is created
-	
-end
 
 	-- Always check and load config
 	loadConfig()
@@ -194,6 +191,8 @@ function setup_default_save()
 	defsave.save(filename)
 end
 
+local name
+
 function verify_data(dataType)
 	local loadedChecksum = defsave.get(filename, "checksum" .. dataType)
 	local loadedData = defsave.get(filename, dataType:lower())
@@ -206,6 +205,7 @@ function verify_data(dataType)
 			print(dataType .. " checksums match")
 			print("loadedChecksum: " .. loadedChecksum)
 			print("CurrentChecksum: " .. current_checksum)
+			name = loadedData.name or nil
 			return loadedData
 		else
 			print("Loaded " .. dataType .. " Data Version", loadedData)
@@ -221,11 +221,12 @@ function verify_data(dataType)
 	return nil
 end
 
-function verify_save_data(filename)
+function verify_save_data(filename, i)
 		defsave.load(filename)
 		verify_data("Player")
 		verify_data("Dungeons")
 		verify_data("Items")
+		msg.post("main#MainMenu", "file", { file = i, name })
 end
 
 function loadConfig()
@@ -396,6 +397,6 @@ function on_message(self, message_id, message, sender)
 
 		--local loadedChecksum = defsave.get(configName, "checksum")
 		--print("Loaded Checksum: ", loadedChecksum)
-		msg.post("main#Settings", "loadedConfig", {data = config})
+		msg.post("main#Settings", "loadedConfig", { data = config })
 	end
 end

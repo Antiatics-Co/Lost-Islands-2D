@@ -13,7 +13,7 @@ local col = require("Modules.CollectionTracker")
 
 local inDungeon = false
 local easyTable = {}
-local fileExists = true
+local fileExists = {}
 local menuMusic = true
 local alert = false
 local saves = false
@@ -50,7 +50,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("file") then
-		fileExists = message.file
+		fileExists[message.file] = message.name
 		gui.set_texture(gui.get_node("resume"), "Game", { key = "button" }) -- to be editted
 	end
 
@@ -59,7 +59,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("noFile") then
-		noFile()
+		noFile(message.file)
 	end
 
 	if message_id == HEALTH then
@@ -85,8 +85,8 @@ function SetSaveSlot(num, tog, name)
 	end
 end
 
-function noFile()
-	fileExists = false
+function noFile(i)
+	fileExists[i] = nil
 	gui.set_color(gui.get_node("resume"), vmath.vector4(0, 1, 0, 1))
 end
 
@@ -131,7 +131,7 @@ function on_input(self, action_id, action)
 			if gui.pick_node(node, action.x, action.y) then
 				animation(node, "button") -- TO DO: Extend time on animation
 
-				if fileExists then
+				if fileExists ~= nil then --temp will be relaced with new menu
 					gui.set_enabled(gui.get_node("newGameAlert"), true)
 					alert = true
 				else
@@ -181,33 +181,35 @@ function on_input(self, action_id, action)
 		end
 	end
 
---doing this --Planning for save slots menu --add comments as you go to remember how it works
+	--doing this --Planning for save slots menu --add comments as you go to remember how it works
+	
 -- (1) IO checks if a save file of a certain name exists 
 -- (2) Updates the filename so it knows what it should be saving to 
 -- (3) When saving, add filename as value to config so that it can load and be 
 -- 	used to determine which file the main menu resume/continue button loads
 -- 	if nil then resume won't do anything and will be greyed out or something
--- (3) fileExists is a table of bools
+-- (3) fileExists is a table of names, if nil file exists
 -- (4) for loop to set slots correcty that increments to 3 and sets which can be pressed in which menus
+-- (5) Look at settings, LeaVING FUNCTION NOTE
 	
 	if action_id == hash("touch") and action.released and saves then
 		node = hash("save1")
 		if gui.pick_node(node, action.x, action.y) then
-			if fileExists[1] then
+			if fileExists[1] ~= nil then
 				
 			end
 		end
 
 		node = hash("save2")
 		if gui.pick_node(node, action.x, action.y) then
-			if fileExists[2] then
+			if fileExists[2] ~= nil then
 
 			end
 		end
 
 		node = hash("save3")
 		if gui.pick_node(node, action.x, action.y) then
-			if fileExists[3] then
+			if fileExists[3] ~= nil then
 
 			end
 		end
