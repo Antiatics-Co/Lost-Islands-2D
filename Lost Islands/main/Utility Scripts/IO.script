@@ -8,8 +8,7 @@
 
 local itm = require("Modules.items")
 local pos = require("Modules.PlayerPosition")
-local loc = require("Modules.CollectionTracker") --unneeded getting rid of location tracking
-local char = require("Modules.CharacterSprites")
+local loc = require("Modules.Settings") --unneeded getting rid of location tracking
 local mob = require("Modules.NPCProperties")
 local dun = require("Modules.Dungeons")
 
@@ -118,7 +117,7 @@ local function loadSave()
 	pos.setPosition(easyTable.position)
 	itm.setHealth(easyTable.health)
 	itm.setEnergy(easyTable.energy)
-	char.sprite = easyTable.character
+	pos.sprite = easyTable.character
 	mob.npc = easyTable.npcStatus
 	msg.post("map:/Player#Player", "Loaded")
 end
@@ -388,7 +387,8 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == LOAD then
-		print("us loader: " .. sender)
+		print("us loader: " .. sender) --loaded by equipment
+		
 		loadSave()
 	end
 

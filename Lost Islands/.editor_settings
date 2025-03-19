@@ -19,23 +19,11 @@
   }
   :code {
     :find {
-      :term "prevsave"
+      :term "load"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/main/Player/Player.go"
-        :scene
-      ]
-      [
-        "/main/Misc Objects/Inventory.go"
-        :scene
-      ]
-      [
-        "/main/Equipment/woodsword.go"
-        :scene
-      ]
       [
         "/defsave/api/defsave_ext.script_api"
         :code
@@ -49,27 +37,11 @@
         :scene
       ]
       [
-        "/Modules/items.lua"
-        :code
-      ]
-      [
         "/Modules/Dungeons.lua"
         :code
       ]
       [
-        "/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
-        "/Modules/PlayerPosition.lua"
-        :code
-      ]
-      [
         "/main/Utility Scripts/music.script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
         :code
       ]
       [
@@ -79,14 +51,6 @@
       [
         "/main/GUI/menus/CharacterCreator.gui"
         :scene
-      ]
-      [
-        "/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
-        "/main/Equipment/equScripts/equipment.script"
-        :code
       ]
       [
         "/main/GUI/menus/Menu Scripts/pause.gui_script"
@@ -109,10 +73,6 @@
         :scene
       ]
       [
-        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/newgamealert.gui_script"
         :code
       ]
@@ -123,10 +83,6 @@
       [
         "/game.project"
         :cljfx-form-view
-      ]
-      [
-        "/main/Player/Player.script"
-        :code
       ]
       [
         "/main/map.collection"
@@ -141,7 +97,15 @@
         :scene
       ]
       [
-        "/main/Utility Scripts/IO.script"
+        "/Modules/ItemProperties.lua"
+        :code
+      ]
+      [
+        "/Modules/CharacterSprites.lua"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
         :code
       ]
       [
@@ -149,7 +113,43 @@
         :code
       ]
       [
+        "/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/Modules/items.lua"
+        :code
+      ]
+      [
+        "/Modules/Pathfinder.lua"
+        :code
+      ]
+      [
+        "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        :code
+      ]
+      [
         "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
+        "/Modules/CollectionTracker.lua"
+        :code
+      ]
+      [
+        "/main/Equipment/equScripts/equipment.script"
         :code
       ]
     ]

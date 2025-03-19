@@ -8,8 +8,7 @@ local ENABLE = hash("enable")
 
 ----------------------------------------------------
 
-local col = require("Modules.CollectionTracker")
-
+local col = require("Modules.Settings")
 
 local inDungeon = false
 local easyTable = {}
@@ -76,6 +75,10 @@ function on_message(self, message_id, message, sender)
 		gui.set_enabled(gui.get_node("main"), true)
 		col.resume = false
 		inDungeon = false
+	end
+
+	if message_id == hash("prevFile") then
+
 	end
 end
 
@@ -192,7 +195,7 @@ function on_input(self, action_id, action)
 -- (4) for loop to set slots correcty that increments to 3 and sets which can be pressed in which menus
 -- (5) Look at settings, LeaVING FUNCTION NOTE
 	
-	if action_id == hash("touch") and action.released and saves then
+if action_id == hash("touch") and action.released and saves and fileExists then
 		node = hash("save1")
 		if gui.pick_node(node, action.x, action.y) then
 			if fileExists[1] ~= nil then

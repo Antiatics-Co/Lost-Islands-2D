@@ -3,6 +3,8 @@
 --@Description - Adjusts settings *** Currently only volume ***
 
 
+local set = require("Modules.Settings")
+
 local leave = ""
 local volume = 50
 local resolution = 1
@@ -145,7 +147,8 @@ function leaveSettings(soLong)
 		transitioning = true  -- Set the flag to prevent multiple transitions
 		config.volume = volume
 		config.resolution = resolution
-		config.prevsave = --Should hold the name of previous save file, to load, get from main****************************
+		config.prevsave = set.save--Should hold the name of previous save file, to load, get from main****************************
+		
 		msg.post("IO#IO", "configSave", {config = config}) 
 
 		print("Leaving to: ", soLong)

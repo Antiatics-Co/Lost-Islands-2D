@@ -6,8 +6,8 @@
 -- It also contains a list of enemies with all their properties
 
 
-local itm = require("Modules.ItemProperties")
-local collection = require("Modules.CollectionTracker")
+local itm = ("Modules.items")
+local collection = require("Modules.Settings")
 local health = nil
 local M = {}
 

@@ -9,6 +9,7 @@
 -------------------------------------------------------------------
 
 local po = require("Modules.PlayerPosition")
+--local set = require("Modules.Settings")
 
 --PREHASHING-------------------------------------------------------
 

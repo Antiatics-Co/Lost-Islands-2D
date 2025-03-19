@@ -4,13 +4,15 @@
 
 @Description
 	contains the current general location of the player
-	as well as the starting postions for dungeons
+	as well as the starting postions for dungeons,  Holds all data pertaining to player
 
 @Version 1
 
 --]]
 
 local M = {}
+
+M.sprites = 0
 
 local position = nil
 local mousePos

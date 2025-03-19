@@ -4,7 +4,7 @@
 --	Handles character creation menu
 --@Version 1
 
-local char = require("Modules.CharacterSprites")
+local char = require("Modules.PlayerPosition")
 
 local sprite = char.sprite
 
