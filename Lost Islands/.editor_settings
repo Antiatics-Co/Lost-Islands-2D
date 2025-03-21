@@ -19,7 +19,7 @@
   }
   :code {
     :find {
-      :term "\"file\""
+      :term ""
     }
   }
   :workflow {
@@ -81,14 +81,6 @@
         :cljfx-form-view
       ]
       [
-        "/main/map.collection"
-        :scene
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
         "/Modules/ItemProperties.lua"
         :code
       ]
@@ -113,10 +105,6 @@
         :code
       ]
       [
-        "/main/Player/Player.script"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
         :code
       ]
@@ -133,20 +121,32 @@
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/settings.gui_script"
-        :code
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
       ]
       [
         "/Modules/Settings.lua"
         :code
       ]
       [
-        "/main/Utility Scripts/IO.script"
+        "/main/GUI/menus/Menu Scripts/settings.gui_script"
+        :code
+      ]
+      [
+        "/main/Player/Player.script"
         :code
       ]
       [
         "/main/GUI/menus/MainMenu.gui"
         :scene
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
+        :code
       ]
       [
         "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"

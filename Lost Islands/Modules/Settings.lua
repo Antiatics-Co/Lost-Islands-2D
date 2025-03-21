@@ -7,6 +7,6 @@
 local M = {}
 
 M.filename = ""
-M.resume = false
+M.resume = nil
 
 return M

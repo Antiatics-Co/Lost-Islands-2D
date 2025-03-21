@@ -30,7 +30,10 @@ function on_message(self, message_id, message, sender)
 			config = newConfig
 			volume = config.volume or volume
 			resolution = config.resolution or resolution
-			set.filename = config.prevsave
+			set.resume = config.prevsave
+
+			--msg.post("#MainMenu", "setContinue")
+			
 			gui.set_text(gui.get_node("SetVolume"), volume)
 			sound.set_group_gain("master", (volume / 100))
 			print("Configuration updated from message")
