@@ -8,6 +8,8 @@ local ENABLE = hash("enable")
 
 ----------------------------------------------------
 
+local FILENAME = "save"
+
 local col = require("Modules.Settings")
 
 local inDungeon = false
@@ -16,6 +18,7 @@ local fileExists = {}
 local menuMusic = true
 local alert = false
 local saves = false
+
 
 local function delaySplash()
 	local minTime = 2
@@ -50,6 +53,11 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("file") then
 		fileExists[message.file] = message.name
+
+		if message.file == 3 then
+			SetSaveSlot()
+		end
+			
 		gui.set_texture(gui.get_node("resume"), "Game", { key = "button" }) -- to be editted
 	end
 
@@ -76,15 +84,15 @@ function on_message(self, message_id, message, sender)
 		col.resume = false
 		inDungeon = false
 	end
-
-	if message_id == hash("prevFile") then
-
-	end
 end
 
-function SetSaveSlot(num, tog, name)
-	if tog then
-		gui.set_text("saveText"..num, name)
+function SetSaveSlot()
+	for i = 1, 3, 1 do 
+		if fileExists[i] ~= nil then
+			gui.set_text("saveText"..i, fileExists[i])
+		else
+			gui.set_text("saveText"..i, "No File")
+		end
 	end
 end
 
@@ -108,6 +116,7 @@ end
 local function newGame()
 	inDungeon = true
 	gui.set_enabled(gui.get_node("main"), false)
+	gui.set_enabled(gui.get_node("loadMenu"), false)
 	msg.post("#music", "stopAll")
 	msg.post("IO#IO", "reset")
 	msg.post("character#CharacterCreator", "toggle")
@@ -126,20 +135,15 @@ end
 
 function on_input(self, action_id, action)
 	local node
-	if inDungeon == false then
+	if inDungeon == false and saves == false then
 		if action_id == hash("touch") and action.released then
 			
 			node = gui.get_node("start")
 
 			if gui.pick_node(node, action.x, action.y) then
+				saves = true
 				animation(node, "button") -- TO DO: Extend time on animation
-
-				if fileExists ~= nil then --temp will be relaced with new menu
-					gui.set_enabled(gui.get_node("newGameAlert"), true)
-					alert = true
-				else
-					newGame()
-				end
+				gui.set_enabled(gui.get_node("loadMenu"), true)
 			end
 
 			node = gui.get_node("resume")
@@ -196,24 +200,37 @@ function on_input(self, action_id, action)
 -- (5) Look at settings, LeaVING FUNCTION NOTE
 	
 if action_id == hash("touch") and action.released and saves and fileExists then
-		node = hash("save1")
+	node = gui.get_node("save1")
 		if gui.pick_node(node, action.x, action.y) then
 			if fileExists[1] ~= nil then
-				
+				col.filename = FILENAME.."1.dat"
+				gui.set_enabled(gui.get_node("newGameAlert"), true)
+				alert = true
+			else
+				newGame()
 			end
 		end
 
-		node = hash("save2")
+		node = gui.get_node("save2")
 		if gui.pick_node(node, action.x, action.y) then
 			if fileExists[2] ~= nil then
-
+				col.filename = FILENAME.."2.dat"
+				gui.set_enabled(gui.get_node("newGameAlert"), true)
+				alert = true
+			else
+				
+				newGame()
 			end
 		end
 
-		node = hash("save3")
+		node = gui.get_node("save3")
 		if gui.pick_node(node, action.x, action.y) then
 			if fileExists[3] ~= nil then
-
+				col.filename = FILENAME.."3.dat"
+				gui.set_enabled(gui.get_node("newGameAlert"), true)
+				alert = true
+			else
+				newGame()
 			end
 		end
 	end

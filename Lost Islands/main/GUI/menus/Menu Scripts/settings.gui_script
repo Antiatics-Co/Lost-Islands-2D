@@ -8,7 +8,7 @@ local set = require("Modules.Settings")
 local leave = ""
 local volume = 50
 local resolution = 1
-local config = { volume = volume, resolution = resolution }
+local config = { volume = volume, resolution = resolution, filename = "" }
 local transitioning = false  -- Flag to prevent multiple transitions
 local settingsOpen = false
 local timerId = nil
@@ -30,7 +30,7 @@ function on_message(self, message_id, message, sender)
 			config = newConfig
 			volume = config.volume or volume
 			resolution = config.resolution or resolution
-			msg.post("#MainMenu", "prevFile", { file = config.prevsave })
+			set.filename = config.prevsave
 			gui.set_text(gui.get_node("SetVolume"), volume)
 			sound.set_group_gain("master", (volume / 100))
 			print("Configuration updated from message")
@@ -145,9 +145,10 @@ end
 function leaveSettings(soLong)
 	if not transitioning then
 		transitioning = true  -- Set the flag to prevent multiple transitions
+		
 		config.volume = volume
 		config.resolution = resolution
-		config.prevsave = set.save--Should hold the name of previous save file, to load, get from main****************************
+		config.prevsave = set.filename
 		
 		msg.post("IO#IO", "configSave", {config = config}) 
 

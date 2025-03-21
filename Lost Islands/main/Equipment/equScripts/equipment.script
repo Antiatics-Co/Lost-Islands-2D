@@ -6,7 +6,7 @@ local co = require("Modules.Settings")
 
 function init(self)
 	if co.resume then
-		msg.post("main:/IO#IO", "load", { filename = co.filename })
+		msg.post("main:/IO#IO", "load")
 		msg.post("Inventory#Inventory", "loadItemData")
 	end
 end

@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term "load"
+      :term "\"file\""
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/defsave/api/defsave_ext.script_api"
-        :code
-      ]
       [
         "/defsave/src/defsave.cpp"
         :code
@@ -93,10 +89,6 @@
         :scene
       ]
       [
-        "/main/GUI/menus/MainMenu.gui"
-        :scene
-      ]
-      [
         "/Modules/ItemProperties.lua"
         :code
       ]
@@ -106,10 +98,6 @@
       ]
       [
         "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/settings.gui_script"
         :code
       ]
       [
@@ -133,14 +121,6 @@
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
-        :code
-      ]
-      [
-        "/main/Utility Scripts/IO.script"
-        :code
-      ]
-      [
         "/Modules/NPCProperties.lua"
         :code
       ]
@@ -150,6 +130,26 @@
       ]
       [
         "/main/Equipment/equScripts/equipment.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/settings.gui_script"
+        :code
+      ]
+      [
+        "/Modules/Settings.lua"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/MainMenu.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
         :code
       ]
     ]

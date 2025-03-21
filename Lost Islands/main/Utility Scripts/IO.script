@@ -8,7 +8,7 @@
 
 local itm = require("Modules.items")
 local pos = require("Modules.PlayerPosition")
-local loc = require("Modules.Settings") --unneeded getting rid of location tracking
+local set = require("Modules.Settings")
 local mob = require("Modules.NPCProperties")
 local dun = require("Modules.Dungeons")
 
@@ -169,7 +169,7 @@ function init(self)
 		end
 	end
 
-	filename = filename .. ".dat"  --need to move this to a create file thingy so that the right file is created
+	--filename = filename .. ".dat"  --need to move this to a create file thingy so that the right file is created
 
 	-- Always check and load config
 	loadConfig()
@@ -290,7 +290,7 @@ local function save()
 		position = pos.getPosition(),
 		health = itm.getHealth(),
 		energy = itm.getEnergy(),
-		character = char.sprite,
+		character = pos.sprite,
 		npcStatus = mob.npc }
 		
 	local dungeonData = dun.dungeons
@@ -381,6 +381,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == SAVE then
+		filename = set.filename
 		print("Received save message, now saving")
 	
 		save()
@@ -388,7 +389,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == LOAD then
 		print("us loader: " .. sender) --loaded by equipment
-		
+		filename = set.filename
 		loadSave()
 	end
 
