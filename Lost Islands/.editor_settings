@@ -19,15 +19,11 @@
   }
   :code {
     :find {
-      :term ""
+      :term "name"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/defsave/src/defsave.cpp"
-        :code
-      ]
       [
         "/main/GUI/menus/PauseMenu.gui"
         :scene
@@ -43,14 +39,6 @@
       [
         "/main/GUI/menus/Inventory.gui"
         :scene
-      ]
-      [
-        "/main/GUI/menus/CharacterCreator.gui"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/pause.gui_script"
-        :code
       ]
       [
         "/Assets/main/Images/TileMaps/MainMap.tilemap"
@@ -93,23 +81,7 @@
         :code
       ]
       [
-        "/Modules/PlayerPosition.lua"
-        :code
-      ]
-      [
-        "/Modules/items.lua"
-        :code
-      ]
-      [
         "/Modules/Pathfinder.lua"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
-        :code
-      ]
-      [
-        "/Modules/NPCProperties.lua"
         :code
       ]
       [
@@ -129,10 +101,6 @@
         :scene
       ]
       [
-        "/Modules/Settings.lua"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/settings.gui_script"
         :code
       ]
@@ -141,12 +109,44 @@
         :code
       ]
       [
-        "/main/GUI/menus/MainMenu.gui"
+        "/Modules/Settings.lua"
+        :code
+      ]
+      [
+        "/Modules/items.lua"
+        :code
+      ]
+      [
+        "/Modules/NPCProperties.lua"
+        :code
+      ]
+      [
+        "/main/GUI/menus/CharacterCreator.gui"
         :scene
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/input/game.input_binding"
+        :cljfx-form-view
+      ]
+      [
+        "/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/pause.gui_script"
+        :code
       ]
       [
         "/main/Utility Scripts/IO.script"
         :code
+      ]
+      [
+        "/main/GUI/menus/MainMenu.gui"
+        :scene
       ]
       [
         "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"

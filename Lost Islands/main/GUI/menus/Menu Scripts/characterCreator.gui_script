@@ -17,6 +17,7 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	self.message = ""
 	setup() 
 end
 
@@ -36,17 +37,20 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
+local click = false
+
 function on_input(self, action_id, action)
 	local node
 	
-	if action_id == hash("touch") and tog then
+	if action_id == hash("touch") and action.released and tog then
 		--node = gui.get_node("attribute_shoes")
 
 		node = gui.get_node("done")
-		if gui.pick_node(node, action.x, action.y) then
+		if gui.pick_node(node, action.x, action.y) and self.message ~= "" then
 			--animation(node, "button") -- this calls the animation function in the mainmenu script
 			gui.set_enabled(gui.get_node("root"), false)
-
+			click = false
+			char.name = self.message
 			msg.post("main#music", "stopAll")
 
 			char.sprite = sprite
@@ -54,11 +58,33 @@ function on_input(self, action_id, action)
 			msg.post("menu#PauseMenu", "start")
 
 			toggle()
-
+			--msg.post("IO#IO", "save")
 			msg.post("main#Map", "load")
 			msg.post("main#Map", "enable")
 			
 			--msg.post("map:/Inventory#Inventory", "start")
 		end
+		
+		node = gui.get_node("namePlate")
+		if gui.pick_node(node, action.x, action.y) then
+			node = gui.get_node("name")
+			if gui.get_text(node) == "Set Name" then
+				gui.set_text(node, "")
+			elseif gui.get_text(node) == "" then
+				gui.set_text(node, "Set Name")
+			end
+			click = not click
+		end
+	end
+
+	local l = string.len(self.message)
+	node = gui.get_node("name")
+	if action_id == hash("type") and click and l < 15 then
+		self.message = self.message .. action.text
+		gui.set_text(node, self.message)
+	elseif action_id == hash("backspace") and action.repeated and click then
+		l = string.len(self.message)
+		self.message = string.sub(self.message, 0, l-1)
+		gui.set_text(node, self.message)
 	end
 end

@@ -391,124 +391,6 @@ nodes {
     y: 180.0
   }
   size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.702
-    y: 0.102
-    z: 0.102
-  }
-  type: TYPE_BOX
-  id: "newGameAlert"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-  enabled: false
-}
-nodes {
-  position {
-    x: -52.0
-  }
-  scale {
-    x: 0.264596
-    y: 0.261326
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "yes"
-  parent: "newGameAlert"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  scale {
-    x: 2.460225
-    y: 2.23678
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_TEXT
-  text: "yes"
-  font: "default"
-  id: "text8"
-  parent: "yes"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 43.0
-  }
-  scale {
-    x: 0.264596
-    y: 0.261326
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "no"
-  parent: "newGameAlert"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  scale {
-    x: 2.460225
-    y: 2.23678
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_TEXT
-  text: "no"
-  font: "default"
-  id: "text9"
-  parent: "no"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 32.0
-  }
-  scale {
-    x: 0.557967
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "Are you sure you want to make a new game\n"
-  "doing so will delete your previous save\n"
-  ""
-  font: "default"
-  id: "text7"
-  parent: "newGameAlert"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 319.0
-    y: 180.0
-  }
-  size {
     x: 640.0
     y: 360.0
   }
@@ -629,6 +511,125 @@ nodes {
   font: "default"
   id: "text11"
   parent: "loadMenu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 319.0
+    y: 180.0
+    z: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.702
+    y: 0.102
+    z: 0.102
+  }
+  type: TYPE_BOX
+  id: "newGameAlert"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  position {
+    x: -52.0
+  }
+  scale {
+    x: 0.264596
+    y: 0.261326
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "yes"
+  parent: "newGameAlert"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 2.460225
+    y: 2.23678
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "yes"
+  font: "default"
+  id: "text8"
+  parent: "yes"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 43.0
+  }
+  scale {
+    x: 0.264596
+    y: 0.261326
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "no"
+  parent: "newGameAlert"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 2.460225
+    y: 2.23678
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "no"
+  font: "default"
+  id: "text9"
+  parent: "no"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 32.0
+  }
+  scale {
+    x: 0.557967
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Are you sure you want to make a new game\n"
+  "doing so will delete your previous save\n"
+  ""
+  font: "default"
+  id: "text7"
+  parent: "newGameAlert"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

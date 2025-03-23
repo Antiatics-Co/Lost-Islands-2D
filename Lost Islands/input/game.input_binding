@@ -46,7 +46,15 @@ key_trigger {
   input: KEY_E
   action: "inventory"
 }
+key_trigger {
+  input: KEY_BACKSPACE
+  action: "backspace"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "touch"
+}
+text_trigger {
+  input: TEXT
+  action: "type"
 }

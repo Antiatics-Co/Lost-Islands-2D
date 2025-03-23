@@ -1,4 +1,8 @@
 script: "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
 textures {
   name: "mockups"
   texture: "/Assets/mockups.atlas"
@@ -41,7 +45,6 @@ nodes {
   inherit_alpha: true
   clipping_visible: false
   size_mode: SIZE_MODE_AUTO
-  enabled: false
   visible: false
 }
 nodes {
@@ -80,6 +83,23 @@ nodes {
   parent: "root"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Set Name"
+  font: "default"
+  id: "name"
+  parent: "namePlate"
+  inherit_alpha: true
 }
 nodes {
   position {

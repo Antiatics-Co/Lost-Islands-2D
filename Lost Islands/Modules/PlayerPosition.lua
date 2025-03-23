@@ -13,6 +13,7 @@
 local M = {}
 
 M.sprites = 0
+M.name = nil
 
 local position = nil
 local mousePos
