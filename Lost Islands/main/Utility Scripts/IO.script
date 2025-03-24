@@ -358,8 +358,8 @@ local function save()
 	------------------------------------------------------------------
 
 	defsave.save(filename)
-	local shortened = filename:gsub(".dat", "")
-	shortened = shortened:gsub("save", "")
+	--local shortened = filename:gsub(".dat", "")
+	--shortened = shortened:gsub("save", "")
 	
 	--msg.post("main#MainMenu", "file", { tonumber(shortened), pos.name})
 	print("Data saved successfully.")
