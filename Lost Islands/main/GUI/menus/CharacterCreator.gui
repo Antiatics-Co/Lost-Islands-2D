@@ -45,6 +45,7 @@ nodes {
   inherit_alpha: true
   clipping_visible: false
   size_mode: SIZE_MODE_AUTO
+  enabled: false
   visible: false
 }
 nodes {

@@ -1,8 +1,6 @@
-
-
---PreHashing for better preformance
+-- PreHashing for better performance
 local FILECORRUPTION = hash("fileCorruption")
-local TOMAINMENU = hash( "ToMain")
+local TOMAINMENU = hash("ToMain")
 local HEALTH = hash("health")
 local ENABLE = hash("enable")
 
@@ -20,11 +18,11 @@ local alert = false
 local saves = false
 local loading = false
 
-
+-- Function: Delay Splash Screen
 local function delaySplash()
 	local minTime = 2
 	msg.post("#splash", "on")
-	
+
 	timer.delay(minTime, false, function()
 		msg.post("#splash", "on")
 		if menuMusic then
@@ -40,15 +38,13 @@ function init(self)
 	gui.set_enabled(gui.get_node("main"), true)
 end
 
+-- Handling Messages
 function on_message(self, message_id, message, sender)
-
 	if message_id == TOMAINMENU then
 		gui.set_enabled(gui.get_node("main"), true)
-		
 		msg.post("Inventory#Inventory", "start")
 		msg.post("#Map", "disable")
 		msg.post("#Map", "unload")
-
 		inDungeon = false
 	end
 
@@ -60,8 +56,6 @@ function on_message(self, message_id, message, sender)
 		if message.file == 3 then
 			SetSaveSlot()
 		end
-		
-		--gui.set_texture(gui.get_node("resume"), "Game", { key = "button" }) -- to be editted
 	end
 
 	if message_id == hash("boot") then
@@ -88,35 +82,39 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
+-- Set Save Slot Function
 function SetSaveSlot()
 	for i = 1, 3, 1 do 
 		if fileExists[i] ~= nil then
 			print(i)
-			gui.set_text(gui.get_node("saveText"..i), fileExists[i])
+			gui.set_text(gui.get_node("saveText" .. i), fileExists[i])
 		else
 			print(i)
-			gui.set_text(gui.get_node("saveText"..i), "No File")
+			gui.set_text(gui.get_node("saveText" .. i), "No File")
 		end
 	end
 end
 
+-- Handle Missing Files
 function noFile(i)
 	fileExists[i] = nil
 	gui.set_color(gui.get_node("resume"), vmath.vector4(0, 1, 0, 1))
 end
 
+-- Play Animation
 function animation(node, newAnimation)
-	gui.play_flipbook(node, newAnimation) -- Extend time on animation
+	gui.play_flipbook(node, newAnimation)
 end
 
+-- Boot Function
 function boot()
 	inDungeon = true
 	gui.set_enabled(gui.get_node("main"), false)
-
 	menuMusic = false
 	msg.post("character#CharacterCreator", "toggle")
 end
 
+-- New Game Setup
 local function newGame()
 	inDungeon = true
 	gui.set_enabled(gui.get_node("main"), false)
@@ -137,31 +135,44 @@ local function newGameSwitch(ans)
 	end
 end
 
+local function load(i)
+	col.filename = FILENAME .. i..".dat"
+	col.resume = col.filename
+	inDungeon = true
+	gui.set_enabled(gui.get_node("main"), false)
+	gui.set_enabled(gui.get_node("loadMenu"), false)
+	msg.post("#music", "stopAll")
+	msg.post("main#Map", "load")
+	msg.post("main#Map", "enable")
+end
+
+-- Handling User Input
 function on_input(self, action_id, action)
 	local node
-	if action_id == hash("touch") and action.released then
-		if inDungeon == false and saves == false then
-			
+
+	if action_id == hash("touch") and action.released and inDungeon == false then
+		if saves == false then
+			-- Start Game Button
 			node = gui.get_node("start")
 			if gui.pick_node(node, action.x, action.y) then
 				saves = true
-				animation(node, "button") -- TO DO: Extend time on animation
+				animation(node, "button")
 				gui.set_enabled(gui.get_node("loadMenu"), true)
 			end
 
+			-- Resume Button
 			node = gui.get_node("resume")
 			if gui.pick_node(node, action.x, action.y) and col.resume ~= nil then
-				animation(node, "button") -- TO DO: Extend time on animation
+				animation(node, "button")
 				col.filename = col.resume
 				inDungeon = true
 				gui.set_enabled(gui.get_node("main"), false)
-				--todo
-				
 				msg.post("#music", "stopAll")
 				msg.post("main#Map", "load")
 				msg.post("main#Map", "enable")
 			end
 
+			-- Settings Button
 			node = gui.get_node("settingsButton")
 			if gui.pick_node(node, action.x, action.y) then
 				animation(node, "button")
@@ -171,87 +182,91 @@ function on_input(self, action_id, action)
 				inDungeon = true
 			end
 
+			-- Load Game Button
 			node = gui.get_node("load")
-			if gui.pick_node(node, action.x, action.y) then
+			if gui.pick_node(node, action.x, action.y) and fileExists ~= nil then
 				gui.set_enabled(gui.get_node("loadMenu"), true)
 				loading = true
 				saves = true
 			end
 
+			-- Quit Game Button
 			node = gui.get_node("quitGame")
 			if gui.pick_node(node, action.x, action.y) then
 				os.exit()
 			end
 
+			-- Reset Button
 			node = gui.get_node("reset")
 			if gui.pick_node(node, action.x, action.y) then
 				msg.post("IO#IO", "reset")
 				print("reset posted")
 				gui.set_enabled(gui.get_node("corruptFile"), false)
 			end
-			
+
+			-- Keep Current File Button
 			node = gui.get_node("keep")
 			if gui.pick_node(node, action.x, action.y) then
 				gui.set_enabled(gui.get_node("corruptFile"), false)
 			end
-	
 		elseif saves == true and fileExists ~= nil then
+			-- Save Slot 1
 			node = gui.get_node("save1")
-			if gui.pick_node(node, action.x, action.y) and not loading then
+			if gui.pick_node(node, action.x, action.y) and loading == false then
 				if fileExists[1] ~= nil then
-					col.filename = FILENAME.."1.dat"
+					col.filename = FILENAME .. "1.dat"
 					gui.set_enabled(gui.get_node("newGameAlert"), true)
 					alert = true
 				else
-					col.filename = FILENAME.."1.dat"
+					col.filename = FILENAME .. "1.dat"
 					newGame()
 				end
-			else if gui.pick_node(node, action.x, action.y) and loading then
-
+			elseif gui.pick_node(node, action.x, action.y) and loading == true then
+				load(1)
 			end
 
+			-- Save Slot 2
 			node = gui.get_node("save2")
-			if gui.pick_node(node, action.x, action.y) and not loading then
+			if gui.pick_node(node, action.x, action.y) and loading == false then
 				if fileExists[2] ~= nil then
-					col.filename = FILENAME.."2.dat"
+					col.filename = FILENAME .. "2.dat"
 					gui.set_enabled(gui.get_node("newGameAlert"), true)
 					alert = true
 				else
-					col.filename = FILENAME.."2.dat"
+					col.filename = FILENAME .. "2.dat"
 					newGame()
 				end
-			else if gui.pick_node(node, action.x, action.y) and loading then
-
-				
+			elseif gui.pick_node(node, action.x, action.y) and loading == true then
+				load(2)
 			end
 
+			-- Save Slot 3
 			node = gui.get_node("save3")
-		
-			if gui.pick_node(node, action.x, action.y) and not loading then
+			if gui.pick_node(node, action.x, action.y) and loading == false then
 				if fileExists[3] ~= nil then
-					col.filename = FILENAME.."3.dat"
+					col.filename = FILENAME .. "3.dat"
 					gui.set_enabled(gui.get_node("newGameAlert"), true)
 					alert = true
 				else
-					col.filename = FILENAME.."3.dat"
+					col.filename = FILENAME .. "3.dat"
 					newGame()
 				end
-			else if gui.pick_node(node, action.x, action.y) and loading then
-
+			elseif gui.pick_node(node, action.x, action.y) and loading == true then
+				load(3)
 			end
 
+			-- New Game Alert Confirmation
 			if action_id == hash("touch") and action.released and alert then
 				node = gui.get_node("yes")
-
 				if gui.pick_node(node, action.x, action.y) then
 					newGameSwitch(true)
 				end
 
 				node = gui.get_node("no")
-				if gui.pick_node(node, action.x, action.y)then
+				if gui.pick_node(node, action.x, action.y) then
 					newGameSwitch(false)
 				end
 			end
-		end 
-	end 
+		end
+	end
 end

@@ -19,7 +19,7 @@
   }
   :code {
     :find {
-      :term "name"
+      :term "loadSave"
     }
   }
   :workflow {
@@ -89,10 +89,6 @@
         :code
       ]
       [
-        "/main/Equipment/equScripts/equipment.script"
-        :code
-      ]
-      [
         "/main/map.collection"
         :scene
       ]
@@ -109,10 +105,6 @@
         :code
       ]
       [
-        "/Modules/Settings.lua"
-        :code
-      ]
-      [
         "/Modules/items.lua"
         :code
       ]
@@ -121,35 +113,43 @@
         :code
       ]
       [
-        "/main/GUI/menus/CharacterCreator.gui"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
-        :code
-      ]
-      [
         "/input/game.input_binding"
         :cljfx-form-view
-      ]
-      [
-        "/Modules/PlayerPosition.lua"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/pause.gui_script"
-        :code
-      ]
-      [
-        "/main/Utility Scripts/IO.script"
-        :code
       ]
       [
         "/main/GUI/menus/MainMenu.gui"
         :scene
       ]
       [
+        "/main/GUI/menus/Menu Scripts/pause.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/CharacterCreator.gui"
+        :scene
+      ]
+      [
+        "/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Equipment/equScripts/equipment.script"
+        :code
+      ]
+      [
+        "/Modules/Settings.lua"
+        :code
+      ]
+      [
         "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
         :code
       ]
     ]

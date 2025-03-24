@@ -108,7 +108,8 @@ local function table_to_string(tbl)
 end
 
 local function loadSave()
-	--defsave.load(filename)
+	--print(filename)
+	defsave.load(filename)
 	easyTable = defsave.get(filename, "player")
 	dun.dungeons = defsave.get(filename, "dungeons")
 	itm.itemList = defsave.get(filename, "items")
@@ -118,6 +119,7 @@ local function loadSave()
 	itm.setHealth(easyTable.health)
 	itm.setEnergy(easyTable.energy)
 	pos.sprite = easyTable.character
+	pos.name = easyTable.name
 	mob.npc = easyTable.npcStatus
 	msg.post("map:/Player#Player", "Loaded")
 end
@@ -356,7 +358,10 @@ local function save()
 	------------------------------------------------------------------
 
 	defsave.save(filename)
-	msg.post("main#MainMenu", "file")
+	local shortened = filename:gsub(".dat", "")
+	shortened = shortened:gsub("save", "")
+	
+	--msg.post("main#MainMenu", "file", { tonumber(shortened), pos.name})
 	print("Data saved successfully.")
 end
 
