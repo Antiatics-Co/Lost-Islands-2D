@@ -107,8 +107,9 @@ function fixed_update(self, dt)
 	position = position + self.velocity * dt
 	go.set_position(position)
 
-	if  trackPlayer then
+	if trackPlayer == true then
 		po.setPosition(position)
+		print("position set")
 	end
 	animate(self)
 	

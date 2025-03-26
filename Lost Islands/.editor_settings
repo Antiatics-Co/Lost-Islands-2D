@@ -19,7 +19,7 @@
   }
   :code {
     :find {
-      :term "loadSave"
+      :term "\"noFile\""
     }
   }
   :workflow {
@@ -101,10 +101,6 @@
         :code
       ]
       [
-        "/main/Player/Player.script"
-        :code
-      ]
-      [
         "/Modules/items.lua"
         :code
       ]
@@ -141,11 +137,15 @@
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
+        "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
         :code
       ]
       [

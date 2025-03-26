@@ -51,7 +51,12 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("file") then
 		print(message.name)
 		print(message.file)
-		fileExists[message.file] = message.name
+		
+		if message.name ~= nil then
+			fileExists[message.file] = message.name
+		else
+			fileExists[message.file] = nil		
+		end
 
 		if message.file == 3 then
 			SetSaveSlot()
@@ -60,10 +65,6 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("boot") then
 		boot()
-	end
-
-	if message_id == hash("noFile") then
-		noFile(message.file)
 	end
 
 	if message_id == HEALTH then
@@ -95,12 +96,6 @@ function SetSaveSlot()
 	end
 end
 
--- Handle Missing Files
-function noFile(i)
-	fileExists[i] = nil
-	gui.set_color(gui.get_node("resume"), vmath.vector4(0, 1, 0, 1))
-end
-
 -- Play Animation
 function animation(node, newAnimation)
 	gui.play_flipbook(node, newAnimation)
@@ -117,6 +112,7 @@ end
 -- New Game Setup
 local function newGame()
 	inDungeon = true
+	saves = false
 	gui.set_enabled(gui.get_node("main"), false)
 	gui.set_enabled(gui.get_node("loadMenu"), false)
 	msg.post("#music", "stopAll")
@@ -137,6 +133,7 @@ end
 
 local function load(i)
 	col.filename = FILENAME .. i..".dat"
+	saves = false
 	col.resume = col.filename
 	inDungeon = true
 	gui.set_enabled(gui.get_node("main"), false)
@@ -221,7 +218,7 @@ function on_input(self, action_id, action)
 					col.filename = FILENAME .. "1.dat"
 					newGame()
 				end
-			elseif gui.pick_node(node, action.x, action.y) and loading == true then
+			elseif gui.pick_node(node, action.x, action.y) and loading == true and fileExists[1] ~= nil then
 				load(1)
 			end
 
@@ -236,7 +233,7 @@ function on_input(self, action_id, action)
 					col.filename = FILENAME .. "2.dat"
 					newGame()
 				end
-			elseif gui.pick_node(node, action.x, action.y) and loading == true then
+			elseif gui.pick_node(node, action.x, action.y) and loading == true and fileExists[2] ~= nil then
 				load(2)
 			end
 
@@ -251,7 +248,7 @@ function on_input(self, action_id, action)
 					col.filename = FILENAME .. "3.dat"
 					newGame()
 				end
-			elseif gui.pick_node(node, action.x, action.y) and loading == true then
+			elseif gui.pick_node(node, action.x, action.y) and loading == true and fileExists[3] ~= nil then
 				load(3)
 			end
 

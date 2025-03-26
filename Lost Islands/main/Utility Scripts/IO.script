@@ -170,7 +170,7 @@ function init(self)
 			verify_save_data(filename..i..".dat", i)
 			name = nil
 		else
-			msg.post("main:/main#MainMenu", "noFile", { file = i })
+			msg.post("main#MainMenu", "file", { file = i, name = nil })
 		end
 	end
 
@@ -193,6 +193,7 @@ function setup_default_save()
 	defsave.set(filename, "checksumDungeons", generate_checksum(table_to_string(dungeonStatus)))
 	defsave.set(filename, "items", items)
 	defsave.set(filename, "checksumItems", generate_checksum(table_to_string(items)))
+	
 	defsave.save(filename)
 end
 
