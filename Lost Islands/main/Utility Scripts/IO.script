@@ -54,7 +54,7 @@ local easyTable = { position, energy, health, character = {}, npcStatus = {} }
 local resolution = 1 --just going to have multiple options and give a number depending upon the option
 local volume = 50
 
-local config = { volume, resolution, prevsave = nil }
+local config = { volume, resolution }
 
 ---------------------------------------------------------------------------
 
@@ -214,6 +214,10 @@ function verify_data(dataType, filename)
 			if loadedData.name ~= nil then
 				name = loadedData.name
 			end
+
+			if loadedData.resume ~= nil then
+				set.resume = loadedData.resume;
+			end
 			return loadedData
 		else
 			print("Loaded " .. dataType .. " Data Version", loadedData)
@@ -298,6 +302,7 @@ local function save()
 	
 	local data = {
 		name = pos.name,
+		resume = filename,
 		position = pos.getPosition(),
 		health = itm.getHealth(),
 		energy = itm.getEnergy(),

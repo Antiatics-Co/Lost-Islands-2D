@@ -8,7 +8,7 @@ local set = require("Modules.Settings")
 local leave = ""
 local volume = 50
 local resolution = 1
-local config = { volume = volume, resolution = resolution, filename = "" }
+local config = { volume = volume, resolution = resolution }
 local transitioning = false  -- Flag to prevent multiple transitions
 local settingsOpen = false
 local timerId = nil
@@ -30,7 +30,6 @@ function on_message(self, message_id, message, sender)
 			config = newConfig
 			volume = config.volume or volume
 			resolution = config.resolution or resolution
-			set.resume = config.prevsave
 
 			--msg.post("#MainMenu", "setContinue")
 			
