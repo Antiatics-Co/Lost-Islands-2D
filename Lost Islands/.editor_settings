@@ -25,31 +25,11 @@
   :workflow {
     :recent-files [
       [
-        "/main/GUI/menus/PauseMenu.gui"
-        :scene
-      ]
-      [
-        "/Modules/Dungeons.lua"
-        :code
-      ]
-      [
-        "/main/Utility Scripts/music.script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Inventory.gui"
-        :scene
-      ]
-      [
         "/Assets/main/Images/TileMaps/MainMap.tilemap"
         :scene
       ]
       [
         "/Assets/main/Images/TileMaps/TutorialTown.tilemap"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/TileMaps/Test.tilemap"
         :scene
       ]
       [
@@ -63,10 +43,6 @@
       [
         "/main/GUI/menus/NewGameAlert.gui"
         :scene
-      ]
-      [
-        "/game.project"
-        :cljfx-form-view
       ]
       [
         "/Modules/ItemProperties.lua"
@@ -89,14 +65,6 @@
         :code
       ]
       [
-        "/main/map.collection"
-        :scene
-      ]
-      [
-        "/main/main.collection"
-        :scene
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/settings.gui_script"
         :code
       ]
@@ -111,10 +79,6 @@
       [
         "/input/game.input_binding"
         :cljfx-form-view
-      ]
-      [
-        "/main/GUI/menus/MainMenu.gui"
-        :scene
       ]
       [
         "/main/GUI/menus/Menu Scripts/pause.gui_script"
@@ -145,12 +109,48 @@
         :code
       ]
       [
+        "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/default.render"
+        :cljfx-form-view
+      ]
+      [
+        "/builtins/materials/tile_map.vp"
+        :code
+      ]
+      [
+        "/builtins/materials/tile_map.material"
+        :cljfx-form-view
+      ]
+      [
+        "/Assets/main/Images/TileMaps/Test.tilemap"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/Tilesource.tilesource"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
         "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
         :code
       ]
       [
-        "/main/Utility Scripts/IO.script"
-        :code
+        "/main/GUI/menus/MainMenu.gui"
+        :scene
       ]
     ]
   }

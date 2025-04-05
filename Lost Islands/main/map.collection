@@ -4,7 +4,8 @@ instances {
   prototype: "/main/Player/Player.go"
   children: "Operator"
   position {
-    y: 56.0
+    x: 94.0
+    y: 136.0
   }
 }
 instances {
@@ -42,8 +43,7 @@ embedded_instances {
   "\"\n"
   "}\n"
   ""
-  scale3 {
-    x: 2.0
-    y: 2.0
+  position {
+    x: 192.0
   }
 }

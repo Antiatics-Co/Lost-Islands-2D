@@ -207,6 +207,14 @@ function on_input(self, action_id, action)
 				gui.set_enabled(gui.get_node("corruptFile"), false)
 			end
 		elseif saves == true and fileExists ~= nil then
+
+			node = gui.get_node("home")
+
+			if gui.pick_node(node, action.x, action.y)  then
+				saves = false
+				gui.set_enabled(gui.get_node("loadMenu"), false)
+			end
+			
 			-- Save Slot 1
 			node = gui.get_node("save1")
 			if gui.pick_node(node, action.x, action.y) and loading == false then

@@ -515,6 +515,38 @@ nodes {
 }
 nodes {
   position {
+    x: -277.0
+    y: 160.0
+  }
+  size {
+    x: 50.0
+    y: 25.0
+  }
+  color {
+    x: 0.2
+    y: 0.0
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "home"
+  parent: "loadMenu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Back"
+  font: "default"
+  id: "text12"
+  parent: "home"
+  inherit_alpha: true
+}
+nodes {
+  position {
     x: 319.0
     y: 180.0
     z: 1.0
