@@ -44,6 +44,14 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 192.0
+    x: 387.0
   }
+}
+embedded_instances {
+  id: "HUD"
+  data: "components {\n"
+  "  id: \"hud\"\n"
+  "  component: \"/main/GUI/hud.gui\"\n"
+  "}\n"
+  ""
 }

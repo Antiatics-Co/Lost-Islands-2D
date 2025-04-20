@@ -10,6 +10,7 @@
 
 local po = require("Modules.PlayerPosition")
 --local set = require("Modules.Settings")
+local itm = require("Modules.items")
 
 --PREHASHING-------------------------------------------------------
 
@@ -48,6 +49,8 @@ function init(self) --constructor
 	self.groundContact = false
 	self.previousGroundContact = false
 	self.correction = vmath.vector3(0, 0, 0)
+
+	itm.setEnergy(50)
 end
 
 local function walk(self) -- handles hori movement

@@ -19,39 +19,11 @@
   }
   :code {
     :find {
-      :term "resume"
+      :term "loadSave"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/Assets/main/Images/TileMaps/MainMap.tilemap"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/TileMaps/TutorialTown.tilemap"
-        :scene
-      ]
-      [
-        "/Assets/Game.atlas"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/newgamealert.gui_script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/NewGameAlert.gui"
-        :scene
-      ]
-      [
-        "/Modules/ItemProperties.lua"
-        :code
-      ]
-      [
-        "/Modules/CharacterSprites.lua"
-        :code
-      ]
       [
         "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
         :code
@@ -62,10 +34,6 @@
       ]
       [
         "/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
-        "/Modules/items.lua"
         :code
       ]
       [
@@ -85,23 +53,11 @@
         :scene
       ]
       [
-        "/Modules/PlayerPosition.lua"
-        :code
-      ]
-      [
-        "/main/Equipment/equScripts/equipment.script"
-        :code
-      ]
-      [
         "/Modules/Settings.lua"
         :code
       ]
       [
         "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
-        :code
-      ]
-      [
-        "/main/Player/Player.script"
         :code
       ]
       [
@@ -133,10 +89,6 @@
         :scene
       ]
       [
-        "/main/map.collection"
-        :scene
-      ]
-      [
         "/main/GUI/menus/MainMenu.gui"
         :scene
       ]
@@ -151,6 +103,54 @@
       [
         "/main/Utility Scripts/IO.script"
         :code
+      ]
+      [
+        "/main/Player/Player.go"
+        :scene
+      ]
+      [
+        "/Modules/PlayerPosition.lua"
+        :code
+      ]
+      [
+        "/main/Equipment/equScripts/equipment.script"
+        :code
+      ]
+      [
+        "/main/Equipment/woodsword.go"
+        :scene
+      ]
+      [
+        "/Assets/equipment.atlas"
+        :scene
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/Assets/Game.atlas"
+        :scene
+      ]
+      [
+        "/Assets/mockups.atlas"
+        :scene
+      ]
+      [
+        "/Modules/items.lua"
+        :code
+      ]
+      [
+        "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/hud.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/hud.gui"
+        :scene
       ]
     ]
   }

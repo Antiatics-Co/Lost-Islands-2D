@@ -116,8 +116,8 @@ local function loadSave()
 	print("Set Item List")
 
 	pos.setPosition(easyTable.position)
-	itm.setHealth(easyTable.health)
-	itm.setEnergy(easyTable.energy)
+	itm.health = easyTable.health
+	itm.energy = easyTable.energy
 	pos.sprite = easyTable.character
 	pos.name = easyTable.name
 	mob.npc = easyTable.npcStatus
@@ -304,8 +304,8 @@ local function save()
 		name = pos.name,
 		resume = filename,
 		position = pos.getPosition(),
-		health = itm.getHealth(),
-		energy = itm.getEnergy(),
+		health = itm.health,
+		energy = itm.energy,
 		character = pos.sprite,
 		npcStatus = mob.npc }
 		

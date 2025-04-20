@@ -1,3 +1,9 @@
+images {
+  image: "/main/Enemies/mockups/health.png"
+}
+images {
+  image: "/main/Enemies/mockups/energy.png"
+}
 animations {
   id: "idle"
   images {
@@ -53,7 +59,7 @@ animations {
 animations {
   id: "slime"
   images {
-    image: "/Assets/main/Images/EnemySprites/enemyTest.png"
+    image: "/Assets/main/Images/Items/EnemySprites/enemyTest.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 60

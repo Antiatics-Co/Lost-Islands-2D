@@ -73,10 +73,10 @@ local MINENERGY = 0
 local MAXHEALTH = 100
 local MINHEALTH = 1
 
-local health = MAXHEALTH
+M.health = MAXHEALTH 
 local equipped = {}
 local shieldUp = false
-local energy = MAXENERGY
+M.energy = MAXENERGY
 
 local equippedMelee = { main = nil, side = nil }
 
@@ -89,12 +89,21 @@ function M.set_itemList(name)
 end
 
 ---------------------------------------------------------------------------------
+function M.setEnergy(en)
+	M.energy = en
+	msg.post("map:/HUD#hud", "energy")
+end
+
+function M.setHealth(hp)
+	M.health = hp
+	msg.post("map:/HUD#hud", "health")
+end
 
 local function useEnergy(usage)
-	energy = energy - usage
+	M.energy = M.energy - usage
 
-	if energy < MINENERGY then
-		energy = 0
+	if M.energy < MINENERGY then
+		M.energy = 0
 	end
 end
 
@@ -107,7 +116,7 @@ local function getArmourProperties(items) --ID =  num
 		return(.30)
 
 	elseif M.isItemEquipped("magicArmour") then
-		if(energy == 0) then
+		if(M.energy == 0) then
 			return(0)
 		else
 			useEnergy(10)
@@ -126,7 +135,7 @@ local function getShieldProperties(items) --ID = { name, type }
 		return(.15)
 
 	elseif M.isItemEquipped("magicShield") then
-		if(energy == 0) then
+		if(M.energy == 0) then
 			return(0)
 		else
 			useEnergy(5)
@@ -213,20 +222,12 @@ function M.isItemEquipped(itemName)
 	return false
 end
 
-function M.getHealth()
-	return(health)
-end
-
 function M.shieldUp()
 	shieldUp = not shieldUp
 end
 
 function M.recoverEnergy(recoveryAmt)
-	energy = energy + recoveryAmt
-end
-
-function M.getEnergy()
-	return(energy)
+	M.energy = M.energy + recoveryAmt
 end
 
 function M.equip(item) -- item = {name} if weapon item = {name, attack, combo, type}
@@ -250,28 +251,16 @@ function M.unequip(item)
 	print("unequipped: " .. item.name)
 end
 
-
-function M.setHealth(heal)
-	health = heal
-end
-
-function M.setEnergy(en)
-	energy = en
-end
-
 function M.setCombatHealth(damage)
 	damage = getDamage(damage)
-	health = health - damage
+	M.health = M.health - damage
 	print(damage)
-	print(health)
-	if health < MINHEALTH then
+	print(M.health)
+	if M.health < MINHEALTH then
 		print("dead")
 		msg.post("main:/menu#Death", "enable")
 	end
 end
-
-
-
 
 return(M)
 

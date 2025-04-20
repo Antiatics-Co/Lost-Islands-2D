@@ -7,17 +7,60 @@ textures {
   name: "mockups"
   texture: "/Assets/mockups.atlas"
 }
+textures {
+  name: "Game"
+  texture: "/Assets/Game.atlas"
+}
 nodes {
   position {
-    x: 511.0
-    y: 327.0
+    x: 128.0
+    y: 32.0
   }
   type: TYPE_BOX
   texture: "mockups/hud"
   id: "mockup"
   inherit_alpha: true
-  alpha: 0.83
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 45.0
+    y: 12.0
+  }
+  scale {
+    x: 1.048697
+    y: 0.182426
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "Game/health"
+  id: "healthBar"
+  xanchor: XANCHOR_LEFT
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 45.0
+    y: 34.0
+  }
+  scale {
+    x: 1.048697
+    y: 0.182426
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "Game/energy"
+  id: "energyBar"
+  xanchor: XANCHOR_LEFT
+  pivot: PIVOT_W
+  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

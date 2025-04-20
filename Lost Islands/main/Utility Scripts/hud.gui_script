@@ -1,32 +1,29 @@
+local hp = require("Modules.items")
+local currentHealth = 100
+local currentEnergy = 100
+local max_size
+
 function init(self)
-	--animation(gui.get_node("healthBar"), "healthBar") Implement when health and energy are actually changed
-	--animation(gui.get_node("energyBar"), "energyBar")  This is just to test if the animation is working
+	max_size = 200
 end
 
-function animation(node, newAnimation, start_frame, end_frame)
-	gui.play_flipbook(node, newAnimation, { start_frame = start_frame, end_frame = end_frame })
+local function set_bar(healthbar_node_name, health_percentage)
+	local healthbar_node = gui.get_node(healthbar_node_name)
+	local healthbar_size = gui.get_size(healthbar_node)
+	healthbar_size.x = health_percentage * max_size
+	gui.set_size(healthbar_node, healthbar_size)
 end
 
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
-end
+function on_message(self, message_id, message)
+	if message_id == hash("health") then
+		print("health decrease % " .. (hp.health / currentHealth))
+		set_bar("healthBar", (hp.health / currentHealth))
+		currentHealth = hp.health
+	end
 
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
+	if message_id == hash("energy") then
+		print("energy decrease % " .. (hp.energy / currentEnergy))
+		set_bar("energyBar", (hp.energy / currentEnergy))
+		currentEnergy = hp.energy
+	end
 end
