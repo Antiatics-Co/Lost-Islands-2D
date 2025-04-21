@@ -137,20 +137,20 @@
         :scene
       ]
       [
-        "/Modules/items.lua"
-        :code
-      ]
-      [
-        "/main/Player/Player.script"
-        :code
-      ]
-      [
         "/main/Utility Scripts/hud.gui_script"
         :code
       ]
       [
         "/main/GUI/hud.gui"
         :scene
+      ]
+      [
+        "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/Modules/items.lua"
+        :code
       ]
     ]
   }

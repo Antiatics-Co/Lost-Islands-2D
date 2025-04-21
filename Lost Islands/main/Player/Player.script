@@ -50,7 +50,7 @@ function init(self) --constructor
 	self.previousGroundContact = false
 	self.correction = vmath.vector3(0, 0, 0)
 
-	itm.setEnergy(50)
+	--itm.setEnergy(50)
 end
 
 local function walk(self) -- handles hori movement

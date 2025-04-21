@@ -99,12 +99,15 @@ function M.setHealth(hp)
 	msg.post("map:/HUD#hud", "health")
 end
 
+--use use energy and setCombatHealth for any alterations to energy or health after initial loading
+
 local function useEnergy(usage)
 	M.energy = M.energy - usage
 
 	if M.energy < MINENERGY then
 		M.energy = 0
 	end
+	M.setEnergy(M.energy)
 end
 
 --the get properties function will be called from setup
@@ -259,6 +262,8 @@ function M.setCombatHealth(damage)
 	if M.health < MINHEALTH then
 		print("dead")
 		msg.post("main:/menu#Death", "enable")
+	else
+		M.setHealth(M.health)
 	end
 end
 
