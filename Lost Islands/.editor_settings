@@ -145,11 +145,11 @@
         :scene
       ]
       [
-        "/main/Player/Player.script"
+        "/Modules/items.lua"
         :code
       ]
       [
-        "/Modules/items.lua"
+        "/main/Player/Player.script"
         :code
       ]
     ]

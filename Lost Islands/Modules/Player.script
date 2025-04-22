@@ -190,26 +190,46 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
-
 function on_input(self, action_id, action)
-	
 	if recievingInputs then
+
+		--movement
 		if action_id == UP and self.groundContact then
 			self.velocity.y = JUMPTAKEOFF
 			self.groundContact = false
 			particlefx.play("#dust")
 			--sound.play("#Jumping")
-		elseif action_id == DOWN then
+		elseif action_id == DOWN then --this should be implemented when one can move in multiple pathways and a direction avalible is back
 			return
-		elseif action_id == TOUCH and action.pressed then --(lastfired == -1 or os.time(os.date("!*t")) - lastfired > FIREDELAY) then
-			po.setMousePosition(vmath.vector3(action.x, action.y, 0))
-			factory.create("#factory")
-			--lastfired = os.time(os.date("!*t"))
 			
+		--combat --should be moved or something added as touch is just for aiming - physcal uses one of the attack buttons
+			
+		elseif action_id == TOUCH and action.pressed then --(lastfired == -1 or os.time(os.date("!*t")) - lastfired > FIREDELAY) then
+
+		--account for elemental weakness --thisd shoiuld probably be done in items.lua
+			if itm.isItemEquipped("fireElement") then --can be charged up to cause explosions
+				po.setMousePosition(vmath.vector3(action.x, action.y, 0))  
+				factory.create("#factory")
+				--lastfired = os.time(os.date("!*t"))
+			elseif itm.isItemEquipped("waterElement") then
+				
+			elseif itm.isItemEquipped("stoneElement") then
+				
+			elseif itm.isItemEquipped("lightning") then --see gunvolt
+				
+			elseif itm.isItemEquipped("poison") then
+				
+			elseif itm.isItemEquipped("ice") then
+				
+			elseif itm.isItemEquipped("rainbow") then --makes a rainbow --two damage area of effect -- or the number of current companions
+				
+			end
 		elseif action_id == RIGHT or action_id == LEFT then
 			self.direction = (action_id == RIGHT and DIRECTIONRIGHT or DIRECTIONLEFT)
 			flip(self.direction)
 			walk(self)
+
+		--pause
 		elseif action_id == ESC and action.released then
 			msg.post("main:/menu#PauseMenu", "enable")
 		end
