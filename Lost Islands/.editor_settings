@@ -19,7 +19,7 @@
   }
   :code {
     :find {
-      :term "loadSave"
+      :term "self.velocity.x = 0"
     }
   }
   :workflow {
@@ -77,14 +77,6 @@
         :cljfx-form-view
       ]
       [
-        "/Assets/main/Images/TileMaps/Test.tilemap"
-        :scene
-      ]
-      [
-        "/Assets/main/Images/Tilesource.tilesource"
-        :scene
-      ]
-      [
         "/main/main.collection"
         :scene
       ]
@@ -125,14 +117,6 @@
         :scene
       ]
       [
-        "/main/map.collection"
-        :scene
-      ]
-      [
-        "/Assets/Game.atlas"
-        :scene
-      ]
-      [
         "/Assets/mockups.atlas"
         :scene
       ]
@@ -141,12 +125,28 @@
         :code
       ]
       [
+        "/Modules/items.lua"
+        :code
+      ]
+      [
+        "/Assets/Game.atlas"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/Tilesource.tilesource"
+        :scene
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
         "/main/GUI/hud.gui"
         :scene
       ]
       [
-        "/Modules/items.lua"
-        :code
+        "/Assets/main/Images/TileMaps/Test.tilemap"
+        :scene
       ]
       [
         "/main/Player/Player.script"

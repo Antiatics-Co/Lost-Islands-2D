@@ -24,11 +24,11 @@ nodes {
 }
 nodes {
   position {
-    x: 45.0
-    y: 12.0
+    x: -78.0
+    y: -20.0
   }
   scale {
-    x: 1.048697
+    x: 1.01
     y: 0.182426
   }
   size {
@@ -40,15 +40,16 @@ nodes {
   id: "healthBar"
   xanchor: XANCHOR_LEFT
   pivot: PIVOT_W
+  parent: "mockup"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 45.0
-    y: 34.0
+    x: -78.0
+    y: 2.0
   }
   scale {
-    x: 1.048697
+    x: 1.01
     y: 0.182426
   }
   size {
@@ -60,6 +61,7 @@ nodes {
   id: "energyBar"
   xanchor: XANCHOR_LEFT
   pivot: PIVOT_W
+  parent: "mockup"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

@@ -1,6 +1,6 @@
 components {
   id: "Player"
-  component: "/Modules/Player.script"
+  component: "/main/Player/Player.script"
 }
 components {
   id: "dust"

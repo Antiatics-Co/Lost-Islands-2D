@@ -36,6 +36,7 @@ local JUMPTAKEOFF = 250
 local FIREDELAY = 0.5
 local recievingInputs = true
 local trackPlayer = false
+local moving = false
 
 
 local lastfired = -1
@@ -53,8 +54,13 @@ function init(self) --constructor
 	--itm.setEnergy(50)
 end
 
-local function walk(self) -- handles hori movement
-	self.velocity.x = BASEVELOCITY * self.direction
+local function walk(self) -- handles hori movement --jolty don't know how to fix
+--	if self.velocity.x ~= BASEVELOCITY then
+	--	self.velocity.x =  (self.velocity.x + 100) * self.direction
+	--end
+
+	self.velocity.x =  BASEVELOCITY * self.direction
+	--print("velocity".. self.velocity.x)
 end
 
 local function flip(direction)
@@ -117,7 +123,11 @@ function fixed_update(self, dt)
 	animate(self)
 	
 	-- Reset horizontal velocity after applying movement
-	self.velocity.x = 0
+	if not moving then
+		print("Velocity reset")
+		self.velocity.x = 0
+	end
+	
 	self.groundContact = false
 	self.correction.x = 0
 	self.correction.y = 0
@@ -227,8 +237,11 @@ function on_input(self, action_id, action)
 		elseif action_id == RIGHT or action_id == LEFT then
 			self.direction = (action_id == RIGHT and DIRECTIONRIGHT or DIRECTIONLEFT)
 			flip(self.direction)
+			moving = true
 			walk(self)
-
+			if action.released then
+				moving = false
+			end
 		--pause
 		elseif action_id == ESC and action.released then
 			msg.post("main:/menu#PauseMenu", "enable")

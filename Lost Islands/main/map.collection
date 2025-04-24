@@ -5,7 +5,7 @@ instances {
   children: "Operator"
   position {
     x: 94.0
-    y: 136.0
+    y: 289.0
   }
 }
 instances {
@@ -45,6 +45,7 @@ embedded_instances {
   ""
   position {
     x: 387.0
+    y: -74.0
   }
 }
 embedded_instances {
