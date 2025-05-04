@@ -25,10 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
-        :code
-      ]
-      [
         "/Modules/Pathfinder.lua"
         :code
       ]
@@ -125,10 +121,6 @@
         :code
       ]
       [
-        "/Modules/items.lua"
-        :code
-      ]
-      [
         "/Assets/Game.atlas"
         :scene
       ]
@@ -150,6 +142,14 @@
       ]
       [
         "/main/Player/Player.script"
+        :code
+      ]
+      [
+        "/Modules/ShopInventory.lua"
+        :code
+      ]
+      [
+        "/Modules/items.lua"
         :code
       ]
     ]

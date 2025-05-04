@@ -58,12 +58,24 @@ M.itemList = M.itemList or {  --attacks and speeds and combosnee to be redone
 	arrow = { itemNum = 33, max = 40, hasItem = false, holding = 0, node = ("ARROW") },
 	shells = { itemNum = 34, max = 5, hasItem = false, holding = 0, node = ("SHELLS") },
 	musketBalls = {itemNum = 35, max = 30, hasItem = false, holding = 0, node = ("MUSKETBALLS") },
-	pendal = { itemNum = 36, max = 99999, hasItem = false, holding = 0, node = ("PENDAL") }
+	pendal = { itemNum = 36, max = 99999, hasItem = false, holding = 0, node = ("PENDAL") },
 }
 
 function M.get_itemList()
 	print("Get Item List" .. tostring(M.itemList))
 	return(M.itemList)
+end
+
+
+function M.buy(item, cost) --add not M.itemList[item].hasItem in any ifs where this is implemented, 
+	--for consumables it should ompare current to max
+	-- i guess this is gonna be called by the store gui scripts when a button is pressed
+	if M.itemList["pendal"].holding >= cost then
+		M.itemList[item].hasItem = true
+		M.itemList["pendal"].holding = M.itemList["pendal"].holding - cost
+	else
+		--show not enough pendal message
+	end
 end
 
 ---------------------------------------------------------------------------------
