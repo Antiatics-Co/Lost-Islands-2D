@@ -19,6 +19,9 @@ nodes {
   type: TYPE_BOX
   texture: "mockups/hud"
   id: "mockup"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_BOTTOM
+  adjust_mode: ADJUST_MODE_ZOOM
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }

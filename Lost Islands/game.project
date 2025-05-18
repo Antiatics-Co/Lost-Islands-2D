@@ -10,7 +10,7 @@ width = 640
 height = 360
 update_frequency = 60
 vsync = 1
-fullscreen = 0
+fullscreen = 1
 
 [android]
 input_method = HiddenInputField
@@ -31,4 +31,8 @@ debug = 0
 
 [windows]
 app_icon = /Assets/main/Images/SplashImage/Masterpiece.ico
+
+[graphics]
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
 

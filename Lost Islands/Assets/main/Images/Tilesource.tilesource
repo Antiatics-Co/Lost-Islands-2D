@@ -1,13 +1,29 @@
-image: "/Assets/main/Images/Testplayer/level.png"
-tile_width: 256
-tile_height: 256
-collision: "/Assets/main/Images/Testplayer/level.png"
+image: "/Assets/main/Images/Map_sprite_sheet.png"
+tile_width: 128
+tile_height: 128
+collision: "/Assets/main/Images/sheet_sprite_sheet.png"
 convex_hulls {
   index: 0
   count: 4
+  collision_group: "noCollision"
+}
+convex_hulls {
+  index: 4
+  count: 4
   collision_group: "ground"
 }
+convex_hulls {
+  index: 8
+  count: 0
+  collision_group: "wall"
+}
+convex_hulls {
+  index: 8
+  count: 0
+  collision_group: ""
+}
 collision_groups: "ground"
+collision_groups: "noCollision"
 collision_groups: "wall"
 animations {
   id: "anim"

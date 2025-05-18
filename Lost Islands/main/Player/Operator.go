@@ -1,3 +1,7 @@
+components {
+  id: "cameraScript"
+  component: "/main/Utility Scripts/cameraScript.script"
+}
 embedded_components {
   id: "camera"
   type: "camera"

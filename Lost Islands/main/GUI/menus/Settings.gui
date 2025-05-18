@@ -18,7 +18,6 @@ nodes {
   }
   type: TYPE_BOX
   id: "settings"
-  adjust_mode: ADJUST_MODE_STRETCH
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
   enabled: false

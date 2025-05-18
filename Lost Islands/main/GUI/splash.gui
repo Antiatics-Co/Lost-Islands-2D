@@ -12,7 +12,6 @@ nodes {
   texture: "Game/Splash"
   id: "box"
   pivot: PIVOT_SW
-  adjust_mode: ADJUST_MODE_ZOOM
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

@@ -25,22 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/Modules/Pathfinder.lua"
-        :code
-      ]
-      [
-        "/Modules/CollectionTracker.lua"
-        :code
-      ]
-      [
-        "/Modules/NPCProperties.lua"
-        :code
-      ]
-      [
-        "/input/game.input_binding"
-        :cljfx-form-view
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
       ]
@@ -55,10 +39,6 @@
       [
         "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
         :code
-      ]
-      [
-        "/game.project"
-        :cljfx-form-view
       ]
       [
         "/default.render"
@@ -125,11 +105,19 @@
         :scene
       ]
       [
-        "/Assets/main/Images/Tilesource.tilesource"
-        :scene
+        "/Modules/ShopInventory.lua"
+        :code
       ]
       [
-        "/main/map.collection"
+        "/Modules/items.lua"
+        :code
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/main/GUI/splash.gui"
         :scene
       ]
       [
@@ -137,7 +125,23 @@
         :scene
       ]
       [
+        "/main/GUI/menus/Settings.gui"
+        :scene
+      ]
+      [
+        "/Assets/main/Images/Tilesource.tilesource"
+        :scene
+      ]
+      [
         "/Assets/main/Images/TileMaps/Test.tilemap"
+        :scene
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/main/Player/Operator.go"
         :scene
       ]
       [
@@ -145,11 +149,7 @@
         :code
       ]
       [
-        "/Modules/ShopInventory.lua"
-        :code
-      ]
-      [
-        "/Modules/items.lua"
+        "/main/Utility Scripts/cameraScript.script"
         :code
       ]
     ]

@@ -1,8 +1,3 @@
--- Put functions in this file to use them in several other scripts.
--- To get access to the functions, you need to put:
--- require "my_directory.my_file"
--- in any script using the functions.
-
 local M = {}
 
 M.itemList = M.itemList or {  --attacks and speeds and combosnee to be redone
@@ -49,16 +44,16 @@ M.itemList = M.itemList or {  --attacks and speeds and combosnee to be redone
 
 --Quest Items - first num is item num, 2nd is total num of items possible, going to set to 10 for now
 
-	fireDungeonKeys = { itemNum = 30, max = 10, hasItem = false, holding = 0, node = ("FIREDUNGEONKEYS") }, --Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
-	waterDungeonKeys = { itemNum = 31, max = 10, hasItem = false, holding = 0, node = ("WATERDUNGEONKEYS") },
-	stoneDungeonKeys = { itemNum = 32, max = 10, hasItem = false, holding = 0, node = ("STONEDUNGEONKEYS") },
+	fireDungeonKeys = { itemNum = 30, max = 10, holding = 0, node = ("FIREDUNGEONKEYS") }, --Player can only have one type of key at a time, any leftover keys are applied once the player reenters the dungeon
+	waterDungeonKeys = { itemNum = 31, max = 10, holding = 0, node = ("WATERDUNGEONKEYS") },
+	stoneDungeonKeys = { itemNum = 32, max = 10, holding = 0, node = ("STONEDUNGEONKEYS") },
 
 --Money and Arrows --have a special section in inventory, may be in hud, same with keys
 
-	arrow = { itemNum = 33, max = 40, hasItem = false, holding = 0, node = ("ARROW") },
-	shells = { itemNum = 34, max = 5, hasItem = false, holding = 0, node = ("SHELLS") },
-	musketBalls = {itemNum = 35, max = 30, hasItem = false, holding = 0, node = ("MUSKETBALLS") },
-	pendal = { itemNum = 36, max = 99999, hasItem = false, holding = 0, node = ("PENDAL") },
+	arrow = { itemNum = 33, max = 40, holding = 0, node = ("ARROW") },
+	shells = { itemNum = 34, max = 5, holding = 0, node = ("SHELLS") },
+	musketBalls = {itemNum = 35, max = 30, holding = 0, node = ("MUSKETBALLS") },
+	pendal = { itemNum = 36, max = 99999, holding = 0, node = ("PENDAL") },
 }
 
 function M.get_itemList()
@@ -67,14 +62,25 @@ function M.get_itemList()
 end
 
 
-function M.buy(item, cost) --add not M.itemList[item].hasItem in any ifs where this is implemented, 
+function M.buy(item, cost, amt) --add not M.itemList[item].hasItem in any ifs where this is implemented, 
 	--for consumables it should ompare current to max
 	-- i guess this is gonna be called by the store gui scripts when a button is pressed
 	if M.itemList["pendal"].holding >= cost then
-		M.itemList[item].hasItem = true
-		M.itemList["pendal"].holding = M.itemList["pendal"].holding - cost
+		if M.itemList[item].max ~= nil then
+			if M.itemList[item].max > (M.itemList[item].holding + amt) then
+				M.itemList["pendal"].holding = M.itemList["pendal"].holding - cost
+				M.itemList[item].holding =  M.itemList[item].holding + amt
+			else
+				--show max capacity for that item message
+			end
+		elseif not M.itemList[item].hasItem then
+			M.itemList["pendal"].holding = M.itemList["pendal"].holding - cost
+			M.itemList[item].hasItem = true
+		else
+			--Already have item message
+		end
 	else
-		--show not enough pendal message
+		--show not enough pendal message msg.post(receiver, message_id)
 	end
 end
 
