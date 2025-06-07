@@ -241,10 +241,10 @@ function on_input(self, action_id, action)
 		print("inventory opened")
 
 		if invopen then  -- update to be mroe dynamic
-			msg.post("main#Map", "set_time_step", { factor = 0, mode = 0 })
+		--	msg.post("map", "set_time_step", { factor = 0, mode = 0 })
 			msg.post("map:/Player#Player", "recievingInput")
 		else
-			msg.post("main#Map", "set_time_step", { factor = 1, mode = 1 })
+		--	msg.post("map", "set_time_step", { factor = 1, mode = 1 })
 			msg.post("map:/Player#Player", "recievingInput")
 		end
 	end

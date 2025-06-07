@@ -19,39 +19,11 @@
   }
   :code {
     :find {
-      :term "start"
+      :term "animation"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/builtins/materials/tile_map.material"
-        :cljfx-form-view
-      ]
-      [
-        "/main/GUI/menus/MainMenu.gui"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/settings.gui_script"
-        :code
-      ]
-      [
-        "/main/Player/Player.go"
-        :scene
-      ]
-      [
-        "/Modules/PlayerPosition.lua"
-        :code
-      ]
-      [
-        "/main/Equipment/equScripts/equipment.script"
-        :code
-      ]
-      [
-        "/main/Equipment/woodsword.go"
-        :scene
-      ]
       [
         "/Assets/equipment.atlas"
         :scene
@@ -137,15 +109,43 @@
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
       ]
       [
+        "/main/Equipment/woodsword.go"
+        :scene
+      ]
+      [
+        "/main/Player/Equipment.go"
+        :scene
+      ]
+      [
+        "/main/Equipment/equScripts/equipment.script"
+        :code
+      ]
+      [
+        "/main/Misc Objects/Inventory.go"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Inventory.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        :code
+      ]
+      [
         "/main/map.collection"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/MainMenu.gui"
         :scene
       ]
       [
