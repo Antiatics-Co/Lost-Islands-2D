@@ -162,9 +162,8 @@ end
 
 local name
 
-function init(self)
-	defsave.appname = "LostIslands"
-	
+function setupLoadMenu()
+
 	for i = 1, 3, 1 do
 		if file_exists(filename..i..".dat") then
 			verify_save_data(filename..i..".dat", i)
@@ -173,7 +172,13 @@ function init(self)
 			msg.post("main#MainMenu", "file", { file = i, name = nil })
 		end
 	end
+end
 
+function init(self)
+	defsave.appname = "LostIslands"
+	
+	
+	setupLoadMenu()
 
 	-- Always check and load config
 	loadConfig()

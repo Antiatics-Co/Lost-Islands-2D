@@ -42,7 +42,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == TOMAINMENU then
 		gui.set_enabled(gui.get_node("main"), true)
-		msg.post("Inventory#Inventory", "start")
+		--msg.post("Inventory#Inventory", "start")
 		msg.post("#Map", "disable")
 		msg.post("#Map", "unload")
 		inDungeon = false
@@ -52,7 +52,7 @@ function on_message(self, message_id, message, sender)
 		print(message.name)
 		print(message.file)
 
-		print("Resume: ".. col.resume)
+		--print("Resume: ".. col.resume)
 		
 		if message.name ~= nil then
 			fileExists[message.file] = message.name

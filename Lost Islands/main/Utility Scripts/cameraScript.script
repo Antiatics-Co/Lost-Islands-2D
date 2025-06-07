@@ -5,18 +5,18 @@ end
 function final(self)
 	-- Add finalization code here
 	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	-- Remove this function if not needed 
 end
 local pos
 local newPos
 local vector
 function update(self, dt)
-	pos = go.get_position()
-	newPos = go.get_position("Player")
-	vector = vmath.vector3(newPos.x, newPos.y, pos.z)
+	--pos = go.get_position()
+	--newPos = go.get_position("Player")
+	--vector = vmath.vector3(newPos.x, newPos.y, pos.z)
 
-	pos = vmath.lerp(.03, pos, vector)
-	go.set_position(pos)
+	--pos = vmath.lerp(.001, pos, vector)
+	--go.set_position(pos)
 end
 
 function fixed_update(self, dt)

@@ -19,57 +19,21 @@
   }
   :code {
     :find {
-      :term "self.velocity.x = 0"
+      :term "start"
     }
   }
   :workflow {
     :recent-files [
       [
-        "/main/GUI/menus/Menu Scripts/pause.gui_script"
-        :code
-      ]
-      [
-        "/main/GUI/menus/CharacterCreator.gui"
-        :scene
-      ]
-      [
-        "/Modules/Settings.lua"
-        :code
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
-        :code
-      ]
-      [
-        "/default.render"
-        :cljfx-form-view
-      ]
-      [
-        "/builtins/materials/tile_map.vp"
-        :code
-      ]
-      [
         "/builtins/materials/tile_map.material"
         :cljfx-form-view
-      ]
-      [
-        "/main/main.collection"
-        :scene
       ]
       [
         "/main/GUI/menus/MainMenu.gui"
         :scene
       ]
       [
-        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/settings.gui_script"
-        :code
-      ]
-      [
-        "/main/Utility Scripts/IO.script"
         :code
       ]
       [
@@ -101,20 +65,8 @@
         :code
       ]
       [
-        "/Assets/Game.atlas"
-        :scene
-      ]
-      [
         "/Modules/ShopInventory.lua"
         :code
-      ]
-      [
-        "/Modules/items.lua"
-        :code
-      ]
-      [
-        "/game.project"
-        :cljfx-form-view
       ]
       [
         "/main/GUI/splash.gui"
@@ -137,11 +89,35 @@
         :scene
       ]
       [
-        "/main/map.collection"
+        "/main/Player/Operator.go"
         :scene
       ]
       [
-        "/main/Player/Operator.go"
+        "/project.shared_editor_settings"
+        :cljfx-form-view
+      ]
+      [
+        "/Assets/Game.atlas"
+        :scene
+      ]
+      [
+        "/game.project"
+        :cljfx-form-view
+      ]
+      [
+        "/Modules/items.lua"
+        :code
+      ]
+      [
+        "/main/Utility Scripts/cameraScript.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/CharacterCreator.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/PauseMenu.gui"
         :scene
       ]
       [
@@ -149,8 +125,32 @@
         :code
       ]
       [
-        "/main/Utility Scripts/cameraScript.script"
+        "/main/GUI/menus/Menu Scripts/characterCreator.gui_script"
         :code
+      ]
+      [
+        "/Assets/skins.atlas"
+        :scene
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/mainMenu.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/pause.gui_script"
+        :code
+      ]
+      [
+        "/main/map.collection"
+        :scene
+      ]
+      [
+        "/main/main.collection"
+        :scene
       ]
     ]
   }

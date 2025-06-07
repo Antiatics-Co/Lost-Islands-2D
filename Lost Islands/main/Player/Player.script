@@ -50,7 +50,7 @@ function init(self) --constructor
 	self.groundContact = false
 	self.previousGroundContact = false
 	self.correction = vmath.vector3(0, 0, 0)
-
+	
 	--itm.setEnergy(50)
 end
 
@@ -77,12 +77,12 @@ end
 local function animate(self)
 	if self.groundContact then
 		if self.velocity.x == 0 then
-			play_animation(self, "idle")
+			play_animation(self, "player")
 		else 
-			play_animation(self, "idle") --idle is stand in for movement animation
+			play_animation(self, "player") --idle is stand in for movement animation
 		end
 	else
-		play_animation(self, "Jump")
+		play_animation(self, "player")
 	end
 end
 

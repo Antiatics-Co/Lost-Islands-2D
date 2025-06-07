@@ -7,7 +7,7 @@ images {
 animations {
   id: "idle"
   images {
-    image: "/Assets/main/Images/Testplayer/PlayerPlatformer.png"
+    image: "/Assets/main/Images/Player/PlayerPlatformer.png"
   }
   playback: PLAYBACK_NONE
   fps: 60
@@ -81,7 +81,14 @@ animations {
 animations {
   id: "Jump"
   images {
-    image: "/Assets/main/Images/Testplayer/PlayerJump.png"
+    image: "/Assets/main/Images/Player/PlayerJump.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+animations {
+  id: "player"
+  images {
+    image: "/Assets/main/Images/Player/playerLarge.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
 }

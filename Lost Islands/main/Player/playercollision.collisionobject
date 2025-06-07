@@ -9,14 +9,15 @@ embedded_collision_shape {
   shapes {
     shape_type: TYPE_BOX
     position {
-      x: 4.0
+      x: -7.0
     }
     rotation {
     }
     index: 0
     count: 3
+    id: "box"
   }
-  data: 18.649862
-  data: 31.79344
+  data: 39.313717
+  data: 61.663395
   data: 10.0
 }

@@ -57,6 +57,7 @@ function on_input(self, action_id, action)
 				gui.set_enabled(gui.get_node("pausemenu"), false)
 				msg.post("/main#music", "stopAll")
 				msg.post("/main#music", "enterMain")
+				--setupLoadMenu()
 				pauseOpen = not pauseOpen
 				msg.post("/main#MainMenu", "ToMain") --enables main menu and uns level
 			end
