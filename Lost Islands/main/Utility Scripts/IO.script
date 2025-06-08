@@ -113,6 +113,7 @@ local function loadSave()
 	easyTable = defsave.get(filename, "player")
 	dun.dungeons = defsave.get(filename, "dungeons")
 	itm.itemList = defsave.get(filename, "items")
+	msg.post("map:/Inventory#Inventory", "loadItemData")
 	print("Set Item List")
 
 	pos.setPosition(easyTable.position)
@@ -176,7 +177,6 @@ end
 
 function init(self)
 	defsave.appname = "LostIslands"
-	
 	
 	setupLoadMenu()
 

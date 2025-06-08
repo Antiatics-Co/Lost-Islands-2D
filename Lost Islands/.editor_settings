@@ -19,19 +19,11 @@
   }
   :code {
     :find {
-      :term "animation"
+      :term "EquipEnable"
     }
   }
   :workflow {
     :recent-files [
-      [
-        "/Assets/equipment.atlas"
-        :scene
-      ]
-      [
-        "/Assets/mockups.atlas"
-        :scene
-      ]
       [
         "/main/Utility Scripts/hud.gui_script"
         :code
@@ -105,36 +97,12 @@
         :scene
       ]
       [
-        "/main/Utility Scripts/IO.script"
-        :code
-      ]
-      [
         "/main/GUI/menus/Menu Scripts/pause.gui_script"
         :code
       ]
       [
-        "/main/Equipment/woodsword.go"
-        :scene
-      ]
-      [
         "/main/Player/Equipment.go"
         :scene
-      ]
-      [
-        "/main/Equipment/equScripts/equipment.script"
-        :code
-      ]
-      [
-        "/main/Misc Objects/Inventory.go"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Inventory.gui"
-        :scene
-      ]
-      [
-        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
-        :code
       ]
       [
         "/main/map.collection"
@@ -151,6 +119,38 @@
       [
         "/main/main.collection"
         :scene
+      ]
+      [
+        "/main/Equipment/woodsword.go"
+        :scene
+      ]
+      [
+        "/main/Equipment/equScripts/woodsword.script"
+        :code
+      ]
+      [
+        "/main/Misc Objects/Inventory.go"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Inventory.gui"
+        :scene
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/Equipment/equScripts/equipment.script"
+        :code
+      ]
+      [
+        "/main/Misc Objects/IO.go"
+        :scene
+      ]
+      [
+        "/main/Utility Scripts/IO.script"
+        :code
       ]
     ]
   }

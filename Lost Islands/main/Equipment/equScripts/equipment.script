@@ -7,16 +7,10 @@ local co = require("Modules.Settings")
 function init(self)
 	if co.resume ~= nil then
 		msg.post("main:/IO#IO", "load")
-		msg.post("Inventory#Inventory", "loadItemData")
 	end
 end
 
-function fixed_update(self, dt)
-	
-end
-
 function on_message(self, message_id, message)
-	
 	if message_id == hash("EquipEnable") then
 		factory.create("#" .. message.name)
 	end
