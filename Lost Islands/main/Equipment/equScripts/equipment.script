@@ -13,7 +13,7 @@ local instance
 function on_message(self, message_id, message)
 	if message_id == hash("EquipEnable") then
 		instance = factory.create("#" .. message.name.."Factory")
-		print(message.name.."created")
+		--print(message.name.." created")
 	end
 
 	if message_id == hash("unequip") then
