@@ -1,0 +1,4 @@
+function fixed_update(self, dt)
+	go.set_position(go.get_position("Player"))
+	--print(go.get_id())
+end

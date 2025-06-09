@@ -9,13 +9,15 @@ function init(self)
 		msg.post("main:/IO#IO", "load")
 	end
 end
-
+local instance
 function on_message(self, message_id, message)
 	if message_id == hash("EquipEnable") then
-		factory.create("#" .. message.name)
+		instance = factory.create("#" .. message.name.."Factory")
+		print(message.name.."created")
 	end
 
 	if message_id == hash("unequip") then
-		go.delete("#" .. message.name)
+		go.delete(instance)
+		--print("Instance Destroyed")
 	end
 end

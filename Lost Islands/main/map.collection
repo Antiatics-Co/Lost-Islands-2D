@@ -2,6 +2,7 @@ name: "map"
 instances {
   id: "Player"
   prototype: "/main/Player/Player.go"
+  children: "Equipment"
   children: "Operator"
   position {
     x: 94.0
@@ -13,10 +14,6 @@ instances {
   prototype: "/main/Misc Objects/Inventory.go"
 }
 instances {
-  id: "Equipment"
-  prototype: "/main/Player/Equipment.go"
-}
-instances {
   id: "Operator"
   prototype: "/main/Player/Operator.go"
   position {
@@ -24,6 +21,10 @@ instances {
     y: 46.0
     z: 1.0
   }
+}
+instances {
+  id: "Equipment"
+  prototype: "/main/Player/Equipment.go"
 }
 scale_along_z: 0
 embedded_instances {

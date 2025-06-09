@@ -186,6 +186,9 @@ local function setupAuxMenu(buttons, action_id, action)
 			print("Before toggle: " .. tostring(name) .. " equipped: " .. tostring(items[string.lower(name)].equipped))
 			items[string.lower(name)].equipped = not items[string.lower(name)].equipped
 			print("After toggle: " .. tostring(name) .. " equipped: " .. tostring(items[string.lower(name)].equipped))
+			if items[string.lower(name)].equipped == false then
+				msg.post("Equipment#equipment", "unequip")
+			end
 			setupInventory()
 		end
 	end
