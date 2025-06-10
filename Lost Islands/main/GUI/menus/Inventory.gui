@@ -9,7 +9,8 @@ textures {
 }
 nodes {
   position {
-    y: -150.0
+    x: 320.0
+    y: 180.0
   }
   size {
     x: 640.0
@@ -19,10 +20,13 @@ nodes {
   id: "layer1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
-  enabled: false
   visible: false
 }
 nodes {
+  position {
+    x: -521.0
+    y: -261.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -103,12 +107,12 @@ nodes {
 }
 nodes {
   position {
-    x: 97.0
-    y: 495.0
+    x: -220.0
+    y: 90.0
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 50.0
   }
   type: TYPE_BOX
   id: "player"
@@ -135,12 +139,12 @@ nodes {
 }
 nodes {
   position {
-    x: 97.0
-    y: 294.0
+    x: -220.0
+    y: -60.0
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 50.0
   }
   type: TYPE_BOX
   id: "weapons"
@@ -166,6 +170,10 @@ nodes {
   inherit_alpha: true
 }
 nodes {
+  position {
+    x: -521.0
+    y: -263.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -279,15 +287,12 @@ nodes {
 }
 nodes {
   position {
-    x: 502.0
-    y: 586.0
-  }
-  scale {
-    x: 2.415746
+    x: -220.0
+    y: 167.0
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 25.0
   }
   type: TYPE_BOX
   id: "Name"
@@ -296,9 +301,6 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
-  scale {
-    x: 0.694042
-  }
   size {
     x: 200.0
     y: 100.0
@@ -316,6 +318,10 @@ nodes {
   inherit_alpha: true
 }
 nodes {
+  position {
+    x: -521.0
+    y: -263.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -552,12 +558,12 @@ nodes {
 }
 nodes {
   position {
-    x: 97.0
-    y: 396.0
+    x: -220.0
+    y: 15.0
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 50.0
   }
   type: TYPE_BOX
   id: "elements"
@@ -584,12 +590,12 @@ nodes {
 }
 nodes {
   position {
-    x: 97.0
-    y: 192.0
+    x: -220.0
+    y: -136.0
   }
   size {
     x: 200.0
-    y: 100.0
+    y: 50.0
   }
   type: TYPE_BOX
   id: "armour"
@@ -615,6 +621,10 @@ nodes {
   inherit_alpha: true
 }
 nodes {
+  position {
+    x: -136.0
+    y: -397.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -626,6 +636,9 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    y: -251.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -637,6 +650,10 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: 126.0
+    y: -386.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -648,6 +665,10 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: 412.0
+    y: -379.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -659,6 +680,10 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: 720.0
+    y: -241.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -670,6 +695,10 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: 446.0
+    y: -242.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -681,6 +710,10 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: 236.0
+    y: -239.0
+  }
   size {
     x: 200.0
     y: 100.0

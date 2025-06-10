@@ -25,10 +25,6 @@
   :workflow {
     :recent-files [
       [
-        "/main/Utility Scripts/hud.gui_script"
-        :code
-      ]
-      [
         "/Modules/ShopInventory.lua"
         :code
       ]
@@ -121,10 +117,6 @@
         :scene
       ]
       [
-        "/main/GUI/menus/Inventory.gui"
-        :scene
-      ]
-      [
         "/main/Misc Objects/Inventory.go"
         :scene
       ]
@@ -141,7 +133,7 @@
         :code
       ]
       [
-        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        "/main/Equipment/equScripts/equipment.script"
         :code
       ]
       [
@@ -149,8 +141,16 @@
         :scene
       ]
       [
-        "/main/Equipment/equScripts/equipment.script"
+        "/Modules/PlayerPosition.lua"
         :code
+      ]
+      [
+        "/main/GUI/menus/Menu Scripts/Inventory.gui_script"
+        :code
+      ]
+      [
+        "/main/GUI/menus/Inventory.gui"
+        :scene
       ]
     ]
   }

@@ -8,6 +8,7 @@
 ---PREHASHING-------------------------------------------------
 
 local itm = require("Modules.items")
+local nam = require("Modules.PlayerPosition")
 
 local LOADITEMDATA =  hash("loadItemData")
 local ADDITEM = hash("addItem")
@@ -83,6 +84,7 @@ end
 local function load()
 	print("Loading Items Initiated")
 	items = itm.get_itemList()
+	gui.set_text(gui.get_node("text"), nam.name)
 	setupInventory()
 end
 
